@@ -2,48 +2,294 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { getCollection } from 'astro:content';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const allPosts = await getCollection('blog');
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latest = allPosts[0];
+const remaining = allPosts.slice(1);
+
+// Collect all unique tags
+const allTags = [...new Set(allPosts.flatMap(p => p.data.tags || []))].sort();
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="hero">
+        <h1 class="gradient-text">NoCode Insider</h1>
+        <p class="subtitle">
+          Deep reviews, comparisons, and tutorials on no-code and low-code automation tools. No fluff, just what actually works.
+          <span class="cursor">|</span>
+        </p>
+      </section>
+
+      {latest && (
+        <a href={`/blog/${latest.id}/`} class="featured-card">
+          <div class="featured-overlay">
+            {latest.data.heroImage && (
+              <img src={latest.data.heroImage} alt="" class="featured-bg" />
+            )}
+            <div class="featured-content">
+              <span class="featured-badge">Latest</span>
+              <h2>{latest.data.title}</h2>
+              <p>{latest.data.description}</p>
+            </div>
+          </div>
+        </a>
+      )}
+
+      {allTags.length > 0 && (
+        <div class="tag-cloud">
+          {allTags.map(tag => (
+            <a href={`/blog#tag-${encodeURIComponent(tag)}`} class="tag-pill">{tag}</a>
+          ))}
+        </div>
+      )}
+
+      <div class="post-grid">
+        {remaining.map((post, i) => (
+          <a href={`/blog/${post.id}/`} class="post-card" data-index={i}>
+            {post.data.heroImage && (
+              <img src={post.data.heroImage} alt="" class="card-img" loading="lazy" />
+            )}
+            <div class="card-body">
+              <div class="card-meta">{post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+              <h3>{post.data.title}</h3>
+              <p class="card-desc">{post.data.description}</p>
+              {post.data.tags && (
+                <div class="card-tags">
+                  {post.data.tags.slice(0, 3).map(tag => (
+                    <span class="card-tag" data-tag={tag}>{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {allPosts.length > 6 && (
+        <div class="view-all">
+          <a href="/blog" class="view-all-pill">View all posts</a>
+        </div>
+      )}
+    </main>
+    <Footer />
+
+    <script>
+      // Staggered fade-in on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.post-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ease, transform 0.5s ease`;
+        card.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(card);
+      });
+    </script>
+  </body>
 </html>
+<style is:global>
+  .hero { text-align: center; padding: 3em 0 2em; }
+  .gradient-text {
+    background: linear-gradient(135deg, #00d4aa, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.6em;
+    margin: 0;
+    animation: gradientShift 4s ease infinite;
+    background-size: 200% 200%;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .subtitle {
+    color: rgb(var(--gray));
+    font-size: 1.1em;
+    max-width: 600px;
+    margin: 0.75em auto 0;
+    line-height: 1.5;
+  }
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: var(--accent);
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .featured-card {
+    display: block;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 2em 0 1.5em;
+    text-decoration: none;
+    aspect-ratio: 16 / 9;
+    min-height: 320px;
+  }
+  .featured-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .featured-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .featured-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 70%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    pointer-events: none;
+  }
+  .featured-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5em 2em;
+    z-index: 2;
+  }
+  .featured-badge {
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    border-radius: 100px;
+    background: var(--accent);
+    color: #0a0e14;
+    font-size: 0.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5em;
+  }
+  .featured-content h2 {
+    color: #f0f6fc;
+    margin: 0 0 0.3em;
+    font-size: 1.6em;
+  }
+  .featured-content p {
+    color: rgba(210, 218, 230, 0.8);
+    margin: 0;
+    font-size: 0.9em;
+  }
+  @media (min-width: 1200px) {
+    .gradient-text { font-size: 3em; }
+    .featured-content { padding: 2em 2.5em; }
+    .featured-content h2 { font-size: 2em; }
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+    margin: 1.5em 0 2.5em;
+  }
+  .tag-pill {
+    display: inline-block;
+    padding: 0.3em 0.85em;
+    font-size: 0.78em;
+    font-weight: 500;
+    color: var(--accent);
+    background: rgba(0,212,170,0.07);
+    border: 1px solid rgba(0,212,170,0.15);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .tag-pill:hover { background: rgba(0,212,170,0.12); border-color: rgba(0,212,170,0.3); transform: translateY(-1px); }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5em;
+  }
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .post-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .card-body { padding: 1.25em 1.5em 1.5em; flex: 1; }
+  .card-meta { font-size: 0.75em; color: rgb(var(--gray)); margin-bottom: 0.3em; }
+  .card-body h3 { margin: 0 0 0.4em; font-size: 1.15em; color: #f0f6fc; transition: color 0.2s; }
+  .post-card:hover h3 { color: var(--accent); }
+  .card-desc {
+    font-size: 0.85em;
+    color: rgb(var(--gray));
+    margin: 0 0 0.75em;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-tags { display: flex; gap: 0.4em; flex-wrap: wrap; }
+  .card-tag {
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--accent);
+    background: rgba(0,212,170,0.06);
+    border: 1px solid rgba(0,212,170,0.12);
+    padding: 0.15em 0.55em;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .card-tag:hover { background: rgba(0,212,170,0.12); border-color: var(--accent); }
+
+  .view-all { text-align: center; margin-top: 2.5em; }
+  .view-all-pill {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: rgb(var(--gray));
+    font-size: 0.85em;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .view-all-pill:hover { border-color: var(--accent); color: var(--accent); }
+</style>

@@ -10,12 +10,12 @@
   --bg-card: #161b22;
   --border: #2d3b4e;
   --border-light: #1e2a3a;
-  --font-atkinson: 'Atkinson', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --shadow-card: 0 2px 8px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
 }
 html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-atkinson);
+  font-family: var(--font-sans);
   margin: 0;
   padding: 0;
   text-align: left;

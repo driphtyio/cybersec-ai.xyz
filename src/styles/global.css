@@ -1,4 +1,4 @@
-/* NoCode Insider — Dark Theme */
+/* NoCode Insider — Modern Clean Dark Theme (Redesigned Typography) */
 :root {
   --accent: #00d4aa;
   --accent-dark: #009977;
@@ -23,8 +23,10 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body::before {
   content: '';
@@ -48,26 +50,66 @@ main {
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 0.5rem 0;
-  color: #f0f6fc;
-  line-height: 1.2;
+  color: #e8edf4;
+  line-height: 1.35;
+  font-weight: 650;
 }
-h1 { font-size: 3.052em; }
-h2 { font-size: 2.441em; }
-h3 { font-size: 1.953em; }
-h4 { font-size: 1.563em; }
-h5 { font-size: 1.25em; }
-strong, b { font-weight: 700; }
+/* Major third scale — much easier to read */
+h1 { font-size: 2em; }
+h2 { font-size: 1.4em; }         /* was 2.441em — this was the complaint */
+h3 { font-size: 1.2em; }         /* was 1.953em */
+h4 { font-size: 1.05em; }        /* was 1.563em */
+h5 { font-size: 1em; }
+strong, b { font-weight: 700; color: #e8edf4; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-dark); }
-p { margin-bottom: 1em; }
-.prose p { margin-bottom: 2em; }
-.prose { max-width: 720px; margin: 0 auto; }
-@media (min-width: 1200px) { .prose { max-width: 780px; } }
+p { margin-bottom: 1em; line-height: 1.65; }
+
+/* Article prose — clean reading experience */
+.prose {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1em;
+  line-height: 1.7;
+  color: rgb(var(--gray-dark));
+}
+@media (min-width: 1200px) {
+  .prose { max-width: 720px; }
+}
+.prose h2 {
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border-light);
+}
+.prose h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.4em;
+}
+.prose h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
+}
+.prose p {
+  margin-bottom: 1.2em;      /* was 2em — too much space */
+}
+.prose ul, .prose ol {
+  margin: 0.8em 0;
+  padding-left: 1.5em;
+}
+.prose li {
+  margin: 0.3em 0;
+  line-height: 1.6;
+}
 .prose pre {
   background: #1a2332 !important;
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow-x: auto;
+  padding: 1.25em !important;
+  margin: 1.5em 0;
+  font-size: 0.85em;
+  line-height: 1.55;
 }
 .prose code {
   color: #ffa657;
@@ -86,10 +128,48 @@ p { margin-bottom: 1em; }
   border-left: 4px solid var(--accent);
   background: rgba(0,212,170,0.04);
   padding: 0.5em 1em 0.5em 20px;
-  margin: 0;
-  font-size: 1.1em;
+  margin: 1.5em 0;
+  font-size: 1.05em;
+  color: rgb(var(--gray));
   border-radius: 0 8px 8px 0;
 }
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9em;
+}
+.prose th, .prose td {
+  padding: 0.6em 1em;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.prose th {
+  background: var(--bg-card);
+  color: var(--accent);
+  font-weight: 600;
+}
+.prose td {
+  color: rgb(var(--gray-dark));
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 2em 0;
+}
+.prose strong {
+  color: #e8edf4;
+}
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover {
+  color: var(--accent-dark);
+}
+
 hr {
   border: none;
   border-top: 1px solid var(--border-light);
@@ -99,9 +179,10 @@ table { width: 100%; border-collapse: collapse; }
 th, td { padding: 0.5em 1em; border: 1px solid var(--border); text-align: left; }
 th { background: var(--bg-card); color: var(--accent); }
 @media (max-width: 720px) {
-  body { font-size: 18px; }
+  body { font-size: 16px; }
   main { padding: 1em; }
   .prose { max-width: 100%; }
+  .prose table { font-size: 0.8em; }
 }
 .sr-only {
   border: 0;

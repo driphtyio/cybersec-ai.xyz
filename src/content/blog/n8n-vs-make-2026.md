@@ -2,85 +2,94 @@
 title: 'n8n vs Make (2026): Which Workflow Automation Tool Actually Scales?'
 description: 'A head-to-head comparison of n8n and Make (formerly Integromat) — pricing, features, scalability, hosting options, and which one to choose in 2026.'
 pubDate: 2026-05-19
-heroImage: ''
-tags: ['Automation', 'n8n', 'Make', 'Comparison', 'Workflow']
+heroImage: 'https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-vs-make-2026-1779245595.jpg'
+tags: ['Automation', 'n8n', 'Make', 'Comparison', 'Workflow', 'No-Code']
 ---
 
 **TL;DR:** n8n wins for developers and teams who need self-hosting, complex logic, and privacy. Make wins for business users who want the fastest time-to-value with a polished UI. Pick based on your team's technical depth and compliance needs.
 
 ## Overview
 
-Both n8n and Make let you connect apps and automate workflows without writing traditional code — but they approach the problem from opposite directions.
+Both n8n and Make let you connect apps and automate workflows without writing traditional code — but they approach the problem from opposite directions. n8n is open-source with a developer-first philosophy; Make is a polished SaaS platform built for business users.
+
+**Quick comparison:**
 
 | Dimension | n8n | Make |
 |-----------|-----|------|
-| **Type** | Open-source (fair-code) | Proprietary SaaS |
-| **Hosting** | Self-hosted or cloud | Cloud-only |
-| **Pricing (Teams)** | $20/user/mo (cloud) or free (self-host) | From $29/user/mo |
-| **Operations** | Unlimited (self-hosted) | 10K-50K ops/mo on mid tiers |
-| **Key Strength** | Code flexibility, custom nodes, privacy | Visual builder, templates, speed |
-| **Weakness** | UI can feel technical | Ops limits, vendor lock-in |
+| **Type** | Open-source (fair-code licensed) | Proprietary SaaS |
+| **Hosting** | Self-hosted or cloud (n8n.cloud) | Cloud only |
+| **Starting price** | Free (self-hosted) / $20/user/mo (cloud) | From $9/mo (Starter) / $29/user/mo (Teams) |
+| **Operations** | Unlimited (self-hosted) | 10K-50K ops/mo on mid tiers, extra $5/10K |
+| **Key integration** | 600+ nodes (community + official) | 3,000+ pre-built connectors |
+| **Custom code** | JavaScript + Python nodes built-in | Limited to code module and webhooks |
+| **AI features** | AI nodes, vector store, LLM integrations | AI tools module (new, limited) |
+| **Best for** | Developers, DevOps, compliance-heavy teams | Business ops, marketing, non-technical teams |
 
-## n8n Deep Dive
+## What n8n Does Well
 
-n8n (pronounced "n-eight-n") is a fair-code licensed workflow automation tool. You can self-host it on any server — Docker, K8s, or bare metal — with no feature limitations.
+**Self-hosting.** n8n runs anywhere — Docker, Kubernetes, Raspberry Pi, or bare metal. Your data stays on your infrastructure. This is a hard requirement for regulated industries (healthcare, finance, government) where data cannot leave the network.
 
-### What n8n Does Well
+**Custom nodes.** You can write custom JavaScript or Python nodes in minutes. If an integration doesn't exist yet, you can build it without waiting for the vendor. The community has contributed 300+ additional nodes.
 
-**Self-hosting & privacy.** Run on your infrastructure. Data never leaves your network. This is non-negotiable for regulated industries (healthcare, finance, government).
+**Complex workflow logic.** Native support for loops (`splitInBatches`), conditional branches (`IF` node), error handling with retry, sub-workflows, and error workflows. n8n treats automation like code — you can version control your workflows with Git.
 
-**Custom nodes.** You can write custom JavaScript/Python nodes. If an integration doesn't exist, you build it in 20 lines of code.
+**Scales to zero cost.** Self-hosted = unlimited executions. The only cost is your server, which runs as low as $5-10/month on a VPS or $0 on an existing machine.
 
-**Complex logic.** Native support for loops, error handling, conditional branches, and sub-workflows. n8n treats workflows like code — you can version control them.
+**AI-first development.** n8n has native nodes for OpenAI, Anthropic, Ollama, LangChain, Pinecone, and vector stores. You can build AI agents, RAG pipelines, and LLM-powered workflows entirely in the visual editor.
 
-**Scales to zero cost.** Self-hosted = unlimited operations. The only costs are your server ($5-20/mo on a VPS).
+## What Make Does Well
 
-### n8n Weaknesses
+**Time to value.** Sign up, pick from 10,000+ templates, customize in 15 minutes. No infrastructure setup, no Docker, no server management.
 
-- **UI is functional, not beautiful.** It works, but it's not drag-and-drop friendly for non-technical users.
-- **Setup takes time.** You need a server, Docker, and basic ops knowledge.
-- **Fewer templates** than Make (the community is growing, but Make has years of template accumulation).
+**Visual builder.** Make's scenario editor is genuinely excellent. Workflows render as clear visual maps with routers (conditional logic), iterators, and aggregators. Non-technical team members can read, modify, and debug workflows without developer handholding.
 
-## Make Deep Dive
+**Integration breadth.** 3,000+ pre-built connectors mean you rarely need to build custom integrations. Most popular SaaS tools have a maintained connector — Slack, Google Workspace, HubSpot, Salesforce, Shopify, and thousands more.
 
-Make (formerly Integromat) is a fully managed automation platform. You build workflows in a browser, and Make handles everything else.
+**Monitoring built in.** Scenario history with execution logs, error alerts via email/Slack, and a dashboard for all your automations. No need to set up separate observability.
 
-### What Make Does Well
+## Where Each Falls Short
 
-**Speed to value.** Sign up, pick a template, customize in 10 minutes. No infrastructure, no setup.
+### n8n's Pain Points
 
-**Visual scenario builder.** Make's UI is genuinely excellent. Workflows render as clear visual maps. Non-technical team members can read and modify them.
+- **Steeper learning curve.** The visual builder is functional but not as polished as Make's. Non-technical users need training or developer support.
+- **Fewer templates.** The template library is growing (1,000+) but Make's is 10x larger.
+- **Self-hosting requires operations knowledge.** You need to understand Docker, backups, and server maintenance.
 
-**Built-in monitoring.** Scenario history, error logs, email alerts. You don't need to set up observability — it's there.
+### Make's Limitations
 
-**Integrations out of the box.** 2000+ pre-built connectors, many maintained by Make directly.
+- **Operations costs scale linearly.** At $29/user/month you get 10,000 operations. A busy e-commerce workflow can burn through that in a week. Additional operations cost $5 per 10,000.
+- **No self-hosting.** Your data lives on Make's servers. For GDPR, HIPAA, or SOC2 compliance, this can be a dealbreaker.
+- **Limited custom logic.** Error handling exists but isn't as granular as n8n's. Complex data transformations require JavaScript code in text fields instead of proper code editor.
+- **Vendor lock-in.** Workflows are tied to Make's platform. Migration to another tool requires rebuilding from scratch.
 
-### Make Weaknesses
+## Real-World Use Cases
 
-- **Operations limits bite hard.** At $29/user/mo you get 10K operations. A busy SaaS workflow chews through that in days.
-- **No self-hosting.** Your data lives on Make's servers. For compliance-heavy use cases, this is a dealbreaker.
-- **Logic is less flexible.** Error handling exists but isn't as granular. Custom transformations require JSON in text fields instead of real code blocks.
+### n8n Shines For
 
-## When to Pick Each
+- **Internal tooling at a fintech startup** — Self-hosted n8n processes 500K+ monthly transactions with Plaid, Stripe, and QuickBooks integrations. Cost: $15/month VPS. Make equivalent: $500+/month.
+- **AI agent pipeline** — n8n connects OpenAI to a vector database for RAG, then routes results to Slack and Notion. Custom Python nodes handle data transformation that Make can't easily replicate.
 
-### Choose n8n if:
-- You need to self-host for compliance, privacy, or data residency
-- You or your team can write code
-- You run high-volume operations (thousands per day)
-- You want to avoid vendor lock-in
-- You need custom integrations that don't exist yet
+### Make Shines For
 
-### Choose Make if:
-- You're a business user who doesn't code
-- You need to ship an automation in hours, not days
-- Your operations volume is moderate (< 10K/mo)
-- You want built-in error handling without extra setup
-- Templates and pre-built connectors matter more than flexibility
+- **Marketing automation stack** — A 5-person marketing team connects Google Ads, HubSpot, Mailchimp, and Salesforce. Non-technical team members build and maintain the workflows. n8n would require a developer.
+- **E-commerce order processing** — Shopify orders trigger fulfillment in ShipStation, inventory updates in Zoho, and Slack notifications to the team. 500 operations/day fits comfortably in the $29/month Pro plan.
 
 ## Verdict
 
-In 2026, the gap between these tools has narrowed significantly. n8n has improved its node library; Make has added better error handling and code steps. The deciding factor remains **who will maintain the workflow.**
+The gap between these tools has narrowed in 2026. n8n has improved its node library and AI capabilities; Make has added better error handling and code steps.
 
-If a developer maintains it → n8n. If a operations person does → Make.
+**Choose n8n if:**
+- You need self-hosting for compliance or privacy
+- Your team has developers or technical ops
+- You run high-volume automation (10K+ operations/month)
+- You want to avoid vendor lock-in
+- You're building AI agents or RAG pipelines
 
-Both are excellent tools. The wrong choice costs more in migration pain than the subscription difference ever will.
+**Choose Make if:**
+- You're a business user without coding skills
+- Speed of implementation matters more than cost optimization
+- Your operations volume is moderate (< 10K/month)
+- You want built-in error handling and monitoring
+- Pre-built integrations matter more than custom flexibility
+
+**Final take:** The right tool depends on who will maintain the workflow. If a developer maintains it → n8n. If an operations person does → Make. The wrong choice costs more in migration pain than the subscription difference ever will.

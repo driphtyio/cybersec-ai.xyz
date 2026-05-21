@@ -51,4 +51,14 @@ const ogImage = image || `${SITE_URL}favicon.svg`;
 <meta property="twitter:image" content={ogImage} />
 
 <!-- Reader Analytics: Go to https://nocodeinsider.goatcounter.com to activate -->
-<script data-goatcounter="https://nocodeinsider.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script is:inline>
+  window.goatcounter = {
+    referrer: function() {
+      return goatcounter.get_query('ref') ||
+        goatcounter.get_query('utm_campaign') ||
+        goatcounter.get_query('utm_source') ||
+        document.referrer
+    },
+  }
+</script>
+<script data-goatcounter="https://nocodeinsider.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>

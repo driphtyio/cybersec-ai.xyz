@@ -46,4 +46,11 @@ The landscape is changing fast enough that honest, hands-on evaluation has genui
 - **Bubble's New AI Integration Layer** — hands-on with the API connector
 - **Retool Workflows vs Traditional Backend** — when does visual programming save time?
 
-Subscribe (RSS coming) or check back. No fluff, just what actually works.
+## Subscribe & Follow
+
+Don't miss a post. Two ways to stay in the loop:
+
+1. **RSS Feed** — Add `https://nocodeinsider.com/rss.xml` to your RSS reader for instant updates.
+2. **Cross-Empire Updates** — Follow [NiteAgent](https://niteagent.com/), [ToolBrain](https://toolbrain.net/), and [Code Intel](https://codeintel.xyz/) for complementary coverage of AI agents and developer tools.
+
+No fluff, just what actually works.

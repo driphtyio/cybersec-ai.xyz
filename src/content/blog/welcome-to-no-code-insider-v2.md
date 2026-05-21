@@ -1,6 +1,6 @@
 ---
 title: "Welcome to the New NoCode Insider: AI Workflow Automation Hub"
-description: "NoCode Insider expands to AI workflows, covering n8n+Claude, Make+Gemini. Its Tutorials, Comparisons, Build Logs join existing n8n vs Make and Retool vs Superblocks. It enforces source-backed claims, real links, no fluff. A research agent using n8n and Claude triggers via slash command, fetches 5 results, cross-references with Gemini, delivers via Slack/Telegram/email for $0.08/run (45 min build). The site addresses 15+ AI models, 5+ platforms (Zapier, Activepieces, Kneel), data stores (Airta..."
+description: "NoCode Insider expands from no-code reviews to AI workflow automation, reflecting the mid-2026 landscape where no-code and AI merge. It covers orchestration (n8n, Make), AI models (Claude, Gemini, OpenAI), data storage (Airtable, Notion, Supabase), and delivery (Slack, Telegram, email). New formats: tutorials, comparisons, build logs. Example: AI Research Agent in n8n, $0.08/run, 45-min build. Enforces source-backed claims, no fabricated numbers. Existing posts: n8n vs Make, Retool vs Superbl..."
 pubDate: "May 22 2026"
 tags: ["No-Code", "AI Workflow", "Automation", "Announcement"]
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/nocode-insider-v2-welcome-1779400563.png"

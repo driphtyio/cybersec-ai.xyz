@@ -3,8 +3,10 @@ title: "Welcome to the New NoCode Insider: AI Workflow Automation Hub"
 description: "We're expanding from pure no-code tool reviews into AI workflow automation — practical, step-by-step guides that combine no-code tools, AI agents, and APIs to automate real business processes."
 pubDate: "May 22 2026"
 tags: ["No-Code", "AI Workflow", "Automation", "Announcement"]
-heroImage: ""
+heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop"
 ---
+
+> **TL;DR:** NoCode Insider is expanding from no-code tool reviews into AI workflow automation. Same honest testing, same source-backed claims — now covering n8n + Claude, Make + Gemini, and the real-world workflows that combine no-code tools with AI agents. New content formats: Workflow Tutorials, Approach Comparisons, and Build Logs. First new post drops Monday.
 
 NoCode Insider launched with a focused mission: deep, honest reviews of no-code and low-code automation tools. We covered n8n vs Make, Retool vs Superblocks, and the landscape was clear.
 
@@ -58,6 +60,24 @@ Most content tells you about one tool in isolation. We'll show you how to chain 
 Our existing posts — [n8n vs Make](/blog/n8n-vs-make-2026/) and [Retool vs Superblocks](/blog/retool-vs-superblocks-comparison/) — are still the best place to start. They're foundational comparisons that matter for any workflow you build.
 
 The new posts will build on top of that foundation. Check back Monday for our first workflow tutorial.
+
+Here's a preview of what a typical workflow tutorial looks like — a Claude-powered research agent built in n8n:
+
+```json
+{
+  "workflow": "AI Research Agent",
+  "trigger": "Slash command /research [topic]",
+  "steps": [
+    "n8n webhook receives query",
+    "HTTP node fetches top 5 search results",
+    "Claude API node summarizes each result",
+    "Gemini API cross-references claims",
+    "Output formatted and posted to Slack"
+  ],
+  "cost": "$0.08 per run",
+  "time": "45 minutes to build"
+}
+```
 
 ---
 

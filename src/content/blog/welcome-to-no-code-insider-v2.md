@@ -1,6 +1,6 @@
 ---
 title: "Welcome to the New NoCode Insider: AI Workflow Automation Hub"
-description: "We're expanding from pure no-code tool reviews into AI workflow automation — practical, step-by-step guides that combine no-code tools, AI agents, and APIs to automate real business processes."
+description: "NoCode Insider expands to AI workflow automation with no-fluff, source-backed standards. The mid-2026 landscape blurs no-code and AI agents; users face 15+ AI models, 5+ platforms (n8n, Make, Zapier, Activepieces, Kneel). Three formats launch Monday: Tutorials, Comparisons, Build Logs (costs, breaks, changes). Tutorials chain n8n+Claude or Make+Gemini, using Airtable and Slack. Preview: Claude research agent in n8n: /research trigger, HTTP search, Claude summary, Gemini cross-ref, Slack – $0...."
 pubDate: "May 22 2026"
 tags: ["No-Code", "AI Workflow", "Automation", "Announcement"]
 heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop"
@@ -89,3 +89,12 @@ Don't miss new workflow tutorials. Two ways to stay in the loop:
 2. **Cross-Empire Updates** — [NiteAgent](https://niteagent.com/) for AI agent architecture, [ToolBrain](https://toolbrain.net/) for AI tool reviews, and [Code Intel](https://codeintel.xyz/) for coding intelligence.
 
 *NoCode Insider is part of a network of tech blogs.*
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from NoCode Insider.*

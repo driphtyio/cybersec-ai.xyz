@@ -29,7 +29,7 @@ Both n8n and Make let you connect apps and automate workflows without writing tr
 
 **Self-hosting.** n8n runs anywhere — Docker, Kubernetes, Raspberry Pi, or bare metal. Your data stays on your infrastructure. This is a hard requirement for regulated industries (healthcare, finance, government) where data cannot leave the network.
 
-**Custom nodes.** You can write custom JavaScript or Python nodes in minutes. If an integration doesn't exist yet, you can build it without waiting for the vendor. The community has contributed 300+ additional nodes.
+**Custom nodes.** You can write custom JavaScript or Python nodes in minutes. If an integration doesn't exist yet, you can build it without waiting for the vendor. The community has contributed hundreds of additional nodes ([n8n integrations](https://n8n.io/integrations/)).
 
 **Complex workflow logic.** Native support for loops (`splitInBatches`), conditional branches (`IF` node), error handling with retry, sub-workflows, and error workflows. n8n treats automation like code — you can version control your workflows with Git.
 
@@ -39,11 +39,11 @@ Both n8n and Make let you connect apps and automate workflows without writing tr
 
 ## What Make Does Well
 
-**Time to value.** Sign up, pick from 10,000+ templates, customize in 15 minutes. No infrastructure setup, no Docker, no server management.
+**Time to value.** Sign up, pick from thousands of templates, customize in 15 minutes. No infrastructure setup, no Docker, no server management.
 
 **Visual builder.** Make's scenario editor is genuinely excellent. Workflows render as clear visual maps with routers (conditional logic), iterators, and aggregators. Non-technical team members can read, modify, and debug workflows without developer handholding.
 
-**Integration breadth.** 3,000+ pre-built connectors mean you rarely need to build custom integrations. Most popular SaaS tools have a maintained connector — Slack, Google Workspace, HubSpot, Salesforce, Shopify, and thousands more.
+**Integration breadth.** Thousands of pre-built connectors means you rarely need to build custom integrations. Most popular SaaS tools have a maintained connector — Slack, Google Workspace, HubSpot, Salesforce, Shopify, and many more.
 
 **Monitoring built in.** Scenario history with execution logs, error alerts via email/Slack, and a dashboard for all your automations. No need to set up separate observability.
 
@@ -66,13 +66,13 @@ Both n8n and Make let you connect apps and automate workflows without writing tr
 
 ### n8n Shines For
 
-- **Internal tooling at a fintech startup** — Self-hosted n8n processes 500K+ monthly transactions with Plaid, Stripe, and QuickBooks integrations. Cost: $15/month VPS. Make equivalent: $500+/month.
+- **Internal tooling at a fintech startup** — Self-hosted n8n processes high-volume transactions with Plaid, Stripe, and QuickBooks integrations. Self-hosted cost can be as low as a small VPS. A Make equivalent at similar volume would cost significantly more.
 - **AI agent pipeline** — n8n connects OpenAI to a vector database for RAG, then routes results to Slack and Notion. Custom Python nodes handle data transformation that Make can't easily replicate.
 
 ### Make Shines For
 
 - **Marketing automation stack** — A 5-person marketing team connects Google Ads, HubSpot, Mailchimp, and Salesforce. Non-technical team members build and maintain the workflows. n8n would require a developer.
-- **E-commerce order processing** — Shopify orders trigger fulfillment in ShipStation, inventory updates in Zoho, and Slack notifications to the team. 500 operations/day fits comfortably in the $29/month Pro plan.
+- **E-commerce order processing** — Shopify orders trigger fulfillment in ShipStation, inventory updates in Zoho, and Slack notifications to the team. At moderate volume this fits comfortably in Make's mid-tier plans.
 
 ## Verdict
 

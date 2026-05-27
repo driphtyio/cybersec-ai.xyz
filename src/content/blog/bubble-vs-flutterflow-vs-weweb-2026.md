@@ -224,11 +224,3 @@ Your choice reveals your priorities. If you prioritize speed above all, pick Bub
 
 *Sources: [1] Bubble pricing page — [bubble.io/pricing](https://bubble.io/pricing). [2] FlutterFlow pricing page — [flutterflow.io/pricing](https://flutterflow.io/pricing). [3] WeWeb pricing page — [weweb.io/pricing](https://www.weweb.io/pricing). [4] Bubble vs traditional performance benchmarks — [medium.com/bubble](https://medium.com/bubble). [5] FlutterFlow vs Bubble comparison — [n8n.io](https://n8n.io) and maker community benchmarks.*
 
-<!-- crosslinks -->
-
-## 📖 Related Reads
-
-- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
-- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
-
-*Cross-links automatically generated from NoCode Insider.*

@@ -117,11 +117,3 @@ Start with a webhook, a spreadsheet, and a conditional filter. Only upgrade to A
 - **[n8nDocs]** — [n8n AI nodes documentation](https://docs.n8n.io/advanced-ai/)
 - **[AnthropicDocs]** — [Anthropic guide to structured outputs](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs)
 
-<!-- crosslinks -->
-
-## 📖 Related Reads
-
-- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
-- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
-
-*Cross-links automatically generated from NoCode Insider.*

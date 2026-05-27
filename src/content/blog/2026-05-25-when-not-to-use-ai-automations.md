@@ -2,7 +2,7 @@
 title: '80% of AI Automations Get Abandoned: When to Use AI vs Simple Logic Instead'
 description: 'The best automation systems use the least amount of AI. Here is when a simple webhook + spreadsheet trigger beats GPT-4 — and when you actually need AI agents.'
 pubDate: 2026-05-25
-heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&crop=edges'
+heroImage: 'https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/when-not-to-use-ai-automations-1779859370.png'
 tags: ['Automation', 'AI Agents', 'n8n', 'Workflow Design', 'No-Code']
 ---
 

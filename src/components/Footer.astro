@@ -3,7 +3,20 @@ const today = new Date();
 ---
 
 <footer>
-  &copy; {today.getFullYear()} NoCode Insider. All rights reserved.
+  <div class="content">
+    <div class="network">
+      <span class="network-heading">The Network</span>
+      <div class="network-links">
+        <a href="https://toolbrain.net" target="_blank" rel="noopener">ToolBrain</a>
+        <a href="https://niteagent.com" target="_blank" rel="noopener">NiteAgent</a>
+        <a href="https://codeintel.xyz" target="_blank" rel="noopener">CodeIntel</a>
+        <a href="https://nocodeinsider.com" target="_blank" rel="noopener">NoCode Insider</a>
+        <a href="https://smarthomefieldguide.com" target="_blank" rel="noopener">SmartHome Field Guide</a>
+        <a href="https://hermes-tutorials.dev" target="_blank" rel="noopener">Hermes Tutorials</a>
+      </div>
+    </div>
+    <p class="copy">&copy; {today.getFullYear()} NoCode Insider. All rights reserved.</p>
+  </div>
 </footer>
 <style>
   footer {
@@ -13,5 +26,40 @@ const today = new Date();
     color: rgba(210, 218, 230, 0.5);
     text-align: center;
     font-size: 0.85em;
+  }
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .network {
+    margin-bottom: 0.75em;
+  }
+  .network-heading {
+    font-size: 0.7em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 0.6em;
+  }
+  .network-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3em 0.9em;
+  }
+  .network-links a {
+    color: rgba(210, 218, 230, 0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-size: 0.9em;
+  }
+  .network-links a:hover {
+    color: var(--accent);
+  }
+  .copy {
+    margin-top: 1em;
+    opacity: 0.6;
   }
 </style>

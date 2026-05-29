@@ -116,4 +116,3 @@ Start with a webhook, a spreadsheet, and a conditional filter. Only upgrade to A
 - **[RedditBoring]** — [r/automation — "The BEST automation systems use the LEAST amount of AI"](https://www.reddit.com/r/automation/comments/1jnx1b1/the_best_automation_systems_use_the_least_amount/)
 - **[n8nDocs]** — [n8n AI nodes documentation](https://docs.n8n.io/advanced-ai/)
 - **[AnthropicDocs]** — [Anthropic guide to structured outputs](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs)
-

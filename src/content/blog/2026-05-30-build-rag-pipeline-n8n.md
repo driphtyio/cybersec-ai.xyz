@@ -197,3 +197,11 @@ Start with the Simple Vector Store for testing, switch to Pinecone or Qdrant for
 - **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
 
 *Cross-links automatically generated from NoCode Insider.*
+
+## 📖 n8n Cluster — Related Posts
+
+- **[n8n for Business: Complete Guide](https://nocodeinsider.com/blog/n8n-for-business-complete-guide/)** — The pillar guide covering everything n8n
+- **[n8n for Sales Automation](https://nocodeinsider.com/blog/n8n-sales-automation-workflows/)** — Lead enrichment, follow-ups, and CRM sync
+- **[n8n for Customer Support Workflows](https://nocodeinsider.com/blog/n8n-customer-support-workflows/)** — Auto-triage tickets, Slack alerts, knowledge base sync
+- **[n8n for Finance & Operations](https://nocodeinsider.com/blog/n8n-finance-operations-automation/)** — Invoice processing, expense tracking, and reporting
+- **[n8n vs Make (2026 Comparison)](https://nocodeinsider.com/blog/n8n-vs-make-2026/)** — Which workflow tool actually scales?

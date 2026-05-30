@@ -95,3 +95,13 @@ The gap between these tools has narrowed in 2026. n8n has improved its node libr
 The right tool depends on who will maintain the workflow. If a developer maintains it → n8n. If an operations person does → Make. The wrong choice costs more in migration pain than the subscription difference ever will.
 
 *Sources: [n8n pricing page](https://n8n.io/pricing/), [Make pricing page](https://www.make.com/pricing), [n8n vs Make comparison on Hatchworks](https://hatchworks.com/blog/ai-agents/n8n-vs-make/), [Make vs n8n for e-commerce on Neura Market](https://www.neura.market/blog/make-vs-n8n-for-e-commerce-automation-best-tools-2026)*
+
+---
+
+## 📖 Related Reads
+
+- **[n8n for Business: Complete Guide](https://nocodeinsider.com/blog/n8n-for-business-complete-guide/)** — The pillar guide covering everything n8n
+- **[n8n for Sales Automation](https://nocodeinsider.com/blog/n8n-sales-automation-workflows/)** — Lead enrichment, follow-ups, and CRM sync
+- **[n8n for Customer Support Workflows](https://nocodeinsider.com/blog/n8n-customer-support-workflows/)** — Auto-triage tickets, Slack alerts, knowledge base sync
+- **[n8n for Finance & Operations](https://nocodeinsider.com/blog/n8n-finance-operations-automation/)** — Invoice processing, expense tracking, and reporting
+- **[Build a No-Code RAG Pipeline with n8n](https://nocodeinsider.com/blog/2026-05-30-build-rag-pipeline-n8n/)** — Complete step-by-step RAG tutorial

@@ -2,7 +2,7 @@
 title: "n8n for Sales Teams: Automate Lead Enrichment, Follow-Ups, and CRM Updates"
 description: "A practical guide to automating sales workflows with n8n — lead enrichment from multiple sources, personalized follow-up sequences, CRM sync, and pipeline updates. No coding required."
 pubDate: 2026-05-30
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-sales-automation-2026-1780199479.png"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-sales-automation-2026-1780200430.png"
 tags: ["n8n", "sales", "automation", "guide"]
 draft: false
 ---

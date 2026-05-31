@@ -2,7 +2,7 @@
 title: "n8n for Finance & Operations: Invoice Processing, Expense Tracking, and Reporting"
 description: "Automate finance and operations workflows with n8n — invoice processing from email attachments, expense report tracking, automated reconciliation, and weekly reporting dashboards. All self-hosted with financial data staying in-house."
 pubDate: 2026-05-30
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-finance-automation-2026-1780199477.png"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-finance-automation-2026-1780200426.png"
 tags: ["n8n", "finance", "automation", "guide"]
 draft: false
 ---

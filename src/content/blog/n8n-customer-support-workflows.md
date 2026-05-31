@@ -2,7 +2,7 @@
 title: "n8n for Customer Support: Auto-Triage Tickets, Slack Alerts, and Knowledge Base Sync"
 description: "Automate your customer support workflows with n8n — auto-triage incoming tickets by urgency, route to the right team, sync knowledge base articles, and let an AI agent answer common questions."
 pubDate: 2026-05-30
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-support-automation-2026-1780199477.png"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-support-automation-2026-1780200424.png"
 tags: ["n8n", "customer-support", "automation", "guide"]
 draft: false
 ---
@@ -162,3 +162,12 @@ Each step builds on the previous. By the end, your support team handles fewer re
 - **[n8n for Sales Automation](https://nocodeinsider.com/blog/n8n-sales-automation-workflows/)** — Lead enrichment, follow-ups, and CRM sync
 - **[n8n for Finance & Operations](n8n-finance-operations-automation)** — Invoice processing, expense tracking, and reporting
 - **[Build a No-Code RAG Pipeline with n8n](https://nocodeinsider.com/blog/2026-05-30-build-rag-pipeline-n8n/)** — Complete RAG tutorial for AI agents
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from NoCode Insider.*

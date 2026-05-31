@@ -2,6 +2,7 @@
 title: 'Welcome to NoCode Insider'
 description: 'Why this blog exists, what to expect, and how we think about no-code and low-code automation tools.'
 pubDate: 'May 18 2026'
+heroImage: 'https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/welcome-nocode-insider-1780199303.png'
 tags: ['Meta']
 ---
 
@@ -54,3 +55,12 @@ Don't miss a post. Two ways to stay in the loop:
 2. **Cross-Empire Updates** — Follow [NiteAgent](https://niteagent.com/), [ToolBrain](https://toolbrain.net/), and [Code Intel](https://codeintel.xyz/) for complementary coverage of AI agents and developer tools.
 
 No fluff, just what actually works.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from NoCode Insider.*

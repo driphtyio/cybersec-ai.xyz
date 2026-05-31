@@ -2,7 +2,7 @@
 title: "n8n for Business: The Complete Guide to Workflow Automation in 2026"
 description: "From sales to support to finance — a complete guide to using n8n for business workflow automation. Covers self-hosting vs cloud, pricing, AI features, and why teams save 5-10x vs Zapier and Make at scale."
 pubDate: 2026-05-30
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-for-business-guide-2026.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-for-business-guide-2026-1780199478.png"
 tags: ["n8n", "automation", "guide", "business"]
 draft: false
 ---

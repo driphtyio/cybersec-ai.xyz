@@ -2,7 +2,7 @@
 title: "n8n for Sales Teams: Automate Lead Enrichment, Follow-Ups, and CRM Updates"
 description: "A practical guide to automating sales workflows with n8n — lead enrichment from multiple sources, personalized follow-up sequences, CRM sync, and pipeline updates. No coding required."
 pubDate: 2026-05-30
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-sales-automation-2026.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-sales-automation-2026-1780199479.png"
 tags: ["n8n", "sales", "automation", "guide"]
 draft: false
 ---
@@ -180,3 +180,11 @@ Each workflow builds on the previous one. Start simple and add complexity as you
 - **[n8n for Customer Support Workflows](n8n-customer-support-workflows)** — Auto-triage tickets, Slack alerts, knowledge base sync
 - **[n8n for Finance & Operations](n8n-finance-operations-automation)** — Invoice processing, expense tracking, and reporting
 - **[n8n vs Make (2026 Comparison)](https://nocodeinsider.com/blog/n8n-vs-make-2026/)** — Which workflow tool actually scales?
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from NoCode Insider.*

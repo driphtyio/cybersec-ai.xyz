@@ -2,7 +2,7 @@
 title: "n8n for Customer Support: Auto-Triage Tickets, Slack Alerts, and Knowledge Base Sync"
 description: "Automate your customer support workflows with n8n — auto-triage incoming tickets by urgency, route to the right team, sync knowledge base articles, and let an AI agent answer common questions."
 pubDate: 2026-05-30
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-support-automation-2026.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/n8n-support-automation-2026-1780199477.png"
 tags: ["n8n", "customer-support", "automation", "guide"]
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: 'Build a No-Code RAG Pipeline with n8n: Step-by-Step Guide'
 description: 'Learn how to build a Retrieval-Augmented Generation (RAG) pipeline using n8n — no coding required. From data ingestion to vector stores to AI-powered Q&A, this tutorial covers the full stack in one visual workflow.'
 pubDate: 2026-05-30
-heroImage: 'https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/rag-pipeline-n8n-2026-1779859371.png'
+heroImage: 'https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/rag-pipeline-n8n-2026-1780199210.png'
 tags: ['n8n', 'RAG', 'AI Agents', 'Automation', 'Vector Database', 'Tutorial']
 ---
 

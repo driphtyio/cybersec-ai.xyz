@@ -12,6 +12,8 @@
   --border-light: #1e2a3a;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --shadow-card: 0 2px 8px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
+  --shadow-screenshot: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+  --border-hover: #3a4a5e;
 }
 html { scroll-behavior: smooth; }
 body {
@@ -27,6 +29,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 body::before {
   content: '';
@@ -55,8 +58,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 650;
 }
 /* Major third scale — much easier to read */
-h1 { font-size: 2em; }
-h2 { font-size: 1.4em; }         /* was 2.441em — this was the complaint */
+h1 { font-size: clamp(1.75em, 5vw, 2.5em); }
+h2 { font-size: clamp(1.2em, 3vw, 1.6em); }         /* was 2.441em — this was the complaint */
 h3 { font-size: 1.2em; }         /* was 1.953em */
 h4 { font-size: 1.05em; }        /* was 1.563em */
 h5 { font-size: 1em; }
@@ -124,6 +127,7 @@ p { margin-bottom: 1em; line-height: 1.65; }
   font-size: 0.85em;
 }
 .prose img { border-radius: 12px; border: 1px solid var(--border); }
+.screenshot { border-radius: 12px; box-shadow: var(--shadow-screenshot); border: 1px solid var(--border); overflow: hidden; }
 .prose blockquote {
   border-left: 4px solid var(--accent);
   background: rgba(0,212,170,0.04);

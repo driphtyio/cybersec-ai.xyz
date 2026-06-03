@@ -149,7 +149,7 @@ Each step builds on the previous. By the end, your support team handles fewer re
 ## Sources
 
 1. [n8n OpenAI Node Documentation](https://docs.n8n.io/integrations/builtin/cluster-nodes/sub-nodes/n8n-nodes-langchain.lmchatopenai/) — Official node configuration for AI-powered classification
-2. [n8n Error Workflows Guide](https://docs.n8n.io/workflows/error-handling/) — How to set up fallback workflows for failed executions
+2. [n8n Error Handling Documentation](https://docs.n8n.io/flow-logic/error-handling/) — How to set up fallback workflows for failed executions
 3. [n8n Notion Integration](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.notion/) — Official Notion trigger and action nodes
 4. [n8n RAG Starter Template](https://n8n.io/workflows/5010-rag-starter-template-using-simple-vector-stores-form-trigger-and-openai) — Pre-built RAG workflow for AI agents
 5. [n8n RAG Platform Page](https://n8n.io/rag/) — Case studies and template gallery for AI-powered support

@@ -186,7 +186,7 @@ For most growing businesses, the answer is: start with Make for quick wins, move
 2. [n8n AI Documentation](https://docs.n8n.io/advanced-ai/) — Official docs for AI nodes, vector stores, and agent workflows
 3. [n8n Enterprise Features](https://n8n.io/enterprise/) — SSO, LDAP, audit logs, and role-based access
 4. [Self-Hosted n8n Setup Guide](https://docs.n8n.io/hosting/installation/docker/) — Official Docker deployment guide
-5. [n8n Error Workflows Documentation](https://docs.n8n.io/workflows/error-handling/) — Error workflow patterns and best practices
+5. [n8n Error Handling Documentation](https://docs.n8n.io/flow-logic/error-handling/) — Error workflow patterns and best practices
 
 ---
 

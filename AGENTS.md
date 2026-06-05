@@ -48,6 +48,26 @@ Post frontmatter: `title`, `description`, `pubDate`, `tags`, `heroImage` (option
 2. **Minimum length** — Posts under 400 words are skipped.
 3. **Deploy guard** — Always `git add -A` before diff check.
 
+## Validation Matrix
+
+Every task type must pass its required validations before commit:
+
+| Task | Required checks | Who validates | When |
+|------|-----------------|---------------|------|
+| Write post | Sources cited, ≥400 words, image URL 200, git add -A | Agent | Before commit |
+| Edit config | Syntax check, verify no breakage | Agent | After change |
+| Deploy blog | Build passes, quality gate passes, HTTP 200 post-deploy | Agent + CI | After deploy |
+
+## Stability Guardrails
+
+| Guard | Rule | Action on failure |
+|-------|------|-------------------|
+| Build gate | `npm run build` must exit 0 | Hard stop — no deploy bypass |
+| Quality ratchet | Score must stay above floor | Fix post content, don't ship degraded |
+| Image URL gate | heroImage must return HTTP 200 | Generate/upload/retry, never ship broken image |
+| Source gate | Uncited stat = hard failure | Track down real source or remove the claim |
+| Circuit breaker | >3 consecutive cron failures for same blog | Pause job, investigate root cause |
+
 ## Source-Driven Development (from addyosmani/agent-skills)
 
 Every factual claim must be backed by a verifiable source — not from memory. Use the DETECT→FETCH→WRITE→CITE process:
@@ -113,3 +133,18 @@ Correct behavior: always load the relevant skill(s) first, always run quality ch
 - Focus: AI workflow automation for non-developers
 - Real tool names, step-by-step instructions, screenshots
 - Headings: Sentence case.
+
+## Skills Glossary
+
+Load relevant skills with `skill_view('<name>')` before starting tasks.
+
+| Skill | Load with | Use when |
+|-------|-----------|----------|
+| blog-empire-lessons | `skill_view('blog-empire-lessons')` | Learning multi-blog institutional knowledge and conventions |
+| content-pipeline | `skill_view('content-pipeline')` | Writing, scheduling, or researching blog content |
+| gif-search | `skill_view('gif-search')` | Searching or downloading GIFs for posts |
+| nocodeinsider | `skill_view('nocodeinsider')` | Loading NoCode Insider content template and style guide |
+| output-enforcement | `skill_view('output-enforcement')` | Enforcing long-form quality in posts over 300 words |
+| static-blog | `skill_view('static-blog')` | Managing Astro blog build, deploy, and quality gates |
+| stop-slop | `skill_view('stop-slop')` | Removing AI writing patterns from prose |
+| web-content-extraction | `skill_view('web-content-extraction')` | Extracting content from JS-heavy web pages |

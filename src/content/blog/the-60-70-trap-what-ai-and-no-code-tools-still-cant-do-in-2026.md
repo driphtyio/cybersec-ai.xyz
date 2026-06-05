@@ -183,7 +183,7 @@ The 60-70% trap [1] isn't a failure of no-code or AI tools. It's a failure of ex
 
 [1] r/nocode — "I'm a senior developer (45+) who built a SaaS. Here's the stuff AI and no-code tools genuinely can't do yet." https://www.reddit.com/r/nocode/comments/1r050iw/im_a_senior_developer_45_who_built_a_saas_heres/
 
-[2] n8n Documentation — "Error Workflows" https://docs.n8n.io/workflows/error-workflows/
+[2] n8n Documentation — "Error Workflows" https://docs.n8n.io/flow-logic/error-handling/
 
 [3] Stripe Documentation — "Prorations" https://docs.stripe.com/billing/subscriptions/prorations
 

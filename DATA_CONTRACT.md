@@ -1,43 +1,38 @@
-# DATA_CONTRACT — NoCode Insider
+# Data Contract — Astro Blog Repo
 
-This document defines which files belong to the **system** (auto-updatable by content pipeline crons) and which belong to the **site** (manually maintained, never overwritten by automation).
+This file defines which files are **system code** (safe to auto-update via git pull or build tooling) and which are **user data** (never touched by automated processes).
 
-## Updated By Content Pipeline (safe to overwrite)
+## User Layer (NEVER auto-updated)
 
-| File/Pattern | Purpose |
-|---|---|
-| `src/content/blog/*.md` | Published blog posts — created/updated by content pipeline crons |
-| `public/images/*` | Feature images and asset images — written by image generation scripts |
+Your content, images, and personal customizations. No automated process may modify these.
 
-## NEVER Auto-Updated (manual changes only)
+| Path | Purpose |
+|------|---------|
+| `src/content/blog/*.md`, `src/content/posts/*.md` | Blog post content (markdown) |
+| `src/content/` (all subdirectories) | Content collections |
+| `public/images/` | Feature images, inline images, media |
+| `public/favicon*`, `public/robots.txt` | Site identity files |
+| `public/*.pdf`, `public/CNAME` | Static assets you own |
+| `src/data/` | Site data files (authors, metadata) |
+| `.env`, `.env.*` | Environment variables and secrets |
 
-| File/Pattern | Purpose |
-|---|---|
-| `src/components/*` | Astro UI components |
-| `src/layouts/*` | Page layout templates |
-| `src/pages/*` | Route pages |
-| `src/styles/*` | Global CSS and design tokens |
-| `src/assets/*` | Brand fonts, design assets |
-| `src/content/config.ts` | Content collection schema |
-| `astro.config.mjs` | Astro build configuration |
-| `package.json` | Dependencies and scripts |
-| `DESIGN.md` | Brand design system documentation |
-| `AGENTS.md` | Agent instructions |
-| `DATA_CONTRACT.md` | This file |
-| `public/favicon.*` | Favicon and browser icons |
-| `public/robots.txt` | Crawler configuration |
+## System Layer (safe to auto-update)
 
-## Build Artifacts (gitignored — never committed)
+Framework, components, config, and build tooling. These can be replaced safely.
 
-| File/Pattern | Purpose |
-|---|---|
-| `dist/*` | Build output |
-| `node_modules/*` | Dependencies |
+| Path | Purpose |
+|------|---------|
+| `src/components/` | Astro/Vue/React components |
+| `src/layouts/` | Page layouts |
+| `src/styles/` | CSS, Tailwind config |
+| `src/pages/` | Route pages |
+| `src/lib/`, `src/utils/` | Utility code |
+| `astro.config.mjs`, `tailwind.config.*` | Build configuration |
+| `package.json`, `tsconfig.json` | Dependencies |
+| `src/content/config.ts` | Content collection schemas |
+| `public/js/`, `public/css/` (if generated) | Compiled assets |
+| `netlify.toml`, `wrangler.toml`, `vercel.json` | Deploy configuration |
 
 ## The Rule
 
-**Files in the "Updated By Content Pipeline" table may be created, modified, or replaced by automation at any time.** Do not make manual edits in these locations — they will be overwritten.
-
-**Files in the "NEVER Auto-Updated" table will never be touched by automation.** Manual changes are safe here.
-
-**If a cron job needs to write somewhere not listed in the "Updated" table, a contract amendment must be made first.**
+**User Layer files are your writing and media. System files are the engine. Engines can be upgraded; writing is never rewritten.**

@@ -11,8 +11,17 @@ repos:
       - id: check-added-large-files
         args: [--maxkb=500]
 
+
   - repo: local
     hooks:
+      - id: gitleaks
+        name: Gitleaks secret detection
+        description: Scans staged changes for secrets and API keys
+        entry: gitleaks detect --no-git --config=/home/techgeek/.gitleaks.toml --verbose
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
       - id: enforce-sources
         name: Enforce sourced statistics in blog posts
         description: Detects unsourced statistical claims in markdown blog posts

@@ -116,3 +116,15 @@ design-principles:
   - "Accessible reading: 15px body text, generous line-height, clear step numbering"
   - "Friendly professionalism: approachable tone but credible tool recommendations"
   - "Step-by-step clarity: every tutorial must have numbered steps with screenshots"
+
+anti-patterns:
+  - "No purple gradients — green accent only"
+  - "No indigo hero sections — green on dark canvas is the signature"
+  - "No sans-serif-only typography — body uses Inter, display can go warmer"
+  - "No left-border accent cards in purple/indigo — use green border if needed"
+  - "No blue→cyan trust gradients — use flat green or neutral surface"
+  - "No emoji as UI icons — use SVG icons or Unicode symbols sparingly"
+  - "No placeholder/lorem images — always use real tool screenshots"
+  - "No over-engineered SVG blobs — keep illustrations simple and functional"
+  - "No fabricated stats or projections — every figure needs a source citation"
+  - "No AI-writing tics ('delve into', 'comprehensive guide', 'landscape of') — write direct plain language"

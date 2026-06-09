@@ -107,7 +107,7 @@ Sales teams connect Gumloop to HubSpot or Salesforce, creating agents that resea
 
 ### Internal Onboarding and Reporting
 
-The Data Analysis Agent connects to BigQuery or Snowflake, runs scheduled queries, and posts formatted reports to Slack. Instacart uses this pattern for funnel analysis — the agent identified a 46% drop-off between dashboard views and attempted integrations, helping the team prioritize onboarding improvements.
+The Data Analysis Agent connects to BigQuery or Snowflake, runs scheduled queries, and posts formatted reports to Slack. Instacart uses this pattern for funnel analysis — the agent identified a 46% drop-off between dashboard views and attempted integrations [9], helping the team prioritize onboarding improvements.
 
 ### AI-Powered Customer Support Triage
 

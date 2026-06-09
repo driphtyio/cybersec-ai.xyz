@@ -56,7 +56,7 @@ Airtable charges **per editor per month**. Every person who can edit at least on
 
 External portal users (guests) cost extra: $120–$150/month for 15 guests. Automation runs cap at 25K (Team) to 500K (Enterprise). ([Source: Airtable pricing](https://airtable.com/pricing))
 
-**Real-world example:** A 25-editor team on the Team plan pays **$500/month ($6,000/year)**. Add portal access for external clients and you're looking at $620+/month.
+**Real-world example:** A 25-editor team on the Team plan pays **$500/month ($6,000/year)** [1]. Add portal access for external clients and you're looking at $620+/month [1].
 
 ### NocoDB Pricing (June 2026)
 
@@ -88,7 +88,7 @@ The killer feature: NocoDB's **"pay for 9, get unlimited"** model caps editor bi
 | Record limit | 50K/base | 50K | Unlimited |
 | Portal/external users | Extra ($120/mo) | Free (viewers/commenters) | Free |
 
-NocoDB's self-hosted option eliminates per-seat costs entirely — you pay only for the server. A $10/month VPS from DigitalOcean runs NocoDB for any team size.
+NocoDB's self-hosted option eliminates per-seat costs entirely — you pay only for the server [2]. A $10/month VPS from DigitalOcean runs NocoDB for any team size.
 
 ---
 
@@ -169,7 +169,7 @@ Airtable has stronger out-of-the-box compliance documentation, but NocoDB offers
 - Excellent support documentation
 
 ### Airtable ❌ Cons
-- Per-seat pricing gets expensive fast ($500/mo for 25 editors)
+- Per-seat pricing gets expensive fast ($500/mo for 25 editors) [1]
 - Record limits per base (50K on Team, 125K on Business)
 - No SQL access — proprietary database only
 - No self-hosted option — zero data portability beyond CSV/API export
@@ -178,7 +178,7 @@ Airtable has stronger out-of-the-box compliance documentation, but NocoDB offers
 - Vendor lock-in — rebuilding from scratch to migrate
 
 ### NocoDB ✅ Pros
-- Self-hosted Community edition is $0 forever (unlimited records/users)
+- Self-hosted Community edition is $0 forever (unlimited records/users) [2]
 - Cloud pricing caps at 9 paid seats — 50 editors pay for 9
 - Full SQL access to underlying Postgres/MySQL database
 - Scales to millions of rows — no artificial limits
@@ -210,7 +210,7 @@ Airtable has stronger out-of-the-box compliance documentation, but NocoDB offers
 
 ### Choose NocoDB if:
 
-**You're cost-conscious or scaling fast.** A team of 25+ editors saves thousands per year with NocoDB. At 50 editors, Airtable costs $12,000+/year vs NocoDB's $1,296 or $0 self-hosted.
+**You're cost-conscious or scaling fast.** A team of 25+ editors saves thousands per year with NocoDB. At 50 editors, Airtable costs $12,000+/year vs NocoDB's $1,296 or $0 self-hosted [1][2].
 
 **You need data sovereignty.** Healthcare, finance, legal, or government use cases that require on-premises data or VPC deployment — NocoDB is the only option here.
 

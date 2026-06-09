@@ -74,9 +74,9 @@ Glide pricing in 2026 uses a tiered model with user-based pricing on paid plans 
 - **Updates** = any change to data from external sources (Google Sheets sync, Airtable sync, API). Glide Tables data changes do NOT consume updates — this is an important distinction [6]
 - **14-day free trial** of the Business plan available [6]
 
-**Real-world cost example:** A team of 50 on the Business plan would pay $199 + (20 × $5) = **$299/month** billed annually. At 100 users: $199 + (70 × $5) = **$549/month**.
+**Real-world cost example:** A team of 50 on the Business plan would pay $199 + (20 × $5) = **$299/month** billed annually [6]. At 100 users: $199 + (70 × $5) = **$549/month** [6].
 
-The per-user pricing is manageable for small teams but gets expensive compared to flat-rate alternatives like Softr ($139/mo Professional for 100 users) or Appsmith (self-hosted free).
+The per-user pricing is manageable for small teams but gets expensive compared to flat-rate alternatives like Softr ($139/mo Professional for 100 users [8]) or Appsmith (self-hosted free).
 
 ## Ease of Use
 

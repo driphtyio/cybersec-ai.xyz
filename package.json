@@ -18,7 +18,12 @@
     "astro": "^6.3.5",
     "sharp": "^0.34.3"
   },
+  "overrides": {
+    "devalue": "5.8.1",
+    "ws": "8.20.1",
+    "miniflare": "4.20260609.0"
+  },
   "devDependencies": {
-    "wrangler": "^4.92.0"
+    "wrangler": "4.99.0"
   }
 }

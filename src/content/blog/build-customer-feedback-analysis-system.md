@@ -390,3 +390,12 @@ These extensions are just additional n8n nodes — no architecture changes neede
 [7] Make.com pricing — Pro plan at $21/mo for 10K operations. https://www.make.com/en/pricing (Accessed June 2026)
 
 [8] Softr pricing — Free tier available with unlimited visitors. https://www.softr.io/pricing (Accessed June 2026)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from NoCode Insider.*

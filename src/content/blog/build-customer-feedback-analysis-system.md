@@ -2,7 +2,7 @@
 title: "Build a No-Code Customer Feedback Analysis System in 2026"
 description: "Step-by-step guide to building an automated customer feedback analysis system using Airtable, n8n, and AI — no coding required. Collect, analyze, and act on customer sentiment in hours."
 pubDate: 2026-06-10
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/automated-customer-feedback-analysis-1781104318.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/customer-feedback-analysis-system-1781121699.jpg"
 category: "guide"
 tags: ["nocode", "guide", "automation", "airtable", "n8n", "customer-feedback"]
 draft: false

@@ -1,0 +1,6 @@
+# NoCode Insider
+> Practical AI workflow automation for non-developers — tools, guides, and real examples.
+
+## Blog
+- [Blog Home](https://nocodeinsider.com/blog/) — All posts: AI automation, no-code tools, workflows
+- [RSS Feed](https://nocodeinsider.com/rss.xml) — Full-text RSS feed

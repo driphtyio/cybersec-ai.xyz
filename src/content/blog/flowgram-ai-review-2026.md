@@ -181,3 +181,12 @@ Not yet. The runtime is marked as early-stage — unstable API, no authenticatio
 - [4] FlowGram Materials Documentation — https://flowgram.ai/materials/introduction.html
 - [5] Coze Studio GitHub — AI agent platform powered by FlowGram — https://github.com/coze-dev/coze-studio
 - [6] DecisionCrafters FlowGram Guide — https://www.decisioncrafters.com/flowgram-ai-revolutionary-workflow-development-framework/
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from NoCode Insider.*

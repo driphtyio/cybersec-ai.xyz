@@ -7,7 +7,7 @@ tags:
   - Agent Pipelines
   - DevSecOps
   - Hardening
-heroImage: "/first-post-guide.png"
+heroImage: "/first-post-guide.jpg"
 ---
 
 Modern AI systems aren't just models — they're pipelines. A cron job calls an LLM, which calls an API, which writes to a database, which triggers a deployment. Every hop is an attack surface.

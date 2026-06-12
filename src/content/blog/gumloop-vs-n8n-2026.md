@@ -58,7 +58,7 @@ If you want a deep dive on Gumloop alone, see our [full Gumloop review](/blog/gu
 
 **AI flexibility at the cost of complexity.** n8n supports everything Gumloop does for AI — but you bring your own API keys. This means you pay exact LLM costs (no markup), you pick the exact model version, and you can switch providers at any time. Self-hosted n8n with Ollama can run LLaMA or Mistral models locally with zero per-token cost.
 
-**Scales to zero cost.** Self-hosted n8n has unlimited executions. Your only cost is server infrastructure — as low as $5-12/month on a VPS ([Hetzner CX32](https://www.hetzner.com/cloud/) runs n8n comfortably). For workflows running 10,000+ executions per month, self-hosted n8n is dramatically cheaper than any cloud alternative.
+**Scales to zero cost.** Self-hosted n8n has unlimited executions. Your only cost is server infrastructure — as low as $5-12/month on a VPS ([Hetzner CX32](https://www.hetzner.com/cloud/) runs n8n comfortably). For workflows running 10,000+ executions per month, self-hosted n8n is dramatically cheaper than any cloud alternative. [7]
 
 ---
 
@@ -233,3 +233,12 @@ For most small to mid-sized teams who want to start automating with AI **right n
 6. Zapier Blog, "Gumloop vs n8n: Which is best? [2026]." June 4, 2026. [Zapier](https://zapier.com/blog/gumloop-vs-n8n)
 7. pxlpeak, "n8n Pricing 2026: Free Self-Hosted + Cloud + AI Agent Costs." [pxlpeak](https://pxlpeak.com/blog/ai-tools/n8n-pricing-vs-free)
 8. Reddit r/automation, "Can Gumloop Compete with n8n?" March 2025. [Reddit](https://www.reddit.com/r/automation/comments/1j8ksg7/can_gumloop_compete_with_n8n_trying_to_pick_the/)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from NoCode Insider.*

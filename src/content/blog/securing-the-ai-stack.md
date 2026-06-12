@@ -103,3 +103,12 @@ Apply these to your own AI pipeline:
 This infrastructure pattern scales from one blog to a dozen. Each layer identified here was discovered by tracing a real failure — not theorized in advance. That's the most honest kind of security engineering.
 
 In future posts, we'll cover zero-trust deploy pipelines, LLM prompt injection detection in production, and monitoring-as-security with cheap local models.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[Hermes Tutorials](https://hermes-tutorials.dev/)** — Hermes Agent setup, configuration, and advanced workflows
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

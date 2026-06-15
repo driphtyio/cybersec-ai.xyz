@@ -24,7 +24,9 @@ That's hundreds of engineering hours per year on paperwork. But the real cost is
 
 Every extra day of questionnaire response delay increases the probability of competitive displacement [2]. Prospects interpret slow responses as a signal: if your security response is slow, your incident response will be worse.
 
-And most of the questions are the same across every questionnaire [3]. Encryption standards. Access controls. Data residency. SOC 2 report availability. You've answered these dozens of times. But each new prospect makes you prove it again.
+And most of the questions are the same across every questionnaire [3]. Encryption standards. Access controls. Data residency. Incident response procedures. SOC 2 report availability. Vulnerability management timelines. You've answered all of these dozens of times. But each new prospect makes you prove it again.
+
+The standard approach is to maintain a questionnaire repository or knowledge base. In practice, these sit on a shared drive and nobody updates them. The CTO's answer from 2023 is still there, citing outdated versions of controls. The engineer who wrote it has since left. The SOC 2 report attached is two cycles old. Enterprise security teams notice this immediately.
 
 ## What Your Infrastructure Signals Without You Knowing
 
@@ -32,9 +34,9 @@ Here's what most founders believe: *"Our infrastructure is fine. We use AWS. We 
 
 Here's what an external scan finds:
 
-**DMARC not configured** — Enterprise buyers regularly check this [4]. Without it, your emails can be spoofed. It takes 10 minutes to fix. Most teams don't know it's missing.
+**DMARC not configured** — Enterprise buyers regularly check this [4]. Without it, your emails can be spoofed. It takes 10 minutes to fix. Most teams don't know it's missing, and by the time a prospect points it out, the delay has already damaged trust.
 
-**TLS 1.2 instead of 1.3** — SOC 2 control CC6.1 [5]. A five-year-old configuration standard. Easy to fix. Yet many SaaS companies still serve TLS 1.2.
+**TLS 1.2 instead of 1.3** — SOC 2 control CC6.1 [5]. A five-year-old configuration standard. Easy to fix. Yet many SaaS companies still serve TLS 1.2, unaware that any half-decent security team will flag it in the first five minutes of their review.
 
 **Missing security headers** — No CSP, no HSTS, no X-Frame-Options. These are the first things an enterprise security team audits. Your homepage loads fine. Your headers tell a different story.
 
@@ -45,6 +47,10 @@ None of these gaps mean your product is insecure. But to an enterprise buyer, th
 A single enterprise deal lost to a slow or inaccurate security response can cost $50K to $500K+ in ACV [1]. Multiply that by the deals your team might have fumbled this year because the questionnaire sat in someone's inbox for two weeks.
 
 Most companies can't quantify this loss because they never see the post-mortem from prospects who ghosted them. But the pattern is consistent: prospects who send a questionnaire and don't hear back within 72 hours are significantly more likely to go with a competitor [2].
+
+The hidden cost is even worse: every slow response teaches your sales team that security reviews are blockers to work around rather than milestones to prepare for. Sales start sending partial responses. Engineers start ignoring questionnaire requests. The gap widens with every deal.
+
+Meanwhile, your competitors are investing in automated security response tools. A prospect sends them the same 187 questions — and gets a complete, accurate response within hours. Which vendor looks more enterprise-ready?
 
 The irony? Your security posture is probably fine. Your *process for proving it* is what's losing deals.
 
@@ -58,7 +64,7 @@ Free. No login. No install. It checks the same things enterprise security teams 
 
 If it's bad, now you know what to fix before the next questionnaire arrives. If it's good, now you have data to prove it — and your next questionnaire just got faster.
 
-The best time to check your security posture was before your last lost deal. The second best time is now.
+The best time to check your security posture was before your last lost deal. The second best time is now. Every day you don't know your own posture is a day your prospects are forming an opinion based on incomplete information.
 
 ---
 

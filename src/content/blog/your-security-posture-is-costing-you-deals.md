@@ -52,7 +52,7 @@ The irony? Your security posture is probably fine. Your *process for proving it*
 
 You don't need to hire a security team. You don't need to spend $20K on a penetration test (yet). You need to know what your security posture looks like from the outside — because that's exactly what every enterprise buyer sees.
 
-**[Scan your domain in 10 seconds →](https://csec-agent.com/scan/)**
+**[Scan your domain in 10 seconds →](/scan/)**
 
 Free. No login. No install. It checks the same things enterprise security teams check: DNS, SSL, headers, known vulnerabilities. You'll know your score immediately.
 

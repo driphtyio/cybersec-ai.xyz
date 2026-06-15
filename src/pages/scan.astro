@@ -1,0 +1,323 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Security Posture Scanner — Cybersec AI" description="Scan any domain for DNS, SSL, and security header issues. Free. 10 seconds. No login." />
+    <style>
+      .scan-page {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .subtitle {
+        color: var(--color-muted, #889);
+        margin-bottom: 2rem;
+      }
+      .scan-form {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .scan-form input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--color-border, #333);
+        border-radius: 8px;
+        background: var(--color-surface, #1a1a1a);
+        color: var(--color-text, #eee);
+        font-size: 1rem;
+        outline: none;
+      }
+      .scan-form input:focus {
+        border-color: var(--color-accent, #00d4aa);
+      }
+      .scan-form button {
+        padding: 0.75rem 1.5rem;
+        background: var(--color-accent, #00d4aa);
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: opacity 0.15s;
+      }
+      .scan-form button:hover { opacity: 0.85; }
+      .scan-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+      .error-msg {
+        color: #f55;
+        padding: 1rem;
+        background: rgba(255,50,50,0.1);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .score-ring {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .score-circle {
+        width: 80px; height: 80px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem; font-weight: 700;
+        flex-shrink: 0;
+      }
+      .score-a { background: #00d4aa; color: #000; }
+      .score-b { background: #8bc34a; color: #000; }
+      .score-c { background: #ffc107; color: #000; }
+      .score-d { background: #ff9800; color: #000; }
+      .score-f { background: #f44336; color: #fff; }
+
+      .check-list { display: grid; gap: 0.75rem; }
+      .check-item {
+        display: flex; align-items: flex-start; gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: var(--color-surface, #1a1a1a);
+        border-radius: 8px;
+        border: 1px solid var(--color-border, #333);
+      }
+      .check-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+      .check-pass .check-icon { color: #00d4aa; }
+      .check-fail .check-icon { color: #f44336; }
+      .check-detail { font-size: 0.85rem; color: var(--color-muted, #889); margin-top: 4px; word-break: break-all; }
+
+      .cta-box {
+        margin-top: 3rem;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(0,212,170,0.03));
+        border: 1px solid rgba(0,212,170,0.3);
+        border-radius: 12px;
+        text-align: center;
+      }
+      .cta-box h3 { margin-bottom: 0.75rem; }
+      .cta-box p { color: var(--color-muted, #889); margin-bottom: 1.25rem; font-size: 0.9rem; }
+      .cta-box .btn {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        background: var(--color-accent, #00d4aa);
+        color: #000;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .spinner {
+        display: inline-block;
+        width: 18px; height: 18px;
+        border: 2px solid rgba(255,255,255,0.2);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .examples {
+        display: flex; gap: 0.5rem; flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .examples button {
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--color-border, #333);
+        border-radius: 6px;
+        background: transparent;
+        color: var(--color-muted, #889);
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+      .examples button:hover {
+        border-color: var(--color-accent, #00d4aa);
+        color: var(--color-accent, #00d4aa);
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="scan-page">
+      <h1>Security Posture Scanner</h1>
+      <p class="subtitle">Check what enterprise buyers see when they audit your domain. Free. 10 seconds. No login.</p>
+
+      <div class="examples">
+        <button data-domain="example.com">example.com</button>
+        <button data-domain="google.com">google.com</button>
+        <button data-domain="github.com">github.com</button>
+      </div>
+
+      <form class="scan-form" id="scan-form">
+        <input type="text" id="domain-input" placeholder="yourdomain.com" autocomplete="off" spellcheck="false" />
+        <button type="submit" id="scan-btn">Scan</button>
+      </form>
+
+      <div id="results"></div>
+
+      <script is:inline>
+        const form = document.getElementById('scan-form');
+        const input = document.getElementById('domain-input');
+        const btn = document.getElementById('scan-btn');
+        const results = document.getElementById('results');
+
+        function scoreClass(score) {
+          if (score >= 90) return 'score-a';
+          if (score >= 70) return 'score-b';
+          if (score >= 50) return 'score-c';
+          if (score >= 30) return 'score-d';
+          return 'score-f';
+        }
+
+        function scoreLabel(score) {
+          if (score >= 90) return 'A';
+          if (score >= 70) return 'B';
+          if (score >= 50) return 'C';
+          if (score >= 30) return 'D';
+          return 'F';
+        }
+
+        function checksToItems(data) {
+          const items = [];
+          const c = data.checks;
+
+          // HTTP headers
+          if (c.http && !c.http.error) {
+            items.push({
+              pass: c.http.hsts && c.http.hsts.present,
+              label: 'HSTS (HTTP Strict Transport Security)',
+              detail: c.http.hsts && c.http.hsts.present ? c.http.hsts.value.substring(0, 60) + '...' : 'Not set — browsers won\'t force HTTPS',
+            });
+            items.push({
+              pass: c.http.csp,
+              label: 'CSP (Content Security Policy)',
+              detail: c.http.csp ? 'Configured' : 'Not set — XSS protection is browser-only',
+            });
+            items.push({
+              pass: !!c.http.xfo,
+              label: 'X-Frame-Options',
+              detail: c.http.xfo || 'Not set — clickjacking possible',
+            });
+            items.push({
+              pass: !!c.http.xcto,
+              label: 'X-Content-Type-Options',
+              detail: c.http.xcto || 'Not set — MIME sniffing possible',
+            });
+            items.push({
+              pass: c.http.finalHost === data.domain,
+              label: 'No redirect to different domain',
+              detail: c.http.finalHost === data.domain ? 'Stays on ' + data.domain : 'Redirects to ' + c.http.finalHost,
+            });
+          } else if (c.http && c.http.error) {
+            items.push({ pass: false, label: 'HTTPS accessible', detail: c.http.error });
+          }
+
+          // Redirect
+          if (c.redirect && !c.redirect.error) {
+            items.push({
+              pass: c.redirect.redirects && c.redirect.toHttps,
+              label: 'HTTP → HTTPS redirect',
+              detail: c.redirect.redirects && c.redirect.toHttps ? 'Redirects properly' : 'No HTTPS redirect',
+            });
+          }
+
+          // DNS
+          items.push({
+            pass: c.spf && c.spf.present,
+            label: 'SPF record',
+            detail: c.spf && c.spf.present ? 'SPF configured' : 'Not set — email spoofing possible',
+          });
+          items.push({
+            pass: c.dkim && c.dkim.present,
+            label: 'DKIM record',
+            detail: c.dkim && c.dkim.present ? 'Found at ' + c.dkim.selector : 'Not found on common selectors',
+          });
+          items.push({
+            pass: c.dmarc && c.dmarc.present && (c.dmarc.policy === 'REJECT' || c.dmarc.policy === 'QUARANTINE'),
+            label: 'DMARC policy',
+            detail: c.dmarc && c.dmarc.present ? 'Policy: ' + c.dmarc.policy : 'Not set — anyone can spoof your domain in email',
+          });
+
+          return items;
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const domain = input.value.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+          if (!domain || !/^[a-zA-Z0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(domain)) {
+            results.innerHTML = '<div class="error-msg">Enter a valid domain (e.g. example.com)</div>';
+            return;
+          }
+
+          btn.disabled = true;
+          btn.innerHTML = '<span class="spinner"></span> Scanning...';
+          results.innerHTML = '';
+
+          try {
+            const resp = await fetch('/api/scan?domain=' + encodeURIComponent(domain));
+            if (!resp.ok) {
+              const err = await resp.json();
+              results.innerHTML = '<div class="error-msg">' + (err.error || 'Scan failed') + '</div>';
+              return;
+            }
+            const data = await resp.json();
+
+            const checks = checksToItems(data);
+            const score = data.score;
+            const cls = scoreClass(score);
+            const label = scoreLabel(score);
+
+            let html = '<div class="score-ring">';
+            html += '<div class="score-circle ' + cls + '">' + label + '</div>';
+            html += '<div><strong>' + data.passed + '/' + data.total + ' checks passed</strong><br>';
+            html += '<span style="color:var(--color-muted,#889);font-size:0.85rem;">' + data.domain + ' — ' + new Date(data.timestamp).toLocaleString() + '</span></div>';
+            html += '</div>';
+
+            html += '<div class="check-list">';
+            for (const ch of checks) {
+              const cls = ch.pass ? 'check-item check-pass' : 'check-item check-fail';
+              html += '<div class="' + cls + '">';
+              html += '<span class="check-icon">' + (ch.pass ? '&#10003;' : '&#10007;') + '</span>';
+              html += '<div><strong>' + ch.label + '</strong>';
+              if (ch.detail) html += '<div class="check-detail">' + ch.detail + '</div>';
+              html += '</div></div>';
+            }
+            html += '</div>';
+
+            // CTA
+            html += '<div class="cta-box">';
+            html += '<h3>See the full picture</h3>';
+            html += '<p>Your domain scan shows public posture. Connect your infrastructure for a deep security assessment — auto-fill enterprise questionnaires, find hidden gaps, and fix them before your next deal depends on it.</p>';
+            html += '<a href="/" class="btn">Get the full assessment →</a>';
+            html += '</div>';
+
+            results.innerHTML = html;
+          } catch (e) {
+            results.innerHTML = '<div class="error-msg">Scan failed: ' + e.message + '</div>';
+          } finally {
+            btn.disabled = false;
+            btn.textContent = 'Scan';
+          }
+        });
+
+        // Example buttons
+        document.querySelectorAll('.examples button').forEach(b => {
+          b.addEventListener('click', () => {
+            input.value = b.dataset.domain;
+            form.dispatchEvent(new Event('submit'));
+          });
+        });
+      </script>
+    </main>
+    <Footer />
+  </body>
+</html>

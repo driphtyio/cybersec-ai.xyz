@@ -45,14 +45,6 @@ const allTags = [...new Set(allPosts.flatMap(p => p.data.tags || []))].sort();
         </a>
       )}
 
-      {allTags.length > 0 && (
-        <div class="tag-cloud">
-          {allTags.map(tag => (
-            <a href={`/blog#tag-${encodeURIComponent(tag)}`} class="tag-pill">{tag}</a>
-          ))}
-        </div>
-      )}
-
       <div class="post-grid">
         {remaining.map((post, i) => (
           <a href={`/blog/${post.id}/`} class="post-card" data-index={i}>
@@ -81,7 +73,7 @@ const allTags = [...new Set(allPosts.flatMap(p => p.data.tags || []))].sort();
         </div>
       )}
     </main>
-    <Footer />
+    <Footer tags={allTags} />
 
     <script>
       // Staggered fade-in on scroll

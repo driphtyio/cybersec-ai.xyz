@@ -6,6 +6,7 @@ tags:
   - Enterprise Sales
   - Security Posture
   - Sales Acceleration
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/your-security-posture-is-costing-you-deals-1781506712.jpg"
 ---
 
 You're weeks into a $500K enterprise deal [1]. The demo crushed it. The product fits. Then their security team sends a 187-question questionnaire.

@@ -50,9 +50,8 @@ const ogImage = image || `${SITE_URL}favicon.svg`;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
 
-<!-- Analytics disabled for new blog -->
-<script is:inline>
+<script is:inline data-goatcounter="https://cybersec-ai.goatcounter.com/count" src="//gc.zgo.at/count.js">
   window.goatcounter = {
+    allow_local: false,
   }
 </script>
-<!-- Goatcounter disabled for new blog -->

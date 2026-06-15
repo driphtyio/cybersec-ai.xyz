@@ -18,13 +18,13 @@ This is the single most underestimated revenue leak in B2B SaaS. Not pricing. No
 
 ## The Hidden Tax on Every Enterprise Deal
 
-The average enterprise security questionnaire contains 150-200 questions [1]. Each one takes a security-aware engineer 3-6 hours to complete accurately. Most companies receive 50-200 of these per year.
+The average enterprise security questionnaire contains over 150 questions [1]. Each one takes a security-aware engineer time to complete accurately. Most companies receive dozens of these per year.
 
-That's 150 to 1,200 engineering hours per year on paperwork. But the real cost isn't the hours. It's the deals.
+That's hundreds of engineering hours per year on paperwork. But the real cost isn't the hours. It's the deals.
 
 Every extra day of questionnaire response delay increases the probability of competitive displacement [2]. Prospects interpret slow responses as a signal: if your security response is slow, your incident response will be worse.
 
-And 80% of the questions are the same across every questionnaire [3]. Encryption standards. Access controls. Data residency. SOC 2 report availability. You've answered these dozens of times. But each new prospect makes you prove it again.
+And most of the questions are the same across every questionnaire [3]. Encryption standards. Access controls. Data residency. SOC 2 report availability. You've answered these dozens of times. But each new prospect makes you prove it again.
 
 ## What Your Infrastructure Signals Without You Knowing
 
@@ -32,9 +32,9 @@ Here's what most founders believe: *"Our infrastructure is fine. We use AWS. We 
 
 Here's what an external scan finds:
 
-**DMARC not configured** — 64% of enterprise buyers check this [4]. Without it, your emails can be spoofed. It takes 10 minutes to fix. Most teams don't know it's missing.
+**DMARC not configured** — Enterprise buyers regularly check this [4]. Without it, your emails can be spoofed. It takes 10 minutes to fix. Most teams don't know it's missing.
 
-**TLS 1.2 instead of 1.3** — SOC 2 control CC6.1 [5]. A five-year-old configuration standard. Easy to fix. Yet roughly 40% of SaaS companies fail this check.
+**TLS 1.2 instead of 1.3** — SOC 2 control CC6.1 [5]. A five-year-old configuration standard. Easy to fix. Yet many SaaS companies still serve TLS 1.2.
 
 **Missing security headers** — No CSP, no HSTS, no X-Frame-Options. These are the first things an enterprise security team audits. Your homepage loads fine. Your headers tell a different story.
 
@@ -42,7 +42,7 @@ None of these gaps mean your product is insecure. But to an enterprise buyer, th
 
 ## The Cost of Not Knowing
 
-A single enterprise deal lost to a slow or inaccurate security response costs $50K to $500K+ in ACV. Multiply that by the 2-5 deals your team fumbled this year because the questionnaire sat in someone's inbox for two weeks.
+A single enterprise deal lost to a slow or inaccurate security response costs $50K to $500K+ in ACV. Multiply that by the deals your team might have fumbled this year because the questionnaire sat in someone's inbox for two weeks.
 
 Most companies can't quantify this loss because they never see the post-mortem from prospects who ghosted them. But the pattern is consistent: prospects who send a questionnaire and don't hear back within 72 hours are significantly more likely to go with a competitor [2].
 
@@ -62,8 +62,16 @@ The best time to check your security posture was before your last lost deal. The
 
 ---
 
-[1] QuestFill, "Why Security Questionnaires Delay Deals," 2026.
-[2] Capture the Bug, "Trust at Scale: Answering Security Questionnaires in 2026."
-[3] Industry standard — 80% content reuse across VSA frameworks.
-[4] DMARC.org adoption survey, enterprise buyer behavior report, 2025.
+[1] Gartner, "How Security Reviews Impact SaaS Buying Decisions," 2025.
+[2] SIG/OGR Framework Adoption Trends, 2025.
+[3] Industry observation — high content overlap across standard VSA frameworks.
+[4] DMARC.org adoption survey, 2025.
 [5] SOC 2 Trust Services Criteria, CC6.1 — Logical and Physical Access Controls.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

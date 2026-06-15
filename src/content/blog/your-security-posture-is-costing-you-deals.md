@@ -8,7 +8,7 @@ tags:
   - Sales Acceleration
 ---
 
-You're three weeks into a $500K enterprise deal. The demo crushed it. The product fits. Then their security team sends a 187-question questionnaire.
+You're weeks into a $500K enterprise deal [1]. The demo crushed it. The product fits. Then their security team sends a 187-question questionnaire.
 
 You forward it to your CTO. He forwards it to the engineer who set up the AWS account 3 years ago. Two weeks later, the prospect's security team flags your company as "unresponsive."
 
@@ -42,7 +42,7 @@ None of these gaps mean your product is insecure. But to an enterprise buyer, th
 
 ## The Cost of Not Knowing
 
-A single enterprise deal lost to a slow or inaccurate security response costs $50K to $500K+ in ACV. Multiply that by the deals your team might have fumbled this year because the questionnaire sat in someone's inbox for two weeks.
+A single enterprise deal lost to a slow or inaccurate security response can cost $50K to $500K+ in ACV [1]. Multiply that by the deals your team might have fumbled this year because the questionnaire sat in someone's inbox for two weeks.
 
 Most companies can't quantify this loss because they never see the post-mortem from prospects who ghosted them. But the pattern is consistent: prospects who send a questionnaire and don't hear back within 72 hours are significantly more likely to go with a competitor [2].
 
@@ -50,7 +50,7 @@ The irony? Your security posture is probably fine. Your *process for proving it*
 
 ## What To Do About It
 
-You don't need to hire a security team. You don't need to spend $20K on a penetration test (yet). You need to know what your security posture looks like from the outside — because that's exactly what every enterprise buyer sees.
+You don't need to hire a security team. You don't need to spend thousands on a penetration test (yet). You need to know what your security posture looks like from the outside — because that's exactly what every enterprise buyer sees.
 
 **[Scan your domain in 10 seconds →](/scan/)**
 

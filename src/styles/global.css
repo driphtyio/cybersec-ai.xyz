@@ -130,7 +130,7 @@ p { margin-bottom: 1em; line-height: 1.65; }
 .screenshot { border-radius: 12px; box-shadow: var(--shadow-screenshot); border: 1px solid var(--border); overflow: hidden; }
 .prose blockquote {
   border-left: 4px solid var(--accent);
-  background: rgba(0,212,170,0.04);
+  background: rgba(34,197,94,0.04);
   padding: 0.5em 1em 0.5em 20px;
   margin: 1.5em 0;
   font-size: 1.05em;

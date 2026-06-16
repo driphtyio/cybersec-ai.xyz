@@ -112,10 +112,10 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
   .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5em; margin-top: 0.5em; }
   .tag {
     display: inline-block; padding: 0.25em 0.75em; font-size: 0.78em; font-weight: 500;
-    color: var(--accent); background: rgba(0,212,170,0.07); border: 1px solid rgba(0,212,170,0.15);
+    color: var(--accent); background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.15);
     border-radius: 100px; text-decoration: none; transition: background 0.2s, border-color 0.2s;
   }
-  .tag:hover { background: rgba(0,212,170,0.12); border-color: var(--accent); }
+  .tag:hover { background: rgba(34,197,94,0.12); border-color: var(--accent); }
 
   .share-bar {
     display: flex; align-items: center; justify-content: center;
@@ -135,7 +135,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
   }
   .share-btn:hover {
     color: var(--accent); border-color: var(--accent);
-    transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,212,170,0.15);
+    transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34,197,94,0.15);
   }
   .copy-tooltip {
     position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);

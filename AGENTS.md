@@ -1,4 +1,4 @@
-# CyberSec AI — Agent Instructions
+# NoCode Insider — Agent Instructions
 
 ## Directory Guide
 
@@ -9,11 +9,11 @@
 ## Task Workflow (for any cron or manual session)
 
 1. **Read** — Load the relevant skill(s): content-pipeline, static-blog, blog-empire. Also check for per-repo skills: `python3 ~/.local/bin/repo-skills-loader.py .`
-2. **Check** — `python3 ~/.local/bin/quality-ratchet.py --check cybersecai` to verify quality floor
+2. **Check** — `python3 ~/.local/bin/quality-ratchet.py --check nocodeinsider` to verify quality floor
 3. **Write** — Create the post following the Content + Style sections below
 4. **Verify** — URLs work, citations are real, no placeholder text (TODO/FIXME)
-5. **Deploy** — `bash ~/.hermes/scripts/deploy-cybersecai.sh` — if it fails, read the error and fix
-6. **Confirm** — `curl -sL https://cybersec-ai.xyz/blog/ | grep -c "post-slug"` returns ≥1
+5. **Deploy** — `bash ~/.hermes/scripts/deploy-ni.sh` — if it fails, read the error and fix
+6. **Confirm** — `curl -sL https://nocodeinsider.com/blog/ | grep -c "post-slug"` returns ≥1
 
 ## Failure Modes
 
@@ -143,7 +143,7 @@ Load relevant skills with `skill_view('<name>')` before starting tasks.
 | blog-empire-lessons | `skill_view('blog-empire-lessons')` | Learning multi-blog institutional knowledge and conventions |
 | content-pipeline | `skill_view('content-pipeline')` | Writing, scheduling, or researching blog content |
 | gif-search | `skill_view('gif-search')` | Searching or downloading GIFs for posts |
-| cybersec-ai | `skill_view('cybersec-ai')` | Loading CyberSec AI content template and security analysis guide |
+| nocodeinsider | `skill_view('nocodeinsider')` | Loading NoCode Insider content template and style guide |
 | output-enforcement | `skill_view('output-enforcement')` | Enforcing long-form quality in posts over 300 words |
 | static-blog | `skill_view('static-blog')` | Managing Astro blog build, deploy, and quality gates |
 | stop-slop | `skill_view('stop-slop')` | Removing AI writing patterns from prose |

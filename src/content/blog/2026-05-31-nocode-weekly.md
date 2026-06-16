@@ -84,7 +84,7 @@ Lemonado's pitch is that traditional software suites are too rigid for modern wo
 
 ## 🌐 From the Network
 
-**[ToolBrain — Daily AI Briefing: May 30](https://toolbrain.net/blog/ai-briefing-may-30-2026/)** — Anthropic projects $10.9B Q2 revenue (first operating profit), OpenAI files S-1 for IPO, Gemini 3.5 Flash goes GA, Salesforce cuts 231-day migration to 13 days with Claude Code.
+**[ToolBrain — Daily AI Briefing: May 30](https://toolbrain.net/blog/ai-briefing-may-30-2026/)** [1] — Anthropic projects $10.9B Q2 revenue (first operating profit), OpenAI files S-1 for IPO, Gemini 3.5 Flash goes GA, Salesforce cuts 231-day migration to 13 days with Claude Code.
 
 **[NiteAgent — 51 Agent System Prompts: Compound Engineering Architecture](https://niteagent.com/blog/51-agent-system-prompts-compound-engineering/)** — Deconstructing Every Inc's system of 51 specialized agent definitions and what AI agent developers can learn from their review, research, and security prompt structures.
 

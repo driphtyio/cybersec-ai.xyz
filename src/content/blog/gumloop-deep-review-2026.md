@@ -99,7 +99,7 @@ The documentation includes Gumloop University (video tutorials), an active Slack
 
 ### Competitor Monitoring and Analysis
 
-A content marketing agency built three workflows on Gumloop Pro: competitor blog monitoring (web scraping + AI summarization), content brief generation (keyword research + AI outline), and social post drafting. Running daily, the agency consumed 7,500 credits/month and saved 25 hours of analyst time per month — a cost of $3.88 per hour saved ([Automation Atlas case study](https://automationatlas.io/answers/gumloop-pricing-explained-2026/)).
+A content marketing agency built three workflows on Gumloop Pro: competitor blog monitoring (web scraping + AI summarization), content brief generation (keyword research + AI outline), and social post drafting. Running daily, the agency consumed 7,500 credits/month and saved 25 hours of analyst time per month — a cost of $3.88 per hour saved [3].
 
 ### Sales Lead Enrichment and CRM Updates
 
@@ -125,7 +125,7 @@ Make (formerly Integromat) is the budget-friendly option with 7,500+ pre-built t
 
 ### Zapier
 
-Zapier has the largest integration library (7,000+ apps) and the simplest interface. Its AI-powered workflows (Zapier Central) are improving, but the AI features still feel like an add-on to the core rules-based engine. Pricing scales fast — $29.99/month for Pro (2,000 tasks/month) — and costs can explode at higher volumes ([zapier.com/pricing](https://zapier.com/pricing)).
+Zapier has the largest integration library (7,000+ apps) and the simplest interface. Its AI-powered workflows (Zapier Central) are improving, but the AI features still feel like an add-on to the core rules-based engine. Pricing scales fast — $29.99/month for Pro (2,000 tasks/month) — and costs can explode at higher volumes [4].
 
 ## Verdict
 
@@ -169,10 +169,11 @@ Gumloop is AI-native with bundled model access and a gentler learning curve. n8n
 ## Sources
 
 - Gumloop pricing page: https://www.gumloop.com/pricing
-1. "[Gumloop lands $50M from Benchmark](https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/)" — TechCrunch, March 2026
+1. Gumloop lands $50M from Benchmark — TechCrunch, March 2026: https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/
 2. Gumloop official site — About: https://www.gumloop.com/
 3. Automation Atlas — Gumloop Pricing 2026: https://automationatlas.io/answers/gumloop-pricing-explained-2026/
-4. CheckThat.ai — Gumloop pricing breakdown: https://checkthat.ai/brands/gumloop/pricing
+4. Zapier pricing page: https://zapier.com/pricing
+5. CheckThat.ai — Gumloop pricing breakdown: https://checkthat.ai/brands/gumloop/pricing
 - "Gumloop reels in $50M for its AI automation platform" — SiliconANGLE: https://siliconangle.com/2026/03/13/gumloop-reels-50m-ai-automation-platform/
 
 <!-- crosslinks -->

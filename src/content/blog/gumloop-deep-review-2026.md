@@ -6,7 +6,7 @@ heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/gumloop-review-2
 tags: ["reviews", "automation", "nocode"]
 ---
 
-Gumloop is the fastest-growing no-code AI automation platform of 2026. It landed a $50 million Series B from Benchmark in March ([TechCrunch](https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/)), counts Shopify, Instacart, Ramp, and Gusto as customers, and lets anyone — no engineering background required — build AI agents that automate complex workflows across Slack, Gmail, databases, and CRM tools.
+Gumloop is the fastest-growing no-code AI automation platform of 2026 [1]. It landed a $50 million Series B from Benchmark in March [1], counts Shopify, Instacart, Ramp, and Gusto as customers, and lets anyone — no engineering background required — build AI agents that automate complex workflows across Slack, Gmail, databases, and CRM tools.
 
 This review covers what Gumloop actually does, how its pricing works, where it excels, and where it falls short compared to alternatives like n8n and Make.
 
@@ -20,7 +20,7 @@ Gumloop is a visual AI workflow builder that combines drag-and-drop node editing
 
 Gumloop is a no-code AI automation framework. Think of it as a visual operating system for AI agents. You build workflows by connecting nodes on a canvas — input sources (Slack, email, webhooks), AI processing (LLM calls, document parsing, image analysis), and output actions (CRM updates, database writes, notifications).
 
-Founded in mid-2023 by Max Brodeur-Urbas, Gumloop was part of Y Combinator and raised a $50 million Series B led by Benchmark in March 2026 ([TechCrunch, March 2026](https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/)). The company's thesis: understanding a task should be the only prerequisite to automating it.
+Founded in mid-2023 by Max Brodeur-Urbas, Gumloop was part of Y Combinator [2] and raised a $50 million Series B led by Benchmark in March 2026 [1]. The company's thesis: understanding a task should be the only prerequisite to automating it.
 
 Unlike Zapier or Make, which are rules-based automation tools with AI features bolted on, Gumloop is built AI-first. Every node in the workflow can call an LLM, process unstructured data, or make decisions autonomously. The platform is model-agnostic — you can use OpenAI, Anthropic, Google, or DeepSeek models interchangeably, and you don't need to manage API keys.
 
@@ -169,11 +169,10 @@ Gumloop is AI-native with bundled model access and a gentler learning curve. n8n
 ## Sources
 
 - Gumloop pricing page: https://www.gumloop.com/pricing
-- Gumloop official site: https://www.gumloop.com/
-- "Gumloop lands $50M from Benchmark" — TechCrunch, March 2026: https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/
-- Gumloop blog — "10 best AI workflow automation tools I'm using in 2026": https://www.gumloop.com/blog/best-ai-workflow-automation-tools
-- Automation Atlas — Gumloop Pricing 2026: https://automationatlas.io/answers/gumloop-pricing-explained-2026/
-- CheckThat.ai — Gumloop pricing breakdown: https://checkthat.ai/brands/gumloop/pricing
+1. "[Gumloop lands $50M from Benchmark](https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/)" — TechCrunch, March 2026
+2. Gumloop official site — About: https://www.gumloop.com/
+3. Automation Atlas — Gumloop Pricing 2026: https://automationatlas.io/answers/gumloop-pricing-explained-2026/
+4. CheckThat.ai — Gumloop pricing breakdown: https://checkthat.ai/brands/gumloop/pricing
 - "Gumloop reels in $50M for its AI automation platform" — SiliconANGLE: https://siliconangle.com/2026/03/13/gumloop-reels-50m-ai-automation-platform/
 
 <!-- crosslinks -->

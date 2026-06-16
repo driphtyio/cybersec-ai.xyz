@@ -126,3 +126,12 @@ Start with a webhook, a spreadsheet, and a conditional filter. Only upgrade to A
 - [4] (citation needed)
 - [5] (citation needed)
 - [6] (citation needed)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from NoCode Insider.*

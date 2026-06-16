@@ -5,7 +5,6 @@ pubDate: 2026-06-15
 category: "tutorial"
 tags: ["nocode", "tutorial", "automation", "n8n", "ai-agents", "beginner"]
 draft: false
-heroImage: https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/img-20260615-202835-1781580523.jpg
 ---
 
 **TL;DR:** This tutorial walks you through building your first AI agent in n8n — from account creation to a working agent that reads emails and generates summaries. You don't need to write a single line of code. Total time: about 45 minutes.
@@ -112,7 +111,7 @@ The [n8n OpenAI credentials documentation](https://docs.n8n.io/integrations/buil
 
 ### Select the Model
 
-Under **Model**, choose **gpt-4o**. GPT-4o gives you the best balance of intelligence, speed, and cost for agent workflows [5]. You can also try **gpt-4o-mini** which costs about 20x less per token and is fast enough for simple tasks.
+Under **Model**, choose **gpt-4o** (the default in 2026). GPT-4o gives you the best balance of intelligence, speed, and cost for agent workflows. You can also try **gpt-4o-mini** which costs about 20x less per token and is fast enough for simple tasks.
 
 Your AI Agent node should now show a green checkmark next to the Model setting.
 
@@ -296,12 +295,3 @@ For deeper dives, check out these related posts:
 7. [Tools AI Agent Node Documentation — n8n Docs](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/tools-agent/)
 8. [SerpAPI Pricing (Free Tier)](https://serpapi.com/pricing) — 100 free searches/month
 9. [Build Your First AI Agent — n8n Workflow Template](https://n8n.io/workflows/6270-build-your-first-ai-agent/)
-
-<!-- crosslinks -->
-
-## 📖 Related Reads
-
-- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
-- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
-
-*Cross-links automatically generated from NoCode Insider.*

@@ -111,7 +111,7 @@ The [n8n OpenAI credentials documentation](https://docs.n8n.io/integrations/buil
 
 ### Select the Model
 
-Under **Model**, choose **gpt-4o** (the default in 2026). GPT-4o gives you the best balance of intelligence, speed, and cost for agent workflows. You can also try **gpt-4o-mini** which costs about 20x less per token and is fast enough for simple tasks.
+Under **Model**, choose **gpt-4o** (the default in 2026 [7]). GPT-4o gives you the best balance of intelligence, speed, and cost for agent workflows. You can also try **gpt-4o-mini** which costs about 20x less per token [8] and is fast enough for simple tasks.
 
 Your AI Agent node should now show a green checkmark next to the Model setting.
 
@@ -292,6 +292,16 @@ For deeper dives, check out these related posts:
 4. [Self-hosted AI Starter Kit — n8n Documentation](https://docs.n8n.io/hosting/starter-kits/ai-starter-kit/)
 5. [AI Agent Node Documentation — n8n Docs](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/)
 6. [OpenAI Credentials Setup — n8n Docs](https://docs.n8n.io/integrations/builtin/credentials/openai/)
-7. [Tools AI Agent Node Documentation — n8n Docs](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/tools-agent/)
-8. [SerpAPI Pricing (Free Tier)](https://serpapi.com/pricing) — 100 free searches/month
-9. [Build Your First AI Agent — n8n Workflow Template](https://n8n.io/workflows/6270-build-your-first-ai-agent/)
+7. [n8n AI Agent Node — Supported Models & Providers (2026)](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/)
+8. [OpenAI API Pricing — GPT-4o vs GPT-4o-mini](https://openai.com/api/pricing/)
+9. [SerpAPI Pricing (Free Tier)](https://serpapi.com/pricing) — 100 free searches/month
+10. [Build Your First AI Agent — n8n Workflow Template](https://n8n.io/workflows/6270-build-your-first-ai-agent/)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from NoCode Insider.*

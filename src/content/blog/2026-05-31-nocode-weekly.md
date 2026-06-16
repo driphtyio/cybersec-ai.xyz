@@ -111,3 +111,14 @@ On NoCode Insider next week: a deep dive into FlutterFlow's 2026 pricing at scal
 - [6] (citation needed)
 - [7] (citation needed)
 - [8] (citation needed)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[Hermes Tutorials](https://hermes-tutorials.dev/)** — Hermes Agent setup, configuration, and advanced workflows
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from NoCode Insider.*

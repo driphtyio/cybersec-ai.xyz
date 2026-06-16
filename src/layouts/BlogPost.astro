@@ -14,7 +14,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 
 <html lang="en">
   <head>
-    <BaseHead title={`${title} — ${SITE_TITLE}`} description={description} image={heroImage} />
+    <BaseHead title={`${title} — ${SITE_TITLE}`} description={description} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BlogPosting",

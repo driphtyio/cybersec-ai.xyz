@@ -85,7 +85,7 @@ Here's what we published this week:
 
 - **[Gumloop Review 2026: The No-Code AI Automation Platform That Raised $50M from Benchmark](/blog/gumloop-deep-review-2026/)** (Jun 4) — Hands-on review of Gumloop's visual AI workflow builder with pricing from $0 to $497/mo and comparisons with n8n, Make, and Zapier [17].
 
-- **[The 60-70% Trap: What AI and No-Code Tools Still Can't Do in 2026](https://nocodeinsider.com/blog/the-60-70-trap-what-ai-and-no-code-tools-still-cant-do-in-2026/)** (Jun 3) — The 30-40% of your SaaS that still needs real engineering — edge cases, billing logic, security, and performance under load.
+- **[The 60-70% Trap: What AI and No-Code Tools Still Can't Do in 2026](/blog/the-60-70-trap-what-ai-and-no-code-tools-still-cant-do-in-2026/)** (Jun 3) — The 30-40% of your SaaS that still needs real engineering — edge cases, billing logic, security, and performance under load.
 
 ---
 

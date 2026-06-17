@@ -15,6 +15,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 
 const cve = Astro.props;
 const date = cve.published ? new Date(cve.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Unknown';
+const modDate = cve.lastModified ? new Date(cve.lastModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
 
 function severityClass(s: string) {
   return (s || '').toLowerCase();
@@ -26,6 +27,12 @@ function sevColor(s: string) {
   if (c === 'medium') return '#eab308';
   return '#6b7280';
 }
+function sevVal(cvss: number) {
+  if (cvss >= 9) return 'critical';
+  if (cvss >= 7) return 'high';
+  if (cvss >= 4) return 'medium';
+  return 'low';
+}
 function emoji(s: string) {
   const c = severityClass(s);
   if (c === 'critical') return '🔴';
@@ -33,6 +40,39 @@ function emoji(s: string) {
   if (c === 'medium') return '🟡';
   return '⚪';
 }
+
+// CVSS vector parser
+const VECTOR_MAP: Record<string, { name: string; values: Record<string, string> }> = {
+  AV: { name: 'Attack Vector', values: { N: 'Network', A: 'Adjacent', L: 'Local', P: 'Physical' } },
+  AC: { name: 'Attack Complexity', values: { L: 'Low', H: 'High' } },
+  PR: { name: 'Privileges Required', values: { N: 'None', L: 'Low', H: 'High' } },
+  UI: { name: 'User Interaction', values: { N: 'None', R: 'Required' } },
+  S: { name: 'Scope', values: { U: 'Unchanged', C: 'Changed' } },
+  C: { name: 'Confidentiality', values: { H: 'High', L: 'Low', N: 'None' } },
+  I: { name: 'Integrity', values: { H: 'High', L: 'Low', N: 'None' } },
+  A: { name: 'Availability', values: { H: 'High', L: 'Low', N: 'None' } },
+};
+
+function parseVector(vec: string | undefined | null): { key: string; name: string; value: string; label: string; colorClass: string }[] {
+  if (!vec) return [];
+  const parts = vec.split('/');
+  const result: { key: string; name: string; value: string; label: string; colorClass: string }[] = [];
+  for (const part of parts) {
+    const m = part.match(/^(AV|AC|PR|UI|S|C|I|A):([A-Z])$/);
+    if (m) {
+      const key = m[1];
+      const val = m[2];
+      const meta = VECTOR_MAP[key] || { name: key, values: {} };
+      const label = meta.values[val] || val;
+      const isHigh = val === 'H' || val === 'C' || val === 'N' && key !== 'PR' && key !== 'UI';
+      const colorClass = val === 'H' || val === 'C' ? 'val-high' : val === 'L' || val === 'A' || val === 'R' ? 'val-medium' : 'val-low';
+      result.push({ key, name: meta.name, value: val, label, colorClass });
+    }
+  }
+  return result;
+}
+
+const metrics = parseVector(cve.vector);
 ---
 
 <!doctype html>
@@ -96,8 +136,9 @@ function emoji(s: string) {
             <span class="badge badge-sev" style="background: {sevColor(cve.severity)}">{cve.severity}</span>
             <span class="badge badge-source">NVD</span>
             <span><strong>Published:</strong> {date}</span>
+            {modDate && <span><strong>Modified:</strong> {modDate}</span>}
           </div>
-          <div class="cv-vector">{cve.vectorString || ''}</div>
+          <div class="cv-vector">{cve.vector || ''}</div>
         </div>
       </div>
 
@@ -106,7 +147,7 @@ function emoji(s: string) {
       </div>
 
       {
-        cve.metrics && cve.metrics.length > 0 && (
+        metrics && metrics.length > 0 && (
         <div class="cv-table-wrap">
           <h3>CVSS Vector Breakdown</h3>
           <table class="cv-table">
@@ -114,10 +155,10 @@ function emoji(s: string) {
               <tr><th>Metric</th><th>Value</th><th class="meaning">What It Means</th></tr>
             </thead>
             <tbody>
-              {cve.metrics.map((m: any) => <tr>
+              {metrics.map((m: any) => <tr>
                 <td class="metric">{m.name}</td>
-                <td class="value">{m.value}</td>
-                <td class="meaning">{m.meaning || ''}</td>
+                <td class="value" style={`color: ${m.colorClass === 'val-high' ? '#ef4444' : m.colorClass === 'val-medium' ? '#eab308' : '#22c55e'}`}>{m.value}</td>
+                <td class="meaning">{m.label}</td>
               </tr>)}
             </tbody>
           </table>

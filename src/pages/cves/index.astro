@@ -174,6 +174,15 @@ import Header from '../../components/Header.astro';
         }
       });
 
+      // Pagination click handler (event delegation — one listener, survives innerHTML swaps)
+      pgEl.addEventListener('click', e => {
+        const btn = e.target.closest('button[data-page]');
+        if (btn && !btn.disabled) {
+          page = parseInt(btn.dataset.page);
+          render();
+        }
+      });
+
       fetch('/data/cves.json')
         .then(r => r.json())
         .then(d => {
@@ -252,11 +261,11 @@ import Header from '../../components/Header.astro';
 
         // Pagination
         let phtml = '';
-        phtml += '<button onclick="page=1;render()" ' + (page === 1 ? 'disabled' : '') + '>«</button>';
+        phtml += '<button data-page="1" ' + (page === 1 ? 'disabled' : '') + '>«</button>';
         for (let i = Math.max(1, page - 3); i <= Math.min(pages, page + 3); i++) {
-          phtml += '<button class="' + (i === page ? 'active' : '') + '" onclick="page=' + i + ';render()">' + i + '</button>';
+          phtml += '<button data-page="' + i + '" class="' + (i === page ? 'active' : '') + '">' + i + '</button>';
         }
-        phtml += '<button onclick="page=' + pages + ';render()" ' + (page === pages ? 'disabled' : '') + '>»</button>';
+        phtml += '<button data-page="' + pages + '" ' + (page === pages ? 'disabled' : '') + '>»</button>';
         pgEl.innerHTML = phtml;
       }
     </script>

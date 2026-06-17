@@ -166,10 +166,6 @@ const metrics = parseVector(cve.vector);
         )
       }
 
-      <div style="margin-top: 2rem; text-align: center;">
-        <a href="/cves/" style="color: var(--accent, #00d4aa); text-decoration: none; font-size: 0.9rem;">← Back to CVE database</a>
-      </div>
-
       {
         cve.references && cve.references.length > 0 && (
         <div class="cv-table-wrap" style="margin-top: 1.5rem;">
@@ -184,6 +180,10 @@ const metrics = parseVector(cve.vector);
         </div>
         )
       }
+
+      <div style="margin-top: 2rem; text-align: center;">
+        <a href="/cves/" style="color: var(--accent, #00d4aa); text-decoration: none; font-size: 0.9rem;">← Back to CVE database</a>
+      </div>
     </main>
     <Footer />
   </body>

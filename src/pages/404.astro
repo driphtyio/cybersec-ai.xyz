@@ -1,0 +1,29 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Not Found — CyberSec AI" description="The page you're looking for doesn't exist." />
+    <style>
+      .err { max-width: 600px; margin: 4rem auto; text-align: center; padding: 2rem; }
+      .err-code { font-size: 5rem; font-weight: 800; color: var(--ink-muted, #4a4a58); line-height: 1; margin-bottom: 0.5rem; }
+      .err h1 { font-size: 1.3rem; margin: 0 0 0.5rem; }
+      .err p { color: var(--ink-muted, #a0a0b0); margin: 0 0 2rem; }
+      .err a { color: var(--accent, #00d4aa); text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="err">
+      <div class="err-code">404</div>
+      <h1>Page not found</h1>
+      <p>The CVE or page you're looking for doesn't exist in our database.</p>
+      <a href="/cves/">← Browse CVE database</a>
+    </main>
+    <Footer />
+  </body>
+</html>

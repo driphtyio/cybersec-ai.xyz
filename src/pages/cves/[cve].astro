@@ -128,6 +128,21 @@ function emoji(s: string) {
       <div style="margin-top: 2rem; text-align: center;">
         <a href="/cves/" style="color: var(--accent, #00d4aa); text-decoration: none; font-size: 0.9rem;">← Back to CVE database</a>
       </div>
+
+      {
+        cve.references && cve.references.length > 0 && (
+        <div class="cv-table-wrap" style="margin-top: 1.5rem;">
+          <h3>References</h3>
+          <div style="padding: 0.8rem 1rem;">
+            {cve.references.map((ref: string) => (
+              <div style="margin-bottom: 0.4rem; word-break: break-all;">
+                <a href={ref} target="_blank" rel="noopener" style="color: var(--accent, #00d4aa); font-size: 0.85rem;">{ref}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+        )
+      }
     </main>
     <Footer />
   </body>

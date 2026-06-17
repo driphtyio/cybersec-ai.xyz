@@ -1,0 +1,317 @@
+---
+import cvesData from '../../data/cves.json';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  return cvesData.cves.map(cve => ({
+    params: { id: cve.id },
+    props: { cve },
+  }));
+}
+
+const { cve } = Astro.props;
+const isCritical = cve.cvss >= 9;
+const isHigh = cve.cvss >= 7 && cve.cvss < 9;
+const sevLabel = isCritical ? 'Critical' : isHigh ? 'High' : 'Medium';
+const sevEmoji = isCritical ? '🔴' : isHigh ? '🟠' : '🟡';
+const sevColor = isCritical ? '#ef4444' : isHigh ? '#f97316' : '#eab308';
+const sevBg = isCritical ? 'rgba(239,68,68,0.08)' : isHigh ? 'rgba(249,115,22,0.08)' : 'rgba(234,179,8,0.08)';
+const pubDate = cve.published ? new Date(cve.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Unknown';
+const gaugeDeg = Math.min((cve.cvss / 10) * 180, 180);
+
+const VENDOR_TAGS = ['azure','aws','gcp','kubernetes','docker','linux','windows','apple',
+  'cisco','vmware','oracle','apache','nginx','redis','mongodb','mysql','postgresql','git','jenkins'];
+const VULN_TAGS = ['rce','ssrf','xss','sqli','path-traversal','dos','privilege-escalation',
+  'buffer-overflow','deserialization','csrf','mitm','auth-bypass','memory','cloud','crypto'];
+const TAG_RE = {
+  'azure': /azure|microsoft azure/i, 'aws': /aws|amazon web/i, 'gcp': /gcp|google cloud/i,
+  'kubernetes': /kubernetes|k8s|kube/i, 'docker': /docker|container/i, 'linux': /linux|kernel/i,
+  'windows': /windows|win32|nt kernel/i, 'apple': /apple|macos|ios|iphone|webkit/i,
+  'cisco': /cisco/i, 'vmware': /vmware|vsphere|esxi/i, 'oracle': /oracle|weblogic/i,
+  'apache': /apache|httpd|tomcat|struts|log4j/i, 'nginx': /nginx/i,
+  'redis': /redis/i, 'mongodb': /mongodb/i, 'mysql': /mysql|mariadb/i, 'postgresql': /postgresql|postgres/i,
+  'git': /git|github|gitlab/i, 'jenkins': /jenkins/i,
+  'rce': /remote code|rce|code execution|arbitrary code/i,
+  'ssrf': /ssrf|server-side request|server side request/i,
+  'xss': /xss|cross-site|cross site scripting/i,
+  'sqli': /sql injection|sqli/i, 'path-traversal': /path traversal|directory traversal/i,
+  'dos': /denial of service|dos|resource exhaustion/i,
+  'privilege-escalation': /privilege escalation|elevation of privilege/i,
+  'buffer-overflow': /buffer overflow|stack overflow|heap overflow/i,
+  'deserialization': /deserialization|serialization/i, 'csrf': /csrf|cross-site request/i,
+  'mitm': /man-in-the-middle|mitm/i, 'auth-bypass': /authentication bypass|auth bypass|unauthorized/i,
+  'memory': /memory corruption|use-after-free|use after free/i,
+  'cloud': /cloud|saas|paas|iaas/i, 'network': /network|tcp|udp|protocol/i,
+  'crypto': /cryptographic|crypto|encryption|tls|ssl|certificate/i,
+};
+
+const vendorTags = [];
+const vulnTags = [];
+for (const [tag, re] of Object.entries(TAG_RE)) {
+  if (!re.test(cve.description)) continue;
+  if (VENDOR_TAGS.includes(tag)) vendorTags.push(tag);
+  else vulnTags.push(tag);
+  if (vendorTags.length + vulnTags.length >= 8) break;
+}
+
+// CVSS vector breakdown
+const vecItems = [];
+let vecExplained = '';
+if (cve.vector && cve.vector.startsWith('CVSS:')) {
+  const parts = cve.vector.split('/').slice(1);
+  const METADATA = {
+    AV: { label: 'Attack Vector', N: 'Network — exploitable remotely across the internet', A: 'Adjacent — requires same broadcast/L2 domain', L: 'Local — requires local access or shell', P: 'Physical — requires physical access' },
+    AC: { label: 'Attack Complexity', L: 'Low — no special conditions; exploit is straightforward', H: 'High — requires special conditions, race window, or configuration' },
+    PR: { label: 'Privileges Required', N: 'None — no authentication needed', L: 'Low — requires basic user privileges', H: 'High — requires admin or root privileges' },
+    UI: { label: 'User Interaction', N: 'None — no user action required; fully autonomous exploit', R: 'Required — victim must perform an action (click, open file)' },
+    S: { label: 'Scope', U: 'Unchanged — impacts only the vulnerable component', C: 'Changed — impacts resources beyond the vulnerable component' },
+    C: { label: 'Confidentiality', H: 'High — complete data access; all files readable', L: 'Low — limited data exposure', N: 'None — no data exposure' },
+    I: { label: 'Integrity', H: 'High — attacker can modify any data/files', L: 'Low — limited modification possible', N: 'None — no data modification' },
+    A: { label: 'Availability', H: 'High — complete system denial of service', L: 'Low — reduced performance or partial disruption', N: 'None — no availability impact' },
+  };
+  const badLabels = [];
+  const moderateLabels = [];
+  for (const p of parts) {
+    const [k, v] = p.split(':');
+    const meta = METADATA[k];
+    if (!meta) { vecItems.push({ label: k, value: v, detail: '', sev: '' }); continue; }
+    const detail = meta[v] || v;
+    const sev = (() => {
+      if (['C', 'I', 'A'].includes(k) && v === 'H') return 'bad';
+      if (k === 'AV' && v === 'N') return 'bad';
+      if (k === 'PR' && v === 'N') return 'bad';
+      if (k === 'UI' && v === 'N') return 'bad';
+      if (k === 'AC' && v === 'L') return 'bad';
+      if (k === 'S' && v === 'C') return 'mid';
+      if (['C','I','A'].includes(k) && v === 'L') return 'mid';
+      if (['C','I','A'].includes(k) && v === 'N') return 'ok';
+      return '';
+    })();
+    vecItems.push({ label: meta.label, value: v, detail, sev });
+    // Track bad metrics for summary
+    if (['C', 'I', 'A'].includes(k) && v === 'H') badLabels.push(meta.label.toLowerCase());
+    if (['AV', 'PR', 'UI'].includes(k) && (v === 'N')) badLabels.push(meta.label.toLowerCase());
+    if (k === 'AC' && v === 'L') badLabels.push('attack complexity');
+    if (k === 'S' && v === 'C') moderateLabels.push('scope change');
+  }
+  const readableVector = cve.vector.replace(/^CVSS:3\.\d\//, '').replace(/([A-Z]+):/g, ' $1:').trim();
+  if (badLabels.length >= 4) {
+    vecExplained = `Remote, zero-click, no-auth — the worst possible CVSS profile. This vulnerability can be exploited from anywhere, requires no credentials, no user interaction, and has maximum impact on confidentiality, integrity, and availability. Score: ${cve.cvss.toFixed(1)} / 10.0.`;
+  } else if (badLabels.length >= 2) {
+    vecExplained = `Moderate severity profile. Key factors: ${badLabels.join(', ')}. Score: ${cve.cvss.toFixed(1)}.`;
+  }
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${cve.id} — CVSS ${cve.cvss} ${sevLabel}`} description={`${cve.id} (CVSS ${cve.cvss}, ${sevLabel}): ${cve.description.slice(0, 200)}`} />
+    <style>
+      .dp { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+      /* Breadcrumb */
+      .bc { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem; }
+      .bc a { color: #9a9aaa; text-decoration: none; }
+      .bc a:hover { color: var(--primary, #ef4444); }
+      .bc span { color: #5a5a68; }
+
+      /* Hero Card */
+      .hero-card {
+        background: #14141b; border: 1px solid #2a2a36;
+        border-radius: 14px; overflow: hidden; margin-bottom: 2rem;
+      }
+      .hero-inner { display: flex; gap: 2rem; padding: 2rem; align-items: flex-start; }
+      .hero-left { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+
+      .gauge { width: 88px; height: 88px; position: relative; }
+      .gb { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#2a2a36 0deg, #2a2a36 180deg, transparent 180deg); }
+      .gf { position: absolute; inset: 0; border-radius: 50%; mask: radial-gradient(circle at center, transparent 65%, black 66%); -webkit-mask: radial-gradient(circle at center, transparent 65%, black 66%); }
+      .gv { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+      .gv .n { font-size: 1.5rem; font-weight: 800; line-height: 1; }
+      .gv .l { font-size: 0.55rem; color: #7a7a88; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1px; }
+
+      .hero-id { font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.4rem; letter-spacing: -0.3px; }
+      .hero-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+      .hero-meta .badge { padding: 0.2rem 0.7rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; }
+      .hero-meta .src-badge { border: 1px solid #2a2a36; color: #9a9aaa; }
+      .hero-date { color: #7a7a88; font-size: 0.85rem; }
+
+      /* Vector explanation */
+      .vec-plaintext { font-family: monospace; font-size: 0.75rem; color: #6a6a78; word-break: break-all; }
+      .vec-summary { margin-top: 0.6rem; font-size: 0.85rem; color: #c8c8d0; line-height: 1.5; padding: 0.5rem 0.75rem; background: #0d0d12; border: 1px solid #23232e; border-radius: 6px; }
+
+      /* Section titles */
+      .sec { margin-bottom: 2rem; }
+      .sec-title { font-size: 0.72rem; color: #6a6a78; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+      .sec-title::after { content: ''; flex: 1; height: 1px; background: #23232e; }
+
+      .desc-text { line-height: 1.8; font-size: 0.95rem; color: #e8e8ed; }
+
+      /* Tags */
+      .tags-wrap { display: flex; flex-direction: column; gap: 0.5rem; }
+      .tags-group { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+      .tags-group .gl { font-size: 0.75rem; color: #6a6a78; min-width: 60px; }
+      .tags-row { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+      .tags-row .t {
+        display: inline-block; padding: 0.2rem 0.6rem; border: 1px solid #2a2a36;
+        border-radius: 5px; font-size: 0.78rem; color: #c8c8d0; text-decoration: none; transition: all 0.12s;
+      }
+      .tags-row .t:hover { border-color: var(--primary, #ef4444); color: var(--primary, #ef4444); background: rgba(239,68,68,0.05); }
+
+      /* CVSS Metric Table */
+      .cvss-table { width: 100%; border-collapse: collapse; }
+      .cvss-table th, .cvss-table td { padding: 0.6rem 0.8rem; border: 1px solid #23232e; text-align: left; }
+      .cvss-table th { font-size: 0.7rem; color: #6a6a78; text-transform: uppercase; letter-spacing: 0.05em; background: #111118; font-weight: 500; }
+      .cvss-table td { font-size: 0.85rem; color: #d0d0dd; }
+      .cvss-table .metric-bad { color: #ef4444; font-weight: 600; }
+      .cvss-table .metric-ok { color: #22c55e; font-weight: 600; }
+      .cvss-table .metric-mid { color: #eab308; font-weight: 600; }
+      .cvss-table tr.low-risk td { color: #7a7a88; }
+      .cvss-table td.detail { color: #9a9aaa; font-size: 0.82rem; }
+
+      /* References */
+      .refs-list { display: grid; gap: 0.25rem; }
+      .refs-list .r { padding: 0.5rem 0; border-bottom: 1px solid #23232e; display: flex; gap: 0.5rem; align-items: baseline; }
+      .refs-list .r:last-child { border-bottom: none; }
+      .refs-list .r a { color: var(--primary, #ef4444); font-size: 0.85rem; word-break: break-all; text-decoration: none; }
+      .refs-list .r a:hover { text-decoration: underline; }
+      .refs-list .r .r-num { color: #5a5a68; font-size: 0.72rem; font-family: monospace; flex-shrink: 0; }
+
+      /* CTA */
+      .cta { padding: 2rem; background: #14141b; border: 1px solid #2a2a36; border-radius: 14px; text-align: center; }
+      .cta h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: #e8e8ed; }
+      .cta p { color: #9a9aaa; font-size: 0.85rem; margin: 0 0 1.25rem; line-height: 1.6; }
+      .cta .bg { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+      .cta .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.12s; }
+      .cta .btn-p { background: var(--primary, #ef4444); color: #fff; border: 1px solid var(--primary, #ef4444); }
+      .cta .btn-p:hover { background: #f87171; border-color: #f87171; }
+      .cta .btn-s { background: transparent; border: 1px solid #2a2a36; color: #c8c8d0; }
+      .cta .btn-s:hover { border-color: var(--primary, #ef4444); color: var(--primary, #ef4444); }
+
+      @media (max-width: 640px) {
+        .hero-inner { flex-direction: column; align-items: center; text-align: center; }
+        .hero-left { flex-direction: row; }
+        .hero-meta { justify-content: center; }
+        .dp { padding: 1.5rem 1rem; }
+        .cvss-table th, .cvss-table td { padding: 0.4rem 0.5rem; }
+        .cvss-table td.detail { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="dp">
+      <div class="bc"><a href="/cves/">All CVEs</a><span>/</span><span>{cve.id}</span></div>
+
+      <!-- Hero Card (score + id only) -->
+      <div class="hero-card" style="border-top: 3px solid {sevColor};">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="gauge">
+              <div class="gb"></div>
+              <div class="gf" style="background: conic-gradient({sevColor} 0deg, {sevColor} {gaugeDeg}deg, transparent {gaugeDeg}deg);"></div>
+              <div class="gv"><span class="n" style="color:{sevColor}">{cve.cvss.toFixed(1)}</span><span class="l">CVSS</span></div>
+            </div>
+            <span style="font-size: 0.72rem; color: #7a7a88;">out of 10</span>
+          </div>
+          <div class="hero-right" style="flex:1;min-width:0;">
+            <div class="hero-id" style="color:{sevColor};">{sevEmoji} {cve.id}</div>
+            <div class="hero-meta">
+              <span class="badge" style="background:{sevBg};color:{sevColor};">{sevLabel}</span>
+              <span class="badge src-badge">{cve.source.toUpperCase()}</span>
+              <span class="badge src-badge" style="background:transparent;">Published {pubDate}</span>
+            </div>
+            {vecExplained && <div class="vec-summary">{vecExplained}</div>}
+            {cve.vector && <div class="vec-plaintext" style="margin-top:0.5rem;">Vector: {cve.vector}</div>}
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      {(vendorTags.length > 0 || vulnTags.length > 0) && (
+        <div class="sec">
+          <div class="sec-title">Tags</div>
+          <div class="tags-wrap">
+            {vendorTags.length > 0 && (
+              <div class="tags-group">
+                <span class="gl">Vendor</span>
+                <div class="tags-row">
+                  {vendorTags.map(t => <a href={`/cves/?q=${t}`} class="t">{t}</a>)}
+                </div>
+              </div>
+            )}
+            {vulnTags.length > 0 && (
+              <div class="tags-group">
+                <span class="gl">Type</span>
+                <div class="tags-row">
+                  {vulnTags.map(t => <a href={`/cves/?q=${t}`} class="t">{t}</a>)}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <!-- Description -->
+      <div class="sec">
+        <div class="sec-title">Description</div>
+        <div class="desc-text">{cve.description}</div>
+      </div>
+
+      <!-- CVSS Metric Table -->
+      {vecItems.length > 0 && (
+        <div class="sec">
+          <div class="sec-title">CVSS Score Breakdown</div>
+          <table class="cvss-table">
+            <thead>
+              <tr>
+                <th style="width:22%">Metric</th>
+                <th style="width:10%">Value</th>
+                <th class="detail">What It Means</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vecItems.map(i => (
+                <tr>
+                  <td style="font-weight:600;">{i.label}</td>
+                  <td class={i.sev === 'bad' ? 'metric-bad' : i.sev === 'mid' ? 'metric-mid' : ''}>{i.value}</td>
+                  <td class="detail">{i.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <!-- References -->
+      {cve.references.length > 0 && (
+        <div class="sec">
+          <div class="sec-title">References ({cve.references.length})</div>
+          <div class="refs-list">
+            {cve.references.map((ref, i) => (
+              <div class="r">
+                <span class="r-num">[{i + 1}]</span>
+                <a href={ref} target="_blank" rel="noopener noreferrer">{ref}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- CTA -->
+      <div class="cta">
+        <h3>Is your infrastructure affected?</h3>
+        <p>This {sevLabel.toLowerCase()} severity vulnerability was published {pubDate}. If your stack uses the affected software, you may be exposed. Scan your domain in 10 seconds — free, no login.</p>
+        <div class="bg">
+          <a href="/scan/" class="btn btn-p">Scan your domain →</a>
+          <a href="/blog/security-fixes-every-saas-needs/" class="btn btn-s">Fix common issues →</a>
+          <a href="/cves/" class="btn btn-s">Browse all CVEs →</a>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

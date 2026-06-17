@@ -41,32 +41,86 @@ function emoji(s: string) {
   return '⚪';
 }
 
-// CVSS vector parser
-const VECTOR_MAP: Record<string, { name: string; values: Record<string, string> }> = {
-  AV: { name: 'Attack Vector', values: { N: 'Network', A: 'Adjacent', L: 'Local', P: 'Physical' } },
-  AC: { name: 'Attack Complexity', values: { L: 'Low', H: 'High' } },
-  PR: { name: 'Privileges Required', values: { N: 'None', L: 'Low', H: 'High' } },
-  UI: { name: 'User Interaction', values: { N: 'None', R: 'Required' } },
-  S: { name: 'Scope', values: { U: 'Unchanged', C: 'Changed' } },
-  C: { name: 'Confidentiality', values: { H: 'High', L: 'Low', N: 'None' } },
-  I: { name: 'Integrity', values: { H: 'High', L: 'Low', N: 'None' } },
-  A: { name: 'Availability', values: { H: 'High', L: 'Low', N: 'None' } },
+// CVSS vector parser — with plain-English explanations for non-security readers
+const VECTOR_MAP: Record<string, { name: string; values: Record<string, { label: string; meaning: string }> }> = {
+  AV: {
+    name: 'Attack Vector',
+    values: {
+      N: { label: 'Network', meaning: 'Exploitable remotely over the internet — no physical or local network access needed' },
+      A: { label: 'Adjacent', meaning: 'Attacker must be on the same local network (Wi-Fi, Bluetooth, LAN)' },
+      L: { label: 'Local', meaning: 'Attacker already has limited shell or user access to the system' },
+      P: { label: 'Physical', meaning: 'Attacker needs physical access to the hardware (USB, console, device in hand)' },
+    },
+  },
+  AC: {
+    name: 'Attack Complexity',
+    values: {
+      L: { label: 'Low', meaning: 'Straightforward to exploit — no special conditions, timing, or luck required' },
+      H: { label: 'High', meaning: 'Requires complex conditions, precise timing, or rare configurations' },
+    },
+  },
+  PR: {
+    name: 'Privileges Required',
+    values: {
+      N: { label: 'None', meaning: 'No login, account, or authentication needed — anyone can attempt the attack' },
+      L: { label: 'Low', meaning: 'Requires basic user-level access (standard account, not admin)' },
+      H: { label: 'High', meaning: 'Requires admin, root, or privileged system-level access' },
+    },
+  },
+  UI: {
+    name: 'User Interaction',
+    values: {
+      N: { label: 'None', meaning: 'Victim does not need to do anything — exploitation is fully automated' },
+      R: { label: 'Required', meaning: 'Victim must take an action — clicking a link, opening a file, visiting a page' },
+    },
+  },
+  S: {
+    name: 'Scope',
+    values: {
+      U: { label: 'Unchanged', meaning: 'Exploit is contained — only the vulnerable component itself is affected' },
+      C: { label: 'Changed', meaning: 'Exploit crosses security boundaries — can impact other systems or data beyond the vulnerable component' },
+    },
+  },
+  C: {
+    name: 'Confidentiality',
+    values: {
+      H: { label: 'High', meaning: 'All data on the affected system could be exposed — passwords, documents, private messages' },
+      L: { label: 'Low', meaning: 'Some data could be exposed, but access is limited — no direct credential or sensitive data dump' },
+      N: { label: 'None', meaning: 'No risk of data exposure or information leaks' },
+    },
+  },
+  I: {
+    name: 'Integrity',
+    values: {
+      H: { label: 'High', meaning: 'Attacker can modify or corrupt any data on the system — files, databases, installed software' },
+      L: { label: 'Low', meaning: 'Limited data modification possible — mostly non-critical files or configuration' },
+      N: { label: 'None', meaning: 'No risk of data tampering or unauthorised changes' },
+    },
+  },
+  A: {
+    name: 'Availability',
+    values: {
+      H: { label: 'High', meaning: 'Attacker can fully take the system offline — crashes, denial of service, complete unavailability' },
+      L: { label: 'Low', meaning: 'Minor performance degradation or reduced capacity — system stays operational but slower' },
+      N: { label: 'None', meaning: 'No impact on system uptime or performance' },
+    },
+  },
 };
 
-function parseVector(vec: string | undefined | null): { key: string; name: string; value: string; label: string; colorClass: string }[] {
+function parseVector(vec: string | undefined | null): { key: string; name: string; value: string; label: string; meaning: string; colorClass: string }[] {
   if (!vec) return [];
   const parts = vec.split('/');
-  const result: { key: string; name: string; value: string; label: string; colorClass: string }[] = [];
+  const result: { key: string; name: string; value: string; label: string; meaning: string; colorClass: string }[] = [];
   for (const part of parts) {
     const m = part.match(/^(AV|AC|PR|UI|S|C|I|A):([A-Z])$/);
     if (m) {
       const key = m[1];
       const val = m[2];
       const meta = VECTOR_MAP[key] || { name: key, values: {} };
-      const label = meta.values[val] || val;
+      const entry = (meta.values as any)[val] || { label: val, meaning: '' };
       const isHigh = val === 'H' || val === 'C' || val === 'N' && key !== 'PR' && key !== 'UI';
       const colorClass = val === 'H' || val === 'C' ? 'val-high' : val === 'L' || val === 'A' || val === 'R' ? 'val-medium' : 'val-low';
-      result.push({ key, name: meta.name, value: val, label, colorClass });
+      result.push({ key, name: meta.name, value: val, label: entry.label, meaning: entry.meaning, colorClass });
     }
   }
   return result;
@@ -158,7 +212,7 @@ const metrics = parseVector(cve.vector);
               {metrics.map((m: any) => <tr>
                 <td class="metric">{m.name}</td>
                 <td class="value" style={`color: ${m.colorClass === 'val-high' ? '#ef4444' : m.colorClass === 'val-medium' ? '#eab308' : '#22c55e'}`}>{m.value}</td>
-                <td class="meaning">{m.label}</td>
+                <td class="meaning">{m.meaning}</td>
               </tr>)}
             </tbody>
           </table>

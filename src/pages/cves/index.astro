@@ -183,6 +183,11 @@ import Header from '../../components/Header.astro';
         }
       });
 
+      // Inject unscoped styles for dynamic innerHTML elements (Astro scoping strips data-cid from innerHTML)
+      const dynStyle = document.createElement('style');
+      dynStyle.textContent = '.badge-tag:hover{background:rgba(0,212,170,0.15)!important;color:var(--accent,#00d4aa)!important}';
+      document.head.appendChild(dynStyle);
+
       fetch('/data/cves.json')
         .then(r => r.json())
         .then(d => {
@@ -255,7 +260,7 @@ import Header from '../../components/Header.astro';
             '<td><span class="sev-badge sev-' + sevClass(c.cvss) + '">' + emoji(c.cvss) + ' ' + sevLabel(c.cvss) + '</span></td>' +
             '<td style="color:var(--ink-muted,#a0a0b0);font-size:0.8rem;line-height:1.4">' +
               (c.description.length > 150 ? c.description.slice(0, 150) + '…' : c.description) + '</td>' +
-            '<td class="col-tags">' + (tags.length ? tags.map(t => '<span class="badge-tag">' + t + '</span>').join('') : '') + '</td>' +
+            '<td class="col-tags">' + (tags.length ? tags.map(t => '<span class="badge-tag" style="display:inline-block;margin:0.2rem 0.35rem;padding:0.12rem 0.45rem;border-radius:3px;font-size:0.7rem;font-weight:500;background:rgba(0,212,170,0.08);color:var(--ink-muted,#a0a0b0);cursor:pointer">' + t + '</span>').join('') : '') + '</td>' +
             '</tr>';
         }).join('');
 

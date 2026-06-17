@@ -1,0 +1,255 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="CVE Vulnerability Database — Search &amp; Browse"
+      description="Search and browse critical vulnerabilities (CVEs) from the National Vulnerability Database. Filter by severity, date range, and keywords. Free."
+    />
+    <style>
+      .cv-page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+      .cv-header { margin-bottom: 1.5rem; }
+      .cv-header h1 { margin: 0 0 0.3rem; }
+      .cv-header .sub { margin: 0; color: var(--ink-muted, #a0a0b0); font-size: 0.9rem; }
+      .cv-header .count { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent, #00d4aa); background: rgba(0,212,170,0.08); padding: 0.2rem 0.6rem; border-radius: 4px; }
+
+      .search-row { margin-bottom: 1rem; }
+      .search-row input {
+        width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border, #2d3b4e);
+        border-radius: 8px; background: var(--bg-card, #161b22); color: #e8edf4;
+        font-size: 0.95rem; outline: none; box-sizing: border-box;
+      }
+      .search-row input:focus { border-color: var(--accent, #00d4aa); }
+
+      .filters { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
+      .pill {
+        padding: 0.35rem 1rem; border: 1px solid var(--border, #2d3b4e); border-radius: 20px;
+        background: transparent; color: var(--ink-muted, #a0a0b0); cursor: pointer;
+        font-size: 0.82rem; font-weight: 500; transition: all 0.15s;
+      }
+      .pill:hover { border-color: var(--accent, #00d4aa); color: var(--accent, #00d4aa); }
+      .pill.active { background: var(--accent, #00d4aa); color: #0d1117; border-color: var(--accent, #00d4aa); font-weight: 600; }
+
+      .statline { font-size: 0.8rem; color: var(--ink-muted, #a0a0b0); margin-bottom: 0.8rem; }
+
+      .cv-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+      .cv-table thead th {
+        text-align: left; padding: 0.6rem 0.8rem; font-size: 0.75rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.04em;
+        color: var(--ink-tertiary, #4a4a58); background: var(--surface-2, #1a1a23);
+        border-bottom: 1px solid var(--border, #2d3b4e); white-space: nowrap;
+      }
+      .cv-table tbody tr { cursor: pointer; transition: background 0.12s; }
+      .cv-table tbody tr:hover { background: rgba(0,212,170,0.04); }
+      .cv-table tbody td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border-light, #1e2a3a); vertical-align: top; }
+      .cve-link { color: var(--accent, #00d4aa); font-weight: 600; text-decoration: none; font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; word-break: break-all; }
+      .cve-link:hover { text-decoration: underline; }
+      .col-id { width: 14%; }
+      .col-score { width: 8%; text-align: center; }
+      .col-sev { width: 10%; }
+      .col-desc { }
+      .col-tags { width: 16%; }
+      .score-badge { font-weight: 700; font-size: 1rem; }
+      .sev-badge {
+        display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+        font-size: 0.72rem; font-weight: 600; color: #fff;
+      }
+      .sev-critical { background: #ef4444; }
+      .sev-high { background: #f97316; }
+      .sev-medium { background: #eab308; color: #0d1117; }
+      .badge-tag {
+        display: inline-block; margin: 0.1rem 0.15rem; padding: 0.1rem 0.4rem;
+        border-radius: 3px; font-size: 0.7rem; font-weight: 500;
+        background: rgba(0,212,170,0.08); color: var(--ink-muted, #a0a0b0);
+        cursor: pointer;
+      }
+      .badge-tag:hover { background: rgba(0,212,170,0.15); color: var(--accent, #00d4aa); }
+
+      .pg { display: flex; justify-content: center; align-items: center; gap: 0.3rem; margin-top: 1.5rem; flex-wrap: wrap; }
+      .pg button {
+        padding: 0.35rem 0.7rem; border: 1px solid var(--border, #2d3b4e); border-radius: 5px;
+        background: transparent; color: var(--ink-muted, #a0a0b0); cursor: pointer; font-size: 0.82rem;
+      }
+      .pg button:hover { border-color: var(--accent, #00d4aa); color: var(--accent, #00d4aa); }
+      .pg button.active { background: var(--accent, #00d4aa); color: #0d1117; font-weight: 600; border-color: var(--accent, #00d4aa); }
+      .pg button:disabled { opacity: 0.4; cursor: default; }
+
+      .no-results { text-align: center; padding: 3rem; color: var(--ink-muted, #a0a0b0); }
+
+      @media (max-width: 720px) {
+        .cv-page { padding: 1rem; }
+        .cv-table { font-size: 0.78rem; }
+        .col-tags { display: none; }
+        .col-score { width: 10%; }
+        .col-sev { width: 12%; }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="cv-page">
+      <div class="cv-header">
+        <h1>CVE Database</h1>
+        <p class="sub">Search critical vulnerabilities indexed from NVD.</p>
+        <span class="count" id="countDisplay">500 indexed</span>
+      </div>
+      <div class="search-row">
+        <input type="text" id="si" placeholder="Search CVE ID, vendor, product, or keyword…" autocomplete="off" />
+      </div>
+      <div class="filters" id="filters">
+        <button class="pill active" data-f="all">All</button>
+        <button class="pill" data-f="critical">🔴 Critical</button>
+        <button class="pill" data-f="high">🟠 High</button>
+        <button class="pill" data-f="medium">🟡 Medium</button>
+      </div>
+      <div class="statline" id="statline">Loading…</div>
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th class="col-id">CVE ID</th>
+            <th class="col-score">Score</th>
+            <th class="col-sev">Severity</th>
+            <th class="col-desc">Description</th>
+            <th class="col-tags">Tags</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="empty" class="no-results" style="display:none"></div>
+      <div class="pg" id="pg"></div>
+    </main>
+    <script>
+      let all = [], filtered = [], page = 1, filter = 'all';
+      const PAGE = 25;
+      const el = id => document.getElementById(id);
+      const tbody = el('tbody'), statline = el('statline'), empty = el('empty'), pgEl = el('pg'), si = el('si'), countDisplay = el('countDisplay');
+
+      const TAG_KEYWORDS = {
+        'azure': /azure|microsoft azure/i, 'aws': /aws|amazon web/i, 'gcp': /gcp|google cloud/i,
+        'kubernetes': /kubernetes|k8s|kube/i, 'docker': /docker|container/i, 'linux': /linux|kernel/i,
+        'windows': /windows|win32|nt kernel/i, 'apple': /apple|macos|ios|iphone|webkit/i,
+        'cisco': /cisco/i, 'vmware': /vmware|vsphere|esxi/i, 'oracle': /oracle|weblogic/i,
+        'apache': /apache|httpd|tomcat|struts|log4j/i, 'nginx': /nginx/i, 'redis': /redis/i,
+        'mongodb': /mongodb/i, 'mysql': /mysql|mariadb/i, 'postgresql': /postgresql|postgres/i,
+        'git': /git|github|gitlab/i, 'jenkins': /jenkins/i, 'node': /node\.js|nodejs/i,
+        'python': /python|pip/i, 'java': /java|jvm|jdk|jre|jar/i, 'go': /golang|go program/i,
+        'rce': /remote code|rce|code execution|arbitrary code/i,
+        'ssrf': /ssrf|server-side request|server side request/i,
+        'xss': /xss|cross-site|cross site scripting/i,
+        'sqli': /sql injection|sqli/i, 'path-traversal': /path traversal|directory traversal/i,
+        'dos': /denial of service|dos|resource exhaustion/i,
+        'privilege-escalation': /privilege escalation|elevation of privilege/i,
+        'buffer-overflow': /buffer overflow|stack overflow|heap overflow/i,
+        'deserialization': /deserialization|serialization/i, 'csrf': /csrf|cross-site request/i,
+        'mitm': /man-in-the-middle|mitm/i, 'auth-bypass': /authentication bypass|auth bypass|unauthorized/i,
+        'memory': /memory corruption|use-after-free|double free|use after free/i,
+        'cloud': /cloud|saas|paas|iaas/i, 'network': /network|tcp|udp|protocol/i,
+        'crypto': /cryptographic|crypto|encryption|tls|ssl|certificate/i,
+      };
+
+      function extractTags(desc) {
+        const tags = [];
+        for (const [tag, re] of Object.entries(TAG_KEYWORDS)) {
+          if (re.test(desc)) tags.push(tag);
+        }
+        return tags.slice(0, 5);
+      }
+
+      function sevClass(cvss) { return cvss >= 9 ? 'critical' : cvss >= 7 ? 'high' : 'medium'; }
+      function sevLabel(cvss) { return cvss >= 9 ? 'CRITICAL' : cvss >= 7 ? 'High' : 'Medium'; }
+      function emoji(cvss) { return cvss >= 9 ? '🔴' : cvss >= 7 ? '🟠' : '🟡'; }
+
+      fetch('/data/cves.json')
+        .then(r => r.json())
+        .then(d => {
+          all = d.cves || [];
+          countDisplay.textContent = all.length + ' indexed';
+          const params = new URLSearchParams(window.location.search);
+          const qParam = params.get('q');
+          if (qParam) {
+            si.value = qParam;
+          }
+          apply();
+        })
+        .catch(() => {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:3rem;color:var(--ink-muted,#a0a0b0)">Failed to load CVE data.</td></tr>';
+          statline.textContent = 'Error loading data';
+        });
+
+      el('filters').addEventListener('click', e => {
+        const btn = e.target.closest('.pill');
+        if (!btn) return;
+        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.f;
+        page = 1;
+        apply();
+      });
+
+      si.addEventListener('input', () => { page = 1; apply(); });
+
+      function apply() {
+        const q = si.value.toLowerCase().trim();
+        let f = all;
+
+        if (filter === 'critical') f = f.filter(c => c.cvss >= 9);
+        else if (filter === 'high') f = f.filter(c => c.cvss >= 7 && c.cvss < 9);
+        else if (filter === 'medium') f = f.filter(c => c.cvss >= 4 && c.cvss < 7);
+
+        if (q) f = f.filter(c => c.id.toLowerCase().includes(q) || c.description.toLowerCase().includes(q));
+
+        filtered = f;
+        page = Math.min(page, Math.ceil(filtered.length / PAGE) || 1);
+        render();
+      }
+
+      function render() {
+        const total = filtered.length;
+        const pages = Math.ceil(total / PAGE) || 1;
+        const start = (page - 1) * PAGE;
+        const items = filtered.slice(start, start + PAGE);
+
+        statline.textContent = total > 0
+          ? total + ' result' + (total !== 1 ? 's' : '') + ' — showing ' + (start+1) + '–' + Math.min(start+PAGE, total)
+          : 'No results';
+
+        if (items.length === 0) {
+          tbody.innerHTML = '';
+          empty.style.display = 'block';
+          empty.innerHTML = '🔍 No CVEs match your search. Try different keywords or clear the filter.';
+          pgEl.innerHTML = '';
+          return;
+        }
+        empty.style.display = 'none';
+
+        tbody.innerHTML = items.map(c => {
+          const tags = extractTags(c.description);
+          return '<tr onclick="window.location.href=\'/cves/' + c.id + '/\'">' +
+            '<td><a href="/cves/' + c.id + '/" class="cve-link">' + c.id + '</a></td>' +
+            '<td style="text-align:center"><span class="score-badge" style="color:' +
+              (c.cvss >= 9 ? '#ef4444' : c.cvss >= 7 ? '#f97316' : '#eab308') + '">' + c.cvss.toFixed(1) + '</span></td>' +
+            '<td><span class="sev-badge sev-' + sevClass(c.cvss) + '">' + emoji(c.cvss) + ' ' + sevLabel(c.cvss) + '</span></td>' +
+            '<td style="color:var(--ink-muted,#a0a0b0);font-size:0.8rem;line-height:1.4">' +
+              (c.description.length > 150 ? c.description.slice(0, 150) + '…' : c.description) + '</td>' +
+            '<td class="col-tags">' + (tags.length ? tags.map(t => '<span class="badge-tag" onclick="event.stopPropagation();window.location.href=\'/cves/?q=' + t + '\'">' + t + '</span>').join('') : '') + '</td>' +
+            '</tr>';
+        }).join('');
+
+        // Pagination
+        let phtml = '';
+        phtml += '<button onclick="page=1;render()" ' + (page === 1 ? 'disabled' : '') + '>«</button>';
+        for (let i = Math.max(1, page - 3); i <= Math.min(pages, page + 3); i++) {
+          phtml += '<button class="' + (i === page ? 'active' : '') + '" onclick="page=' + i + ';render()">' + i + '</button>';
+        }
+        phtml += '<button onclick="page=' + pages + ';render()" ' + (page === pages ? 'disabled' : '') + '>»</button>';
+        pgEl.innerHTML = phtml;
+      }
+    </script>
+    <Footer />
+  </body>
+</html>

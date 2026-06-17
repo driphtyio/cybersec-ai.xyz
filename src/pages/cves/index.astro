@@ -63,7 +63,7 @@ import Header from '../../components/Header.astro';
       .sev-high { background: #f97316; }
       .sev-medium { background: #eab308; color: #0d1117; }
       .badge-tag {
-        display: inline-block; margin: 0.1rem 0.15rem; padding: 0.1rem 0.4rem;
+        display: inline-block; margin: 0.15rem 0.3rem; padding: 0.1rem 0.4rem;
         border-radius: 3px; font-size: 0.7rem; font-weight: 500;
         background: rgba(0,212,170,0.08); color: var(--ink-muted, #a0a0b0);
         cursor: pointer;
@@ -124,7 +124,7 @@ import Header from '../../components/Header.astro';
       <div class="pg" id="pg"></div>
     </main>
     <script>
-      let all = [], filtered = [], page = 1, filter = 'all';
+      let all = [], filtered = []; var page = 1; let filter = 'all';
       const PAGE = 25;
       const el = id => document.getElementById(id);
       const tbody = el('tbody'), statline = el('statline'), empty = el('empty'), pgEl = el('pg'), si = el('si'), countDisplay = el('countDisplay');
@@ -163,6 +163,16 @@ import Header from '../../components/Header.astro';
       function sevClass(cvss) { return cvss >= 9 ? 'critical' : cvss >= 7 ? 'high' : 'medium'; }
       function sevLabel(cvss) { return cvss >= 9 ? 'CRITICAL' : cvss >= 7 ? 'High' : 'Medium'; }
       function emoji(cvss) { return cvss >= 9 ? '🔴' : cvss >= 7 ? '🟠' : '🟡'; }
+
+      // Tag click handler (event delegation)
+      tbody.addEventListener('click', e => {
+        const tag = e.target.closest('.badge-tag');
+        if (tag) {
+          e.stopPropagation();
+          e.preventDefault();
+          window.location.href = '/cves/?q=' + encodeURIComponent(tag.textContent.trim());
+        }
+      });
 
       fetch('/data/cves.json')
         .then(r => r.json())
@@ -236,7 +246,7 @@ import Header from '../../components/Header.astro';
             '<td><span class="sev-badge sev-' + sevClass(c.cvss) + '">' + emoji(c.cvss) + ' ' + sevLabel(c.cvss) + '</span></td>' +
             '<td style="color:var(--ink-muted,#a0a0b0);font-size:0.8rem;line-height:1.4">' +
               (c.description.length > 150 ? c.description.slice(0, 150) + '…' : c.description) + '</td>' +
-            '<td class="col-tags">' + (tags.length ? tags.map(t => '<span class="badge-tag" onclick="event.stopPropagation();window.location.href=\'/cves/?q=' + t + '\'">' + t + '</span>').join('') : '') + '</td>' +
+            '<td class="col-tags">' + (tags.length ? tags.map(t => '<span class="badge-tag">' + t + '</span>').join('') : '') + '</td>' +
             '</tr>';
         }).join('');
 

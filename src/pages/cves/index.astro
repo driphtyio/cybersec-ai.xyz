@@ -263,7 +263,8 @@ import Header from '../../components/Header.astro';
         let phtml = '';
         phtml += '<button data-page="1" ' + (page === 1 ? 'disabled' : '') + '>«</button>';
         for (let i = Math.max(1, page - 3); i <= Math.min(pages, page + 3); i++) {
-          phtml += '<button data-page="' + i + '" class="' + (i === page ? 'active' : '') + '">' + i + '</button>';
+          const isActive = i === page;
+          phtml += '<button data-page="' + i + '" class="' + (isActive ? 'active' : '') + '" style="' + (isActive ? 'background:var(--accent,#00d4aa);color:#0d1117;font-weight:600;border-color:var(--accent,#00d4aa)' : '') + '">' + i + '</button>';
         }
         phtml += '<button data-page="' + pages + '" ' + (page === pages ? 'disabled' : '') + '>»</button>';
         pgEl.innerHTML = phtml;

@@ -7,7 +7,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const allPosts = await getCollection('blog');
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const latest = allPosts.slice(0, 3);
+const latest = allPosts.slice(0, 6);
 ---
 
 <!doctype html>

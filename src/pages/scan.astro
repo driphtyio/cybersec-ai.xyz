@@ -9,313 +9,275 @@ import Footer from '../components/Footer.astro';
   <head>
     <BaseHead title="Security Posture Scanner — Cybersec AI" description="Scan any domain for DNS, SSL, and security header issues. Free. 10 seconds. No login." />
     <style>
-      .scan-page {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 3rem 1.5rem;
-      }
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-      .subtitle {
-        color: var(--color-muted, #889);
-        margin-bottom: 2rem;
-      }
-      .scan-form {
-        display: flex;
-        gap: 0.75rem;
-        margin-bottom: 2rem;
-      }
-      .scan-form input {
-        flex: 1;
-        padding: 0.75rem 1rem;
-        border: 1px solid var(--color-border, #333);
-        border-radius: 8px;
-        background: var(--color-surface, #1a1a1a);
-        color: var(--color-text, #eee);
-        font-size: 1rem;
-        outline: none;
-      }
-      .scan-form input:focus {
-        border-color: var(--color-accent, #00d4aa);
-      }
-      .scan-form button {
-        padding: 0.75rem 1.5rem;
-        background: var(--color-accent, #00d4aa);
-        color: #000;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: opacity 0.15s;
-      }
-      .scan-form button:hover { opacity: 0.85; }
-      .scan-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+      .s-page { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+      h1 { margin: 0 0 0.3rem; }
+      .s-sub { margin: 0 0 1.5rem; color: var(--ink-muted, #a0a0b0); font-size: 0.9rem; }
 
-      .error-msg {
-        color: #f55;
-        padding: 1rem;
-        background: rgba(255,50,50,0.1);
-        border-radius: 8px;
-        margin-bottom: 1rem;
+      /* ── Search & filters (CVE page style) ── */
+      .s-search { margin-bottom: 1rem; }
+      .s-search input {
+        width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border, #2d3b4e);
+        border-radius: 8px; background: var(--bg-card, #161b22); color: #e8edf4;
+        font-size: 0.95rem; outline: none; box-sizing: border-box;
+      }
+      .s-search input:focus { border-color: var(--accent, #00d4aa); }
+      .s-search input::placeholder { color: #555; }
+
+      .s-flex { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+      .s-pill {
+        padding: 0.35rem 1rem; border: 1px solid var(--border, #2d3b4e); border-radius: 20px;
+        background: transparent; color: var(--ink-muted, #a0a0b0); cursor: pointer;
+        font-size: 0.82rem; font-weight: 500; transition: all 0.15s;
+      }
+      .s-pill:hover { border-color: var(--accent, #00d4aa); color: var(--accent, #00d4aa); }
+      .s-btn {
+        padding: 0.7rem 1.75rem; background: var(--accent, #00d4aa); color: #0d1117;
+        border: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+        margin-left: auto; white-space: nowrap;
+      }
+      .s-btn:hover { opacity: 0.85; }
+      .s-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+      .s-err { color: #ef4444; padding: 0.75rem 1rem; background: rgba(239,68,68,.08); border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(239,68,68,.15); }
+
+      /* ── CVE-page hero card (compact) ── */
+      .s-hero {
+        background: var(--bg-card, #161b22); border: 1px solid var(--border, #2d3b4e);
+        border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem;
+      }
+      .s-hero-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+      .s-hero-l {
+        display: flex; align-items: center; gap: 0.75rem;
+        font-size: 1.2rem; font-weight: 700; color: #e8edf4;
+      }
+      .s-hero-domain { font-family: 'JetBrains Mono', monospace; }
+      .s-score-badge { font-weight: 700; font-size: 1.2rem; }
+      .s-hero-r { text-align: right; }
+      .s-hero-verdict { font-size: 0.82rem; color: var(--ink-muted, #a0a0b0); }
+      .s-hero-meta { font-size: 0.75rem; color: #555; margin-top: 2px; }
+
+      .s-hero-stats { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-light, #1e2a3a); }
+
+      /* ── Severity badges (CVE page style) ── */
+      .sev-badge {
+        display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+        font-size: 0.72rem; font-weight: 600; color: #fff;
+      }
+      .sev-critical { background: #ef4444; }
+      .sev-high { background: #f97316; }
+      .sev-medium { background: #eab308; color: #0d1117; }
+
+      /* ── Stats pills ── */
+      .s-stat {
+        display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+        font-size: 0.72rem; font-weight: 600;
+      }
+      .s-green { background: rgba(0,212,170,0.12); color: #00d4aa; }
+      .s-red { background: rgba(239,68,68,0.12); color: #ef4444; }
+      .s-orange { background: rgba(249,115,22,0.12); color: #f97316; }
+      .s-yellow { background: rgba(234,179,8,0.12); color: #eab308; }
+
+      /* ── Table (CVE page style) ── */
+      .s-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+      .s-table thead th {
+        text-align: left; padding: 0.6rem 0.8rem; font-size: 0.75rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.04em;
+        color: var(--ink-tertiary, #4a4a58); background: var(--surface-2, #1a1a23);
+        border-bottom: 1px solid var(--border, #2d3b4e); white-space: nowrap;
+      }
+      .s-table tbody td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border-light, #1e2a3a); vertical-align: top; }
+      .s-table tbody tr { transition: background 0.12s; }
+      .s-table tbody tr:hover { background: rgba(0,212,170,0.04); }
+      .s-row-fail td { background: rgba(239,68,68,.03); }
+      .s-table tr.s-row-fail:hover td { background: rgba(239,68,68,.07); }
+      .chk-name { color: #e8edf4; font-weight: 500; font-size: 0.82rem; white-space: nowrap; }
+      .chk-detail { color: var(--ink-muted, #a0a0b0); font-size: 0.78rem; margin-top: 1px; }
+      .chk-ctx { color: #b0b0c0; font-size: 0.78rem; line-height: 1.4; }
+      .chk-ctx .fix {
+        margin-top: 4px; padding: 4px 8px; font-size: 0.76rem;
+        background: rgba(0,212,170,.06); border-left: 2px solid var(--accent, #00d4aa);
+        border-radius: 3px; color: #bbb;
+      }
+      .chk-ctx .fix strong { color: var(--accent, #00d4aa); }
+
+      /* ── Section header ── */
+      .s-section { margin-bottom: 2rem; }
+      .s-section-title {
+        padding: 0.6rem 0.8rem; font-size: 0.85rem; font-weight: 600;
+        background: var(--bg-card, #161b22); border: 1px solid var(--border, #2d3b4e);
+        border-bottom: none; border-radius: 10px 10px 0 0;
+        display: flex; align-items: center; gap: 0.4rem;
+      }
+      .s-section-title .s-count { font-weight: 400; color: var(--ink-muted, #a0a0b0); font-size: 0.75rem; margin-left: auto; }
+      .s-section table { border: 1px solid var(--border, #2d3b4e); border-radius: 0 0 10px 10px; border-top: none; }
+
+      /* ── CTA ── */
+      .s-cta {
+        margin-top: 1.5rem; padding: 1.5rem; text-align: center;
+        border: 1px solid var(--border, #2d3b4e); border-radius: 12px;
+        background: var(--bg-card, #161b22);
+      }
+      .s-cta h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+      .s-cta p { color: var(--ink-muted, #a0a0b0); font-size: 0.85rem; margin: 0 0 0.75rem; }
+      .s-cta a {
+        display: inline-block; padding: 0.5rem 1.5rem;
+        background: var(--accent, #00d4aa); color: #0d1117;
+        border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.85rem;
       }
 
-      .score-ring {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .score-circle {
-        width: 80px; height: 80px;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.5rem; font-weight: 700;
-        flex-shrink: 0;
-      }
-      .score-a { background: #00d4aa; color: #000; }
-      .score-b { background: #8bc34a; color: #000; }
-      .score-c { background: #ffc107; color: #000; }
-      .score-d { background: #ff9800; color: #000; }
-      .score-f { background: #f44336; color: #fff; }
+      .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.15); border-top-color: var(--accent); border-radius: 50%; animation: sp .6s linear infinite; vertical-align: middle; margin-right: 5px; }
+      @keyframes sp { to { transform: rotate(360deg); } }
 
-      .check-list { display: grid; gap: 0.75rem; }
-      .check-item {
-        display: flex; align-items: flex-start; gap: 0.75rem;
-        padding: 0.75rem 1rem;
-        background: var(--color-surface, #1a1a1a);
-        border-radius: 8px;
-        border: 1px solid var(--color-border, #333);
-      }
-      .check-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
-      .check-pass .check-icon { color: #00d4aa; }
-      .check-fail .check-icon { color: #f44336; }
-      .check-detail { font-size: 0.85rem; color: var(--color-muted, #889); margin-top: 4px; word-break: break-all; }
-
-      .cta-box {
-        margin-top: 3rem;
-        padding: 2rem;
-        background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(0,212,170,0.03));
-        border: 1px solid rgba(0,212,170,0.3);
-        border-radius: 12px;
-        text-align: center;
-      }
-      .cta-box h3 { margin-bottom: 0.75rem; }
-      .cta-box p { color: var(--color-muted, #889); margin-bottom: 1.25rem; font-size: 0.9rem; }
-      .cta-box .btn {
-        display: inline-block;
-        padding: 0.75rem 2rem;
-        background: var(--color-accent, #00d4aa);
-        color: #000;
-        border-radius: 8px;
-        font-weight: 600;
-        text-decoration: none;
+      @media (max-width: 640px) {
+        .s-hero-top { flex-direction: column; align-items: flex-start; }
+        .s-flex { flex-direction: column; }
+        .s-btn { width: 100%; margin-left: 0; }
+        .s-page { padding: 1rem; }
+        .chk-ctx { display: none; }
       }
 
-      .spinner {
-        display: inline-block;
-        width: 18px; height: 18px;
-        border: 2px solid rgba(255,255,255,0.2);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: spin 0.6s linear infinite;
-        vertical-align: middle;
-        margin-right: 8px;
+      /* Widescreen — 1080p+ */
+      @media (min-width: 1200px) {
+        .s-page { max-width: 960px; }
+        .s-search input { font-size: 1rem; padding: 0.8rem 1rem; }
+        .s-hero { padding: 1.5rem 2rem; }
       }
-      @keyframes spin { to { transform: rotate(360deg); } }
 
-      .examples {
-        display: flex; gap: 0.5rem; flex-wrap: wrap;
-        margin-bottom: 1.5rem;
-      }
-      .examples button {
-        padding: 0.35rem 0.75rem;
-        border: 1px solid var(--color-border, #333);
-        border-radius: 6px;
-        background: transparent;
-        color: var(--color-muted, #889);
-        cursor: pointer;
-        font-size: 0.85rem;
-      }
-      .examples button:hover {
-        border-color: var(--color-accent, #00d4aa);
-        color: var(--color-accent, #00d4aa);
+      /* Ultra-wide — 1440p+ */
+      @media (min-width: 1600px) {
+        .s-page { max-width: 1100px; padding: 3rem 1.5rem; }
+        .s-table { font-size: 0.9rem; }
+        .s-table thead th { padding: 0.7rem 1rem; }
+        .s-table tbody td { padding: 0.7rem 1rem; }
+        .s-hero { padding: 1.75rem 2.5rem; }
+        .s-hero-l { font-size: 1.4rem; }
+        h1 { font-size: 1.8rem; }
+        .s-section-title { padding: 0.7rem 1rem; font-size: 0.9rem; }
       }
     </style>
   </head>
   <body>
     <Header />
-    <main class="scan-page">
+    <main class="s-page">
       <h1>Security Posture Scanner</h1>
-      <p class="subtitle">Check what enterprise buyers see when they audit your domain. Free. 10 seconds. No login.</p>
+      <p class="s-sub">Check what enterprise buyers see when they audit your domain. 10 seconds. No login.</p>
 
-      <div class="examples">
-        <button data-domain="example.com">example.com</button>
-        <button data-domain="google.com">google.com</button>
-        <button data-domain="github.com">github.com</button>
+      <div class="s-flex">
+        <button class="s-pill" data-d="stripe.com">stripe.com</button>
+        <button class="s-pill" data-d="github.com">github.com</button>
+        <button class="s-pill" data-d="example.com">example.com</button>
+        <button class="s-btn" id="scan-btn">Scan</button>
       </div>
 
-      <form class="scan-form" id="scan-form">
-        <input type="text" id="domain-input" placeholder="yourdomain.com" autocomplete="off" spellcheck="false" />
-        <button type="submit" id="scan-btn">Scan</button>
-      </form>
+      <div class="s-search">
+        <input type="text" id="domain" placeholder="yourdomain.com" spellcheck="false" />
+      </div>
 
       <div id="results"></div>
 
       <script is:inline>
-        const form = document.getElementById('scan-form');
-        const input = document.getElementById('domain-input');
+        const domain = document.getElementById('domain');
         const btn = document.getElementById('scan-btn');
         const results = document.getElementById('results');
 
-        function scoreClass(score) {
-          if (score >= 90) return 'score-a';
-          if (score >= 70) return 'score-b';
-          if (score >= 50) return 'score-c';
-          if (score >= 30) return 'score-d';
-          return 'score-f';
-        }
-
-        function scoreLabel(score) {
-          if (score >= 90) return 'A';
-          if (score >= 70) return 'B';
-          if (score >= 50) return 'C';
-          if (score >= 30) return 'D';
-          return 'F';
-        }
-
-        function checksToItems(data) {
-          const items = [];
-          const c = data.checks;
-
-          // HTTP headers
-          if (c.http && !c.http.error) {
-            items.push({
-              pass: c.http.hsts && c.http.hsts.present,
-              label: 'HSTS (HTTP Strict Transport Security)',
-              detail: c.http.hsts && c.http.hsts.present ? c.http.hsts.value.substring(0, 60) + '...' : 'Not set — browsers won\'t force HTTPS',
-            });
-            items.push({
-              pass: c.http.csp,
-              label: 'CSP (Content Security Policy)',
-              detail: c.http.csp ? 'Configured' : 'Not set — XSS protection is browser-only',
-            });
-            items.push({
-              pass: !!c.http.xfo,
-              label: 'X-Frame-Options',
-              detail: c.http.xfo || 'Not set — clickjacking possible',
-            });
-            items.push({
-              pass: !!c.http.xcto,
-              label: 'X-Content-Type-Options',
-              detail: c.http.xcto || 'Not set — MIME sniffing possible',
-            });
-            items.push({
-              pass: c.http.finalHost === data.domain,
-              label: 'No redirect to different domain',
-              detail: c.http.finalHost === data.domain ? 'Stays on ' + data.domain : 'Redirects to ' + c.http.finalHost,
-            });
-          } else if (c.http && c.http.error) {
-            items.push({ pass: false, label: 'HTTPS accessible', detail: c.http.error });
-          }
-
-          // Redirect
-          if (c.redirect && !c.redirect.error) {
-            items.push({
-              pass: c.redirect.redirects && c.redirect.toHttps,
-              label: 'HTTP → HTTPS redirect',
-              detail: c.redirect.redirects && c.redirect.toHttps ? 'Redirects properly' : 'No HTTPS redirect',
-            });
-          }
-
-          // DNS
-          items.push({
-            pass: c.spf && c.spf.present,
-            label: 'SPF record',
-            detail: c.spf && c.spf.present ? 'SPF configured' : 'Not set — email spoofing possible',
-          });
-          items.push({
-            pass: c.dkim && c.dkim.present,
-            label: 'DKIM record',
-            detail: c.dkim && c.dkim.present ? 'Found at ' + c.dkim.selector : 'Not found on common selectors',
-          });
-          items.push({
-            pass: c.dmarc && c.dmarc.present && (c.dmarc.policy === 'REJECT' || c.dmarc.policy === 'QUARANTINE'),
-            label: 'DMARC policy',
-            detail: c.dmarc && c.dmarc.present ? 'Policy: ' + c.dmarc.policy : 'Not set — anyone can spoof your domain in email',
-          });
-
-          return items;
-        }
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const domain = input.value.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-          if (!domain || !/^[a-zA-Z0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(domain)) {
-            results.innerHTML = '<div class="error-msg">Enter a valid domain (e.g. example.com)</div>';
+        btn.addEventListener('click', async () => {
+          const d = domain.value.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+          if (!d || !/^[a-zA-Z0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(d)) {
+            results.innerHTML = '<div class="s-err">Enter a valid domain (e.g. example.com)</div>';
             return;
           }
-
           btn.disabled = true;
-          btn.innerHTML = '<span class="spinner"></span> Scanning...';
+          btn.innerHTML = '<span class="spinner"></span> Scanning…';
           results.innerHTML = '';
 
           try {
-            const resp = await fetch('/api/scan?domain=' + encodeURIComponent(domain));
+            const resp = await fetch('/api/scan?domain=' + encodeURIComponent(d));
             if (!resp.ok) {
               const err = await resp.json();
-              results.innerHTML = '<div class="error-msg">' + (err.error || 'Scan failed') + '</div>';
+              results.innerHTML = '<div class="s-err">' + (err.error || 'Scan failed') + '</div>';
               return;
             }
             const data = await resp.json();
+            const fc = data.total - data.passed;
+            const sc = data.score || 0;
+            const clr = sc >= 90 ? '#00d4aa' : sc >= 70 ? '#8bc34a' : sc >= 50 ? '#eab308' : sc >= 30 ? '#f97316' : '#ef4444';
+            const verdict = fc === 0 ? 'All checks passed, no issues found'
+              : fc === 1 ? '1 issue needs attention'
+              : fc + ' issues need attention';
+            let h = '';
 
-            const checks = checksToItems(data);
-            const score = data.score;
-            const cls = scoreClass(score);
-            const label = scoreLabel(score);
+            // ═══ HERO CARD ═══
+            h += '<div class="s-hero">';
+            h += '<div class="s-hero-top">';
+            h += '<div class="s-hero-l">';
+            h += '<span class="s-hero-domain">🛡️ ' + data.domain + '</span>';
+            h += '<span class="s-score-badge" style="color:' + clr + '">' + sc + '/100</span>';
+            h += '</div>';
+            h += '<div class="s-hero-r">';
+            h += '<div class="s-hero-verdict">' + verdict + '</div>';
+            h += '<div class="s-hero-meta">' + data.passed + '/' + data.total + ' checks · ' + new Date(data.timestamp).toLocaleString() + '</div>';
+            h += '</div></div>';
+            h += '<div class="s-hero-stats">';
+            const s = data.severityCounts;
+            h += '<span class="s-stat s-green">✅ ' + data.passed + ' passed</span>';
+            if (s.critical) h += '<span class="s-stat s-red">🔴 ' + s.critical + ' critical</span>';
+            if (s.high) h += '<span class="s-stat s-orange">🟠 ' + s.high + ' high</span>';
+            if (s.medium) h += '<span class="s-stat s-yellow">🟡 ' + s.medium + ' medium</span>';
+            if (!s.critical && !s.high && !s.medium) h += '<span class="s-stat s-green">✨ all clear</span>';
+            h += '</div></div>';
 
-            let html = '<div class="score-ring">';
-            html += '<div class="score-circle ' + cls + '">' + label + '</div>';
-            html += '<div><strong>' + data.passed + '/' + data.total + ' checks passed</strong><br>';
-            html += '<span style="color:var(--color-muted,#889);font-size:0.85rem;">' + data.domain + ' — ' + new Date(data.timestamp).toLocaleString() + '</span></div>';
-            html += '</div>';
-
-            html += '<div class="check-list">';
-            for (const ch of checks) {
-              const cls = ch.pass ? 'check-item check-pass' : 'check-item check-fail';
-              html += '<div class="' + cls + '">';
-              html += '<span class="check-icon">' + (ch.pass ? '&#10003;' : '&#10007;') + '</span>';
-              html += '<div><strong>' + ch.label + '</strong>';
-              if (ch.detail) html += '<div class="check-detail">' + ch.detail + '</div>';
-              html += '</div></div>';
+            // ═══ CATEGORY TABLES ═══
+            for (const [cat, chks] of Object.entries(data.categories)) {
+              const em = chks[0]?.emoji || '🔍';
+              const ok = chks.filter(c => c.passed).length;
+              h += '<div class="s-section">';
+              h += '<div class="s-section-title">' + em + ' ' + cat + ' <span class="s-count">' + ok + '/' + chks.length + '</span></div>';
+              h += '<table class="s-table">';
+              h += '<thead><tr><th>Check</th><th style="width:60px">Result</th><th style="width:70px">Severity</th><th>What It Means</th></tr></thead>';
+              h += '<tbody>';
+              for (const c of chks) {
+                const rcls = c.passed ? '' : 's-row-fail';
+                const icon = c.passed ? '✅' : '❌';
+                const sevClass = c.passed ? 'sev-medium' : 'sev-' + c.severity;
+                const sevLabel = c.passed ? 'Pass' : c.severity;
+                const fixHtml = (!c.passed && c.remediation)
+                  ? '<div class="fix"><strong>🔧 Fix:</strong> ' + c.remediation + '</div>'
+                  : '';
+                h += '<tr class="' + rcls + '">';
+                h += '<td><div class="chk-name">' + c.label + '</div><div class="chk-detail">' + c.detail + '</div></td>';
+                h += '<td>' + icon + '</td>';
+                h += '<td><span class="sev-badge ' + sevClass + '">' + sevLabel + '</span></td>';
+                h += '<td class="chk-ctx">' + c.context + fixHtml + '</td>';
+                h += '</tr>';
+              }
+              h += '</tbody></table></div>';
             }
-            html += '</div>';
 
-            // CTA
-            html += '<div class="cta-box">';
-            html += '<h3>See the full picture</h3>';
-            html += '<p>Your domain scan shows public posture. Connect your infrastructure for a deep security assessment — auto-fill enterprise questionnaires, find hidden gaps, and fix them before your next deal depends on it.</p>';
-            html += '<a href="/" class="btn">Get the full assessment →</a>';
-            html += '</div>';
+            // ═══ CTA ═══
+            h += '<div class="s-cta">';
+            h += '<h3>🔒 Need a deeper look?</h3>';
+            h += '<p>This is a surface scan. Get a full security assessment with auto-filled questionnaires, gap analysis, and fix plans.</p>';
+            h += '<a href="/">Get the full assessment →</a>';
+            h += '</div>';
 
-            results.innerHTML = html;
+            results.innerHTML = h;
           } catch (e) {
-            results.innerHTML = '<div class="error-msg">Scan failed: ' + e.message + '</div>';
+            results.innerHTML = '<div class="s-err">Scan failed: ' + e.message + '</div>';
           } finally {
             btn.disabled = false;
             btn.textContent = 'Scan';
           }
         });
 
-        // Example buttons
-        document.querySelectorAll('.examples button').forEach(b => {
+        document.querySelectorAll('[data-d]').forEach(b => {
           b.addEventListener('click', () => {
-            input.value = b.dataset.domain;
-            form.dispatchEvent(new Event('submit'));
+            domain.value = b.dataset.d;
+            btn.click();
           });
         });
+
+        // Enter key triggers scan
+        domain.addEventListener('keydown', e => { if (e.key === 'Enter') btn.click(); });
       </script>
     </main>
     <Footer />

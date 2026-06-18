@@ -25,7 +25,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
       "author": { "@type": "Person", "name": AUTHOR_NAME },
       "publisher": { "@type": "Organization", "name": SITE_TITLE },
       "mainEntityOfPage": { "@type": "WebPage", "@id": SITE_URL + "/blog/" },
-      "image": heroImage || `${SITE_URL}favicon.svg`
+      "image": heroImage || `${SITE_URL}/favicon.svg`
     }, null, 2)} />
     <meta name="robots" content="index, follow" />
   </head>

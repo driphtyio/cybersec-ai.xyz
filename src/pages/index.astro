@@ -140,4 +140,23 @@ const latest = allPosts.slice(0, 6);
   @media (max-width: 768px) {
     .post-grid { grid-template-columns: 1fr; }
   }
+
+  /* Widescreen — 1080p+ */
+  @media (min-width: 1200px) {
+    .lp { max-width: 1240px; }
+    .post-grid { grid-template-columns: repeat(4, 1fr); }
+    .hero-title { max-width: 900px; }
+    .hero-sub { max-width: 700px; font-size: 1.1em; }
+  }
+
+  /* Ultra-wide — 1440p+ */
+  @media (min-width: 1600px) {
+    .lp { max-width: 1440px; }
+    .post-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5em; }
+    .hero-title { max-width: 1000px; font-size: clamp(1.8em, 3.5vw, 3.2em); }
+    .hero-sub { max-width: 780px; font-size: 1.15em; }
+    .hero { padding: 5em 0 2em; }
+    section { margin: 6em 0; }
+    .section-title { font-size: 1.8em; }
+  }
 </style>

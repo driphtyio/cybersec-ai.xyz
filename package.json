@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postbuild": "npx pagefind --site dist"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
@@ -24,6 +25,7 @@
     "miniflare": "4.20260609.0"
   },
   "devDependencies": {
+    "pagefind": "^1.5.2",
     "wrangler": "4.99.0"
   }
 }

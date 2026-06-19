@@ -1,33 +1,24 @@
 ---
-export interface Props {
-  tags?: string[];
-}
-const { tags = [] } = Astro.props;
 const today = new Date();
 ---
 
 <footer>
   <div class="content">
-    {tags.length > 0 && (
-      <div class="tag-cloud">
-        {tags.map(tag => (
-          <a href={`/blog#tag-${encodeURIComponent(tag)}`} class="tag-pill">{tag}</a>
-        ))}
-      </div>
-    )}
     <div class="network">
       <span class="network-heading">The Network</span>
       <div class="network-links">
-        <a href="https://toolbrain.net" target="_blank" rel="noopener">ToolBrain</a>
-        <a href="https://niteagent.com" target="_blank" rel="noopener">NiteAgent</a>
+        <a href="https://aigamingdev.com" target="_blank" rel="noopener">AIGamingDev</a>
         <a href="https://codeintel.xyz" target="_blank" rel="noopener">CodeIntel</a>
+        <a href="https://cybersec-ai.xyz" target="_blank" rel="noopener">CyberSec AI</a>
         <a href="https://hermes-tutorials.dev" target="_blank" rel="noopener">Hermes Tutorials</a>
-        <a href="https://smarthomefieldguide.com" target="_blank" rel="noopener">SmartHome Field Guide</a>
+        <a href="https://niteagent.com" target="_blank" rel="noopener">NiteAgent</a>
+        <a href="https://nocodeinsider.com" target="_blank" rel="noopener">NoCode Insider</a>
         <a href="https://quantbrainai.net" target="_blank" rel="noopener">QuantBrainAI</a>
-        <a href="https://hermes-tutorials.dev" target="_blank" rel="noopener">Hermes Tutorials</a>
+        <a href="https://smarthomefieldguide.com" target="_blank" rel="noopener">SmartHome Field Guide</a>
+        <a href="https://toolbrain.net" target="_blank" rel="noopener">ToolBrain</a>
       </div>
     </div>
-    <p class="copy">&copy; {today.getFullYear()} NoCode Insider. All rights reserved.</p>
+    <p class="copy">&copy; {today.getFullYear()} CyberSec AI. All rights reserved.</p>
   </div>
 </footer>
 <style>
@@ -39,26 +30,6 @@ const today = new Date();
     text-align: center;
     font-size: 0.85em;
   }
-  .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-    justify-content: center;
-    margin-bottom: 1.5em;
-  }
-  .tag-pill {
-    display: inline-block;
-    padding: 0.3em 0.85em;
-    font-size: 0.9em;
-    font-weight: 500;
-    color: var(--accent);
-    background: rgba(34,197,94,0.07);
-    border: 1px solid rgba(34,197,94,0.15);
-    border-radius: 100px;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  }
-  .tag-pill:hover { background: rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.3); transform: translateY(-1px); }
   .content {
     max-width: 960px;
     margin: 0 auto;

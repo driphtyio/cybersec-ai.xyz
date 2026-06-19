@@ -134,3 +134,11 @@ Before putting money into any AI-themed investment tool, search for it with "sca
 - Barclays: Deepfake Gen Z dating app concerns — [home.barclays](https://home.barclays/news/press-releases/20260/02/ai-deepfake-concerns-see-gen-z--swiping-left--on-dating-apps/)
 - SEC Investor Alert: AI and investment fraud — [investor.gov](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/artificial-intelligence-fraud)
 - United Nations: Deepfakes, voice cloning global wake-up call — [news.un.org](https://news.un.org/en/story/2026/03/1167144)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

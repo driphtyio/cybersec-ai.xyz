@@ -108,3 +108,12 @@ At Microsoft Build 2026 (June 2), Microsoft announced new AI governance and secu
 ---
 
 *All sources cited inline above. This roundup covers major developments from June 15–22, 2026. News is aggregated from BleepingComputer, The Record, TechCrunch, Varonis, CISA, OECD AI Incidents Monitor, DIESEC, CrowdStrike, WEF, and other security news sources.*
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[Hermes Tutorials](https://hermes-tutorials.dev/)** — Hermes Agent setup, configuration, and advanced workflows
+
+*Cross-links automatically generated from None.*

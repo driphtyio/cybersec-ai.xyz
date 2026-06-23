@@ -3,10 +3,8 @@ title: "LLM Prompt Injection: The #1 AI Security Threat in 2026"
 description: "A comprehensive deep research analysis of the prompt injection landscape — from academic taxonomies and real-world CVEs (EchoLeak, Copilot RCE) to enterprise defense strategies and the emerging agent hijacking threat model."
 pubDate: "2026-06-18"
 tags:
-  - deep-research
-  - analysis
   - ai-security
-  - prompt-injection
+  - threat-intelligence
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260618-research-1781796974.jpg"
 ---
 

@@ -3,11 +3,7 @@ title: "AI Scams Are Everywhere in 2026 — Here's How to Spot Them Before You L
 description: "AI-powered scams surged 1,210% in 2025 with $12.5 billion in consumer losses. This guide covers the latest deepfake voice cloning, AI phishing, fake job scams, and romance fraud tactics — plus the red flags that protect you."
 pubDate: "2026-06-19"
 tags:
-  - consumer-alert
-  - scams
-  - ai-fraud
-  - deepfake
-  - phishing
+  - ai-security
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260619-alert-1781885496.jpg"
 ---
 

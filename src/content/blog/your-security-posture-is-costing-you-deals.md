@@ -3,8 +3,7 @@ title: "Your Security Posture Is Costing You Enterprise Deals"
 description: "Enterprise buyers send 150+ security questions per deal. Slow responses kill revenue. Here's what your posture signals — and how to fix it in 10 seconds."
 pubDate: "2026-06-14"
 tags:
-  - Enterprise Sales
-  - Security Posture
+  - compliance
   - Sales Acceleration
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/your-security-posture-is-costing-you-deals-1781506712.jpg"
 ---

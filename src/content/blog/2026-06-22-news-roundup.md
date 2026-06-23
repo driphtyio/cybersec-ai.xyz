@@ -4,8 +4,8 @@ description: "Anthropic forced to shut down Fable 5 and Mythos 5 models, SearchL
 pubDate: "2026-06-22"
 tags:
   - news-roundup
-  - cybersecurity
   - ai-security
+  - threat-intelligence
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260622-news-1782138319.jpg"
 ---
 

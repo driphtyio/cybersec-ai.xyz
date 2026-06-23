@@ -4,7 +4,8 @@ description: "Enterprise buyers check these 9 things before signing. Here's what
 pubDate: "2026-06-14"
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/img-20260614-230415-1781503463.jpg"
 tags:
-  - Security Fixes
+  - compliance
+  - cloud-security
   - Enterprise Readiness
   - DevOps
 ---

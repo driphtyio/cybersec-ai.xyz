@@ -1,0 +1,126 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Security Frameworks We Track — ${SITE_TITLE}`} description={`Industry-standard security frameworks mapped to our content: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, and the new MITRE Fight Fraud Framework (F3).`} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1 class="page-title">Security Frameworks We Track</h1>
+      <p class="page-sub">Every post mapped to industry-standard frameworks — one resource, six compliance checkboxes.</p>
+
+      <section class="frameworks">
+        <div class="framework-card featured">
+          <div class="f-badge">🆕 First-mover coverage — April 2026</div>
+          <h2>MITRE Fight Fraud Framework (F3) v1.1</h2>
+          <p class="f-meta">Released April 9, 2026 · 8 tactics · 123 techniques · 94 fraud-relevant TTPs</p>
+          <p>MITRE's <strong>Fight Fraud Framework (F3)</strong> fills the gap ATT&CK leaves after initial compromise — covering <strong>Positioning</strong> (FA0001) and <strong>Monetization</strong> (FA0002) tactics that traditional frameworks don't enumerate. Co-developed by JPMorganChase, Citigroup, Lloyds, CrowdStrike, and FS-ISAC.</p>
+          <p>F3 addresses AI-enabled fraud at every stage: deepfake-powered account opening, synthetic identity seeding, AI-driven social engineering, automated money mule orchestration, and cryptocurrency off-ramping.</p>
+          <div class="f-tactics">
+            <span class="tactic">FA0001 — Positioning</span>
+            <span class="tactic">FA0002 — Monetization</span>
+            <span class="tactic">F1005 — Beneficiary Setup</span>
+            <span class="tactic">F1007 — Adversary-in-the-Browser</span>
+            <span class="tactic">F1025 — Wire Transfer Fraud</span>
+            <span class="tactic">F1030 — Synthetic Identity</span>
+          </div>
+          <a href="/blog/tag/fraud-detection/" class="f-link">View our fraud-detection posts →</a>
+        </div>
+
+        <div class="framework-card">
+          <h2>MITRE ATT&CK v19.1</h2>
+          <p>The industry standard for adversary TTPs. 15 tactics, 286 techniques. Every post maps relevant techniques (T1078, T1566, T1098, etc.) with validated IDs.</p>
+          <a href="/blog/tag/threat-intelligence/" class="f-link">Threat intelligence posts →</a>
+        </div>
+
+        <div class="framework-card">
+          <h2>NIST CSF 2.0</h2>
+          <p>Six-function framework: Govern, Identify, Protect, Detect, Respond, Recover. Posts map to specific categories (DE.CM, PR.AA, RS.MI, etc.).</p>
+          <a href="/blog/tag/compliance/" class="f-link">Compliance posts →</a>
+        </div>
+
+        <div class="framework-card">
+          <h2>MITRE ATLAS v5.4</h2>
+          <p>AI/ML adversarial threat matrix. 16 tactics, 84 techniques covering prompt injection, model poisoning, data manipulation, and agent hijacking.</p>
+          <a href="/blog/tag/ai-security/" class="f-link">AI security posts →</a>
+        </div>
+
+        <div class="framework-card">
+          <h2>MITRE D3FEND v1.3</h2>
+          <p>Defensive countermeasure catalog. 7 categories, 267 techniques mapped to post-specific detection and prevention strategies.</p>
+        </div>
+
+        <div class="framework-card">
+          <h2>NIST AI RMF 1.0</h2>
+          <p>AI risk management — Govern, Map, Measure, Manage. 4 functions, 72 subcategories for governing AI system risks.</p>
+        </div>
+
+        <div class="framework-card">
+          <h2>OWASP Agentic AI Top 10</h2>
+          <p>Emerging standard for agent-specific threats: Tool Misuse, Excessive Agency, Privilege Compromise, and Prompt Leakage. Coverage expanding as the standard matures.</p>
+        </div>
+      </section>
+
+      <section class="coverage">
+        <h2>Our Coverage by Framework</h2>
+        <p>We're the first independent security publication to map all content to <strong>multiple frameworks simultaneously</strong> — following the methodology proven by the 817-skill <a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank">Anthropic Cybersecurity Skills</a> library (18.8K ★). Each post carries frontmatter tags that map to the relevant framework techniques, so you can find content by the compliance standard you care about.</p>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .page-title { text-align: center; margin-bottom: 0.3em; font-size: 2em; color: #f0f6fc; }
+  .page-sub { text-align: center; font-size: 0.9em; color: rgb(var(--gray)); margin-bottom: 2.5em; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  .frameworks { display: grid; gap: 1.5em; margin-bottom: 3em; }
+  .framework-card {
+    background: var(--bg-card); border: 1px solid var(--border-light);
+    border-radius: 14px; padding: 1.5em 1.8em;
+    transition: border-color 0.25s;
+  }
+  .framework-card:hover { border-color: var(--accent); }
+  .framework-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(0,212,170,0.05), var(--bg-card));
+  }
+  .f-badge {
+    display: inline-block;
+    font-size: 0.72em; font-weight: 600;
+    color: #0a0e14; background: var(--accent);
+    padding: 0.15em 0.7em; border-radius: 100px;
+    margin-bottom: 0.8em; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .framework-card h2 { font-size: 1.15em; font-weight: 650; color: #f0f6fc; margin: 0 0 0.2em; }
+  .f-meta { font-size: 0.78em; color: var(--accent); margin-bottom: 0.8em; }
+  .framework-card p { font-size: 0.88em; color: rgb(var(--gray)); line-height: 1.55; margin: 0 0 0.6em; }
+  .f-tactics { display: flex; flex-wrap: wrap; gap: 0.4em; margin: 0.8em 0; }
+  .tactic {
+    font-size: 0.72em; font-weight: 500;
+    color: var(--accent); background: rgba(0,212,170,0.06);
+    border: 1px solid rgba(0,212,170,0.15);
+    padding: 0.2em 0.6em; border-radius: 100px;
+  }
+  .f-link {
+    display: inline-block; margin-top: 0.3em;
+    font-size: 0.82em; font-weight: 550; color: var(--accent);
+    text-decoration: none;
+  }
+  .f-link:hover { text-decoration: underline; }
+
+  .coverage {
+    background: var(--bg-card); border: 1px solid var(--border-light);
+    border-radius: 14px; padding: 1.5em 1.8em;
+  }
+  .coverage h2 { font-size: 1.1em; font-weight: 650; color: #f0f6fc; margin: 0 0 0.6em; }
+  .coverage p { font-size: 0.88em; color: rgb(var(--gray)); line-height: 1.6; margin: 0; }
+  .coverage a { color: var(--accent); }
+</style>

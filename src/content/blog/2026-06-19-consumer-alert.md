@@ -4,6 +4,7 @@ description: "AI-powered scams surged 1,210% in 2025 with $12.5 billion in consu
 pubDate: "2026-06-19"
 tags:
   - ai-security
+  - fraud-detection
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260619-alert-1781885496.jpg"
 ---
 

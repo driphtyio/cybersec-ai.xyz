@@ -5,6 +5,7 @@ pubDate: "2026-06-14"
 tags:
   - compliance
   - Sales Acceleration
+  - nist-csf
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/your-security-posture-is-costing-you-deals-1781506712.jpg"
 ---
 

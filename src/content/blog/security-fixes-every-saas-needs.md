@@ -8,6 +8,9 @@ tags:
   - cloud-security
   - Enterprise Readiness
   - DevOps
+  - nist-csf
+  - mitre-d3fend
+  - mitre-attck
 ---
 
 Enterprise security teams have a checklist. It's not secret. They check the same 9 things on every domain they evaluate. Most SaaS companies fail 5 of them — not because the fixes are hard, but because nobody told them what to check.

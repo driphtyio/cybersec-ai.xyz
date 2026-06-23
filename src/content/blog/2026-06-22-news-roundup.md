@@ -6,6 +6,9 @@ tags:
   - news-roundup
   - ai-security
   - threat-intelligence
+  - mitre-attck
+  - nist-csf
+  - mitre-atlas
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260622-news-1782138319.jpg"
 ---
 

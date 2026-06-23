@@ -5,6 +5,9 @@ pubDate: "2026-06-18"
 tags:
   - ai-security
   - threat-intelligence
+  - mitre-atlas
+  - nist-ai-rmf
+  - owasp-agentic-ai
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260618-research-1781796974.jpg"
 ---
 

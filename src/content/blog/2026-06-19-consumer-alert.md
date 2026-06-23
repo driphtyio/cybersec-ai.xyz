@@ -5,6 +5,8 @@ pubDate: "2026-06-19"
 tags:
   - ai-security
   - fraud-detection
+  - mitre-f3
+  - mitre-attck
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260619-alert-1781885496.jpg"
 ---
 

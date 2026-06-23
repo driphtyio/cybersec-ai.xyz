@@ -160,3 +160,12 @@ If your organization deploys any LLM-powered feature — customer support chatbo
 12. From prompt injections to protocol exploits: Threats in LLM-powered AI ecosystems, ScienceDirect (2025) — [sciencedirect.com](https://www.sciencedirect.com/science/article/pii/S2405959525001997)
 13. Cisco: Prompt injection is the new SQL injection — [blogs.cisco.com](https://blogs.cisco.com/ai/prompt-injection-is-the-new-sql-injection-and-guardrails-arent-enough)
 14. Proofpoint: Prompt Injection Threat Reference (2025) — [proofpoint.com](https://www.proofpoint.com/us/threat-reference/prompt-injection)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

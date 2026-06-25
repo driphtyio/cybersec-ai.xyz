@@ -5,6 +5,27 @@
 
 <canvas id="attackViz" aria-label="Network security visualization"></canvas>
 
+<div class="viz-legend">
+  <div class="viz-legend-header">How to read this map</div>
+  <div class="viz-legend-items">
+    <div class="viz-legend-item">
+      <span class="viz-dot dot-secure"></span>
+      <span><strong>Secure</strong> — clean connection, no known issues</span>
+    </div>
+    <div class="viz-legend-item">
+      <span class="viz-dot dot-warning"></span>
+      <span><strong>Warning</strong> — downgraded protocol or misconfiguration</span>
+    </div>
+    <div class="viz-legend-item">
+      <span class="viz-dot dot-compromised"></span>
+      <span><strong>Compromised</strong> — breach in progress, attack spreading</span>
+    </div>
+  </div>
+  <div class="viz-legend-footnote">
+    <span class="viz-flow-icon">→</span> Animated particles trace live attack paths through your infrastructure from edge to database.
+  </div>
+</div>
+
 <style>
   #attackViz {
     width: 100%;
@@ -20,6 +41,59 @@
   }
   @media (max-width: 640px) {
     #attackViz { height: 260px; border-radius: 10px; }
+  }
+
+  /* ── Canvas Legend ── */
+  .viz-legend {
+    background: #11141c;
+    border: 1px solid #23232e;
+    border-radius: 12px;
+    padding: 1em 1.25em;
+    margin-top: 0.75em;
+  }
+  .viz-legend-header {
+    color: #a0a0b0;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75em;
+  }
+  .viz-legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .viz-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 0.82em;
+    color: #c0c0cc;
+  }
+  .viz-legend-item strong {
+    color: #e8e8ed;
+  }
+  .viz-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-secure { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.4); }
+  .dot-warning { background: #eab308; box-shadow: 0 0 6px rgba(234,179,8,0.4); }
+  .dot-compromised { background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+  .viz-legend-footnote {
+    margin-top: 0.75em;
+    padding-top: 0.75em;
+    border-top: 1px solid #23232e;
+    font-size: 0.78em;
+    color: #7a7a88;
+  }
+  .viz-flow-icon {
+    color: #eab308;
+    font-weight: bold;
+    margin-right: 0.25em;
   }
 </style>
 

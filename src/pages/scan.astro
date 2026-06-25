@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AttackViz from '../components/AttackViz.astro';
 ---
 
 <!doctype html>
@@ -187,6 +188,10 @@ import Footer from '../components/Footer.astro';
       <div class="s-header">
         <h1>Security Posture Scanner</h1>
         <p>Check what enterprise buyers see when they audit your domain. 10 seconds. No login.</p>
+      </div>
+
+      <div style="margin-bottom:1.5rem">
+        <AttackViz />
       </div>
 
       <div class="s-card">

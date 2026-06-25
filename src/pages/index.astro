@@ -7,7 +7,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const allPosts = await getCollection('blog');
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const latest = allPosts.slice(0, 6);
+const initialCount = 6;
+const perBatch = 6;
 ---
 
 <!doctype html>
@@ -35,9 +36,9 @@ const latest = allPosts.slice(0, 6);
       <!-- Blog feed -->
       <section class="blog-feed">
         <h2 class="section-title">Latest guides</h2>
-        <div class="post-grid">
-          {latest.map((post, i) => (
-            <a href={`/blog/${post.id}/`} class="post-card" style={`--i: ${i}`}>
+        <div class="post-grid" id="post-grid">
+          {allPosts.map((post, i) => (
+            <a href={`/blog/${post.id}/`} class={`post-card${i >= initialCount ? ' hidden' : ''}`} data-index={i} style={`--i: ${i}`}>
               {post.data.heroImage && (
                 <img src={post.data.heroImage} alt="" class="card-img" loading="lazy" />
               )}
@@ -56,13 +57,44 @@ const latest = allPosts.slice(0, 6);
             </a>
           ))}
         </div>
-        <div class="view-all">
-          <a href="/blog/" class="btn btn-secondary">View all posts</a>
-        </div>
+        <div id="scroll-sentinel" class="scroll-sentinel"></div>
       </section>
 
     </main>
     <Footer />
+
+    <script is:inline>
+    (function() {
+      const grid = document.getElementById('post-grid');
+      const sentinel = document.getElementById('scroll-sentinel');
+      if (!grid) return;
+
+      const batchSize = 6;
+      let visibleCount = 6;
+      const cards = Array.from(grid.querySelectorAll('.post-card'));
+      const total = cards.length;
+
+      function loadMore() {
+        const next = Math.min(visibleCount + batchSize, total);
+        for (let i = visibleCount; i < next; i++) {
+          cards[i].classList.remove('hidden');
+        }
+        visibleCount = next;
+        if (visibleCount >= total && sentinel) {
+          sentinel.style.display = 'none';
+        }
+      }
+
+      if (typeof IntersectionObserver !== 'undefined') {
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            loadMore();
+          }
+        }, { rootMargin: '200px' });
+        if (sentinel) observer.observe(sentinel);
+      }
+    })();
+    </script>
   </body>
 </html>
 
@@ -113,8 +145,9 @@ const latest = allPosts.slice(0, 6);
     display: flex; flex-direction: column;
     border: 1px solid var(--border-light); border-radius: 14px;
     background: var(--bg-card); text-decoration: none; overflow: hidden;
-    transition: transform 0.25s, border-color 0.25s;
+    transition: transform 0.25s, border-color 0.25s, opacity 0.3s;
   }
+  .post-card.hidden { display: none; }
   .post-card:hover {
     transform: translateY(-4px); border-color: var(--accent);
   }
@@ -134,7 +167,7 @@ const latest = allPosts.slice(0, 6);
     background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.12);
     padding: 0.15em 0.5em; border-radius: 100px;
   }
-  .view-all { text-align: center; margin-top: 1.5em; }
+  .scroll-sentinel { height: 1px; }
 
   /* Responsive */
   @media (max-width: 768px) {

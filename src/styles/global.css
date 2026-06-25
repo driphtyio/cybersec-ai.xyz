@@ -73,17 +73,17 @@ p { margin-bottom: 1em; line-height: 1.65; }
 
 /* Article prose — clean reading experience */
 .prose {
-  max-width: 680px;
+  max-width: 780px;
   margin: 0 auto;
   font-size: 1em;
   line-height: 1.7;
   color: rgb(var(--gray-dark));
 }
 @media (min-width: 1200px) {
-  .prose { max-width: 720px; }
+  .prose { max-width: 860px; }
 }
 @media (min-width: 1600px) {
-  .prose { max-width: 900px; }
+  .prose { max-width: 1000px; }
 }
 .prose h2 {
   margin-top: 2em;

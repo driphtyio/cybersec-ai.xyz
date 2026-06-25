@@ -147,6 +147,18 @@ import AttackViz from '../components/AttackViz.astro';
       .sev-high { background: #f97316; }
       .sev-medium { background: #eab308; color: #0d1117; }
 
+      /* ── Attack Viz label ── */
+      .viz-wrap { margin-bottom: 1.5rem; }
+      .viz-label {
+        display: flex; align-items: flex-start; gap: 0.75rem;
+        padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+        border: 1px solid var(--border, #2d3b4e); border-radius: 12px;
+        background: var(--bg-card, #161b22);
+      }
+      .viz-label-icon { font-size: 1.3rem; line-height: 1.4; }
+      .viz-label-title { font-weight: 600; font-size: 0.9rem; color: #f0f6fc; margin-bottom: 0.2rem; }
+      .viz-label-sub { font-size: 0.78rem; color: #6b7280; line-height: 1.5; }
+
       /* ── CTA ── */
       .s-cta {
         margin-top: 2rem; padding: 2rem; text-align: center;
@@ -190,7 +202,14 @@ import AttackViz from '../components/AttackViz.astro';
         <p>Check what enterprise buyers see when they audit your domain. 10 seconds. No login.</p>
       </div>
 
-      <div style="margin-bottom:1.5rem">
+      <div class="viz-wrap">
+        <div class="viz-label">
+          <span class="viz-label-icon">🗺️</span>
+          <div>
+            <div class="viz-label-title">Interactive Network Map</div>
+            <div class="viz-label-sub">Hover any node to inspect it. Colored dots show security status; particle trails trace attack paths from edge to database.</div>
+          </div>
+        </div>
         <AttackViz />
       </div>
 

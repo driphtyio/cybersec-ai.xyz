@@ -162,7 +162,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
   .back-to-top.visible { opacity: 1; visibility: visible; }
   .back-to-top:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
-  .hero-image { display: block; margin: 0 auto; border-radius: 12px; width: 100%; aspect-ratio: 16/9; }
+  .hero-image { display: block; margin: 0 auto; border-radius: 12px; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
 
   @media (min-width: 1200px) {
     .article-header { max-width: 1000px; margin: 0 auto 1em; }

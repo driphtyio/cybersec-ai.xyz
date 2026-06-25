@@ -165,3 +165,12 @@ Schwarzer et al. demonstrated that coordinated threat actors (simulating APT-lev
 13. Adnan Masood, "LLM Distillation Attacks — The New AI Extraction Economy," Mar 2026. https://medium.com/@adnanmasood/llm-distillation-attacks-the-new-ai-extraction-economy-20672360b586
 14. Check Point Research, "AI Attacks Are No Longer Experimental: Key Findings from the March-April 2026 AI Threat Landscape," Apr 2026. https://blog.checkpoint.com/research/ai-attacks-are-no-longer-experimental-key-findings-from-the-march-april-2026-ai-threat-landscape/
 15. Foresiet, "6 AI Security Incidents: Full Attack Path Analysis (April 2026)," Apr 2026. https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026/
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

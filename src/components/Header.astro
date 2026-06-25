@@ -5,7 +5,12 @@ import { SITE_TITLE } from '../consts';
 <header>
   <nav>
     <div class="nav-inner">
-      <h2><a href="/">{SITE_TITLE}</a></h2>
+      <a href="/" class="site-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span><span class="brand">CyberSec</span><span class="brand-sub"> AI</span></span>
+      </a>
       <div class="nav-links">
         <a href="/scan/">Scanner</a>
         <a href="/headers/">Headers</a>
@@ -52,11 +57,22 @@ import { SITE_TITLE } from '../consts';
     .nav-inner { max-width: 1440px; }
   }
   h2 { margin: 0; font-size: 1em; }
-  h2 a {
-    text-decoration: none; color: #f0f6fc;
-    font-weight: 600; padding: 0.85em 0; display: inline-block;
+  .site-logo {
+    display: flex; align-items: center; gap: 0.5em;
+    text-decoration: none; padding: 0.85em 0;
   }
-  h2 a:hover { color: var(--accent); }
+  .site-logo svg { flex-shrink: 0; }
+  .site-logo .brand {
+    font-weight: 700; font-size: 1.05em; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #f0f6fc 40%, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .site-logo .brand-sub {
+    color: var(--accent); font-weight: 700; font-size: 1.05em; letter-spacing: -0.02em;
+  }
+  .site-logo:hover { opacity: 0.85; }
   .nav-links { display: flex; gap: 1.2em; align-items: center; margin-left: auto; }
   .nav-links a {
     color: rgb(var(--gray)); font-size: 0.85em; font-weight: 500;

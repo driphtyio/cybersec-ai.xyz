@@ -10,7 +10,7 @@ tags:
   - mitre-d3fend
   - nist-ai-rmf
   - owasp-agentic-ai
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260613-securing-ai.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/securing-ai-stack-1782420180.jpg"
 ---
 
 Modern AI systems aren't just models — they're pipelines. A cron job calls an LLM, which calls an API, which writes to a database, which triggers a deployment. Every hop is an attack surface.

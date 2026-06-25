@@ -118,14 +118,22 @@
 
   // ── Network nodes ──
   const nodes = [
-    { x: 0.5, y: 0.12, label: 'DNS',   r: 24, status: 'warning' },
-    { x: 0.17, y: 0.38, label: 'CDN',    r: 20, status: 'secure' },
-    { x: 0.83, y: 0.38, label: 'CDN',    r: 20, status: 'warning' },
-    { x: 0.5,  y: 0.5,  label: 'WAF / LB', r: 22, status: 'secure' },
-    { x: 0.28, y: 0.68, label: 'Web',   r: 18, status: 'compromised' },
-    { x: 0.72, y: 0.68, label: 'Web',   r: 18, status: 'secure' },
-    { x: 0.4,  y: 0.85, label: 'API',   r: 16, status: 'warning' },
-    { x: 0.6,  y: 0.85, label: 'DB',    r: 16, status: 'secure' },
+    { x: 0.5, y: 0.12, label: 'DNS',   full: 'Domain Name System', desc: 'The phonebook of the internet — translates your domain (yoursite.com) into an IP address that computers use to connect. If an attacker hijacks this, visitors end up on a fake copy of your site.',
+      r: 24, status: 'warning' },
+    { x: 0.17, y: 0.38, label: 'CDN',    full: 'Content Delivery Network', desc: 'A global caching network that stores copies of your site in data centers around the world. Speeds up load times and absorbs DDoS attacks — but a weak config can leak your origin server IP.',
+      r: 20, status: 'secure' },
+    { x: 0.83, y: 0.38, label: 'CDN',    full: 'Content Delivery Network', desc: 'A global caching network that stores copies of your site in data centers around the world. Speeds up load times and absorbs DDoS attacks — but a weak config can leak your origin server IP.',
+      r: 20, status: 'warning' },
+    { x: 0.5,  y: 0.5,  label: 'WAF / LB', full: 'Web Application Firewall / Load Balancer', desc: 'Your security checkpoint and traffic director. The WAF filters out malicious requests before they reach your server, while the LB distributes traffic across multiple servers. A misconfigured WAF is like a guard who waves everyone through.',
+      r: 22, status: 'secure' },
+    { x: 0.28, y: 0.68, label: 'Web',   full: 'Web Server', desc: 'The front door of your app — serves web pages and handles user requests. Runs software like Nginx or Apache. Outdated software or weak configs here are the #1 entry vector for attackers.',
+      r: 18, status: 'compromised' },
+    { x: 0.72, y: 0.68, label: 'Web',   full: 'Web Server', desc: 'The front door of your app — serves web pages and handles user requests. Runs software like Nginx or Apache. Outdated software or weak configs here are the #1 entry vector for attackers.',
+      r: 18, status: 'secure' },
+    { x: 0.4,  y: 0.85, label: 'API',   full: 'API Gateway', desc: 'The controlled entrance for automated traffic — handles data requests between services and external apps. Poorly secured APIs are how attackers extract user data and impersonate services.',
+      r: 16, status: 'warning' },
+    { x: 0.6,  y: 0.85, label: 'DB',    full: 'Database', desc: 'Your crown jewels — stores user data, credentials, payment info, and application content. If an attacker reaches this layer, the breach is complete. This is the final target of every attack chain.',
+      r: 16, status: 'secure' },
   ];
 
   const statusColors = {
@@ -343,26 +351,48 @@
         : n.status === 'warning' ? '#eab308'
         : '#ef4444';
 
-      // Tooltip box
-      const tw = 120, th = 48;
+      // Tooltip box — wider to fit description
+      const lineH = 14;
+      const pad = 12;
+      const tw = Math.min(280, w - 20);
+      const descLines = wrapText(ctx, n.desc, tw - pad * 2);
+      const th = pad * 2 + lineH * 2 + descLines.length * lineH + 8;
       const tx = Math.max(10, Math.min(nx - tw/2, w - tw - 10));
-      const ty = ny - n.r - 52;
+      const ty = Math.max(10, ny - n.r - th - 6);
 
-      ctx.fillStyle = 'rgba(20,20,27,0.92)';
-      ctx.strokeStyle = '#23232e';
+      ctx.fillStyle = 'rgba(16,16,22,0.95)';
+      ctx.strokeStyle = '#2a2a38';
       ctx.lineWidth = 1;
-      roundRect(ctx, tx, ty, tw, th, 8);
+      roundRect(ctx, tx, ty, tw, th, 10);
       ctx.fill();
       ctx.stroke();
 
-      ctx.fillStyle = '#e8e8ed';
-      ctx.font = 'bold 11px Inter, sans-serif';
-      ctx.textAlign = 'left';
-      ctx.fillText(n.label, tx + 12, ty + 18);
+      // Accent bar on left
+      ctx.fillStyle = statusColor;
+      ctx.globalAlpha = 0.3;
+      roundRect(ctx, tx + 3, ty + 3, 3, th - 6, 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
 
+      // Title line: label + full name
+      ctx.fillStyle = '#e8e8ed';
+      ctx.font = 'bold 12px Inter, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(n.label + ' — ' + n.full, tx + pad, ty + pad + 12);
+
+      // Status line
       ctx.fillStyle = statusColor;
       ctx.font = '10px Inter, sans-serif';
-      ctx.fillText(statusLabel, tx + 12, ty + 36);
+      ctx.fillText(statusLabel, tx + pad, ty + pad + 12 + lineH);
+
+      // Description lines
+      ctx.fillStyle = '#b0b0c0';
+      ctx.font = '11px Inter, sans-serif';
+      let dy = ty + pad + 12 + lineH * 2 + 6;
+      for (const line of descLines) {
+        ctx.fillText(line, tx + pad, dy);
+        dy += lineH;
+      }
     }
 
     // ── Live attack counter ──
@@ -399,6 +429,23 @@
     ctx.lineTo(x, y + r);
     ctx.quadraticCurveTo(x, y, x + r, y);
     ctx.closePath();
+  }
+
+  function wrapText(ctx, text, maxWidth) {
+    const words = text.split(' ');
+    const lines = [];
+    let current = '';
+    for (const word of words) {
+      const test = current ? current + ' ' + word : word;
+      if (ctx.measureText(test).width > maxWidth && current) {
+        lines.push(current);
+        current = word;
+      } else {
+        current = test;
+      }
+    }
+    if (current) lines.push(current);
+    return lines;
   }
 
   draw();

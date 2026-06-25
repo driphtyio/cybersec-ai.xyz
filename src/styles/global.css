@@ -82,6 +82,9 @@ p { margin-bottom: 1em; line-height: 1.65; }
 @media (min-width: 1200px) {
   .prose { max-width: 720px; }
 }
+@media (min-width: 1600px) {
+  .prose { max-width: 900px; }
+}
 .prose h2 {
   margin-top: 2em;
   margin-bottom: 0.6em;

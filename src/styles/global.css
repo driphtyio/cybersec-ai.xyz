@@ -51,6 +51,9 @@ main {
 @media (min-width: 1200px) {
   main { max-width: 1240px; }
 }
+@media (min-width: 1440px) {
+  main { max-width: 1400px; }
+}
 @media (min-width: 1600px) {
   main { max-width: 1440px; }
 }
@@ -81,6 +84,9 @@ p { margin-bottom: 1em; line-height: 1.65; }
 }
 @media (min-width: 1200px) {
   .prose { max-width: 860px; }
+}
+@media (min-width: 1440px) {
+  .prose { max-width: 960px; }
 }
 @media (min-width: 1600px) {
   .prose { max-width: 1000px; }

@@ -149,7 +149,12 @@ const latest = allPosts.slice(0, 6);
     .hero-sub { max-width: 700px; font-size: 1.1em; }
   }
 
-  /* Ultra-wide — 1440p+ */
+  /* 1440p */
+  @media (min-width: 1440px) {
+    .lp { max-width: 1400px; }
+  }
+
+  /* Ultra-wide — 1600p+ */
   @media (min-width: 1600px) {
     .lp { max-width: 1440px; }
     .post-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5em; }

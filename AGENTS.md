@@ -47,8 +47,10 @@ Blog posts live in `src/content/blog/` as `.md` files.
 Post frontmatter: `title`, `description`, `pubDate`, `tags`, `heroImage` (mandatory).
 
 ## Quality Gates (MANDATORY)
+* **Content freshness** — Add `lastVerified: YYYY-MM-DD` to post frontmatter when you verify the content is still current. This enables automated staleness detection.
 
 ## Quality Gates (MANDATORY)
+* **Content freshness** — Add `lastVerified: YYYY-MM-DD` to post frontmatter when you verify the content is still current. This enables automated staleness detection.
 
 See `~/.hermes/AGENTS-BASE.md` — shared quality gates apply to all blogs. Blog-specific gates below.
 ## Validation Matrix

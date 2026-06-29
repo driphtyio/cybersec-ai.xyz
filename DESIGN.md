@@ -1,12 +1,13 @@
 ---
 version: alpha
-name: nocodeinsider-design
-description: "A dark-theme no-code automation blog anchored on deep charcoal canvas (#0d0d12) with green accent (#22c55e) as the single chromatic signature. The system reads as approachable, step-by-step guidance: friendly but professional. The green accent appears on links, CTAs, callout borders, and success indicators. Page rhythm relies on screenshots, flow diagrams, and tool interface captures rather than code blocks. Typography uses Inter for readability across devices."
+lastUpdated: 2026-06-29
+name: cybersec-ai-design
+description: "A dark-theme cybersecurity blog anchored on deep charcoal canvas (#0d0d12) with red accent (#ef4444) as the single chromatic signature for warnings, threats, and security findings. The system reads as authoritative and technical: precise, actionable security intelligence. Typography uses JetBrains Mono for code and Inter for body readability."
 
 colors:
-  primary: "#22c55e"
-  primary-hover: "#34d96a"
-  primary-muted: "#22c55e33"
+  primary: "#ef4444"
+  primary-hover: "#f87171"
+  primary-muted: "#ef444433"
   ink: "#e8e8ed"
   ink-muted: "#a0a0b0"
   ink-subtle: "#6b6b7b"

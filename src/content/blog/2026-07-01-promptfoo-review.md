@@ -1,10 +1,6 @@
 ---
 title: "Promptfoo Review: OpenAI's CI/CD-First LLM Red Teaming Tool, Tested"
-<<<<<<< Updated upstream
-description: "Promptfoo, an open-source LLM red-teaming CLI acquired by OpenAI for $86M, integrates into CI/CD with OWASP-mapped reports (also NIST, EU AI Act). It…"
-=======
 description: "Promptfoo is the most widely adopted open-source AI red teaming platform — recently acquired by OpenAI. We test its CI/CD-native workflow, 50+ vulnerability probes, OWASP mapping, and enterprise features. Here's how it compares to Garak and PyRIT for your AI security stack."
->>>>>>> Stashed changes
 pubDate: "2026-07-01"
 tags:
   - tool-review
@@ -28,7 +24,7 @@ lastVerified: 2026-07-01
 
 Promptfoo systematically evaluates and stress-tests LLM applications by sending adversarial prompts through your deployed system and scoring the responses. It catches prompt injection, jailbreaks, data leakage, excessive agency, and hallucination issues before they reach production users.
 
-The tool started as a prompt evaluation framework — testing which prompt variations produced better outputs — then evolved into a full red-teaming platform after the team realized the same infrastructure could systematically probe for security weaknesses. By early 2026, Promptfoo had 18,000+ GitHub stars and was running in production at companies serving 10M+ users, according to the project's GitHub README [promptfoo GitHub](https://github.com/promptfoo/promptfoo).
+The tool started as a prompt evaluation framework — testing which prompt variations produced better outputs — then evolved into a full red-teaming platform after the team realized the same infrastructure could systematically probe for security weaknesses. By early 2026, Promptfoo had 18,000+ GitHub stars [GitHub](https://github.com/promptfoo/promptfoo) and was running in production at companies serving 10M+ users, according to the project's GitHub README.
 
 The key architectural difference from competitors: Promptfoo tests the **application stack**, not just the model endpoint. It runs full HTTP-based red teaming against your deployed system, including RAG pipelines, tool integrations, and agent chains. This means it catches vulnerabilities that model-level scanners miss — like indirect prompt injection through retrieved documents, or tool-call hijacking in agent pipelines.
 
@@ -36,7 +32,7 @@ The key architectural difference from competitors: Promptfoo tests the **applica
 
 | Feature | Detail |
 |---------|--------|
-| **Red Team Probes** | 50+ vulnerability types including prompt injection, jailbreaks, PII leakage, excessive agency, hallucination, SQL injection through LLM, XSS through LLM output |
+| **Red Team Probes** | 50+ vulnerability types [promptfoo.dev](https://www.promptfoo.dev/docs/red-team/plugins/) including prompt injection, jailbreaks, PII leakage, excessive agency, hallucination, SQL injection through LLM, XSS through LLM output |
 | **OWASP Mapping** | Built-in — findings map to OWASP Top 10 for LLM Applications 2025, NIST AI RMF, MITRE ATLAS, EU AI Act |
 | **CI/CD Integration** | Native GitHub Actions, GitLab CI, Jenkins — pass/fail gates on red team results |
 | **Providers** | OpenAI, Anthropic, Azure, Bedrock, Ollama, Google, Mistral, Cohere, Groq, 50+ via LiteLLM |

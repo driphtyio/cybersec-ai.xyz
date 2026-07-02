@@ -59,9 +59,9 @@ Source: [AppSec Santa garak review](https://appsecsanta.com/garak) and [Best LLM
 
 ## Pricing
 
-**$0.** Garak is free and open-source under Apache 2.0. No paid tiers, no enterprise license, no usage caps. You install it locally via pip, and the only cost is the API credits for the target model you're scanning.
+**$0.** Garak is free and open-source under Apache 2.0 [GitHub](https://github.com/NVIDIA/garak). No paid tiers, no enterprise license, no usage caps. You install it locally via pip, and the only cost is the API credits for the target model you're scanning.
 
-This is the strongest pricing advantage in the category. PyRIT (also free) requires more configuration. Promptfoo was acquired by OpenAI in March 2026 and remains MIT-licensed but now has an unknown governance trajectory. Mindgard starts at five figures annually. Garak is genuinely free.
+This is the strongest pricing advantage in the category. PyRIT (also free) requires more configuration. Promptfoo was acquired by OpenAI in March 2026 [TechCrunch](https://techcrunch.com/2026/03/17/openair-acquires-promptfoo/) and remains MIT-licensed but now has an unknown governance trajectory. Mindgard starts at five figures annually. Garak is genuinely free.
 
 Source: [OpenAI acquires Promptfoo — TechCrunch](https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/)
 

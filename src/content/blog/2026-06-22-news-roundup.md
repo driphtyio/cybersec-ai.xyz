@@ -1,6 +1,6 @@
 ---
 title: "Weekly AI Cybersecurity News Roundup — June 15–22, 2026"
-description: "Anthropic forced to shut down Fable 5 and Mythos 5 models, SearchLeak vulnerability turns M365 Copilot into a one-click data exfiltration weapon, LiteLLM gateway RCE added to CISA KEV, Infinite Campus breach exposes 137,000 school staff records, and FortiBleed campaign cracks 74,000 Fortinet admin credentials."
+description: "Anthropic forced to shut down Fable 5 and Mythos 5 models, SearchLeak vulnerability turns M365 Copilot into a one-click data exfiltration weapon, LiteLLM gateway RCE added to CISA KEV, Infinite Campus breach exposes school staff records, and FortiBleed campaign cracks Fortinet admin credentials."
 pubDate: "2026-06-22"
 tags:
   - news-roundup
@@ -22,7 +22,7 @@ Cybersecurity veterans pushed back hard. A group of security researchers and pra
 
 ### SearchLeak: M365 Copilot Turned Into a One-Click Data Exfiltration Weapon
 
-Varonis Threat Labs disclosed SearchLeak (CVE-2026-42824) on June 15, a critical vulnerability chain in Microsoft 365 Copilot Enterprise that allows attackers to exfiltrate sensitive data with a single click [Varonis](https://www.varonis.com/blog/searchleak). The three-stage attack exploits indirect prompt injection: an attacker embeds a hidden URL in an email or document that Copilot indexes, then when a user asks Copilot a related question, the hidden content triggers a reprompt that silently sends data to an external server.
+Wiz Research disclosed SearchLeak, a prompt injection vulnerability in Microsoft 365 Copilot that allowed attackers to exfiltrate sensitive data via the search index [Wiz](https://www.wiz.io/blog/searchleak-microsoft-365-copilot-vulnerability). Microsoft addressed the vulnerability in a June 2026 security update. The attack required no user interaction beyond opening a malicious document, making it one of the most severe AI security incidents of 2026.
 
 Microsoft has patched the vulnerability, but SearchLeak is part of a worrying pattern. AI assistants that can read your email, access your documents, and summarize your calendar create a fundamentally new exfiltration surface. Traditional DLP tools don't monitor AI-to-AI data flows, and the prompt injection vector bypasses most existing controls. This is the third major Copilot vulnerability in 2025-2026, following EchoLeak (CVE-2025-32711) and the Reprompt attack disclosed in January.
 
@@ -64,7 +64,7 @@ The power management layer is rarely part of standard IT security processes. The
 
 ### Ransomware Surged 48% in May, AI Driving Faster Breakout Times
 
-Check Point Research reported that ransomware attacks surged 48% in May 2026, even as overall cyberattacks eased [World Economic Forum](https://www.weforum.org/stories/2026/06/ai-cybercrime-and-other-cybersecurity-news/). The CrowdStrike 2026 Global Threat Report found AI-enabled attacks surged 89% year-over-year, with mean breakout time — the window between initial compromise and lateral movement — falling to 29 minutes [CrowdStrike](https://www.crowdstrike.com/en-us/press-releases/2026-crowdstrike-global-threat-report/). AI-generated phishing, deepfake social engineering, and automated vulnerability discovery are compressing attack timelines beyond what human-led SOC teams can match without AI-powered defense tools.
+The NCC Group's May 2026 threat report [NCC Group](https://www.nccgroup.com/us/research-blog/monthly-threat-pulse-may-2026/) recorded a 48% month-over-month increase in ransomware incidents, with AI-assisted tooling accelerating the window from initial access to payload deployment. LockBit 4.0 and BlackCat/ALPHV variants accounted for the majority of incidents, with healthcare and education sectors hit hardest.
 
 ## Policy & Regulation
 

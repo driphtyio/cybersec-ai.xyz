@@ -139,7 +139,7 @@ After adding it, verify with `dig default._domainkey.yourdomain.com TXT`. Test w
 
 **Why it matters:** DMARC tells receiving servers what to do when an email fails SPF and DKIM checks. Without DMARC — or with a `p=none` policy — those failed emails still get delivered. Attackers can spoof your domain and the emails reach the inbox. With `p=reject`, spoofed emails are dropped.
 
-65% of enterprise buyers check DMARC policies during vendor evaluation [4]. A missing or permissive policy is a red flag.
+65% of enterprise buyers check DMARC policies during vendor evaluation [EasyDMARC 2026 DMARC Adoption Report](https://easydmarc.com/blog/easydmarc-releases-2026-dmarc-adoption-report/). A missing or permissive policy is a red flag.
 
 **What buyers see:** "Domain spoofable. Anyone can send phishing emails as this company."
 

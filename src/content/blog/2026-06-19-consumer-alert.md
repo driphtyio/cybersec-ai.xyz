@@ -1,6 +1,6 @@
 ---
 title: "AI Scams Are Everywhere in 2026 — Here's How to Spot Them Before You Lose Money"
-description: "AI-powered scams surged 1,210% in 2025 with $12.5 billion in consumer losses. This guide covers the latest deepfake voice cloning, AI phishing, fake job scams, and romance fraud tactics — plus the red flags that protect you."
+description: "AI-powered scams are the fastest-growing fraud category. This guide covers the latest deepfake voice cloning, AI phishing, fake job scams, and romance fraud tactics — plus the red flags that protect you."
 pubDate: "2026-06-19"
 tags:
   - ai-security
@@ -12,9 +12,9 @@ heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260619-alert-1
 
 ## What's Happening
 
-AI scams are the fastest-growing fraud category in cybersecurity. In 2025, AI-powered scams surged **1,210%** — far outpacing the 195% growth in traditional fraud. The FBI's 2025 Internet Crime Report recorded **22,364 complaints** involving AI, with reported losses of **$893 million**. And the real number is almost certainly higher, since most AI scams go unreported.
+AI scams are the fastest-growing fraud category in cybersecurity. In 2025, AI-powered scams surged **1,210%** [FBI IC3 2025](https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions) — far outpacing the 195% growth in traditional fraud. The same report recorded **22,364 complaints** involving AI, with reported losses of **$893 million**. And the real number is almost certainly higher, since most AI scams go unreported.
 
-By early 2026, the damage has crossed **$12.5 billion** in annual consumer losses, according to FTC data cited by Experian. Experts project AI-enabled fraud could hit **$40 billion by 2027**.
+By early 2026, the damage has crossed **$12.5 billion** in annual consumer losses, according to FTC data cited by [Experian's 2026 Fraud Forecast](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). Experts project AI-enabled fraud could hit **$40 billion by 2027** [Fortune](https://fortune.com/2026/01/13/ai-fraud-forecast-2026-experian-deepfakes-scams/).
 
 The reason is simple: AI tools that used to require specialized skills are now free, fast, and anonymous. Anyone can clone a voice from 30 seconds of audio, generate a photorealistic deepfake from a single photo, or write convincing phishing emails in any language.
 
@@ -26,33 +26,33 @@ The reason is simple: AI tools that used to require specialized skills are now f
 
 Scammers extract 10-30 seconds of your voice from social media videos, voicemail greetings, or phone calls. AI voice cloning tools replicate your tone, pitch, and cadence. The scammer calls your family member using your voice and says they're in trouble — arrested, in a hospital, stranded abroad — and need money urgently.
 
-The Canadian "grandparent scam" ring used AI voice cloning to steal **$21 million** from elderly Americans across multiple states, as documented by CBC News and the AI Incident Database.
+The Canadian "grandparent scam" ring used AI voice cloning to steal **$21 million** from elderly Americans across multiple states, as documented by [CBC News](https://www.cbc.ca/news/marketplace/marketplace-ai-voice-scam-1.7486437) and the [AI Incident Database](https://incidentdatabase.ai/cite/973/).
 
 ### 2. Deepfake Video
 
-A single photo is enough to generate a fake video of you. Scammers use deepfakes to impersonate executives in video calls — the famous Hong Kong case saw a finance worker pay out **$25 million** after a video call with deepfake versions of his "chief financial officer" and colleagues. The same technology now powers fake ID verification, fake dating profiles, and fake news anchors pushing investment scams.
+A single photo is enough to generate a fake video of you. Scammers use deepfakes to impersonate executives in video calls — the famous Hong Kong case saw a finance worker pay out **$25 million** after a video call with deepfake versions of his "chief financial officer" and colleagues [CNN](https://edition.cnn.com/2024/02/04/asia/deepfake-cfo-scam-hong-kong-intl-hnk). The same technology now powers fake ID verification, fake dating profiles, and fake news anchors pushing investment scams.
 
 ### 3. AI-Generated Phishing
 
-Traditional phishing emails had spelling errors and awkward phrasing — easy red flags. AI-generated phishing emails are grammatically perfect, personalized, and localized into any language. The Cofense Phishing Defense Center recorded **one malicious email every 19 seconds** in 2025, more than double the 2024 rate. Attacks are now "polymorphic" — each email mutates slightly to bypass spam filters, making signature-based detection nearly useless.
+Traditional phishing emails had spelling errors and awkward phrasing — easy red flags. AI-generated phishing emails are grammatically perfect, personalized, and localized into any language. The [Cofense Phishing Defense Center](https://cofense.com/Blog/Cofense-Report-Reveals-AI-Powered-Phishing-Accelerated-to-One-Attack-Every-19-Seconds) recorded **one malicious email every 19 seconds** in 2025, more than double the 2024 rate. Attacks are now "polymorphic" — each email mutates slightly to bypass spam filters, making signature-based detection nearly useless.
 
 ### 4. Fake AI Tool Scams
 
-Scammers create fake AI-powered investment platforms, trading bots, and crypto mining tools. They promise guaranteed returns, show fake AI-generated performance dashboards, and pay early "investors" with new victims' money — a classic Ponzi scheme wrapped in AI marketing. The SEC and FBI have documented fake AI investment tools that defrauded consumers of at least **$25 million**.
+Scammers create fake AI-powered investment platforms, trading bots, and crypto mining tools. They promise guaranteed returns, show fake AI-generated performance dashboards, and pay early "investors" with new victims' money — a classic Ponzi scheme wrapped in AI marketing. The [SEC and FBI](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/artificial-intelligence-fraud) have documented fake AI investment tools that defrauded consumers of at least **$25 million**.
 
 ---
 
 ## Real Examples
 
-**The FBI's 2025 numbers:** 22,364 AI-related complaints, $893 million in losses. The agency warns that voice cloning and deepfake scams now account for a significant share of their caseload, with elderly Americans disproportionately targeted.
+**The FBI's 2025 numbers:** 22,364 AI-related complaints, $893 million in losses [FBI IC3 2025](https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions). The agency warns that voice cloning and deepfake scams now account for a significant share of their caseload, with elderly Americans disproportionately targeted.
 
-**The Canadian grandparent scam ring:** Fraudsters used AI voice cloning to pose as grandchildren in distress, calling elderly victims across the United States. The multi-year scheme extracted $21 million before authorities dismantled it. The FCC now lists the grandparent scam as the #1 scam targeting older adults.
+**The Canadian grandparent scam ring:** Fraudsters used AI voice cloning to pose as grandchildren in distress, calling elderly victims across the United States. The multi-year scheme extracted $21 million before authorities dismantled it [FCC](https://www.fcc.gov/consumers/scam-alert/grandparent-scams-get-more-sophisticated). The FCC now lists the grandparent scam as the #1 scam targeting older adults.
 
 **The $25 million deepfake CFO:** In February 2024, a Hong Kong finance worker joined a video call where every participant — including the "CFO" — was a deepfake. The worker authorized a $25 million transfer. The case remains the highest-profile deepfake corporate fraud on record.
 
-**The fake candidate surge:** Experian's 2026 Fraud Forecast warns that deepfake candidates are infiltrating remote hiring processes. Nearly 60% of companies reported increased fraud losses from 2024 to 2025. AI-generated resumes, voice-cloned interviews, and synthetic identity documents make it possible to fake an entire professional identity.
+**The fake candidate surge:** Experian's 2026 Fraud Forecast warns that deepfake candidates are infiltrating remote hiring processes [Experian](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). Nearly 60% of companies reported increased fraud losses from 2024 to 2025. AI-generated resumes, voice-cloned interviews, and synthetic identity documents make it possible to fake an entire professional identity.
 
-**AI romance scams:** Barclays reported in February 2026 that Gen Z users are "swiping left" on dating apps out of fear of AI-generated personas. The average romance scam loss in 2025 was £7,000 ($9,100). Scammers use AI-generated faces (from websites like thispersondoesnotexist.com) and deepfake selfies to build trust that leads to fake investment pitches.
+**AI romance scams:** Barclays reported in February 2026 that Gen Z users are "swiping left" on dating apps out of fear of AI-generated personas [Barclays](https://home.barclays/news/press-releases/20260/02/ai-deepfake-concerns-see-gen-z--swiping-left--on-dating-apps/). The average romance scam loss in 2025 was £7,000 ($9,100). Scammers use AI-generated faces (from websites like thispersondoesnotexist.com) and deepfake selfies to build trust that leads to fake investment pitches.
 
 ---
 

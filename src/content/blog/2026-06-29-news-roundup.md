@@ -1,6 +1,6 @@
 ---
 title: "Weekly AI Cybersecurity News Roundup — June 22–29, 2026"
-description: "CISA issues BOD 26-04 with 3-day critical patching mandates, Sophos uncovers AI-powered malware lab using Claude Opus for EDR evasion, Check Point VPN zero-day exploited since May, Cisco SD-WAN gets second zero-day patch in two weeks, and Verizon DBIR reveals 45% of employees now using AI on corporate devices — 67% via personal accounts."
+description: "CISA issues BOD 26-04 with critical patching mandates, Sophos uncovers AI-powered malware lab using Claude Opus for EDR evasion, Check Point VPN zero-day exploited since May, Cisco SD-WAN gets second zero-day patch in two weeks, and Verizon DBIR reveals employees using AI on corporate devices — many via personal accounts."
 pubDate: "2026-06-29"
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260629-news-1782744470.jpg"
 tags:
@@ -58,13 +58,13 @@ Langflow is widely used in AI/ML development workflows to build retrieval-augmen
 
 The Verizon 2026 Data Breach Investigations Report (DBIR), published May 19, delivered a stark statistic: **45% of employees are now regular AI users on corporate devices**, up from just 15% the previous year — a tripling in twelve months [Verizon](https://www.verizon.com/about/news/breach-industry-wide-dbir-finds). Even more concerning: 67% of those employees are accessing AI tools through **personal, non-corporate accounts**, bypassing enterprise security controls entirely [AllCovered](https://www.allcovered.com/blog/key-takeaways-from-the-verizon-dbir).
 
-The DBIR also found that mobile social engineering success rates increased 40%, suggesting that AI-generated phishing messages are becoming harder to distinguish from legitimate communications. The report's recommendation is blunt: organizations must treat AI adoption as a data loss prevention problem, not just a productivity opportunity, and deploy controls that monitor AI tool access regardless of the account used.
+The DBIR also found that mobile social engineering success rates increased 40% [Verizon DBIR 2026](https://www.verizon.com/business/resources/reports/dbir/), suggesting that AI-generated phishing messages are becoming harder to distinguish from legitimate communications. The report's recommendation is blunt: organizations must treat AI adoption as a data loss prevention problem, not just a productivity opportunity, and deploy controls that monitor AI tool access regardless of the account used.
 
 ### Check Point: Travel Phishing Surges 122% Over Three Years
 
 Check Point Research detailed a massive surge in travel-themed phishing attacks, with the hospitality and travel industry facing an average of **2,291 weekly attacks per organization** in May 2026 — a 122% cumulative increase since 2023 [Check Point](https://blog.checkpoint.com/research/travel-phishing-and-cyber-attacks-are-surging-in-2026-growing-122-over-the-last-3-years-heres-what-cyber-criminals-are-actually-doing/). Attackers registered **47,318 travel-related domains** for phishing campaigns in the first half of 2026 alone [SC World](https://www.scworld.com/brief/summer-vacation-scams-surge-targeting-travel-industry).
 
-The travel sector's 122% growth rate far exceeds the 2% global average across all industries. Attackers are capitalizing on summer travel season with fake booking sites, fake airline customer support, and fake travel insurance offers — all increasingly AI-generated with near-perfect grammar and localized content.
+The travel sector's 122% growth rate [Check Point Research](https://blog.checkpoint.com/research/travel-phishing-and-cyber-attacks-are-surging-in-2026-growing-122-over-the-last-3-years-heres-what-cyber-criminals-are-actually-doing/) far exceeds the 2% global average across all industries. Attackers are capitalizing on summer travel season with fake booking sites, fake airline customer support, and fake travel insurance offers — all increasingly AI-generated with near-perfect grammar and localized content.
 
 ### Ransomware Surged 48% in May 2026
 
@@ -90,7 +90,7 @@ The clearinghouse is intended to serve as a central repository for threat intell
 
 4. **AI-powered EDR evasion commoditization**: The Sophos findings suggest a future where AI-generated malware testing is a paid service. Watch for the first "evasion-as-a-service" offerings on criminal forums.
 
-5. **Shadow AI policy enforcement**: With Verizon's DBIR showing 67% of AI tool usage on personal accounts, expect major compliance-driven policy rollouts in H2 2026 — and likely the first significant fines for inadequate AI data governance.
+5. **Shadow AI policy enforcement**: With Verizon's DBIR showing 67% of AI tool usage on personal accounts [AllCovered](https://www.allcovered.com/blog/key-takeaways-from-the-verizon-dbir), expect major compliance-driven policy rollouts in H2 2026 — and likely the first significant fines for inadequate AI data governance.
 
 6. **Langflow internet scanning**: Following disclosure, expect Shodan/Censys scans for exposed Langflow instances. If you run Langflow, ensure it's behind a VPN or authentication proxy.
 

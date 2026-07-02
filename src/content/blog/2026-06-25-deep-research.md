@@ -108,7 +108,7 @@ Schwarzer et al. demonstrated that coordinated threat actors (simulating APT-lev
 
 ## Key Findings
 
-1. **The cost of extraction has collapsed.** In 2016, Tramèr et al. required tens of thousands of queries to extract simple decision-tree models. By 2026, 1,000 API queries costing $20 can functionally replicate a production classifier with 80% accuracy. The query-to-value ratio now heavily favors attackers.
+1. **The cost of extraction has collapsed.** In 2016, Tramèr et al. required tens of thousands of queries to extract simple decision-tree models [Tramèr et al., USENIX Security 2016](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/tramer). By 2026, 1,000 API queries costing $20 can functionally replicate a production classifier with 80% accuracy. The query-to-value ratio now heavily favors attackers.
 
 2. **The Single Client Assumption is dead.** The CerberusAI paper proved that any defense relying on per-client anomaly detection can be bypassed by coordinated attackers distributing queries across 5–10 identities. This invalidates the core assumption behind PRADA and similar defenses.
 

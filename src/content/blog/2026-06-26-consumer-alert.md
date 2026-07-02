@@ -1,6 +1,6 @@
 ---
 title: "\"Crying Child\" AI Kidnapping Scams and the New Wave of Family Emergency Fraud"
-description: "A terrifying new wave of AI voice-cloning scams makes parents believe their children have been kidnapped — using just 10 seconds of audio from social media. This guide covers the latest 'crying child' scam, fake shopping sites powered by ChatGPT, Google's June 2026 fraud advisory, and the exact steps to protect your family."
+description: "A terrifying new wave of AI voice-cloning scams makes parents believe their children have been kidnapped — using just moments of audio from social media. This guide covers the latest 'crying child' scam, fake shopping sites powered by ChatGPT, Google's fraud advisory, and the exact steps to protect your family."
 pubDate: "2026-06-26"
 tags:
   - ai-security

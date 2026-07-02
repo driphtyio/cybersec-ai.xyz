@@ -1,6 +1,10 @@
 ---
 title: "Promptfoo Review: OpenAI's CI/CD-First LLM Red Teaming Tool, Tested"
-description: "Promptfoo (18K+ GitHub stars, MIT license) is the most widely adopted open-source AI red teaming platform — recently acquired by OpenAI for $86M. We test its CI/CD-native workflow, 50+ vulnerability probes, OWASP mapping, and enterprise features. Here's how it compares to Garak and PyRIT for your AI security stack."
+<<<<<<< Updated upstream
+description: "Promptfoo, an open-source LLM red-teaming CLI acquired by OpenAI for $86M, integrates into CI/CD with OWASP-mapped reports (also NIST, EU AI Act). It…"
+=======
+description: "Promptfoo is the most widely adopted open-source AI red teaming platform — recently acquired by OpenAI. We test its CI/CD-native workflow, 50+ vulnerability probes, OWASP mapping, and enterprise features. Here's how it compares to Garak and PyRIT for your AI security stack."
+>>>>>>> Stashed changes
 pubDate: "2026-07-01"
 tags:
   - tool-review
@@ -16,7 +20,7 @@ lastVerified: 2026-07-01
 
 ## TL;DR
 
-**Promptfoo** is an open-source CLI and library for evaluating and red-teaming LLM applications, now part of OpenAI following a $86M acquisition in March 2026. Unlike Garak (which tests base model vulnerabilities) or PyRIT (which orchestrates custom multi-turn attacks), Promptfoo focuses on the application layer — integrating directly into your CI/CD pipeline with YAML-based configuration, OWASP-mapped vulnerability reports, and a built-in web viewer for results.
+**Promptfoo** is an open-source CLI and library for evaluating and red-teaming LLM applications, now part of OpenAI following a acquisition [TechCrunch](https://techcrunch.com/2026/03/17/openair-acquires-promptfoo/). Unlike Garak (which tests base model vulnerabilities) or PyRIT (which orchestrates custom multi-turn attacks), Promptfoo focuses on the application layer — integrating directly into your CI/CD pipeline with YAML-based configuration, OWASP-mapped vulnerability reports, and a built-in web viewer for results.
 
 **Verdict: 8.5/10** — the best choice for engineering teams that need security testing embedded in pull requests. The OWASP LLM Top 10 mapping and compliance-ready reports are unmatched in open source. But the OpenAI acquisition introduces governance uncertainty, and the free tier caps at 10K probes/month. Best paired with Garak for pre-deployment model scanning.
 
@@ -92,7 +96,7 @@ brew install promptfoo
 pip install promptfoo
 ```
 
-Requirements: Node.js ^20.20.0 or >=22.22.0. Node.js 20 support ends July 30, 2026, so upgrading to Node 24 LTS is recommended before the cutoff.
+Requirements: Node.js ^20.20.0 or >=22.22.0. Node.js 20 support ends July 30, 2026 [Node.js Releases](https://nodejs.org/en/about/previous-releases), so upgrading to Node 24 LTS is recommended before the cutoff.
 
 After installation, initialize a project and run your first red team scan:
 
@@ -194,3 +198,12 @@ Source: [BeyondScale AI Red Teaming Comparison](https://beyondscale.tech/blog/ai
 8. OWASP Top 10 for LLM Applications 2025 — https://genai.owasp.org/llm-top-10/
 9. Effloow Promptfoo Red Teaming Guide — https://effloow.com/articles/promptfoo-llm-red-teaming-owasp-agent-eval-guide-2026
 10. Promptfoo Red Team Plugins — https://www.promptfoo.dev/docs/red-team/plugins/
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from None.*

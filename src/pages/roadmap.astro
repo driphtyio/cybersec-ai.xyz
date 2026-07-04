@@ -1,0 +1,475 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`Roadmap — ${SITE_TITLE}`}
+      description="Interactive cybersecurity tools we're building — network recon, web security, vulnerability intelligence, cryptography, and system hardening. Free. Open-source. No backend."
+    />
+    <style>
+      .rm-page { width: 100%; max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+      /* ── Header ── */
+      .rm-hero { margin-bottom: 3rem; }
+      .rm-hero h1 { margin: 0 0 0.5rem; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+      .rm-hero p { margin: 0; color: rgb(var(--gray, 130,145,170)); font-size: 0.95rem; max-width: 700px; line-height: 1.6; }
+      .rm-stats { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+      .rm-stat { display: flex; flex-direction: column; }
+      .rm-stat-val { font-size: 1.5rem; font-weight: 700; color: var(--accent, #00d4aa); }
+      .rm-stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgb(var(--gray, 130,145,170)); }
+
+      /* ── Category ── */
+      .rm-category { margin-bottom: 3rem; }
+      .rm-cat-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+      .rm-cat-icon { font-size: 1.4rem; }
+      .rm-cat-header h2 { margin: 0; font-size: 1.2rem; color: #e8edf4; }
+      .rm-cat-desc { margin: 0 0 1.2rem; color: rgb(var(--gray, 130,145,170)); font-size: 0.85rem; }
+
+      /* ── Card Grid ── */
+      .rm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+
+      /* ── Card ── */
+      .rm-card {
+        position: relative;
+        background: var(--bg-card, #161b22);
+        border: 1px solid var(--border, #2d3b4e);
+        border-radius: 12px;
+        padding: 1.15rem 1.25rem;
+        transition: border-color 0.2s, transform 0.15s;
+        overflow: hidden;
+      }
+      .rm-card::before {
+        content: '';
+        position: absolute; top: 0; left: 1rem; right: 1rem; height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent, #00d4aa), transparent);
+        opacity: 0.4;
+      }
+      .rm-card:hover { border-color: var(--border-hover, #3a4a5e); transform: translateY(-2px); }
+      .rm-card-live:hover { border-color: var(--accent, #00d4aa); }
+
+      .rm-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.3rem; }
+      .rm-card-title { font-size: 0.95rem; font-weight: 600; color: #e8edf4; margin: 0; }
+      .rm-card-badge {
+        font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+        padding: 0.15rem 0.5rem; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+      }
+      .badge-live { background: rgba(0,212,170,0.12); color: var(--accent, #00d4aa); border: 1px solid rgba(0,212,170,0.2); }
+      .badge-building { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+      .badge-planned { background: rgba(130,145,170,0.1); color: rgb(var(--gray, 130,145,170)); }
+      .badge-flag { background: rgba(59,130,246,0.12); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+
+      .rm-card-desc { font-size: 0.78rem; color: rgb(var(--gray, 130,145,170)); margin: 0.3rem 0 0; line-height: 1.5; }
+      .rm-card-link { color: var(--accent, #00d4aa); text-decoration: none; font-size: 0.75rem; font-weight: 500; display: inline-block; margin-top: 0.4rem; }
+      .rm-card-link:hover { text-decoration: underline; }
+
+      /* ── Flagship card (KBAI) ── */
+      .rm-flagship {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #161b22 60%, #1a2332);
+        border: 1px solid #ef444466;
+        border-radius: 14px;
+        padding: 1.5rem 1.75rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .rm-flagship::before {
+        content: '';
+        position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #ef4444, #f87171, #ef4444);
+      }
+      .rm-flagship::after {
+        content: 'STRATEGIC';
+        position: absolute; top: 10px; right: 12px;
+        font-size: 0.55rem; font-weight: 800; letter-spacing: 0.15em;
+        color: #ef4444; opacity: 0.5;
+      }
+      .rm-flagship h3 { margin: 0 0 0.3rem; font-size: 1.05rem; color: #f87171; }
+      .rm-flagship p { font-size: 0.82rem; color: rgb(var(--gray, 130,145,170)); margin: 0 0 0.6rem; line-height: 1.55; max-width: 650px; }
+      .rm-flagship .rm-card-link { color: #f87171; }
+
+      @media (max-width: 720px) {
+        .rm-grid { grid-template-columns: 1fr; }
+        .rm-page { padding: 1.5rem 1rem 3rem; }
+        .rm-stats { gap: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="rm-page">
+
+      <!-- Hero -->
+      <section class="rm-hero">
+        <h1>🛡️ Security Tools Roadmap</h1>
+        <p>Free, client-side cybersecurity tools — no backend, no login, no data leaves your browser. Every tool we build is open and auditable. Humans can't keep up with AI-scale threats — so we build tools that can.</p>
+        <div class="rm-stats">
+          <div class="rm-stat">
+            <span class="rm-stat-val">4</span>
+            <span class="rm-stat-label">Live Tools</span>
+          </div>
+          <div class="rm-stat">
+            <span class="rm-stat-val">1</span>
+            <span class="rm-stat-label">In Development</span>
+          </div>
+          <div class="rm-stat">
+            <span class="rm-stat-val">23</span>
+            <span class="rm-stat-label">Planned</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ FLAGSHIP ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🚩</span>
+          <h2>AI Vulnerability Intelligence</h2>
+        </div>
+        <p class="rm-cat-desc">The core strategic bet — tracking vulnerabilities introduced by AI-generated code. No CVE for "Claude generated an auth bypass" exists today. We're building the registry.</p>
+        <div class="rm-grid">
+          <div class="rm-flagship">
+            <h3>KBAI Registry — Known Bugs &amp; Exploits from AI Code</h3>
+            <p>Track vulnerabilities traced to AI-generated code by model (Mythos, Claude, GPT, Copilot). Each entry links to the real PR, the revert, and the discussion. Become the reference standard that answers: <em>"How many bugs does AI code actually introduce?"</em></p>
+            <p>Phase 1: Manual submission + curation. Phase 2: Heuristic detection from public repos. Phase 3: Business intelligence service for enterprises using AI coding tools.</p>
+            <span class="rm-card-badge badge-building">Building</span>
+          </div>
+
+          <div class="rm-card rm-card-live">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">CVE Database</h3>
+              <span class="rm-card-badge badge-live">Live</span>
+            </div>
+            <p class="rm-card-desc">Search and browse the National Vulnerability Database. Filter by severity, date range, and keywords.</p>
+            <a href="/cves/" class="rm-card-link">Browse CVEs →</a>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Dependency Vulnerability Scanner</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Paste a dependency manifest (package.json, requirements.txt, go.mod) → check every package against known vulnerabilities.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Known Exploit Database</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Curated index of publicly available exploits with PoC links, affected versions, and patch status.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ NETWORK RECON ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🌐</span>
+          <h2>Network Reconnaissance</h2>
+        </div>
+        <p class="rm-cat-desc">Enumerate, map, and profile systems on the internet. All tools use public APIs and client-side DNS — no probes from our infrastructure.</p>
+        <div class="rm-grid">
+          <div class="rm-card rm-card-live">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Domain Scanner</h3>
+              <span class="rm-card-badge badge-live">Live</span>
+            </div>
+            <p class="rm-card-desc">Scan any domain for DNS, SSL, and security header issues. 10 seconds, no login.</p>
+            <a href="/scan/" class="rm-card-link">Scan a domain →</a>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">DNS Lookup</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Query A, AAAA, MX, NS, TXT, CNAME, SOA records via DNS-over-HTTPS. Export as JSON.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">WHOIS Lookup</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Domain registration data — registrar, creation/expiry dates, name servers — via RDAP API.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Port Scanner</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Probe common ports (HTTP, SSH, MySQL, etc.) to detect open services on a target domain.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">IP Geolocator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">IP address → location, ISP, ASN, and risk score via public geolocation APIs.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">ASN Lookup</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Autonomous System Number lookup — owner, prefix list, peer networks, and country.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">MAC Address Lookup</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">OUI database lookup — identify the hardware vendor from a MAC address prefix.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Subnet Calculator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">CIDR notation → network address, broadcast, usable hosts, subnet mask, wildcard.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ WEB SECURITY ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🕸️</span>
+          <h2>Web Security</h2>
+        </div>
+        <p class="rm-cat-desc">Audit the security posture of web applications — headers, certificates, CORS, and transport security.</p>
+        <div class="rm-grid">
+          <div class="rm-card rm-card-live">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Headers Checker</h3>
+              <span class="rm-card-badge badge-live">Live</span>
+            </div>
+            <p class="rm-card-desc">A-F grading for security headers — CSP, HSTS, X-Frame-Options, X-Content-Type-Options, and more. Remediation steps included.</p>
+            <a href="/headers/" class="rm-card-link">Check headers →</a>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">CORS Tester</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Test CORS policies — send preflight requests and report allowed origins, methods, and headers.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">CSP Evaluator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Paste a Content-Security-Policy header → score it for bypass risks, missing directives, and unsafe allowlists.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">SSL/TLS Certificate Checker</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Certificate details, expiry countdown, issuer chain, cipher suite support, and protocol versions.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Open Redirect Checker</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Test a URL for open redirect vulnerabilities — common bypass patterns and parameter injection.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Cookie Inspector</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Analyze cookies for security flags: Secure, HttpOnly, SameSite, Path, Domain, and Expiry.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">HTTP Request Builder</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Build custom HTTP requests with headers, methods, and body. See raw response — like curl in the browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CRYPTOGRAPHY ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🔐</span>
+          <h2>Cryptography &amp; Encoding</h2>
+        </div>
+        <p class="rm-cat-desc">Hash, encode, decode, and analyze cryptographic primitives — all client-side using Web Crypto API.</p>
+        <div class="rm-grid">
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Hash Generator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Generate MD5, SHA-1, SHA-256, SHA-512 hashes from text or files. Copy to clipboard with one click.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Hash Identifier</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Paste a hash → identify the type by length, character set, and format patterns (MD5, SHA*, bcrypt, NTLM, etc.).</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Encoder / Decoder</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Base64, Hex, URL encoding, Base32 — encode and decode in both directions with live preview.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">JWT Debugger</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Decode JWTs — inspect header, payload, signature algorithm. Validate expiration and common signing issues.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Password Strength Meter</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Real-time entropy calculation, character class analysis, common password detection, and time-to-crack estimate.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Entropy Calculator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Shannon entropy and bit strength calculation for passwords, tokens, and keys.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ SYSTEM SECURITY ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">⚙️</span>
+          <h2>System Security</h2>
+        </div>
+        <p class="rm-cat-desc">Tools for hardening systems, analyzing logs, and auditing configurations.</p>
+        <div class="rm-grid">
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Log Parser</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Paste Apache, NGINX, or syslog entries → parse into structured fields. Filter by status codes, IP, timestamps.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Security Regex Tester</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Test regex patterns for log analysis, WAF rules, and detection signatures. Built-in patterns for IPs, URLs, hashes.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">File Signature Analyzer</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Identify file types by magic bytes / header signatures — detect mismatched extensions and covert payloads.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Cron Expression Parser</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Parse and explain cron schedules — human-readable next 5 fire times from any expression.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ OFFENSIVE SECURITY ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🎯</span>
+          <h2>Offensive Security (Educational)</h2>
+        </div>
+        <p class="rm-cat-desc">Interactive demos for understanding common attack vectors. All sandboxed — no real exploits.</p>
+        <div class="rm-grid">
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">XSS Playground</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Interactive demo of reflected, stored, and DOM-based XSS — see how payloads execute and how to fix them.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">SQL Injection Simulator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Sandboxed SQL injection demo — test injection techniques against a simulated database. No real database connection.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Clickjacking Test</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Check if a domain is vulnerable to clickjacking — test X-Frame-Options, CSP frame-ancestors, and framebusting.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">CORS Exploit Demo</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Interactive demo showing how misconfigured CORS policies enable cross-origin data theft.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ FRAMEWORKS ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">📐</span>
+          <h2>Security Frameworks</h2>
+        </div>
+        <p class="rm-cat-desc">Industry-standard frameworks we map every post and tool to.</p>
+        <div class="rm-grid">
+          <div class="rm-card rm-card-live">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Framework Tracker</h3>
+              <span class="rm-card-badge badge-live">Live</span>
+            </div>
+            <p class="rm-card-desc">MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, and MITRE Fight Fraud Framework (F3).</p>
+            <a href="/frameworks/" class="rm-card-link">View frameworks →</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </body>
+</html>

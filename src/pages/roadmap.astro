@@ -107,18 +107,18 @@ import { SITE_TITLE } from '../consts';
       <!-- Hero -->
       <section class="rm-hero">
         <h1>🛡️ Security Tools Roadmap</h1>
-        <p>Free, client-side cybersecurity tools — no backend, no login, no data leaves your browser. Every tool we build is open and auditable. Humans can't keep up with AI-scale threats — so we build tools that can.</p>
+        <p>Free, client-side cybersecurity tools — no backend, no login, no data leaves your browser. Every tool we build is open and auditable. Humans can't keep up with AI-scale threats — so we build tools that can. Plus platform-grade tools inspired by Strix's autonomous security model.</p>
         <div class="rm-stats">
           <div class="rm-stat">
             <span class="rm-stat-val">4</span>
             <span class="rm-stat-label">Live Tools</span>
           </div>
           <div class="rm-stat">
-            <span class="rm-stat-val">1</span>
+            <span class="rm-stat-val">2</span>
             <span class="rm-stat-label">In Development</span>
           </div>
           <div class="rm-stat">
-            <span class="rm-stat-val">23</span>
+            <span class="rm-stat-val">28</span>
             <span class="rm-stat-label">Planned</span>
           </div>
         </div>
@@ -162,6 +162,91 @@ import { SITE_TITLE } from '../consts';
               <span class="rm-card-badge badge-planned">Planned</span>
             </div>
             <p class="rm-card-desc">Curated index of publicly available exploits with PoC links, affected versions, and patch status.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PLATFORM ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🖥️</span>
+          <h2>Platform</h2>
+        </div>
+        <p class="rm-cat-desc">Pentest dashboards, CI/CD integrations, and automated security scanning — inspired by Strix's autonomous security platform.</p>
+        <div class="rm-grid">
+          <div class="rm-card rm-card-live">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Pentest Dashboard</h3>
+              <span class="rm-card-badge badge-building">Building</span>
+            </div>
+            <p class="rm-card-desc">Real-time scan status table showing targets, severity breakdown, and last scan date. Filter by status (pass/warn/fail), sort by risk score. Strix-style.</p>
+            <a href="/tools/pentest-dashboard/" class="rm-card-link">Open Dashboard →</a>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">PR Security Scanner</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Paste a GitHub PR diff URL — scans for auth bypasses, IDOR patterns, SSRF, and credential leaks. Client-side only, no backend.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Vulnerability PoC Generator</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Select a CVE from the database → generates a sandboxed proof-of-concept snippet showing how the exploit works. Educational, read-only.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Repo Health Check</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Enter a GitHub repo URL → checks for SECURITY.md, dependabot config, SAST workflow, CODEOWNERS, and signed commits. Grade A-F.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">CI/CD Security Linter</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Paste a CI workflow YAML → detects secret exposure, missing SAST steps, runner misconfigurations, and privilege escalation vectors.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ REMEDIATION & AUTO-FIX ═══ -->
+      <section class="rm-category">
+        <div class="rm-cat-header">
+          <span class="rm-cat-icon">🔧</span>
+          <h2>Remediation &amp; Auto-Fix</h2>
+        </div>
+        <p class="rm-cat-desc">Automated fix suggestions, policy builders, and patch tracking — close the loop from finding to fixing.</p>
+        <div class="rm-grid">
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Fix Suggestion Engine</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Select a vulnerability type (IDOR, XSS, SQLi, SSRF) → get a context-aware code fix block. Strix's auto-fix pattern adapted for education.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">CSP Builder</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Interactive Content-Security-Policy builder. Toggle directives → see the generated header + live scoring. Export as ready-to-deploy header value.</p>
+          </div>
+
+          <div class="rm-card">
+            <div class="rm-card-top">
+              <h3 class="rm-card-title">Dependency Patch Tracker</h3>
+              <span class="rm-card-badge badge-planned">Planned</span>
+            </div>
+            <p class="rm-card-desc">Enter a package name + version → shows available patches, severity, and changelog links. Covers npm, PyPI, Maven, Go modules.</p>
           </div>
         </div>
       </section>

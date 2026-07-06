@@ -1,37 +1,7 @@
 {
   "count": 500,
-  "updated": "2026-07-05T21:11:15.982927",
+  "updated": "2026-07-06T13:01:32.146904",
   "cves": [
-    {
-      "id": "CVE-2026-34208",
-      "description": "SandboxJS is a JavaScript sandboxing library. Prior to 0.8.36, SandboxJS blocks direct assignment to global objects (for example Math.random = ...), but this protection can be bypassed through an exposed callable constructor path: this.constructor.call(target, attackerObject). Because this.constructor resolves to the internal SandboxGlobal function and Function.prototype.call is allowed, attacker code can write arbitrary properties into host global objects and persist those mutations across sandbox instances in the same process. This vulnerability is fixed in 0.8.36.",
-      "severity": "CRITICAL",
-      "cvss": 10.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L",
-      "published": "2026-04-06T16:16:34.580",
-      "lastModified": "2026-06-17T10:38:39.237",
-      "references": [
-        "https://github.com/nyariv/SandboxJS/security/advisories/GHSA-2gg9-6p7w-6cpj"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-34444",
-      "description": "Lupa integrates the runtimes of Lua or LuaJIT2 into CPython. In 2.6 and earlier, attribute_filter is not consistently applied when attributes are accessed through built-in functions like getattr and setattr. This allows an attacker to bypass the intended restrictions and eventually achieve arbitrary code execution.",
-      "severity": "CRITICAL",
-      "cvss": 10.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-04-06T16:16:35.717",
-      "lastModified": "2026-06-30T03:18:53.090",
-      "references": [
-        "https://github.com/scoder/lupa/security/advisories/GHSA-69v7-xpr6-6gjm",
-        "https://access.redhat.com/errata/RHSA-2026:22993",
-        "https://access.redhat.com/security/cve/CVE-2026-34444",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2455413",
-        "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-34444.json"
-      ],
-      "source": "nvd"
-    },
     {
       "id": "CVE-2026-34078",
       "description": "Flatpak is a Linux application sandboxing and distribution framework. Prior to 1.16.4, the Flatpak portal accepts paths in the sandbox-expose options which can be app-controlled symlinks pointing at arbitrary paths. Flatpak run mounts the resolved host path in the sandbox. This gives apps access to all host files and can be used as a primitive to gain code execution in the host context. This vulnerability is fixed in 1.16.4.",
@@ -436,6 +406,36 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-54917",
+      "description": "SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables. Prior to 4.30, the S3 API gateway and the Iceberg REST catalog gateway construct their routers with mux.NewRouter().SkipClean(true). With path cleaning disabled, a .. segment inside the URL survives routing, so a request such as `GET /bucket-A/../evil-bucket/key`, is matched as bucket=bucket-A, object=../evil-bucket/key. The captured object key is then joined into a filer path with util.JoinPath (S3) / path.Join (Iceberg), which collapse the .. server-side, so the actual read or write lands in evil-bucket. This vulnerability is fixed in 4.30.",
+      "severity": "CRITICAL",
+      "cvss": 10.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+      "published": "2026-06-25T19:16:42.230",
+      "lastModified": "2026-06-29T21:21:10.757",
+      "references": [
+        "https://github.com/seaweedfs/seaweedfs/pull/9687",
+        "https://github.com/seaweedfs/seaweedfs/security/advisories/GHSA-w62w-66v9-vvgv",
+        "https://github.com/seaweedfs/seaweedfs/security/advisories/GHSA-w62w-66v9-vvgv"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2025-71338",
+      "description": "Flowise contains a path traversal vulnerability in the /api/v1/document-store/loader/process endpoint that allows unauthenticated attackers to write arbitrary files to the filesystem. Attackers can exploit unsanitized fileName parameters with ../ sequences to overwrite critical files like package.json and achieve remote code execution when the application restarts.",
+      "severity": "CRITICAL",
+      "cvss": 10.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-06-25T22:16:59.520",
+      "lastModified": "2026-07-01T15:00:51.743",
+      "references": [
+        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-8vvx-qvq9-5948",
+        "https://www.vulncheck.com/advisories/flowise-arbitrary-file-write-to-remote-code-execution-via-document-store-api",
+        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-8vvx-qvq9-5948"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-39888",
       "description": "PraisonAI is a multi-agent teams system. Prior to 1.5.115, execute_code() in praisonaiagents.tools.python_tools defaults to sandbox_mode=\"sandbox\", which runs user code in a subprocess wrapped with a restricted __builtins__ dict and an AST-based blocklist. The AST blocklist embedded inside the subprocess wrapper (blocked_attrs of python_tools.py) contains only 11 attribute names \u2014 a strict subset of the 30+ names blocked in the direct-execution path. The four attributes that form a frame-traversal chain out of the sandbox are all absent from the subprocess list (__traceback__, tb_frame, f_back, and f_builtins). Chaining these attributes through a caught exception exposes the real Python builtins dict of the subprocess wrapper frame, from which exec can be retrieved and called under a non-blocked variable name \u2014 bypassing every remaining security layer. This vulnerability is fixed in 1.5.115.",
       "severity": "CRITICAL",
@@ -643,109 +643,6 @@
       "lastModified": "2026-06-26T02:24:03.670",
       "references": [
         "https://github.com/n8n-io/n8n/security/advisories/GHSA-2j5h-858j-5mpf"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-31059",
-      "description": "A remote command execution (RCE) vulnerability in the /goform/formDia component of UTT Aggressive HiPER 520W v3v1.7.7-180627 allows attackers to execute arbitrary commands via a crafted string.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T15:17:08.210",
-      "lastModified": "2026-06-17T10:33:19.943",
-      "references": [
-        "https://github.com/zxq0408/Vul202601/blob/main/9.md",
-        "https://github.com/zxq0408/Vul202601/blob/main/9.md"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-31151",
-      "description": "An issue in the login mechanism of Kaleris YMS v7.2.2.1 allows attackers to bypass login verification to access the application 's resources.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T15:17:09.553",
-      "lastModified": "2026-06-17T10:33:21.983",
-      "references": [
-        "https://github.com/Henkel-CyberVM/CVEs/tree/main/CVE-2026-31151",
-        "https://kaleris.com/solutions/yard-management/"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-34977",
-      "description": "Aperi'Solve is an open-source steganalysis web platform. In versions 3.1.3 through 3.2.0, when uploading a JPEG, a user can specify an optional password to accompany the JPEG. This password is then directly passed into an expect command, which is then subsequently passed into a bash -c command, without any form of sanitization or validation. An unauthenticated attacker can achieve root-level RCE inside the worker container with a single HTTP request, enabling full read/write access to all user-uploaded images, analysis results, and plaintext steganography passwords stored on disk. Because the container shares a Docker network with PostgreSQL and Redis (no authentication on either), the attacker can pivot to dump the entire database or manipulate the job queue to poison results for other users. If Docker socket mounting or host volume mounts are present, this could escalate to full host compromise. This would also include defacement of the website itself. This vulnerability is fixed in 3.2.1.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T17:17:11.543",
-      "lastModified": "2026-06-23T00:16:27.723",
-      "references": [
-        "https://github.com/Zeecka/AperiSolve/blob/9fc388c629f86221bf2a265559eba5650d39fc29/aperisolve/analyzers/jpseek.py",
-        "https://github.com/Zeecka/AperiSolve/commit/0193ca4a7d8ae9d6ba6cde82d37a6f94953463b4",
-        "https://github.com/Zeecka/AperiSolve/pull/173",
-        "https://github.com/Zeecka/AperiSolve/pull/195",
-        "https://github.com/Zeecka/AperiSolve/releases/tag/3.1.3"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35047",
-      "description": "Brave CMS is an open-source CMS. Prior to 2.0.6, an Unrestricted File Upload vulnerability in the CKEditor endpoint allows attackers to upload arbitrary files, including executable scripts. This may lead to Remote Code Execution (RCE) on the server, potentially resulting in full system compromise, data exfiltration, or service disruption. All users running affected versions of BraveCMS are impacted. This vulnerability is fixed in 2.0.6.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T18:16:42.433",
-      "lastModified": "2026-06-17T10:40:01.417",
-      "references": [
-        "https://github.com/Ajax30/BraveCMS-2.0/commit/058ee4ed7c2b39d540af8274024afcbc9532aa83",
-        "https://github.com/Ajax30/BraveCMS-2.0/pull/122",
-        "https://github.com/Ajax30/BraveCMS-2.0/security/advisories/GHSA-9rcc-w59j-965v"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35052",
-      "description": "D-Tale is the combination of a Flask back-end and a React front-end to view & analyze Pandas data structures. Prior to 3.22.0, users hosting D-Tale publicly while using a redis or shelf storage layer could be vulnerable to remote code execution allowing attackers to run malicious code on the server. This vulnerability is fixed in 3.22.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T18:16:42.747",
-      "lastModified": "2026-06-17T10:40:01.870",
-      "references": [
-        "https://github.com/man-group/dtale/security/advisories/GHSA-436g-fhfc-9g5w"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35178",
-      "description": "Workbench is a suite of tools for administrators and developers to interact with Salesforce.com organizations via the Force.com APIs. Prior to 65.0.0, Workbench contains remote code execution vulnerability in the timezone conversion flow, which processes attacker-controlled cookie values in an unsafe manner. This vulnerability is fixed in 65.0.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T20:16:25.927",
-      "lastModified": "2026-06-17T10:40:09.750",
-      "references": [
-        "https://github.com/forceworkbench/forceworkbench/pull/869",
-        "https://github.com/forceworkbench/forceworkbench/security/advisories/GHSA-jw63-m86r-2jxc"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35184",
-      "description": "EcclesiaCRM is CRM Software for church management. Prior to 8.0.0, there is a SQL injection vulnerability in v2/templates/query/queryview.php via the custom and value parameters. This vulnerability is fixed in 8.0.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T20:16:26.880",
-      "lastModified": "2026-06-17T10:40:10.390",
-      "references": [
-        "https://gist.github.com/NicolasPauferro/d877992327592f1e8eb4e2c9dce1ae9b",
-        "https://github.com/phili67/ecclesiacrm/commit/f743b97f89da469a4c70b82bd61d0a59a3a957a9",
-        "https://github.com/phili67/ecclesiacrm/pull/2861",
-        "https://github.com/phili67/ecclesiacrm/security/advisories/GHSA-gjw3-73q9-v2qh"
       ],
       "source": "nvd"
     },
@@ -3017,6 +2914,116 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-39948",
+      "description": "Cacti is an open source performance and fault management framework. In versions 1.2.30 and prior, the rfilter request parameter is retrieved via the raw accessor grv() (rather than gfrv() with FILTER_VALIDATE_IS_REGEX validation) and concatenated directly into RLIKE SQL clauses in lib/html_graph.php and lib/html_tree.php, which are reachable pre-authentication through graph_view.php on installations with guest graph viewing enabled. Because the unbalanced-quote payload bypasses the regex validation that would otherwise reject it, an unauthenticated attacker can inject arbitrary SQL to compromise the confidentiality, integrity, and availability of the database. This advisory is similar to GHSA-69gg-mjfm-jjpc. This issue has been fixed in version 1.2.31.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-24T23:16:40.830",
+      "lastModified": "2026-06-26T05:16:27.033",
+      "references": [
+        "https://github.com/Cacti/cacti/commit/136ae6ef0715e77bca69c0eb60781f5e17df0795",
+        "https://github.com/Cacti/cacti/security/advisories/GHSA-9jqv-4cpm-vm2c"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-40079",
+      "description": "Cacti is an open source performance and fault management framework. Versions 1.2.30 and prior are vulnerable to Command Injection due to lack of sanitization in the escape_command() function. The escape_command() function at lib/rrd.php is a no-op: it returns $command unchanged. The command line built by rrdtool_function_graph() is passed through this function and then to shell_exec($full_commandline). The risk is in __rrd_execute() where text_format values from graph templates (which may contain host variable substitutions) reach shell_exec without adequate escaping. This issue has been addressed in version 1.2.31.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T00:17:47.570",
+      "lastModified": "2026-06-26T00:16:51.910",
+      "references": [
+        "https://github.com/Cacti/cacti/commit/4c09efaebf3a9faec66969d0b5c4aceaf397f37f",
+        "https://github.com/Cacti/cacti/security/advisories/GHSA-xq98-376r-hv9j"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-50548",
+      "description": "Cursor is a code editor built for programming with AI. Prior to 3.0, Cursor runs agent terminal commands in a sandbox by default, and the sandbox grants write access to the command's working directory. A flaw was identified in how the agent could modify the working_directory parameter, which could cause the sandbox to include writable paths outside the intended workspace. A malicious agent could set working_directory to a sensitive location and write arbitrary files outside the workspace under the user's privileges. This enables non-sandboxed Remote Code Execution \u2014 for example by overwriting the cursorsandbox helper so later commands run unsandboxed \u2014 with no user interaction beyond a benign prompt. This vulnerability is fixed in 3.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T19:16:39.660",
+      "lastModified": "2026-06-26T16:51:25.290",
+      "references": [
+        "https://github.com/cursor/cursor/security/advisories/GHSA-3p48-7v9f-v5cw"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-50549",
+      "description": "Cursor is a code editor built for programming with AI. Prior to 3.0, Cursor runs agent terminal commands in a sandbox by default. Before a Write, the agent canonicalizes the target path to confirm it stays inside the workspace, but when canonicalization fails it falls back to the original path and writes without approval. A malicious agent can create an in-workspace symlink that points outside the workspace and force canonicalization to fail \u2014 either because the target does not exist or because read permission is removed from the path \u2014 so the agent writes through the symlink to an arbitrary location without approval. A malicious agent could write arbitrary files outside the workspace under the user's privileges. This enables non-sandboxed Remote Code Execution \u2014 for example by overwriting the cursorsandbox helper so later commands run unsandboxed \u2014 with no user interaction beyond a benign prompt. This vulnerability is fixed in 3.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T19:16:39.793",
+      "lastModified": "2026-06-26T16:51:39.467",
+      "references": [
+        "https://github.com/cursor/cursor/security/advisories/GHSA-3v8f-48vw-3mjx"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-56786",
+      "description": "RTKLIB through 2.4.3 contains an out-of-bounds write vulnerability in decode_type1033 function that fails to clamp length counters to destination buffer size, allowing up to 191-byte overflow into fixed 64-byte descriptor fields. An attacker controlling an NTRIP or serial RTCM3 correction stream can craft a valid CRC-bearing type-1033 message to corrupt adjacent rtcm_t object members, potentially achieving arbitrary code execution or denial of service.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T19:16:44.997",
+      "lastModified": "2026-06-26T16:52:59.463",
+      "references": [
+        "https://github.com/tomojitakasu/RTKLIB/issues/799",
+        "https://www.vulncheck.com/advisories/rtklib-out-of-bounds-write-in-decode-type1033-via-crafted-rtcm3-message"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-7531",
+      "description": "Use-after-free in PQC hybrid key-share handling. This is an incomplete-fix follow-up to CVE-2026-5460 (released in 5.9.1): a malicious TLS 1.3 server sending a truncated PQC hybrid KeyShare can still trigger the error cleanup path to operate on freed memory.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T20:17:17.763",
+      "lastModified": "2026-06-26T16:53:58.953",
+      "references": [
+        "https://github.com/wolfSSL/wolfssl/pull/10327",
+        "https://www.wolfssl.com/docs/security-vulnerabilities/"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2025-71333",
+      "description": "Flowise through 2.2.4 contains an unauthenticated arbitrary file upload vulnerability in the /api/v1/attachments endpoint when storageType is set to local. Attackers can exploit path traversal in the chatId and chatflowId parameters to upload malicious files to arbitrary directories, potentially enabling remote code execution and server compromise.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T22:16:59.010",
+      "lastModified": "2026-07-01T15:10:52.010",
+      "references": [
+        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-h42x-xx2q-6v6g",
+        "https://www.vulncheck.com/advisories/flowise-arbitrary-file-upload-via-unauthenticated-api-v1-attachments-endpoint",
+        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-h42x-xx2q-6v6g"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-48930",
+      "description": "A flaw in Node.js TLS hostname handling can cause Embedded-nul hostnames can lead to silent authority rebinding due to c-string truncation in resolver bindings.\r\n\r\nThis vulnerability affects all supported release lines: **Node.js 22**, **Node.js 24**, and **Node.js 26**.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-26T02:16:52.723",
+      "lastModified": "2026-06-26T20:19:14.610",
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/june-2026-security-releases"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-39962",
       "description": "MISP is an open source threat intelligence and sharing platform. Prior to 2.5.36, improper neutralization of special elements in an LDAP query in ApacheAuthenticate.php allows LDAP injection via an unsanitized username value when ApacheAuthenticate.apacheEnv is configured to use a user-controlled server variable instead of REMOTE_USER (such as in certain proxy setups). An attacker able to control that value can manipulate the LDAP search filter and potentially bypass authentication constraints or cause unauthorized LDAP queries. This vulnerability is fixed in 2.5.36.",
       "severity": "CRITICAL",
@@ -3564,20 +3571,6 @@
       "references": [
         "https://lists.apache.org/thread/1ozsnss0lof4gpwq763d66oxwxt3sycp",
         "http://www.openwall.com/lists/oss-security/2026/06/19/14"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35459",
-      "description": "pyLoad is a free and open-source download manager written in Python. In 0.5.0b3.dev96 and earlier, pyLoad has a server-side request forgery (SSRF) vulnerability. The fix for CVE-2026-33992 added IP validation to BaseDownloader.download() that checks the hostname of the initial download URL. However, pycurl is configured with FOLLOWLOCATION=1 and MAXREDIRS=10, causing it to automatically follow HTTP redirects. Redirect targets are never validated against the SSRF filter. An authenticated user with ADD permission can bypass the SSRF fix by submitting a URL that redirects to an internal address.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-04-06T20:16:28.220",
-      "lastModified": "2026-06-17T10:40:38.030",
-      "references": [
-        "https://github.com/pyload/pyload/commit/33c55da084320430edfd941b60e3da0eb1be9443",
-        "https://github.com/pyload/pyload/security/advisories/GHSA-7gvf-3w72-p2pg"
       ],
       "source": "nvd"
     },
@@ -4457,16 +4450,16 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-34989",
-      "description": "CI4MS is a CodeIgniter 4-based CMS skeleton that delivers a production-ready, modular architecture with RBAC authorization and theme support. Prior to 31.0.0.0, the application fails to properly sanitize user-controlled input when users update their profile name (e.g., full name / username). An attacker can inject a malicious JavaScript payload into their profile name, which is then stored server-side. This stored payload is later rendered unsafely in multiple application views without proper output encoding, leading to stored cross-site scripting (XSS). This vulnerability is fixed in 31.0.0.0.",
+      "id": "CVE-2026-6094",
+      "description": "Heap buffer overread in wc_PKCS7_DecodeEnvelopedData when parsing crafted PKCS7 EnvelopedData. This could theoretically be triggered by attacker-supplied data delivered via S/MIME or CMS.",
       "severity": "CRITICAL",
-      "cvss": 9.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
-      "published": "2026-04-06T17:17:12.037",
-      "lastModified": "2026-06-17T10:39:57.070",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "published": "2026-06-25T18:16:41.567",
+      "lastModified": "2026-06-26T16:51:02.670",
       "references": [
-        "https://github.com/ci4-cms-erp/ci4ms/security/advisories/GHSA-vr2g-rhm5-q4jr",
-        "https://github.com/ci4-cms-erp/ci4ms/security/advisories/GHSA-vr2g-rhm5-q4jr"
+        "https://github.com/wolfSSL/wolfssl/pull/10128",
+        "https://www.wolfssl.com/docs/security-vulnerabilities/"
       ],
       "source": "nvd"
     },
@@ -4631,19 +4624,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-35044",
-      "description": "BentoML is a Python library for building online serving systems optimized for AI apps and model inference. Prior to 1.4.38, the Dockerfile generation function generate_containerfile() in src/bentoml/_internal/container/generate.py uses an unsandboxed jinja2.Environment with the jinja2.ext.do extension to render user-provided dockerfile_template files. When a victim imports a malicious bento archive and runs bentoml containerize, attacker-controlled Jinja2 template code executes arbitrary Python directly on the host machine, bypassing all container isolation. This vulnerability is fixed in 1.4.38.",
-      "severity": "HIGH",
-      "cvss": 8.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T18:16:41.990",
-      "lastModified": "2026-06-17T10:40:01.063",
-      "references": [
-        "https://github.com/bentoml/BentoML/security/advisories/GHSA-v959-cwq9-7hr6"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2025-65115",
       "description": "Remote Code Execution Vulnerability\u00a0in JP1/IT Desktop Management 2 - Manager on Windows, JP1/IT Desktop Management 2 - Operations Director on Windows, Job Management Partner 1/IT Desktop Management 2 - Manager on Windows, JP1/IT Desktop Management - Manager on Windows, Job Management Partner 1/IT Desktop Management - Manager on Windows, JP1/NETM/DM Manager on Windows, JP1/NETM/DM Client on Windows, Job Management Partner 1/Software Distribution Manager on Windows, Job Management Partner 1/Software Distribution Client on Windows.This issue affects JP1/IT Desktop Management 2 - Manager: from 13-50 before 13-50-02, from 13-11 before 13-11-04, from 13-10 before 13-10-07, from 13-01 before 13-01-07, from 13-00 before 13-00-05, from 12-60 before 12-60-12, from 10-50 through 12-50-11; JP1/IT Desktop Management 2 - Operations Director: from 13-50 before 13-50-02, from 13-11 before 13-11-04, from 13-10 before 13-10-07, from 13-01 before 13-01-07, from 13-00 before 13-00-05, from 12-60 before 12-60-12, from 10-50 through 12-50-11; Job Management Partner 1/IT Desktop Management 2 - Manager: from 10-50 through 10-50-11; JP1/IT Desktop Management - Manager: from 09-50 through 10-10-16; Job Management Partner 1/IT Desktop Management - Manager: from 09-50 through 10-10-16; JP1/NETM/DM Manager: from 09-00 through 10-20-02; JP1/NETM/DM Client: from 09-00 through 10-20-02; Job Management Partner 1/Software Distribution Manager: from 09-00 through 09-51-13; Job Management Partner 1/Software Distribution Client: from 09-00 through 09-51-13.",
       "severity": "HIGH",
@@ -4754,19 +4734,6 @@
       "lastModified": "2026-06-17T10:54:44.360",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-64.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35408",
-      "description": "Directus is a real-time API and App dashboard for managing SQL database content. Prior to 11.17.0, Directus's Single Sign-On (SSO) login pages lacked a Cross-Origin-Opener-Policy (COOP) HTTP response header. Without this header, a malicious cross-origin window that opens the Directus login page retains the ability to access and manipulate the window object of that page. An attacker can exploit this to intercept and redirect the OAuth authorization flow to an attacker-controlled OAuth client, causing the victim to unknowingly grant access to their authentication provider account (e.g. Google, Discord). This vulnerability is fixed in 11.17.0.",
-      "severity": "HIGH",
-      "cvss": 8.7,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-04-06T22:16:21.557",
-      "lastModified": "2026-06-17T10:40:32.767",
-      "references": [
-        "https://github.com/directus/directus/security/advisories/GHSA-8m32-p958-jg99"
       ],
       "source": "nvd"
     },
@@ -5063,19 +5030,6 @@
       "references": [
         "https://github.com/n8n-io/n8n/security/advisories/GHSA-f3f2-mcxc-pwjx",
         "https://www.vulncheck.com/advisories/n8n-sql-injection-in-mysql-postgresql-and-microsoft-sql-nodes"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-26263",
-      "description": "GLPI is a free asset and IT management software package. From 11.0.0 to before 11.0.6, an unauthenticated time-based blind SQL injection exists in GLPI's Search engine. This vulnerability is fixed in 11.0.6.",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T15:17:07.430",
-      "lastModified": "2026-06-17T10:26:00.303",
-      "references": [
-        "https://github.com/glpi-project/glpi/security/advisories/GHSA-346p-qj3v-9rxj"
       ],
       "source": "nvd"
     },
@@ -5455,6 +5409,20 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-56123",
+      "description": "socat versions 1.8.0.0 through 1.8.1.1 contain a heap-based buffer overflow vulnerability that allows a malicious SOCKS5 proxy server to overwrite adjacent heap memory by exploiting a sign-extension flaw in the DOMAINNAME reply parser. During connection setup, the domain name length byte is read through a signed char field causing a negative bytes_to_read value that is implicitly converted to size_t, resulting in an unbounded heap write into the 262-byte reply buffer with attacker-controlled size and content.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-06-25T17:17:01.967",
+      "lastModified": "2026-06-26T16:50:16.103",
+      "references": [
+        "http://www.dest-unreach.org/socat/CHANGES",
+        "https://www.vulncheck.com/advisories/socat-heap-buffer-overflow-via-socks5-reply-parser"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-35589",
       "description": "nanobot is a personal AI assistant. Versions prior to 0.1.5 contain a Cross-Site WebSocket Hijacking (CSWSH) vulnerability exists in the bridge's WebSocket server in bridge/src/server.ts, resulting from an incomplete remediation of CVE-2026-2577. The original fix changed the binding from 0.0.0.0 to 127.0.0.1 and added an optional BRIDGE_TOKEN parameter, but token authentication is disabled by default and the server does not validate the Origin header during the WebSocket handshake. Because browsers do not enforce the Same-Origin Policy on WebSockets unless the server explicitly denies cross-origin connections, any website visited by a user running the bridge can establish a WebSocket connection to ws://127.0.0.1:3001/ and gain full access to the bridge API. This allows an attacker to hijack the WhatsApp session, read incoming messages, steal authentication QR codes, and send messages on behalf of the user. This issue has bee fixed in version 0.1.5.",
       "severity": "HIGH",
@@ -5543,6 +5511,20 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-54030",
+      "description": "LibreChat is an enhanced ChatGPT clone that supports multiple AI providers. Prior to 0.8.5, LibreChat's MCP OAuth implementation does not validate that the resource parameter from OAuth Protected Resource metadata (RFC 9728) matches the configured MCP server URL, allowing a malicious MCP server to steal access tokens intended for a legitimate server. This vulnerability is fixed in 0.8.5.",
+      "severity": "HIGH",
+      "cvss": 8.0,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N",
+      "published": "2026-06-25T17:16:40.660",
+      "lastModified": "2026-06-29T23:55:08.373",
+      "references": [
+        "https://github.com/danny-avila/LibreChat/security/advisories/GHSA-gvpj-vm2f-2m23",
+        "https://github.com/danny-avila/LibreChat/security/advisories/GHSA-gvpj-vm2f-2m23"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-22619",
       "description": "Eaton Intelligent Power Protector (IPP) is affected by insecure library loading in its executable, which could lead to arbitrary code execution by an attacker with access to the software package.\u00a0This security issue has been fixed in the latest version of Eaton IPP software which is available on the Eaton download center.",
       "severity": "HIGH",
@@ -5617,6 +5599,58 @@
       "lastModified": "2026-06-17T11:04:32.243",
       "references": [
         "https://www.ibm.com/support/pages/node/7274065"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-8592",
+      "description": "OS Command Injection vulnerability in the process_string action of Rapid7 InsightConnect AWK Plugin on Linux allows remote attackers to execute arbitrary OS commands via the text or expression parameters due to unsafe shell command construction in the processing pipeline.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L",
+      "published": "2026-06-25T02:16:34.990",
+      "lastModified": "2026-06-29T19:26:36.020",
+      "references": [
+        "https://extensions.rapid7.com/extension/awk"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-8660",
+      "description": "OS Command Injection vulnerability in the ping action of Rapid7 InsightConnect Ping Plugin on Linux allows remote attackers to execute arbitrary OS commands via the host parameter due to insufficient input validation when constructing shell commands.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L",
+      "published": "2026-06-25T02:16:35.110",
+      "lastModified": "2026-06-29T19:26:17.127",
+      "references": [
+        "https://extensions.rapid7.com/extension/ping"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-8665",
+      "description": "OS Command Injection vulnerability in the TR action of Rapid7 InsightConnect Translate\u00a0Plugin on Linux allows remote attackers to execute arbitrary OS commands via the text or expression parameters due to insufficient input sanitization in shell command construction.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L",
+      "published": "2026-06-25T02:16:35.340",
+      "lastModified": "2026-06-29T19:24:59.563",
+      "references": [
+        "https://extensions.rapid7.com/extension/tr"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-8666",
+      "description": "OS Command Injection vulnerability in the traceroute action of Rapid7 InsightConnect Traceroute Plugin on Linux allows remote attackers to execute arbitrary OS commands via the host, port, max_ttl, count, or time_out request parameters due to insufficient input validation when constructing shell commands.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L",
+      "published": "2026-06-25T02:16:35.567",
+      "lastModified": "2026-06-29T19:24:23.560",
+      "references": [
+        "https://extensions.rapid7.com/extension/traceroute"
       ],
       "source": "nvd"
     },
@@ -6016,23 +6050,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-5663",
-      "description": "A security flaw has been discovered in OFFIS DCMTK up to 3.7.0. This impacts the function executeOnReception/executeOnEndOfStudy of the file dcmnet/apps/storescp.cc of the component storescp. Performing a manipulation results in os command injection. Remote exploitation of the attack is possible. The patch is named edbb085e45788dccaf0e64d71534cfca925784b8. Applying a patch is the recommended action to fix this issue.",
-      "severity": "HIGH",
-      "cvss": 7.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-04-06T15:17:16.253",
-      "lastModified": "2026-06-17T10:59:28.160",
-      "references": [
-        "https://github.com/DCMTK/dcmtk/commit/edbb085e45788dccaf0e64d71534cfca925784b8",
-        "https://machinespirits.com/advisory/2e1627/",
-        "https://support.dcmtk.org/redmine/issues/1194",
-        "https://vuldb.com/submit/786061",
-        "https://vuldb.com/vuln/355486"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-5841",
       "description": "A weakness has been identified in Tenda i3 1.0.0.6(2204). The affected element is the function R7WebsSecurityHandler of the component HTTP Handler. Executing a manipulation can lead to path traversal. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
       "severity": "HIGH",
@@ -6377,20 +6394,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-35035",
-      "description": "CI4MS is a CodeIgniter 4-based CMS skeleton that delivers a production-ready, modular architecture with RBAC authorization and theme support. Prior to 0.31.2.0, the application fails to properly sanitize user-controlled input within System Settings \u2013 Company Information. Several administrative configuration fields accept attacker-controlled input that is stored server-side and later rendered without proper output encoding. These values are persisted in the database and rendered unsafely on public-facing pages only, such as the main landing page. There is no execution in the administrative dashboard\u2014the vulnerability only impacts the public frontend. This vulnerability is fixed in 0.31.2.0.",
-      "severity": "HIGH",
-      "cvss": 7.2,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-06T17:17:12.793",
-      "lastModified": "2026-06-17T10:39:59.950",
-      "references": [
-        "https://github.com/ci4-cms-erp/ci4ms/security/advisories/GHSA-5ghq-42rg-769x",
-        "https://github.com/ci4-cms-erp/ci4ms/security/advisories/GHSA-5ghq-42rg-769x"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-40114",
       "description": "PraisonAI is a multi-agent teams system. Prior to 4.5.128, the /api/v1/runs endpoint accepts an arbitrary webhook_url in the request body with no URL validation. When a submitted job completes (success or failure), the server makes an HTTP POST request to this URL using httpx.AsyncClient. An unauthenticated attacker can use this to make the server send POST requests to arbitrary internal or external destinations, enabling SSRF against cloud metadata services, internal APIs, and other network-adjacent services. This vulnerability is fixed in 4.5.128.",
       "severity": "HIGH",
@@ -6565,20 +6568,6 @@
       "lastModified": "2026-06-17T10:24:18.683",
       "references": [
         "https://github.com/Samsung/escargot/pull/1554"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35197",
-      "description": "dye is a portable and respectful color library for shell scripts. Prior to 1.1.1, certain dye template expressions would result in execution of arbitrary code. This issue was discovered and fixed by dye's author, and is not known to be exploited. This vulnerability is fixed in 1.1.1.",
-      "severity": "MEDIUM",
-      "cvss": 6.6,
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
-      "published": "2026-04-06T20:16:27.380",
-      "lastModified": "2026-06-17T10:40:11.733",
-      "references": [
-        "https://github.com/mattieb/dye/security/advisories/GHSA-3v4r-5vfh-3wjr",
-        "https://mattiebee.io/dye-template-advisory"
       ],
       "source": "nvd"
     },

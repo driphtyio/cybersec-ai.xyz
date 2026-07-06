@@ -102,11 +102,11 @@ At Microsoft Build 2026 (June 2), Microsoft announced new AI governance and secu
 
 3. **Fortinet credential fallout**: The 74,000 cracked FortiGate credentials are now circulating. Organizations that haven't forced administrator re-authentication should treat every FortiGate as potentially compromised.
 
-4. **SearchLeak copycat attacks**: The M365 Copilot prompt injection technique described by Varonis will likely be adapted for other AI assistants — Google Gemini for Workspace, Slack AI, and custom enterprise chatbots.
+4. **SearchLeak copycat attacks**: The M365 Copilot prompt injection technique described by Varonis [Varonis](https://www.varonis.com/blog/searchleak) will likely be adapted for other AI assistants — Google Gemini for Workspace, Slack AI, and custom enterprise chatbots.
 
 5. **AI model governance tensions**: The Anthropic shutdown sets a precedent for government intervention in AI model deployment. Watch for similar actions against other frontier models and the inevitable legal challenges.
 
-6. **Vertiv UPS exploitation**: With proof-of-concept code expected to follow Team82's disclosure, UPS management cards on the network should be treated as critical security assets and isolated where possible.
+6. **Vertiv UPS exploitation**: With proof-of-concept code expected to follow Team82's disclosure [SecurityWeek](https://www.securityweek.com/vulnerabilities-in-vertiv-liebert-ups-management-cards/), UPS management cards on the network should be treated as critical security assets and isolated where possible.
 
 ---
 

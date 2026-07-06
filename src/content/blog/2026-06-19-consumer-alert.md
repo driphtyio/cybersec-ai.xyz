@@ -16,7 +16,7 @@ AI scams are the fastest-growing fraud category in cybersecurity. In 2025, AI-po
 
 By early 2026, the damage has crossed **$12.5 billion** in annual consumer losses, according to FTC data cited by [Experian's 2026 Fraud Forecast](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). Experts project AI-enabled fraud could hit **$40 billion by 2027** [Fortune](https://fortune.com/2026/01/13/ai-fraud-forecast-2026-experian-deepfakes-scams/).
 
-The reason is simple: AI tools that used to require specialized skills are now free, fast, and anonymous. Anyone can clone a voice from 30 seconds of audio, generate a photorealistic deepfake from a single photo, or write convincing phishing emails in any language.
+The reason is simple: AI tools that used to require specialized skills are now free, fast, and anonymous. Anyone can clone a voice from 30 seconds of audio, generate a photorealistic deepfake from a single photo, or write convincing phishing emails in any language [Vectra AI](https://www.vectra.ai/topics/ai-scams).
 
 ---
 
@@ -52,7 +52,7 @@ Scammers create fake AI-powered investment platforms, trading bots, and crypto m
 
 **The fake candidate surge:** Experian's 2026 Fraud Forecast warns that deepfake candidates are infiltrating remote hiring processes [Experian](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). Nearly 60% of companies reported increased fraud losses from 2024 to 2025. AI-generated resumes, voice-cloned interviews, and synthetic identity documents make it possible to fake an entire professional identity.
 
-**AI romance scams:** Barclays reported in February 2026 that Gen Z users are "swiping left" on dating apps out of fear of AI-generated personas [Barclays](https://home.barclays/news/press-releases/20260/02/ai-deepfake-concerns-see-gen-z--swiping-left--on-dating-apps/). The average romance scam loss in 2025 was £7,000 ($9,100). Scammers use AI-generated faces (from websites like thispersondoesnotexist.com) and deepfake selfies to build trust that leads to fake investment pitches.
+**AI romance scams:** Barclays reported in February 2026 that Gen Z users are "swiping left" on dating apps out of fear of AI-generated personas [Barclays Gen Z](https://home.barclays/news/press-releases/20260/02/ai-deepfake-concerns-see-gen-z--swiping-left--on-dating-apps/). The average romance scam loss in 2025 was £7,000 ($9,100) [Barclays Insights](https://home.barclays/insights/2026/02/Romance-Scams-On-Rise/). Scammers use AI-generated faces (from websites like thispersondoesnotexist.com) and deepfake selfies to build trust that leads to fake investment pitches.
 
 ---
 

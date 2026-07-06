@@ -24,7 +24,7 @@ lastVerified: 2026-07-01
 
 Promptfoo systematically evaluates and stress-tests LLM applications by sending adversarial prompts through your deployed system and scoring the responses. It catches prompt injection, jailbreaks, data leakage, excessive agency, and hallucination issues before they reach production users.
 
-The tool started as a prompt evaluation framework — testing which prompt variations produced better outputs — then evolved into a full red-teaming platform after the team realized the same infrastructure could systematically probe for security weaknesses. By early 2026, Promptfoo had 18,000+ GitHub stars [GitHub](https://github.com/promptfoo/promptfoo) and was running in production at companies serving 10M+ users, according to the project's GitHub README.
+The tool started as a prompt evaluation framework — testing which prompt variations produced better outputs — then evolved into a full red-teaming platform after the team realized the same infrastructure could systematically probe for security weaknesses. By early 2026, Promptfoo had 18,000+ GitHub stars [GitHub](https://github.com/promptfoo/promptfoo) and was running in production at companies serving 10M+ users, according to the project's website and GitHub README [Promptfoo Intro](https://www.promptfoo.dev/docs/intro/).
 
 The key architectural difference from competitors: Promptfoo tests the **application stack**, not just the model endpoint. It runs full HTTP-based red teaming against your deployed system, including RAG pipelines, tool integrations, and agent chains. This means it catches vulnerabilities that model-level scanners miss — like indirect prompt injection through retrieved documents, or tool-call hijacking in agent pipelines.
 

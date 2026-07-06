@@ -106,7 +106,7 @@ The teams handling dataset provenance best maintain structured manifests that re
 
 ### NIST AI 600-1 and Regulatory Frameworks
 
-NIST's Generative AI Profile (July 26, 2024) and AI 100-2e2025 (March 24, 2025) together provide the regulatory backbone for AI supply chain security. They explicitly require:
+NIST's Generative AI Profile (AI 600-1, July 26, 2024) [NIST AI 600-1](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) and AI 100-2e2025 (March 24, 2025) [NIST AI 100-2](https://csrc.nist.gov/pubs/ai/100/2/e2025/final) together provide the regulatory backbone for AI supply chain security. They explicitly require:
 - Approved third-party provider lists
 - Provenance records for third-party content changes
 - Incident response plans specifically for third-party GenAI systems
@@ -122,7 +122,7 @@ OWASP LLM03:2025 (Supply Chain) and LLM04:2025 (Data and Model Poisoning) operat
 
 2. **SafeTensors + trust_remote_code disablement stops the easy attacks cold.** These two controls, enforced as policy rather than recommendation, would have prevented all nine Q1 2026 Hugging Face incidents. Every enterprise ML platform should enforce them today.
 
-3. **Dataset poisoning is the hardest layer to defend because detection tools lag behind attack techniques.** The 0.01% poisoning threshold demonstrated in 2023 is below the noise floor of standard validation metrics. Behavioral probing remains the only reliable detection technique, but it does not scale.
+3. **Dataset poisoning is the hardest layer to defend because detection tools lag behind attack techniques.** The 0.01% poisoning threshold demonstrated in 2023 [TechBytes, May 2026](https://techbytes.app/posts/supply-chain-poisoning-in-ai-models-deep-dive-2026/) is below the noise floor of standard validation metrics. Behavioral probing remains the only reliable detection technique, but it does not scale.
 
 4. **LoRA adapters represent a growing blind spot.** The fine-tuning adapter ecosystem has none of the safeguards being built for base checkpoints — no SafeTensors equivalent, no signing convention, no automated scanning. As fine-tuning becomes the default deployment pattern for open-weight models, this gap will become critical.
 

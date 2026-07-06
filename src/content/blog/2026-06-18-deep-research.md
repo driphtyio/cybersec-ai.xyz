@@ -29,7 +29,7 @@ The OWASP Gen AI Security Project defines prompt injection as:
 
 This is the foundational insight. Traditional injection attacks exploit a code→data boundary that can be fixed with parameterized queries or input escaping. LLMs operate in a single flat token space where "instruction" and "data" coexist as the same type of thing. You cannot parameterize natural language.
 
-Cisco's AI security team drew the inevitable comparison: "Prompt injection is the new SQL injection, and guardrails aren't enough" — because while SQL injection was a solvable engineering problem, prompt injection touches a fundamental design property of the technology.
+Cisco's AI security team drew the inevitable comparison: "Prompt injection is the new SQL injection, and guardrails aren't enough" [Cisco](https://blogs.cisco.com/ai/prompt-injection-is-the-new-sql-injection-and-guardrails-arent-enough) — because while SQL injection was a solvable engineering problem, prompt injection touches a fundamental design property of the technology.
 
 ---
 
@@ -39,7 +39,7 @@ The academic literature has converged on a multi-dimensional classification. The
 
 **Direct prompt injection:** The attacker controls the input channel that the LLM processes directly — a chatbot text field, a code completion prompt, a search query. These are the simplest to execute and the most studied. The Gandalf challenge by Lakera demonstrated that even with stacked system prompts and refusal training, a motivated attacker can extract protected information within a few attempts.
 
-**Indirect prompt injection:** The attacker embeds instructions in content the LLM consumes from external sources — documents, emails, web pages, images with hidden text. This is the harder class to defend against because the injection arrives through a trusted channel (retrieved knowledge base, ingested email thread) rather than direct user input. Google's April 2026 security blog documented real-world adversaries operationalizing indirect injection at scale, with injected payloads embedded in crawled web content that AI agents would encounter during browsing.
+**Indirect prompt injection:** The attacker embeds instructions in content the LLM consumes from external sources — documents, emails, web pages, images with hidden text. This is the harder class to defend against because the injection arrives through a trusted channel (retrieved knowledge base, ingested email thread) rather than direct user input. Google's April 2026 security blog documented real-world adversaries operationalizing indirect injection at scale, with injected payloads embedded in crawled web content that AI agents would encounter during browsing [Google](https://blog.google/security/prompt-injections-web/).
 
 **Compositional and multi-turn injections:** More sophisticated attacks chain multiple injection steps across different turns or modalities. Adaptive prompt injection attacks can bypass existing defenses in over 50% of cases, according to the [ScienceDirect survey on LLM-powered AI threats (2025)](https://www.sciencedirect.com/science/article/pii/S0167404825002257). Long-context attacks exploit the model's ability to process large inputs by hiding malicious instructions deep within otherwise benign content.
 
@@ -69,7 +69,7 @@ Users discovered that Google's AI Overviews (the LLM-generated summaries appeari
 
 **Adversarial prompt injection at scale**
 
-Google's April 2026 security blog provides the first systematic measurement of real-world injection attempts on the web. The research found that adversaries are actively embedding injection payloads in web content, with particular concentration in forums, documentation sites, and AI training data repositories. The shift from proof-of-concept to operational deployment is accelerating.
+Google's April 2026 security blog provides the first systematic measurement of real-world injection attempts on the web [Google](https://blog.google/security/prompt-injections-web/). The research found that adversaries are actively embedding injection payloads in web content, with particular concentration in forums, documentation sites, and AI training data repositories. The shift from proof-of-concept to operational deployment is accelerating.
 
 ---
 
@@ -105,7 +105,7 @@ The OWASP Top 10 for Agentic AI Applications (2026 edition) is now a distinct fr
 
 ## Key Findings
 
-1. **Prompt injection is structurally unsolvable, not just hard.** The fundamental architecture of LLMs — operating in a unified token space — means no defense can guarantee 100% prevention. Mitigation, not elimination, is the realistic goal.
+1. **Prompt injection is structurally unsolvable, not just hard.** The fundamental architecture of LLMs — operating in a unified token space — means no defense can guarantee 100% prevention [Cisco](https://blogs.cisco.com/ai/prompt-injection-is-the-new-sql-injection-and-guardrails-arent-enough). Mitigation, not elimination, is the realistic goal.
 
 2. **The weaponization gap has closed.** EchoLeak and Copilot RCE demonstrate that prompt injection has moved from academic demos to operational exploits with measurable business impact. Google's data confirms adversarial deployment at scale.
 

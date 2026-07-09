@@ -55,11 +55,35 @@ If you're running a business, agency, or side project in 2026, you're drowning i
 
 Most content tells you about one tool in isolation. We'll show you how to chain them into something that actually does work.
 
-## What's Already Here
+## What Already Exists
 
-Our existing posts — [n8n vs Make](/blog/n8n-vs-make-2026/) and [Retool vs Superblocks](/blog/retool-vs-superblocks-comparison/) — are still the best place to start. They're foundational comparisons that matter for any workflow you build.
+Our existing posts — [n8n vs Make](/blog/n8n-vs-make-2026/) and [Retool vs Superblocks](/blog/retool-vs-superblocks-comparison/) — are foundational comparisons that matter for any workflow you build. The new posts will build on top of that foundation.
 
-The new posts will build on top of that foundation. Check back Monday for our first workflow tutorial.
+## How AI Changes the No-Code Workflow
+
+The most significant shift in the no-code landscape through 2026 is the integration of AI reasoning into workflow steps. Traditionally, no-code workflows were deterministic: if X happens, do Y. AI nodes introduce probabilistic branching where the workflow's path depends on LLM interpretation of unstructured input.
+
+This creates new challenges that purely deterministic workflows didn't face:
+
+**Cost unpredictability.** Traditional workflow costs are linear: each execution costs roughly the same. AI-powered workflows have variable costs because LLM token usage depends on input complexity, output length, and the number of retries or refinements the model performs. A workflow that costs $0.05 per run for a simple classification might cost $0.50 for a complex document analysis.
+
+**Latency variance.** LLM API calls are inherently higher latency and higher variance than traditional API calls. A workflow that routes through Claude or GPT-4 may take 2-8 seconds per AI step, which changes the user experience design for synchronous vs. asynchronous workflows.
+
+**Failure modes.** Traditional workflows fail predictably — API timeouts, missing data, auth errors. AI nodes fail in harder-to-diagnose ways: hallucinated outputs, format deviations, refusals to process certain content, or subtle semantic drift where the model's interpretation changes slightly between runs. Error handling for AI nodes requires different patterns than traditional workflow error branches.
+
+**Data leakage risk.** When a workflow passes data through a third-party LLM API, the data governance implications depend on the model provider's data handling policy. OpenAI's API, Claude's API, and Gemini's API each have different data retention and training policies. Teams handling sensitive data must factor this into their choice of model provider and consider self-hosted or dedicated deployment options.
+
+## No-Code Meets Agentic AI
+
+The convergence of no-code automation and agentic AI is the defining trend of the 2026 automation landscape. n8n's AI agent builder, Make's GPT nodes, and Zapier's AI-powered parsing represent the first wave, but the second wave — autonomous agents that plan, execute, and learn from multi-step workflows — is already arriving.
+
+For teams evaluating these tools, the key questions are:
+- Can the agent follow conditional logic when an API call fails or returns unexpected data?
+- Does the agent have visibility into its own execution history for debugging and auditing?
+- Can the agent's permissions be scoped to specific operations without granting open access?
+- What happens when the agent encounters a situation its training didn't cover?
+
+These questions matter because an AI agent in a no-code workflow has the same security implications as an AI agent in a custom-built system: it holds credentials, makes API calls, and operates on real data. The no-code wrapper doesn't eliminate the security considerations — it just makes them easier to overlook.
 
 Here's a preview of what a typical workflow tutorial looks like — a Claude-powered research agent built in n8n:
 

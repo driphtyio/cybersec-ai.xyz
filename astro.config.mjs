@@ -6,6 +6,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://nocodeinsider.com',
+  site: 'https://cybersec-ai.xyz',
   integrations: [mdx(), sitemap()],
 });

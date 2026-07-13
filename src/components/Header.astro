@@ -11,13 +11,18 @@ import { SITE_TITLE } from '../consts';
         </svg>
         <span><span class="brand">CyberSec</span><span class="brand-sub"> AI</span></span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" data-menu-open>
         <a href="/scan/">Scanner</a>
         <a href="/headers/">Headers</a>
         <a href="/cves/">CVEs</a>
         <a href="/roadmap/">Roadmap</a>
         <a href="/blog/">Blog</a>
       </div>
+      <button class="hamburger" data-hamburger aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
       <button class="search-toggle" data-search-toggle aria-label="Toggle search" title="Search (Ctrl+K)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -126,6 +131,69 @@ import { SITE_TITLE } from '../consts';
     .search-panel { max-width: 1440px; }
   }
 
+  /* ── Hamburger Mobile Menu ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .hamburger-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: rgb(var(--gray));
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  [data-hamburger].active .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  [data-hamburger].active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  [data-hamburger].active .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(13, 17, 23, 0.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      flex-direction: column;
+      padding: 0.5em 1em 1em;
+      border-bottom: 1px solid var(--border-light);
+      z-index: 99;
+      gap: 0.25em;
+      margin: 0;
+    }
+    .nav-links[data-menu-open] {
+      display: flex;
+    }
+    .nav-links a {
+      padding: 0.7em 0.75em;
+      width: 100%;
+      font-size: 0.9em;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .nav-inner {
+      position: relative;
+    }
+  }
+
   #search { width: 100%; }
   .pagefind-ui__drawer { max-height: 70vh; overflow-y: auto; }
 </style>
@@ -165,6 +233,22 @@ import { SITE_TITLE } from '../consts';
   }
 
   toggle?.addEventListener('click', toggleSearch);
+
+  /* ── Hamburger menu toggle ── */
+  const hamburger = document.querySelector('[data-hamburger]');
+  hamburger?.addEventListener('click', function() {
+    const menu = document.querySelector('[data-menu-open]');
+    if (menu) {
+      const isOpen = menu.hasAttribute('data-menu-open');
+      if (isOpen) {
+        menu.removeAttribute('data-menu-open');
+      } else {
+        menu.setAttribute('data-menu-open', '');
+      }
+      this.classList.toggle('active');
+    }
+  });
+
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }

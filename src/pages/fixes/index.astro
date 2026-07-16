@@ -2,444 +2,13 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
-
-// Auto-generated from fix-*.md blog posts
-const FIXES_DATA = [
-  {
-    "id": "PR-scikit-learn-34258",
-    "title": "Fix: Improve error message when polars LazyFrame is passed to check_array",
-    "repo": "scikit-learn/scikit-learn",
-    "fix_scope": "6 lines changed in `sklearn/utils/validation.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "scikit-learn",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-07-14",
-    "description": "Improve error message when polars LazyFrame is passed to check_array"
-  },
-  {
-    "id": "PR-scikit-learn-34472",
-    "title": "Fix: Replace dead error-handling code in AdaBoost.feature_importances_ with check_is_fitted",
-    "repo": "scikit-learn/scikit-learn",
-    "fix_scope": "1 line changed in `sklearn/ensemble/_weight_boosting.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "scikit-learn",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-07-14",
-    "description": "Replace dead error-handling code in AdaBoost.feature_importances_ with check_is_fitted"
-  },
-  {
-    "id": "PR-helm-32047",
-    "title": "Fix: remove testing import from non-test code (fall back gracefully instead of importing testing)",
-    "repo": "helm/helm",
-    "fix_scope": "30 lines changed in `pkg/chart/common/capabilities.go`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "helm",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-07-11",
-    "description": "remove testing import from non-test code (fall back gracefully instead of importing testing)"
-  },
-  {
-    "id": "PR-xarray-11344",
-    "title": "Fix: fix: handle None module in module_available() to avoid TypeError",
-    "repo": "pydata/xarray",
-    "fix_scope": "5 lines changed in `xarray/namedarray/utils.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "xarray",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-07-10",
-    "description": "fix: handle None module in module_available() to avoid TypeError"
-  },
-  {
-    "id": "PR-xarray-11373",
-    "title": "Fix: docs: fix DataArray.pad constant_values default documentation",
-    "repo": "pydata/xarray",
-    "fix_scope": "2 lines changed in `xarray/core/dataarray.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "xarray",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-07-10",
-    "description": "docs: fix DataArray.pad constant_values default documentation"
-  },
-  {
-    "id": "PR-cli-1641",
-    "title": "Fix: test_lazy_choices_help fails on Python 3.14",
-    "repo": "httpie/cli",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "cli",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-07-09",
-    "description": "Fixed httpie/cli#1641 — 6 line bug-fix. "
-  },
-  {
-    "id": "PR-gitleaks-2122",
-    "title": "Fix: withinColumns Should Not Compare Columns Across Different Lines",
-    "repo": "gitleaks/gitleaks",
-    "fix_scope": "4 lines changed in the secret detection logic",
-    "compoundScore": 5.0,
-    "severity": "medium",
-    "severity_label": "Medium",
-    "severity_emoji": "🟡",
-    "tags": [
-      "PR Fix",
-      "gitleaks",
-      "Bug Fix",
-      "Edge Case",
-      "Secret Scanning"
-    ],
-    "pubDate": "2026-07-06",
-    "description": "The `withinColumns` function in gitleaks's secret detection engine incorrectly compares column positions across different scan lines rather than restricting comparison to the same scan line. This causes false positive matches when separate but similar secrets appear on adjacent lines — the scanner conflates their column ranges."
-  },
-  {
-    "id": "PR-send-311",
-    "title": "Fix: response.download does not return /proc/* files",
-    "repo": "pillarjs/send",
-    "fix_scope": "6 lines changed in `lib/send.js`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "send",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-06-29",
-    "description": "Fixed pillarjs/send#311 -- /proc files are virtual and don't report a size, causing response.download to hang or return an empty payload."
-  },
-  {
-    "id": "PR-pip-13922",
-    "title": "Fix: Use locale.getencoding() on Python 3.11+ to avoid DeprecationWarning",
-    "repo": "pypa/pip",
-    "fix_scope": "11 lines changed in `src/pip/_internal/configuration.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "pip",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-06-25",
-    "description": "Use `locale.getencoding()` on Python 3.11+ to avoid DeprecationWarning from `locale.getpreferredencoding()`."
-  },
-  {
-    "id": "PR-click-3571",
-    "title": "Fix: Flush remaining accumulated steps in ProgressBar.finish() so show_pos displays full completion",
-    "repo": "pallets/click",
-    "fix_scope": "1 line changed in `src/click/_termui_impl.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "click",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-06-18",
-    "description": "Flush remaining accumulated steps in ProgressBar.finish() so show_pos displays full completion"
-  },
-  {
-    "id": "PR-gitleaks-2121",
-    "title": "Fix: perf: reuse regex match results in detectRule() to avoid double regex execution",
-    "repo": "gitleaks/gitleaks",
-    "fix_scope": "1 line changed in `config/gitleaks.toml`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "gitleaks",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-06-18",
-    "description": "perf: reuse regex match results in detectRule() to avoid double regex execution"
-  },
-  {
-    "id": "PR-send-4944",
-    "title": "Fix: serve zero-size virtual files with proper content",
-    "repo": "pillarjs/send",
-    "fix_scope": "6 lines changed, 2 files",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "send",
-      "Bug Fix",
-      "Edge Case",
-      "Node.js"
-    ],
-    "pubDate": "2026-06-18",
-    "description": "Fixed pillarjs/send#4944 — when stat.size is 0 (e.g. /proc files), do not clamp the read stream to byte 0. 6-line fix."
-  },
-  {
-    "id": "PR-TypeScript-25083",
-    "title": "Fix: Enum keys not accepted as computed properties with non-identifier names",
-    "repo": "microsoft/TypeScript",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "TypeScript",
-      "Bug Fix",
-      "Edge Case",
-      "Enums",
-      "Type System"
-    ],
-    "pubDate": "2026-06-08",
-    "description": "How microsoft/TypeScript#25083 fixed enum keys in computed properties — why computed property names with non-identifier enum values were rejected by the type checker."
-  },
-  {
-    "id": "PR-TypeScript-63480",
-    "title": "Fix: TypeScript Set#size JSDoc grammar fix — \"in Set\" → \"in the Set\"",
-    "repo": "microsoft/TypeScript",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "TypeScript",
-      "Bug Fix",
-      "Documentation",
-      "Easy"
-    ],
-    "pubDate": "2026-06-08",
-    "description": "How microsoft/TypeScript#63480 fixed a grammar typo in the Set#size property JSDoc — a 1-line documentation fix merged by RyanCavanaugh in 1 day."
-  },
-  {
-    "id": "PR-cookiecutter-2217",
-    "title": "Fix: force_delete needs read+execute permissions, not just write",
-    "repo": "cookiecutter/cookiecutter",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "cookiecutter",
-      "Bug Fix",
-      "Edge Case",
-      "Permissions",
-      "Unix"
-    ],
-    "pubDate": "2026-06-08",
-    "description": "How cookiecutter/cookiecutter#2217 fixed PermissionError on read-only directories — why S_IWRITE alone is insufficient for shutil.rmtree on directories."
-  },
-  {
-    "id": "PR-cookiecutter-2219",
-    "title": "Fix: apply_overwrites_to_context silently drops overrides after first invalid entry",
-    "repo": "cookiecutter/cookiecutter",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "cookiecutter",
-      "Bug Fix",
-      "Edge Case",
-      "Validation",
-      "Error Handling"
-    ],
-    "pubDate": "2026-06-08",
-    "description": "How cookiecutter/cookiecutter#2219 fixed silent data loss in context generation — why batch validation should collect all errors, not fail on the first."
-  },
-  {
-    "id": "PR-requests-6102",
-    "title": "Fix: HTTPDigestAuth UTF-8 username/password encoding",
-    "repo": "psf/requests",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "requests",
-      "Bug Fix",
-      "Edge Case",
-      "Authentication",
-      "HTTP"
-    ],
-    "pubDate": "2026-06-08",
-    "description": "How psf/requests#6102 fixed HTTPDigestAuth encoding — why UTF-8 credentials need explicit encoding before being passed to the digest auth handshake."
-  },
-  {
-    "id": "PR-ripgrep-3222",
-    "title": "Fix: ripgrep decompression — separate file names from options with \"--\"",
-    "repo": "BurntSushi/ripgrep",
-    "fix_scope": "",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "ripgrep",
-      "Bug Fix",
-      "Edge Case",
-      "Security",
-      "CLI"
-    ],
-    "pubDate": "2026-06-08",
-    "description": "How BurntSushi/ripgrep#3222 fixed path traversal in compressed file search — why decompression commands need argument separators to prevent option injection."
-  },
-  {
-    "id": "PR-cookiecutter-uuid-ext-doc",
-    "title": "Fix: UUIDExtension docs had stale version 1.x instead of actual 2.0",
-    "repo": "cookiecutter/cookiecutter",
-    "fix_scope": "1 line changed in `docs/advanced/template_extensions.rst`",
-    "compoundScore": 6.5,
-    "severity": "medium",
-    "severity_label": "Medium",
-    "severity_emoji": "🟡",
-    "tags": [
-      "PR Fix",
-      "cookiecutter",
-      "Documentation",
-      "Docs Fix"
-    ],
-    "pubDate": "2026-06-04",
-    "description": "The UUID4 extension documentation had a stale `1.x` version tag that was never updated to the actual release version."
-  },
-  {
-    "id": "PR-requests-4965",
-    "title": "Fixing response.content Error Amnesia in requests",
-    "repo": "psf/requests",
-    "fix_scope": "4 lines added in `src/requests/models.py` — wrapped the content-reading block in try/except.",
-    "compoundScore": 7.5,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "Bug Fix",
-      "requests",
-      "Edge Case"
-    ],
-    "pubDate": "2026-05-27",
-    "description": "Accessing `response.content` twice after a read error — the first call raises an exception, the second call silently returns an empty string."
-  },
-  {
-    "id": "PR-click-3360",
-    "title": "Fix: Empty output from HelpFormatter.write_usage for a program without arguments",
-    "repo": "pallets/click",
-    "fix_scope": "4 lines changed in `src/click/formatting.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "click",
-      "Bug Fix",
-      "Edge Case"
-    ],
-    "pubDate": "2026-05-16",
-    "description": "Click bug #3360 produced empty write_usage output when args is empty. Fix PR #3433 adds an early return guard in formatting.py. A 4-line fix that illustrates why CLI formatting code needs explicit empty-input handling."
-  },
-  {
-    "id": "PR-psf-requests-6102",
-    "title": "Fix: HTTPDigestAuth for Non-Latin Credentials",
-    "repo": "psf/requests",
-    "fix_scope": "4 lines changed in `requests/auth.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "requests",
-      "Bug Fix",
-      "Encoding",
-      "Python"
-    ],
-    "pubDate": "2026-05-16",
-    "description": "HTTPDigestAuth fails on non-latin credentials"
-  },
-  {
-    "id": "PR-requests-7443",
-    "title": "Fix: mypy warns about invalid types for json argument",
-    "repo": "psf/requests",
-    "fix_scope": "1 line changed in `src/requests/_types.py`",
-    "compoundScore": 7.0,
-    "severity": "high",
-    "severity_label": "High",
-    "severity_emoji": "🟠",
-    "tags": [
-      "PR Fix",
-      "requests",
-      "Type Annotations",
-      "mypy",
-      "Python Type System"
-    ],
-    "pubDate": "2026-05-16",
-    "description": "mypy warns about invalid types for json argument"
-  }
-];
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead
-      title="PR Bug Fix Database \u2014 Search &amp; Browse"
+      title="PR Bug Fix Database — Search &amp; Browse"
       description="Search and browse PR bug fixes from open source projects. Filter by severity, repo, and keywords."
     />
     <style>
@@ -455,6 +24,7 @@ const FIXES_DATA = [
         font-size: 0.95rem; outline: none; box-sizing: border-box;
       }
       .search-row input:focus { border-color: var(--accent, #00d4aa); }
+
       .filters { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
       .pill {
         padding: 0.35rem 1rem; border: 1px solid var(--border, #2d3b4e); border-radius: 20px;
@@ -463,7 +33,9 @@ const FIXES_DATA = [
       }
       .pill:hover { border-color: var(--accent, #00d4aa); color: var(--accent, #00d4aa); }
       .pill.active { background: var(--accent, #00d4aa); color: #0d1117; border-color: var(--accent, #00d4aa); font-weight: 600; }
+
       .statline { font-size: 0.8rem; color: var(--ink-muted, #a0a0b0); margin-bottom: 0.8rem; }
+
       .cv-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
       .cv-table thead th {
         text-align: left; padding: 0.6rem 0.8rem; font-size: 0.75rem; font-weight: 600;
@@ -499,7 +71,8 @@ const FIXES_DATA = [
         background: rgba(0,212,170,0.08); color: var(--ink-muted, #a0a0b0);
         cursor: pointer;
       }
-      .badge-tag:hover { background: rgba(0,212,170,0.15); color: var(--accent, #00d4aa); }
+      .badge-tag:hover { background: rgba(0,212,170,0.15) !important; color: var(--accent, #00d4aa) !important; }
+
       .pg { display: flex; justify-content: center; align-items: center; gap: 0.3rem; margin-top: 1.5rem; flex-wrap: wrap; }
       .pg button {
         padding: 0.35rem 0.7rem; border: 1px solid var(--border, #2d3b4e); border-radius: 5px;
@@ -508,14 +81,6 @@ const FIXES_DATA = [
       .pg button:hover { border-color: var(--accent, #00d4aa); color: var(--accent, #00d4aa); }
       .pg button.active { background: var(--accent, #00d4aa); color: #0d1117; font-weight: 600; border-color: var(--accent, #00d4aa); }
       .pg button:disabled { opacity: 0.4; cursor: default; }
-      .no-results { text-align: center; padding: 3rem; color: var(--ink-muted, #a0a0b0); }
-      @media (max-width: 720px) {
-        .cv-page { padding: 1rem; }
-        .cv-table { font-size: 0.78rem; }
-        .col-tags, .col-repo, .col-scope { display: none; }
-        .col-score { width: 10%; }
-        .col-sev { width: 12%; }
-      }
     </style>
   </head>
   <body>
@@ -524,11 +89,13 @@ const FIXES_DATA = [
       <div class="cv-header">
         <h1>PR Bug Fix Database</h1>
         <p class="sub">Browse real PR bug fixes from open source projects. Each fix includes root cause analysis, diff, and actionable patterns.</p>
-        <span class="count" id="countDisplay">23 indexed</span>
+        <span class="count" id="countDisplay">— INDEXED</span>
       </div>
+
       <div class="search-row">
-        <input type="text" id="si" placeholder="Search Fix ID, repo, title, or keyword…" autocomplete="off" />
+        <input type="text" id="si" placeholder="Search Fix ID, repo, title, or keyword\u2026" autocomplete="off" />
       </div>
+
       <div class="filters" id="filters">
         <button class="pill active" data-f="all">All</button>
         <button class="pill" data-f="critical">🔴 Critical</button>
@@ -536,66 +103,63 @@ const FIXES_DATA = [
         <button class="pill" data-f="medium">🟡 Medium</button>
         <button class="pill" data-f="low">🟢 Low</button>
       </div>
-      <div class="statline" id="statline">Loading…</div>
+
+      <div class="statline" id="statline">Loading\u2026</div>
+
       <table class="cv-table">
         <thead>
           <tr>
-            <th class="col-id">Fix ID</th>
-            <th class="col-score">Score</th>
-            <th class="col-sev">Severity</th>
-            <th class="col-desc">Title</th>
-            <th class="col-repo">Repo</th>
-            <th class="col-scope">Lines</th>
-            <th class="col-tags">Tags</th>
-            <th class="col-date">Date</th>
+            <th class="col-id">FIX ID</th>
+            <th class="col-score">SCORE</th>
+            <th class="col-sev">SEVERITY</th>
+            <th class="col-desc">TITLE</th>
+            <th class="col-repo">REPO</th>
+            <th class="col-scope">LINES</th>
+            <th class="col-tags">TAGS</th>
+            <th class="col-date">DATE</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
       </table>
-      <div id="empty" class="no-results" style="display:none"></div>
+
+      <div id="empty" style="display:none;text-align:center;padding:3rem;color:var(--ink-muted,#a0a0b0)"></div>
       <div class="pg" id="pg"></div>
     </main>
+
     <script>
       (function() {
-        const ALL = FIXES_DATA;
-        let filtered = []; var page = 1; let filter = 'all';
         const PAGE = 25;
         const el = function(id) { return document.getElementById(id); };
         const tbody = el('tbody'), statline = el('statline'), empty = el('empty'), pgEl = el('pg'), si = el('si'), countDisplay = el('countDisplay');
+
+        let ALL = [];
+        let filtered = [];
+        let filter = 'all';
+        let page = 1;
 
         function sevColor(s) {
           return s === 'critical' ? '#ef4444' : s === 'high' ? '#f97316' : s === 'medium' ? '#eab308' : '#22c55e';
         }
 
-        countDisplay.textContent = ALL.length + ' indexed';
-
-        tbody.addEventListener('click', function(e) {
-          var tag = e.target.closest('.badge-tag');
-          if (tag) {
-            e.stopPropagation();
-            e.preventDefault();
-            si.value = tag.textContent.trim();
-            page = 1;
-            apply();
-          }
-        });
-
-        pgEl.addEventListener('click', function(e) {
-          var btn = e.target.closest('button[data-page]');
-          if (btn && !btn.disabled) {
-            page = parseInt(btn.dataset.page);
-            render();
-          }
-        });
-
+        // Inject unscoped styles for dynamic innerHTML elements
         var dynStyle = document.createElement('style');
         dynStyle.textContent = '.badge-tag:hover{background:rgba(0,212,170,0.15)!important;color:var(--accent,#00d4aa)!important}';
         document.head.appendChild(dynStyle);
 
-        var params = new URLSearchParams(window.location.search);
-        var qParam = params.get('q');
-        if (qParam) { si.value = qParam; }
-        apply();
+        fetch('/data/fixes.json')
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            ALL = data;
+            countDisplay.textContent = ALL.length + ' INDEXED';
+            var params = new URLSearchParams(window.location.search);
+            var qParam = params.get('q');
+            if (qParam) { si.value = qParam; }
+            apply();
+          })
+          .catch(function() {
+            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--ink-muted,#a0a0b0)">Failed to load fix data.</td></tr>';
+            statline.textContent = 'Error loading data';
+          });
 
         el('filters').addEventListener('click', function(e) {
           var btn = e.target.closest('.pill');
@@ -645,13 +209,13 @@ const FIXES_DATA = [
           var items = filtered.slice(start, start + PAGE);
 
           statline.textContent = total > 0
-            ? total + ' result' + (total !== 1 ? 's' : '') + ' — showing ' + (start+1) + '–' + Math.min(start+PAGE, total)
+            ? total + ' result' + (total !== 1 ? 's' : '') + ' — showing ' + (start+1) + '\u2013' + Math.min(start+PAGE, total)
             : 'No results';
 
           if (items.length === 0) {
             tbody.innerHTML = '';
             empty.style.display = 'block';
-            empty.innerHTML = '🔍 No fixes match your search. Try different keywords or clear the filter.';
+            empty.innerHTML = 'No fixes match your search. Try different keywords or clear the filter.';
             pgEl.innerHTML = '';
             return;
           }
@@ -665,7 +229,7 @@ const FIXES_DATA = [
               '<td style="text-align:center"><span class="score-badge" style="color:' + sevColor(c.severity) + '">' + c.compoundScore.toFixed(1) + '</span></td>' +
               '<td><span class="sev-badge sev-' + c.severity + '">' + emoji + ' ' + c.severity_label + '</span></td>' +
               '<td style="color:var(--ink-muted,#a0a0b0);font-size:0.8rem;line-height:1.4">' +
-                (c.title.length > 100 ? c.title.slice(0, 100) + '…' : c.title) + '</td>' +
+                (c.title.length > 100 ? c.title.slice(0, 100) + '\u2026' : c.title) + '</td>' +
               '<td class="col-repo" style="font-size:0.75rem;color:var(--ink-muted,#a0a0b0);font-family:monospace">' + c.repo + '</td>' +
               '<td class="col-scope" style="text-align:center;font-size:0.78rem;color:var(--ink-muted,#a0a0b0)">' + c.fix_scope + '</td>' +
               '<td class="col-tags">' + (tags.length ? tags.map(function(t) { return '<span class="badge-tag">' + t + '</span>'; }).join('') : '') + '</td>' +
@@ -674,14 +238,23 @@ const FIXES_DATA = [
           }).join('');
 
           var phtml = '';
-          phtml += '<button data-page="1" ' + (page === 1 ? 'disabled' : '') + '>«</button>';
+          phtml += '<button data-page="1" ' + (page === 1 ? 'disabled' : '') + '>\u00ab</button>';
           for (var i = Math.max(1, page - 3); i <= Math.min(pages, page + 3); i++) {
             var isActive = i === page;
             phtml += '<button data-page="' + i + '" class="' + (isActive ? 'active' : '') + '" style="' + (isActive ? 'background:var(--accent,#00d4aa);color:#0d1117;font-weight:600;border-color:var(--accent,#00d4aa)' : '') + '">' + i + '</button>';
           }
-          phtml += '<button data-page="' + pages + '" ' + (page === pages ? 'disabled' : '') + '>»</button>';
+          phtml += '<button data-page="' + pages + '" ' + (page === pages ? 'disabled' : '') + '>\u00bb</button>';
           pgEl.innerHTML = phtml;
         }
+
+        // Pagination click delegation
+        pgEl.addEventListener('click', function(e) {
+          var btn = e.target.closest('button[data-page]');
+          if (!btn || btn.disabled) return;
+          page = parseInt(btn.dataset.page);
+          render();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       })();
     </script>
     <Footer />

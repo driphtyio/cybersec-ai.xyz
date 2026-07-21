@@ -2,7 +2,7 @@
 title: "Agentic AI Fraud Has Arrived: Autonomous Scam Bots, QR Code Traps, and Why Your Ears Can't Be Trusted in 2026"
 description: "AI scammers are now deploying autonomous agents that run entire fraud campaigns without human intervention. This week's consumer alert covers agentic AI fraud, QR code quishing attacks, the surge in deepfake romance scams, and the one protection that still works: the family safe word protocol."
 pubDate: "2026-07-10"
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260703-alert-1783102649.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260710-consumer-alert-1784602628.webp"
 tags:
   - ai-security
   - fraud-detection

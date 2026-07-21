@@ -2,7 +2,7 @@
 title: "AI-Generated Zero-Day Exploits: When Autonomous Agents Become the Weapon"
 description: "A deep research analysis of how AI agents are now autonomously discovering and weaponizing zero-day vulnerabilities — from Google's confirmation of the first AI-created zero-day to PROMPTSPY's Gemini-powered Android backdoor and the supply chain attacks targeting AI infrastructure."
 pubDate: "2026-07-16"
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260702-research-1783013680.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260716-deep-research-1784602642.webp"
 tags:
   - ai-security
   - threat-intelligence

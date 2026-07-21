@@ -2,7 +2,7 @@
 title: "World Cup Final Scams, Post-Prime Day Phishing, and the $3.5 Billion Imposter Year: July 2026 Consumer Alert"
 description: "The World Cup final is days away, Prime Day packages are still arriving, and scammers are capitalizing on both. This week's consumer alert covers fake FIFA ticket sites, post-sale Amazon phishing, the FTC's record $3.5 billion imposter scam finding, AI-generated voice cloning, and the fake CAPTCHA malware campaign spreading across the web."
 pubDate: "2026-07-17"
-heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260703-alert-1783102649.jpg"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260717-consumer-alert-1784602647.webp"
 lastVerified: "2026-07-17"
 tags:
   - ai-security

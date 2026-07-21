@@ -196,3 +196,12 @@ Scammers buy sponsored results for popular apps. If you search for "ChatGPT" or 
 - Forbes: "Protect Your Family — FBI Warns You Need A 'Secret Word'" (October 2025) — [forbes.com](https://www.forbes.com/sites/zakdoffman/2025/10/08/protect-your-family-why-fbi-warns-you-need-a-secret-word/)
 - CNN: "AI 'voice cloning' scams are on the rise. Here's how to protect yourself" (May 29, 2026) — [cnn.com](https://www.cnn.com/2026/05/29/tech/ai-voice-cloning-scams-protect-yourself)
 - FBI Press Release: "Cryptocurrency and AI Scams Bilk Americans of Billions" — [fbi.gov](https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

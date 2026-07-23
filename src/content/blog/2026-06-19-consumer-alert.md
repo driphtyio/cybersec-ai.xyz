@@ -46,11 +46,11 @@ Scammers create fake AI-powered investment platforms, trading bots, and crypto m
 
 **The FBI's 2025 numbers:** 22,364 AI-related complaints, $893 million in losses [FBI IC3 2025](https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions). The agency warns that voice cloning and deepfake scams now account for a significant share of their caseload, with elderly Americans disproportionately targeted.
 
-**The Canadian grandparent scam ring:** Fraudsters used AI voice cloning to pose as grandchildren in distress, calling elderly victims across the United States. The multi-year scheme extracted $21 million before authorities dismantled it [FCC](https://www.fcc.gov/consumers/scam-alert/grandparent-scams-get-more-sophisticated). The FCC now lists the grandparent scam as the #1 scam targeting older adults.
+**The Canadian grandparent scam ring:** Fraudsters used AI voice cloning to pose as grandchildren in distress, calling elderly victims across the United States. The multi-year scheme extracted $21 million before authorities dismantled it [FCC](https://www.fcc.gov/consumers/scam-alert/grandparent-scams-get-more-sophisticated). The FCC now lists the grandparent scam as the #1 scam targeting older adults [FCC](https://www.fcc.gov/consumers/scam-alert/grandparent-scams-get-more-sophisticated).
 
-**The $25 million deepfake CFO:** In February 2024, a Hong Kong finance worker joined a video call where every participant — including the "CFO" — was a deepfake. The worker authorized a $25 million transfer. The case remains the highest-profile deepfake corporate fraud on record.
+**The $25 million deepfake CFO:** In February 2024, a Hong Kong finance worker joined a video call where every participant — including the "CFO" — was a deepfake. The worker authorized a $25 million transfer [CNN](https://edition.cnn.com/2024/02/04/asia/deepfake-cfo-scam-hong-kong-intl-hnk). The case remains the highest-profile deepfake corporate fraud on record.
 
-**The fake candidate surge:** Experian's 2026 Fraud Forecast warns that deepfake candidates are infiltrating remote hiring processes [Experian](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). Nearly 60% of companies reported increased fraud losses from 2024 to 2025. AI-generated resumes, voice-cloned interviews, and synthetic identity documents make it possible to fake an entire professional identity.
+**The fake candidate surge:** Experian's 2026 Fraud Forecast warns that deepfake candidates are infiltrating remote hiring processes [Experian](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). Nearly 60% of companies reported increased fraud losses from 2024 to 2025 [Experian 2026 Fraud Forecast](https://www.experianplc.com/newsroom/press-releases/2026/experian-s-new-fraud-forecast-warns-agentic-ai--deepfake-job-can). AI-generated resumes, voice-cloned interviews, and synthetic identity documents make it possible to fake an entire professional identity.
 
 **AI romance scams:** Barclays reported in February 2026 that Gen Z users are "swiping left" on dating apps out of fear of AI-generated personas [Barclays Gen Z](https://home.barclays/news/press-releases/20260/02/ai-deepfake-concerns-see-gen-z--swiping-left--on-dating-apps/). The average romance scam loss in 2025 was £7,000 ($9,100) [Barclays Insights](https://home.barclays/insights/2026/02/Romance-Scams-On-Rise/). Scammers use AI-generated faces (from websites like thispersondoesnotexist.com) and deepfake selfies to build trust that leads to fake investment pitches.
 
@@ -75,7 +75,7 @@ Scammers create fake AI-powered investment platforms, trading bots, and crypto m
 
 ### Set a family code word
 
-Pick a word or phrase that only your immediate family knows. If someone calls claiming to be a relative in trouble, ask for the code word. Scammers cannot answer it. This single step would have stopped the $21 million Canadian grandparent scam.
+Pick a word or phrase that only your immediate family knows. If someone calls claiming to be a relative in trouble, ask for the code word. Scammers cannot answer it. This single step would have stopped the $21 million Canadian grandparent scam [CBC News](https://www.cbc.ca/news/marketplace/marketplace-ai-voice-scam-1.7486437).
 
 ### Verify through a separate channel
 

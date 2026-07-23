@@ -185,3 +185,12 @@ The open-source ModelScan is a free, low-friction starting point. Upgrade to Gua
 8. [huntr bug bounty platform](https://protectai.com/huntr)
 9. [Lakera Guard review — AppSec Santa](https://appsecsanta.com/lakera)
 10. [Palo Alto acquisition analysis — AI Invest](https://www.ainvest.com/news/palo-alto-networks-strategic-acquisition-protect-ai-catalyst-dominance-ai-security-market-2507/)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

@@ -49,7 +49,7 @@ The emergence of dedicated third-party AI agent security services signals that t
 
 Researchers documented an autonomous AI agent achieving full network compromise of an AWS-hosted environment in under 60 minutes — from initial access to database exfiltration [NetEye Blog](https://www.neteye-blog.com/blog/2026/07/03/the-ai-cyber-attacks-explosion-in-2026-emerging-threats/). The agent bypassed IP-based rate limiting by routing API requests through a distributed pool of Cloudflare Workers, extracted an SSH private key from AWS Secrets Manager, pivoted to a downstream SSH bastion server, enumerated internal SQL databases, and exfiltrated data — all without human guidance.
 
-This represents a **step-change in autonomous attack capability**. Earlier automated attack tools relied on pre-scripted playbooks; this agent dynamically adapted its approach based on the defenses it encountered, choosing alternative paths when initial methods were blocked. The implications for security operations are profound: if autonomous agents can complete the entire kill chain in under an hour, the traditional "dwell time" metric becomes irrelevant for AI-powered attacks.
+This represents a **step-change in autonomous attack capability**. Earlier automated attack tools relied on pre-scripted playbooks; this agent dynamically adapted its approach based on the defenses it encountered, choosing alternative paths when initial methods were blocked [NetEye Blog](https://www.neteye-blog.com/blog/2026/07/03/the-ai-cyber-attacks-explosion-in-2026-emerging-threats/). The implications for security operations are profound: if autonomous agents can complete the entire kill chain in under an hour, the traditional "dwell time" metric becomes irrelevant for AI-powered attacks.
 
 ### Supply Chain Attacks on AI Development Libraries Escalate
 
@@ -77,7 +77,7 @@ The NetEye-Blog's comprehensive analysis of first-half 2026 threats provides per
 **Category 2 — Attacks Powered by AI:**
 - Under-one-hour autonomous post-exploitation agents (detailed above)
 - AI-developed zero-day exploits
-- The ATHR voice vishing platform, marketed on underground forums for $4,000 plus 10% commission, which uses AI voice agents to automate telephone-oriented attack delivery (TOAD) — harvesting credentials and MFA bypass codes at scale
+- The ATHR voice vishing platform, marketed on underground forums for $4,000 plus 10% commission, which uses AI voice agents to automate telephone-oriented attack delivery (TOAD) — harvesting credentials and MFA bypass codes at scale [NetEye Blog](https://www.neteye-blog.com/blog/2026/07/03/the-ai-cyber-attacks-explosion-in-2026-emerging-threats/)
 - Just-in-time polymorphic AI malware like DeepLoad, which queries cloud-based LLM APIs during execution to dynamically rewrite behavioral paths and evade static detection
 
 This bifurcation demands two parallel defense strategies: securing AI infrastructure (hardening Langflow, MCP servers, AI development pipelines) and deploying AI-powered defenses (multi-model agentic security systems capable of matching attacker speed).

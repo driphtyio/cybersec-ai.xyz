@@ -54,7 +54,7 @@ The critical finding from post-incident analysis is that 78% of compromised agen
 
 Memory poisoning represents the most sophisticated attack class in the agentic threat landscape. Unlike prompt injection, which ends when the conversation closes, memory poisoning creates persistent compromise by planting malicious instructions into an agent's long-term memory that survive across sessions and execute days or weeks later [Schneider, Feb 2026](https://christian-schneider.net/blog/persistent-memory-poisoning-in-ai-agents/).
 
-The MINJA methodology (Memory INJection Attack), published at NeurIPS 2025 by Dong et al., demonstrated over 95% injection success rates against production agents across medical, e-commerce, and QA domains. MINJA uses bridging steps — intermediate logical steps that appear reasonable individually but lead toward the attacker's goal — combined with progressive shortening that removes explicit injection fingerprints while preserving malicious logic.
+The MINJA methodology (Memory INJection Attack), published at NeurIPS 2025 by Dong et al., demonstrated over 95% injection success rates against production agents across medical, e-commerce, and QA domains [Dong et al., NeurIPS 2025](https://christian-schneider.net/blog/persistent-memory-poisoning-in-ai-agents/). MINJA uses bridging steps — intermediate logical steps that appear reasonable individually but lead toward the attacker's goal — combined with progressive shortening that removes explicit injection fingerprints while preserving malicious logic.
 
 Even more concerning is the delayed tool invocation technique demonstrated against Google Gemini. An attacker poisons the chat context with a conditional instruction ("If the user later says X, then execute this memory update"), which Gemini correctly refuses to execute while processing the untrusted document but incorporates into its understanding. When the user later says "yes" or "sure" — trigger words that appear in nearly every conversation — Gemini interprets this as direct authorization and commits the memory update. Google assessed the impact as low because it requires a trigger word, but the attack surface is vast [Schneider, Feb 2026](https://christian-schneider.net/blog/persistent-memory-poisoning-in-ai-agents/).
 
@@ -77,15 +77,15 @@ The headline figure — 1 in 8 enterprise breaches involving agentic systems —
 - **Agent as vector**: Exploitation of a compromised agent to reach systems the attacker could not access directly.
 - **Agent as amplifier**: Legitimate agents operating in a compromised environment that accelerate attack propagation.
 
-The 6.2x higher breach cost for agentic incidents is driven primarily by scope — agents with broad permissions can access, exfiltrate, or corrupt significantly more data in less time than a compromised user account [Digital Applied, Mar 2026](https://www.digitalapplied.com/blog/ai-agent-security-2026-1-in-8-breaches-agentic-systems). In financial services and healthcare technology, the ratio is already closer to 1 in 5.
+The 6.2x higher breach cost for agentic incidents is driven primarily by scope — agents with broad permissions can access, exfiltrate, or corrupt significantly more data in less time than a compromised user account [Digital Applied, Mar 2026](https://www.digitalapplied.com/blog/ai-agent-security-2026-1-in-8-breaches-agentic-systems). In financial services and healthcare technology, the ratio is already closer to 1 in 5 [Digital Applied, Mar 2026](https://www.digitalapplied.com/blog/ai-agent-security-2026-1-in-8-breaches-agentic-systems).
 
 ### MINJA Research (NeurIPS 2025)
 
-The MINJA framework demonstrated that an attacker with only query-level access — no direct access to the memory store — can inject malicious records into agent memory through carefully crafted queries. The three-stage methodology (bridging steps, indication prompts, progressive shortening) achieves over 95% injection success and over 70% attack success across tested datasets. Critically, MINJA evades input and output moderation because the indication prompts are designed to look like plausible reasoning steps with no obvious injection signature.
+The MINJA framework demonstrated that an attacker with only query-level access — no direct access to the memory store — can inject malicious records into agent memory through carefully crafted queries. The three-stage methodology (bridging steps, indication prompts, progressive shortening) achieves over 95% injection success and over 70% attack success across tested datasets [Dong et al., NeurIPS 2025](https://christian-schneider.net/blog/persistent-memory-poisoning-in-ai-agents/). Critically, MINJA evades input and output moderation because the indication prompts are designed to look like plausible reasoning steps with no obvious injection signature.
 
 ### Gemini Memory Attack (Rehberger, 2026)
 
-Security researcher Johann Rehberger's discovery that Google Gemini's runtime guardrails can be bypassed through delayed tool invocation using conditional instructions planted in untrusted content demonstrated a fundamental weakness in runtime-only defenses. The attack does not require sophisticated social engineering — any document, email, or webpage the agent processes can carry the conditional instruction. The trigger words ("yes", "sure", "no") are so common that nearly every conversation provides multiple activation opportunities.
+Security researcher Johann Rehberger's discovery that Google Gemini's runtime guardrails can be bypassed through delayed tool invocation using conditional instructions planted in untrusted content demonstrated a fundamental weakness in runtime-only defenses [Schneider, Feb 2026](https://christian-schneider.net/blog/persistent-memory-poisoning-in-ai-agents/). The attack does not require sophisticated social engineering — any document, email, or webpage the agent processes can carry the conditional instruction. The trigger words ("yes", "sure", "no") are so common that nearly every conversation provides multiple activation opportunities.
 
 ### CrowdStrike 2026 Global Threat Report
 
@@ -118,7 +118,7 @@ Traditional SIEM and EDR tools are designed to detect known attack patterns in s
 
 1. **Agentic AI breaches are not an emerging risk — they are a current crisis.** The 1-in-8 ratio means most enterprises with agent deployments either have already experienced or will experience an agent-involved security incident. The 6.2x cost premium means the financial impact is disproportionate.
 
-2. **Over-permissioning is the single largest preventable cause of breach severity.** The 78% over-permissioned rate in post-incident analysis reflects a systemic failure to apply least-privilege principles to agent identities. This is entirely fixable with current tools and processes.
+2. **Over-permissioning is the single largest preventable cause of breach severity.** The 78% over-permissioned rate in post-incident analysis reflects a systemic failure to apply least-privilege principles to agent identities [Stellar Cyber, 2026](https://stellarcyber.ai/learn/agentic-ai-securiry-threats/). This is entirely fixable with current tools and processes.
 
 3. **Memory poisoning changes the incident response timeline fundamentally.** Because injection and execution are temporally decoupled, organizations cannot scope breach impact without forensic memory analysis. Most current incident response playbooks do not include agent memory audit steps.
 
@@ -149,7 +149,7 @@ Traditional SIEM and EDR tools are designed to detect known attack patterns in s
 
 6. **Pin agent model versions and test behavior after updates.** Model provider updates can change agent behavior in ways that security testing did not anticipate. Use version-pinned deployments where possible, and run a security test suite after every model update before promoting to production.
 
-7. **Engage legal and compliance early.** The SEC's cybersecurity disclosure rules may require disclosure of material agent security incidents. Given the 6.2x higher breach cost for agentic incidents, many agent-related security events will meet materiality thresholds that require disclosure. Build compliance requirements into agent deployment planning from the start.
+7. **Engage legal and compliance early.** The SEC's cybersecurity disclosure rules may require disclosure of material agent security incidents. Given the 6.2x higher breach cost for agentic incidents [HiddenLayer, Mar 2026](https://www.hiddenlayer.com/report-and-guide/threatreport2026), many agent-related security events will meet materiality thresholds that require disclosure. Build compliance requirements into agent deployment planning from the start.
 
 ## Sources
 

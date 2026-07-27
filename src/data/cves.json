@@ -1,61 +1,7 @@
 {
   "count": 500,
-  "updated": "2026-07-20T13:01:43.100781",
+  "updated": "2026-07-27T11:02:09.578806",
   "cves": [
-    {
-      "id": "CVE-2026-39861",
-      "description": "Claude Code is an agentic coding tool. Prior to version 2.1.64, Claude Code's sandbox did not prevent sandboxed processes from creating symlinks pointing to locations outside the workspace. When Claude Code subsequently wrote to a path within such a symlink, its unsandboxed process followed the symlink and wrote to the target location outside the workspace without prompting the user for confirmation. This allowed a sandbox escape where neither the sandboxed command nor the unsandboxed app could independently write outside the workspace, but their combination could write to arbitrary locations, potentially leading to code execution outside the sandbox. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window to trigger sandboxed code execution via prompt injection. Users on standard Claude Code auto-update have received this fix automatically. Users performing manual updates are advised to update to version 2.1.64 or later.",
-      "severity": "CRITICAL",
-      "cvss": 10.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-04-21T01:16:06.647",
-      "lastModified": "2026-06-17T10:42:43.163",
-      "references": [
-        "https://github.com/anthropics/claude-code/security/advisories/GHSA-vp62-r36r-9xqp"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41196",
-      "description": "Luanti (formerly Minetest) is an open source voxel game-creation platform. Starting in version 5.0.0 and prior to version 5.15.2, a malicious mod can trivially escape the sandboxed Lua environment to execute arbitrary code and gain full filesystem access on the user's device. This applies to the server-side mod, async and mapgen as well as the client-side (CSM) environments. This vulnerability is only exploitable when using LuaJIT. Version 5.15.2 contains a patch. On release versions, one can also patch this issue without recompiling by editing `builtin/init.lua` and adding the line `getfenv = nil` at the end. Note that this will break mods relying on this function (which is not inherently unsafe).",
-      "severity": "CRITICAL",
-      "cvss": 10.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-04-23T02:16:17.900",
-      "lastModified": "2026-06-17T10:46:18.673",
-      "references": [
-        "https://github.com/luanti-org/luanti/commit/8a929dfb97aa08337f49ba1bb96a56d6557dc896",
-        "https://github.com/luanti-org/luanti/security/advisories/GHSA-g596-mf82-w8c3"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41211",
-      "description": "Vite+ is a unified toolchain and entry point for web development. Prior to version 0.1.17, `downloadPackageManager()` accepts an untrusted `version` string and uses it directly in filesystem paths. A caller can supply `../` segments or an absolute path to escape the `VP_HOME/package_manager/<pm>/` cache root and make Vite+ delete, replace, and populate directories outside the intended cache location. Version 0.1.17 contains a patch.",
-      "severity": "CRITICAL",
-      "cvss": 10.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
-      "published": "2026-04-23T02:16:18.860",
-      "lastModified": "2026-06-17T10:46:19.777",
-      "references": [
-        "https://github.com/voidzero-dev/vite-plus/security/advisories/GHSA-33r3-4whc-44c2",
-        "https://github.com/voidzero-dev/vite-plus/security/advisories/GHSA-33r3-4whc-44c2"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-33819",
-      "description": "Deserialization of untrusted data in Microsoft Bing allows an unauthorized attacker to execute code over a network.",
-      "severity": "CRITICAL",
-      "cvss": 10.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-04-23T22:16:37.817",
-      "lastModified": "2026-06-17T10:38:09.087",
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33819"
-      ],
-      "source": "nvd"
-    },
     {
       "id": "CVE-2026-35051",
       "description": "Traefik is an HTTP reverse proxy and load balancer. Prior to versions 2.11.43, 3.6.14, and 3.7.0-rc.2, there is an authentication bypass vulnerability in Traefik's ForwardAuth middleware when trustForwardHeader=false is configured and Traefik is deployed behind a trusted upstream proxy. This issue has been patched in versions 2.11.43, 3.6.14, and 3.7.0-rc.2.",
@@ -125,7 +71,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-08T23:16:36.497",
-      "lastModified": "2026-06-17T10:47:39.240",
+      "lastModified": "2026-07-24T21:10:00.143",
       "references": [
         "https://github.com/gitroomhq/postiz-app/commit/da448012dd87e94944cbe83a38e7fd023269ec46",
         "https://github.com/gitroomhq/postiz-app/security/advisories/GHSA-v975-9h5p-xhm4"
@@ -166,7 +112,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
       "published": "2026-05-20T10:16:28.037",
-      "lastModified": "2026-06-17T10:48:40.150",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-42960.txt"
       ],
@@ -179,7 +125,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-20T17:16:20.400",
-      "lastModified": "2026-06-30T16:30:59.007",
+      "lastModified": "2026-07-23T12:10:00.110",
       "references": [
         "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-csw-pnbsa-g8WEnuy"
       ],
@@ -192,7 +138,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-22T23:16:41.573",
-      "lastModified": "2026-06-17T10:21:53.640",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-23652"
       ],
@@ -205,7 +151,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-22T23:16:51.363",
-      "lastModified": "2026-06-17T10:45:16.763",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40412"
       ],
@@ -218,7 +164,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-22T23:16:56.407",
-      "lastModified": "2026-06-17T10:54:27.530",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47280"
       ],
@@ -231,7 +177,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-02T14:16:44.867",
-      "lastModified": "2026-06-22T19:23:18.580",
+      "lastModified": "2026-07-22T19:10:00.120",
       "references": [
         "https://github.com/MISP/MISP/commit/39b3cb15aac4318afdd2ab63b96c2eac12b271fe"
       ],
@@ -244,7 +190,7 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
       "published": "2026-06-04T23:17:32.677",
-      "lastModified": "2026-06-17T10:55:06.170",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48567"
       ],
@@ -470,7 +416,7 @@
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
       "published": "2026-05-19T19:16:49.293",
-      "lastModified": "2026-06-17T10:37:50.013",
+      "lastModified": "2026-07-24T09:10:00.153",
       "references": [
         "https://github.com/kovidgoyal/kitty/commit/e9661f0f3afb4e4dbffa509adfb3df3c9780ad34",
         "https://github.com/kovidgoyal/kitty/security/advisories/GHSA-qfgm-2c64-6x3x",
@@ -515,7 +461,7 @@
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-28T22:16:59.247",
-      "lastModified": "2026-06-17T10:51:28.473",
+      "lastModified": "2026-07-21T10:10:00.103",
       "references": [
         "https://github.com/portainer/portainer/security/advisories/GHSA-rpgq-m5fp-32wr"
       ],
@@ -528,7 +474,7 @@
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-08T16:16:41.347",
-      "lastModified": "2026-06-17T10:53:40.637",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://github.com/FlowiseAI/Flowise/releases/tag/flowise%403.1.2",
         "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-9rvc-vf7m-pgm2",
@@ -543,7 +489,7 @@
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T16:16:35.837",
-      "lastModified": "2026-06-22T20:07:04.253",
+      "lastModified": "2026-07-23T08:10:00.137",
       "references": [
         "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Sentry-CVE-2026-10520-CVE-2026-10523?language=en_US"
       ],
@@ -654,252 +600,107 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-40498",
-      "description": "FreeScout is a free self-hosted help desk and shared mailbox. Prior to version 1.8.213, an unauthenticated attacker can access diagnostic and system tools that should be restricted to administrators. The /system/cron endpoint relies on a static MD5 hash derived from the APP_KEY, which is exposed in the response and logs. Accessing these endpoints reveals sensitive server information (Full Path Disclosure), process IDs, and allows for Resource Exhaustion (DoS) by triggering heavy background tasks repeatedly without any rate limiting. The cron hash is generated using md5(APP_KEY . 'web_cron_hash'). Since this hash is often transmitted via GET requests, it is susceptible to exposure in server logs, browser history, and proxy logs. Furthermore, the lack of rate limiting on these endpoints allows for automated resource exhaustion (DoS) and brute-force attempts. Version 1.8.213 fixes the issue.",
+      "id": "CVE-2026-54052",
+      "description": "n8n-MCP is an MCP server that provides AI assistants access to n8n node documentation, properties, and operations. Prior to 2.56.1, in HTTP mode with multi-tenancy enabled through ENABLE_MULTI_TENANT=true, n8n-mcp's local workflow version history backups were not isolated per tenant, allowing an authenticated tenant to read workflow version snapshots belonging to other tenants and delete or destroy other tenants' stored backups, including full node definitions, credential references, and authorization headers. This issue is fixed in version 2.56.1.",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-21T16:16:20.240",
-      "lastModified": "2026-06-17T10:45:23.217",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
+      "published": "2026-07-15T21:16:54.797",
+      "lastModified": "2026-07-18T03:16:37.000",
       "references": [
-        "https://github.com/freescout-help-desk/freescout/commit/b1d6c2c601a6ec3626ab13e679607b5084dfbd38",
-        "https://github.com/freescout-help-desk/freescout/releases/tag/1.8.213",
-        "https://github.com/freescout-help-desk/freescout/security/advisories/GHSA-5jw5-q9j7-4rxc",
-        "https://github.com/freescout-help-desk/freescout/security/advisories/GHSA-5jw5-q9j7-4rxc"
+        "https://github.com/czlonkowski/n8n-mcp/releases/tag/v2.56.1",
+        "https://github.com/czlonkowski/n8n-mcp/security/advisories/GHSA-j6r7-6fhx-77wx"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-40892",
-      "description": "PJSIP is a free and open source multimedia communication library written in C. In 2.16 and earlier, a stack buffer overflow exists in pjsip_auth_create_digest2() in PJSIP when using pre-computed digest credentials (PJSIP_CRED_DATA_DIGEST). The function copies credential data using cred_info->data.slen as the length without an upper-bound check, which can overflow the fixed-size ha1 stack buffer (128 bytes) if data.slen exceeds the expected digest string length.",
+      "id": "CVE-2026-60542",
+      "description": "Vulnerability in the Oracle Business Process Management Suite product of Oracle Fusion Middleware (component: Human Workflow).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via T3, IIOP to compromise Oracle Business Process Management Suite.  While the vulnerability is in Oracle Business Process Management Suite, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Business Process Management Suite. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-21T21:16:44.153",
-      "lastModified": "2026-06-17T10:45:50.253",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:54.060",
+      "lastModified": "2026-07-23T18:30:22.737",
       "references": [
-        "https://github.com/pjsip/pjproject/commit/c82123ea6f3c3652bbc9ebd5e9e658c301451687",
-        "https://github.com/pjsip/pjproject/security/advisories/GHSA-2wcg-w3c4-48r7"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41304",
-      "description": "WWBN AVideo is an open source video platform. In versions 29.0 and below, the `cloneServer.json.php` endpoint in the CloneSite plugin constructs shell commands using user-controlled input (`url` parameter) without proper sanitization. The input is directly concatenated into a `wget` command executed via `exec()`, allowing command injection. An attacker can inject arbitrary shell commands by breaking out of the intended URL context using shell metacharacters (e.g., `;`). This leads to Remote Code Execution (RCE) on the server. Commit 473c609fc2defdea8b937b00e86ce88eba1f15bb contains a fix.",
+      "id": "CVE-2026-60547",
+      "description": "Vulnerability in the Oracle Managed File Transfer product of Oracle Fusion Middleware (component: MFT Runtime Server).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Managed File Transfer.  While the vulnerability is in Oracle Managed File Transfer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Managed File Transfer. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-22T00:16:29.697",
-      "lastModified": "2026-06-17T10:46:28.587",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:54.613",
+      "lastModified": "2026-07-23T18:30:22.737",
       "references": [
-        "https://github.com/WWBN/AVideo/commit/473c609fc2defdea8b937b00e86ce88eba1f15bb",
-        "https://github.com/WWBN/AVideo/security/advisories/GHSA-xr6f-h4x7-r6qp",
-        "https://github.com/WWBN/AVideo/security/advisories/GHSA-xr6f-h4x7-r6qp"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41176",
-      "description": "Rclone is a command-line program to sync files and directories to and from different cloud storage providers. The RC endpoint `options/set` is exposed without `AuthRequired: true`, but it can mutate global runtime configuration, including the RC option block itself. Starting in version 1.45.0 and prior to version 1.73.5, an unauthenticated attacker can set `rc.NoAuth=true`, which disables the authorization gate for many RC methods registered with `AuthRequired: true` on reachable RC servers that are started without global HTTP authentication. This can lead to unauthorized access to sensitive administrative functionality, including configuration and operational RC methods. Version 1.73.5 patches the issue.",
+      "id": "CVE-2026-60552",
+      "description": "Vulnerability in the Oracle WebCenter Sites product of Oracle Fusion Middleware (component: WebCenter Sites).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Sites.  While the vulnerability is in Oracle WebCenter Sites, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Sites. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T00:16:45.800",
-      "lastModified": "2026-07-15T02:21:13.883",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:55.183",
+      "lastModified": "2026-07-23T18:30:22.737",
       "references": [
-        "https://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/fs/rc/config.go",
-        "https://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/fs/rc/rcserver/rcserver.go",
-        "https://github.com/rclone/rclone/security/advisories/GHSA-25qr-6mpr-f7qx",
-        "https://access.redhat.com/security/cve/CVE-2026-41176",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2460989"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41179",
-      "description": "Rclone is a command-line program to sync files and directories to and from different cloud storage providers. Starting in version 1.48.0 and prior to version 1.73.5, the RC endpoint `operations/fsinfo` is exposed without `AuthRequired: true` and accepts attacker-controlled `fs` input. Because `rc.GetFs(...)` supports inline backend definitions, an unauthenticated attacker can instantiate an attacker-controlled backend on demand. For the WebDAV backend, `bearer_token_command` is executed during backend initialization, making single-request unauthenticated local command execution possible on reachable RC deployments without global HTTP authentication. Version 1.73.5 patches the issue.",
+      "id": "CVE-2026-60561",
+      "description": "Vulnerability in the Oracle WebCenter Portal product of Oracle Fusion Middleware (component: Runtime Tools).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Portal.  While the vulnerability is in Oracle WebCenter Portal, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Portal. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T00:16:45.947",
-      "lastModified": "2026-07-15T02:21:14.090",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:56.227",
+      "lastModified": "2026-07-24T18:38:58.410",
       "references": [
-        "https://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/backend/webdav/webdav.go",
-        "https://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/fs/operations/rc.go",
-        "https://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/fs/rc/cache.go",
-        "https://github.com/rclone/rclone/commit/2a9e952b38e03a96bf40c9eb6e8e22199865ee3b",
-        "https://github.com/rclone/rclone/releases/tag/v1.73.5"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-3960",
-      "description": "A critical remote code execution vulnerability exists in the unauthenticated REST API endpoint /99/ImportSQLTable in H2O-3 version 3.46.0.9 and prior. The vulnerability arises due to insufficient security controls in the parameter blacklist mechanism, which only targets MySQL JDBC driver-specific dangerous parameters. An attacker can bypass these controls by switching the JDBC URL protocol to jdbc:postgresql: and exploiting PostgreSQL JDBC driver-specific parameters such as socketFactory and socketFactoryArg. This allows unauthenticated attackers to execute arbitrary code on the H2O-3 server with the privileges of the H2O-3 process. The issue is resolved in version 3.46.0.10.",
+      "id": "CVE-2026-60562",
+      "description": "Vulnerability in the Oracle WebCenter Portal product of Oracle Fusion Middleware (component: Runtime Tools).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Portal.  While the vulnerability is in Oracle WebCenter Portal, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Portal. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T10:16:17.813",
-      "lastModified": "2026-06-17T10:44:31.060",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:56.350",
+      "lastModified": "2026-07-24T18:43:07.237",
       "references": [
-        "https://github.com/h2oai/h2o-3/commit/b9ae2d3c5220db2dc53753357a783e590364d044",
-        "https://huntr.com/bounties/6954fe04-b905-453f-8c53-205ac8377e0d"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41247",
-      "description": "elFinder is an open-source file manager for web, written in JavaScript using jQuery UI. Prior to 2.1.67, elFinder contains a command injection vulnerability in the resize command. The bg (background color) parameter is accepted from user input and passed through image resize/rotate processing. In configurations that use the ImageMagick CLI backend, this value is incorporated into shell command strings without sufficient escaping. An attacker able to invoke the resize command with a crafted bg value may achieve arbitrary command execution as the web server process user. This vulnerability is fixed in 2.1.67.",
+      "id": "CVE-2026-60565",
+      "description": "Vulnerability in the Oracle WebCenter Portal product of Oracle Fusion Middleware (component: Runtime Tools).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Portal.  While the vulnerability is in Oracle WebCenter Portal, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Portal. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T19:17:29.850",
-      "lastModified": "2026-06-17T10:46:22.910",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:56.697",
+      "lastModified": "2026-07-24T18:43:20.333",
       "references": [
-        "https://github.com/Studio-42/elFinder/security/advisories/GHSA-8q4h-8crm-5cvc"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-25874",
-      "description": "LeRobot through 0.5.1 contains an unsafe deserialization vulnerability in the async inference pipeline where pickle.loads() is used to deserialize data received over unauthenticated gRPC channels without TLS in the policy server and robot client components. An unauthenticated network-reachable attacker can achieve arbitrary code execution on the server or client by sending a crafted pickle payload through the SendPolicyInstructions, SendObservations, or GetActions gRPC calls.",
+      "id": "CVE-2026-60568",
+      "description": "Vulnerability in the Oracle WebCenter Portal product of Oracle Fusion Middleware (component: Runtime Tools).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Portal.  While the vulnerability is in Oracle WebCenter Portal, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Portal. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T20:16:13.903",
-      "lastModified": "2026-07-14T16:16:57.380",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:57.033",
+      "lastModified": "2026-07-24T18:43:29.210",
       "references": [
-        "https://chocapikk.com/posts/2026/lerobot-pickle-rce/",
-        "https://github.com/huggingface/lerobot/issues/3047",
-        "https://github.com/huggingface/lerobot/issues/3134",
-        "https://github.com/huggingface/lerobot/pull/3048",
-        "https://www.vulncheck.com/advisories/lerobot-unsafe-deserialization-remote-code-execution-via-grpc"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41264",
-      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, the specific flaw exists within the run method of the CSV_Agents class. The issue results from the lack of proper sandboxing when evaluating an LLM generated python script. An attacker can leverage this vulnerability to execute code in the context of the user running the server. Using prompt injection techniques, an unauthenticated attacker with the ability to send prompts to a chatflow using the CSV Agent node may convince an LLM to respond with a malicious python script that executes attacker controlled commands on the Flowise server. This vulnerability is fixed in 3.1.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T20:16:14.750",
-      "lastModified": "2026-06-17T10:46:24.283",
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-3hjv-c53m-58jj",
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-3hjv-c53m-58jj"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41265",
-      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, the specific flaw exists within the run method of the Airtable_Agents class. The issue results from the lack of proper sandboxing when evaluating an LLM generated python script. Using prompt injection techniques, an unauthenticated attacker with the ability to send prompts to a chatflow using the Airtable Agent node may convince an LLM to respond with a malicious python script that executes attacker controlled commands on the flowise server. This vulnerability is fixed in 3.1.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T20:16:14.890",
-      "lastModified": "2026-06-17T10:46:24.407",
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-v38x-c887-992f",
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-v38x-c887-992f"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41268",
-      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, Flowise is vulnerable to a critical unauthenticated remote command execution (RCE) vulnerability. It can be exploited via a parameter override bypass using the FILE-STORAGE:: keyword combined with a NODE_OPTIONS environment variable injection. This allows for the execution of arbitrary system commands with root privileges within the containerized Flowise instance, requiring only a single HTTP request and no authentication or knowledge of the instance. This vulnerability is fixed in 3.1.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T20:16:15.300",
-      "lastModified": "2026-06-17T10:46:24.753",
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-cvrr-qhgw-2mm6",
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-cvrr-qhgw-2mm6"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41276",
-      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, this vulnerability allows remote attackers to bypass authentication on affected installations of FlowiseAI Flowise. Authentication is not required to exploit this vulnerability. The specific flaw exists within the resetPassword method of the AccountService class. There is no check performed to ensure that a password reset token has actually been generated for a user account. By default the value of the reset token stored in a users account is null, or an empty string if they've reset their password before. An attacker with knowledge of the user's email address can submit a request to the \"/api/v1/account/reset-password\" endpoint containing a null or empty string reset token value and reset that user's password to a value of their choosing. This vulnerability is fixed in 3.1.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T20:16:16.270",
-      "lastModified": "2026-06-17T10:46:25.653",
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-f6hc-c5jr-878p",
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-f6hc-c5jr-878p"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41274",
-      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, the GraphCypherQAChain node forwards user-provided input directly into the Cypher query execution pipeline without proper sanitization. An attacker can inject arbitrary Cypher commands that are executed on the underlying Neo4j database, enabling data exfiltration, modification, or deletion. This vulnerability is fixed in 3.1.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T22:16:38.740",
-      "lastModified": "2026-06-17T10:46:25.417",
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-28g4-38q8-3cwc",
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-28g4-38q8-3cwc"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-33076",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. Prior to version 8.2.6.4, the haproxy_section_save interface presents a vulnerability that could lead to remote code execution due to path traversal and writing into scheduled tasks. Version 8.2.6.4 fixes the issue.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-24T03:16:10.227",
-      "lastModified": "2026-06-17T10:36:54.760",
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/commit/aecc7971959092fa93e93531f1ffcde33524b031",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-mmgm-p9x9-h33j",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-mmgm-p9x9-h33j"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-33078",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. Versions prior to 8.2.6.4 have a SQL injection vulnerability in the haproxy_section_save function in app/routes/config/routes.py. The server_ip parameter, sourced from the URL path, is passed unsanitized through multiple function calls and ultimately interpolated into a SQL query string using Python string formatting, allowing attackers to execute arbitrary SQL commands. Version 8.2.6.4 fixes the issue.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-24T03:16:10.657",
-      "lastModified": "2026-06-17T10:36:54.993",
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/commit/aecc7971959092fa93e93531f1ffcde33524b031",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-jmj9-2c4q-849j",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-jmj9-2c4q-849j"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-25660",
-      "description": "CodeChecker is an analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy. \nAuthentication bypass occurs when the URL ends with Authentication with certain function calls.\u00a0 This bypass allows assigning arbitrary permission to any user existing in CodeChecker.\n\nThis issue affects CodeChecker: through 6.27.3.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-24T14:16:18.127",
-      "lastModified": "2026-06-17T10:25:02.033",
-      "references": [
-        "https://github.com/Ericsson/codechecker/security/advisories/GHSA-4v9x-cqc5-j645"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-31255",
-      "description": "A command injection vulnerability exists in Tenda AC18 V15.03.05.05_multi. The vulnerability is located in the /goform/SetSambaCfg interface, where improper handling of the guestuser parameter allows attackers to execute arbitrary system commands.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-27T19:16:47.060",
-      "lastModified": "2026-06-17T10:33:33.120",
-      "references": [
-        "https://github.com/izxnfirh8148/CVE_REQUESTS_references/blob/main/Tenda_AC18/Tenda_AC18_3th/README.md",
-        "https://github.com/izxnfirh8148/CVE_REQUESTS_references/blob/main/Tenda_AC18/Tenda_AC18_3th/README.md"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
@@ -1111,7 +912,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-05T20:16:37.007",
-      "lastModified": "2026-06-17T10:38:32.280",
+      "lastModified": "2026-07-24T22:10:00.140",
       "references": [
         "https://github.com/PHPOffice/PhpSpreadsheet/security/advisories/GHSA-q4q6-r8wh-5cgh",
         "https://github.com/PHPOffice/PhpSpreadsheet/security/advisories/GHSA-q4q6-r8wh-5cgh"
@@ -1125,7 +926,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-05T21:16:22.247",
-      "lastModified": "2026-07-15T02:20:44.263",
+      "lastModified": "2026-07-24T21:10:00.143",
       "references": [
         "https://github.com/coredns/coredns/security/advisories/GHSA-vp29-5652-4fw9",
         "https://access.redhat.com/errata/RHSA-2026:25127",
@@ -1265,7 +1066,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-09T20:16:28.463",
-      "lastModified": "2026-06-17T10:47:35.563",
+      "lastModified": "2026-07-24T21:10:00.143",
       "references": [
         "https://github.com/ruby/net-imap/releases/tag/v0.4.24",
         "https://github.com/ruby/net-imap/releases/tag/v0.5.14",
@@ -1281,7 +1082,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-09T20:16:29.873",
-      "lastModified": "2026-06-17T10:48:08.983",
+      "lastModified": "2026-07-24T19:10:00.160",
       "references": [
         "https://github.com/ArchiveBox/ArchiveBox/security/advisories/GHSA-3h23-7824-pj8r",
         "https://github.com/ArchiveBox/ArchiveBox/security/advisories/GHSA-3h23-7824-pj8r"
@@ -1295,7 +1096,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-10T05:16:09.853",
-      "lastModified": "2026-07-15T02:17:17.460",
+      "lastModified": "2026-07-25T11:10:00.100",
       "references": [
         "https://github.com/php/php-src/security/advisories/GHSA-w476-322c-wpvm",
         "https://access.redhat.com/security/cve/CVE-2025-14179",
@@ -1311,13 +1112,13 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-10T05:16:11.070",
-      "lastModified": "2026-07-15T01:16:50.973",
+      "lastModified": "2026-07-24T08:10:00.150",
       "references": [
         "https://github.com/php/php-src/security/advisories/GHSA-85c2-q967-79q5",
-        "https://access.redhat.com/errata/RHSA-2026:33449",
-        "https://access.redhat.com/errata/RHSA-2026:34354",
-        "https://access.redhat.com/security/cve/CVE-2026-6722",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2468560"
+        "https://access.redhat.com/errata/RHSA-2026:22142",
+        "https://access.redhat.com/errata/RHSA-2026:22143",
+        "https://access.redhat.com/errata/RHSA-2026:22305",
+        "https://access.redhat.com/errata/RHSA-2026:22649"
       ],
       "source": "nvd"
     },
@@ -1328,7 +1129,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-10T05:16:11.640",
-      "lastModified": "2026-06-17T11:02:06.120",
+      "lastModified": "2026-07-24T08:10:00.150",
       "references": [
         "https://github.com/php/php-src/security/advisories/GHSA-m33r-qmcv-p97q"
       ],
@@ -1479,7 +1280,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-19T18:16:31.877",
-      "lastModified": "2026-06-17T11:04:12.717",
+      "lastModified": "2026-07-23T20:10:00.130",
       "references": [
         "https://www.cisa.gov/news-events/ics-advisories/icsa-26-139-03"
       ],
@@ -1492,7 +1293,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-19T18:16:32.193",
-      "lastModified": "2026-06-17T11:04:12.943",
+      "lastModified": "2026-07-23T20:10:00.130",
       "references": [
         "https://www.cisa.gov/news-events/ics-advisories/icsa-26-139-03"
       ],
@@ -1505,7 +1306,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-20T10:16:26.530",
-      "lastModified": "2026-07-15T02:20:12.523",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-33278.txt",
         "https://access.redhat.com/errata/RHSA-2026:19752",
@@ -1522,7 +1323,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-20T21:16:18.090",
-      "lastModified": "2026-07-15T01:17:05.033",
+      "lastModified": "2026-07-23T15:10:00.137",
       "references": [
         "https://support.hp.com/us-en/document/ish_14942099-14942126-16/hpsbpi04118",
         "https://access.redhat.com/errata/RHSA-2026:26228",
@@ -1539,7 +1340,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-21T02:16:33.760",
-      "lastModified": "2026-06-17T10:54:54.777",
+      "lastModified": "2026-07-23T15:10:00.137",
       "references": [
         "https://blog.litespeedtech.com/2026/05/21/security-update-for-litespeed-cpanel-plugin/",
         "https://www.litespeedtech.com/products/litespeed-web-server/control-panel-support/cpanel",
@@ -1555,7 +1356,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-22T13:16:22.820",
-      "lastModified": "2026-07-20T12:19:29.263",
+      "lastModified": "2026-07-23T16:10:00.137",
       "references": [
         "https://lists.apache.org/thread/c1zqxppo1m5z3kbdhjn5p991zk09ynkh",
         "http://www.openwall.com/lists/oss-security/2026/05/22/9",
@@ -1572,7 +1373,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T00:16:57.150",
-      "lastModified": "2026-06-17T11:03:51.843",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://github.com/Perl/perl5/commit/5e7f119eb2bb1181be908701f22bf7068e722f1c.patch",
         "http://www.openwall.com/lists/oss-security/2026/05/26/1"
@@ -1586,7 +1387,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T16:16:26.693",
-      "lastModified": "2026-06-17T10:55:10.473",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://github.com/pavel-odintsov/fastnetmon",
         "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/bgp_protocol.cpp",
@@ -1601,7 +1402,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T16:16:26.800",
-      "lastModified": "2026-06-17T10:55:10.637",
+      "lastModified": "2026-07-21T19:10:00.107",
       "references": [
         "https://github.com/pavel-odintsov/fastnetmon",
         "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/juniper_plugin/fastnetmon_juniper.php",
@@ -1616,7 +1417,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:35.823",
-      "lastModified": "2026-06-17T10:40:13.817",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1038-20260506-core-authenticated-blind-sqli-in-com-finder.html"
       ],
@@ -1629,7 +1430,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:35.950",
-      "lastModified": "2026-06-17T10:40:13.930",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1039-20260507-core-authenticated-blind-sqli-in-com-tags.html"
       ],
@@ -1642,7 +1443,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:36.080",
-      "lastModified": "2026-06-17T10:40:14.040",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1040-20260508-core-improper-access-check-in-com-config-webservice-endpoints.html"
       ],
@@ -1655,7 +1456,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:39.360",
-      "lastModified": "2026-06-17T10:45:13.540",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1041-20260509-core-lfi-in-htmlview-layout-parameter.html"
       ],
@@ -1668,7 +1469,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:53.670",
-      "lastModified": "2026-06-17T10:55:11.290",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://github.com/pavel-odintsov/fastnetmon",
         "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/bgp_protocol.hpp",
@@ -1683,7 +1484,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:54.460",
-      "lastModified": "2026-06-17T10:55:21.900",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1045-20260513-core-privilege-escalation-through-com-users-batch-task.html"
       ],
@@ -1696,7 +1497,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:54.587",
-      "lastModified": "2026-06-17T10:55:22.013",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1047-20260515-core-incorrect-access-control-in-sample-data-plugins.html"
       ],
@@ -1709,7 +1510,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:55.203",
-      "lastModified": "2026-06-17T10:55:22.633",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://developer.joomla.org/security-centre/1046-20260514-core-privilege-escalation-through-com-users-webservice-endpoints.html"
       ],
@@ -1722,7 +1523,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T19:16:28.663",
-      "lastModified": "2026-06-17T10:55:10.960",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://github.com/pavel-odintsov/fastnetmon",
         "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/dynamic_binary_buffer.hpp",
@@ -1754,7 +1555,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T09:16:17.877",
-      "lastModified": "2026-06-17T10:55:34.923",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://community.acer.com/en/kb/articles/19672"
       ],
@@ -1767,7 +1568,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T09:16:18.143",
-      "lastModified": "2026-06-17T10:55:35.153",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://community.acer.com/en/kb/articles/19672"
       ],
@@ -1780,7 +1581,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T09:16:18.270",
-      "lastModified": "2026-06-17T10:55:35.263",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://community.acer.com/en/kb/articles/19673"
       ],
@@ -1793,7 +1594,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T11:16:17.183",
-      "lastModified": "2026-06-17T10:55:35.370",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://community.acer.com/en/kb/articles/19673"
       ],
@@ -1806,7 +1607,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:23.190",
-      "lastModified": "2026-06-17T09:22:41.923",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41269"
       ],
@@ -1819,7 +1620,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:23.323",
-      "lastModified": "2026-06-17T09:22:42.037",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41270"
       ],
@@ -1832,7 +1633,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:23.570",
-      "lastModified": "2026-06-17T09:22:42.260",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41272"
       ],
@@ -1845,7 +1646,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:23.690",
-      "lastModified": "2026-06-17T09:22:42.373",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41273"
       ],
@@ -1858,7 +1659,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:23.810",
-      "lastModified": "2026-06-17T09:22:42.490",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41274"
       ],
@@ -1871,7 +1672,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:23.930",
-      "lastModified": "2026-06-17T09:22:42.600",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41275"
       ],
@@ -1884,7 +1685,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:24.050",
-      "lastModified": "2026-06-17T09:22:42.713",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41276"
       ],
@@ -1897,7 +1698,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T12:16:24.167",
-      "lastModified": "2026-06-17T09:22:42.827",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41277"
       ],
@@ -1910,7 +1711,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T14:16:31.677",
-      "lastModified": "2026-06-17T10:53:37.107",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://github.com/FreePBX/security-reporting/security/advisories/GHSA-m55x-h47x-v3gx"
       ],
@@ -1923,7 +1724,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T20:16:27.533",
-      "lastModified": "2026-07-15T02:22:06.047",
+      "lastModified": "2026-07-22T06:10:00.170",
       "references": [
         "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-mpxh-8fq3-x8mh",
         "https://access.redhat.com/errata/RHSA-2026:36203",
@@ -1940,7 +1741,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-02T17:16:32.073",
-      "lastModified": "2026-06-17T10:47:23.507",
+      "lastModified": "2026-07-22T19:10:00.120",
       "references": [
         "https://github.com/Gitlawb/openclaude/commit/aab489055c53dd64369414116fe93226d2656273",
         "https://github.com/Gitlawb/openclaude/pull/778",
@@ -1956,7 +1757,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T04:17:15.387",
-      "lastModified": "2026-06-17T10:55:33.487",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -1969,7 +1770,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T04:17:15.550",
-      "lastModified": "2026-06-17T10:55:33.600",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -1982,7 +1783,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T06:16:24.583",
-      "lastModified": "2026-06-17T10:55:33.827",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -1995,7 +1796,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T07:16:27.013",
-      "lastModified": "2026-06-17T10:55:34.167",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -2008,7 +1809,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T09:16:29.700",
-      "lastModified": "2026-06-17T10:57:38.470",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -2021,7 +1822,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T10:16:39.850",
-      "lastModified": "2026-06-17T10:57:38.813",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -2034,7 +1835,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-05T08:16:30.797",
-      "lastModified": "2026-06-17T14:06:35.153",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://www.joomlacontenteditor.net/",
         "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-48907",
@@ -2062,7 +1863,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-05T20:17:29.350",
-      "lastModified": "2026-06-17T10:14:00.757",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://www.altium.com/platform/security-compliance/security-advisories"
       ],
@@ -2075,7 +1876,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-05T20:17:32.687",
-      "lastModified": "2026-06-17T10:52:32.823",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://github.com/ubccr/xdmod/releases/tag/v11.0.3-2",
         "https://github.com/ubccr/xdmod/security/advisories/GHSA-29qm-7w4v-43fw",
@@ -2090,7 +1891,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-05T20:17:33.023",
-      "lastModified": "2026-06-17T10:52:33.057",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://github.com/ubccr/xdmod/releases/tag/v10.0.3",
         "https://github.com/ubccr/xdmod/security/advisories/GHSA-r33r-6g3c-r992",
@@ -2106,7 +1907,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-09T08:16:28.940",
-      "lastModified": "2026-06-17T10:50:16.043",
+      "lastModified": "2026-07-23T08:10:00.137",
       "references": [
         "https://www.qnap.com/en/security-advisory/qsa-26-35"
       ],
@@ -2119,7 +1920,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-09T08:16:29.190",
-      "lastModified": "2026-07-16T12:18:10.747",
+      "lastModified": "2026-07-23T08:10:00.137",
       "references": [
         "https://github.com/perl5-dbi/dbi/commit/bfe5d73c162d2d1f761a639a0aa33aad6a9eb54e.patch",
         "https://metacpan.org/release/HMBRAND/DBI-1.648/changes",
@@ -2136,7 +1937,7 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-10T03:16:24.730",
-      "lastModified": "2026-06-17T09:56:35.880",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://www.qnap.com/en/security-advisory/qsa-25-56"
       ],
@@ -2525,12 +2326,12 @@
     },
     {
       "id": "CVE-2026-56290",
-      "description": "The Joomla extension Page Builder CK is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
+      "description": "Joomla Extension - joomlack.fr - Unauthenticated file upload in Page Builder CK extension < 3.6.0 - The Joomla extension Page Builder CK is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-29T15:16:42.360",
-      "lastModified": "2026-07-08T13:37:08.977",
+      "lastModified": "2026-07-24T13:31:02.867",
       "references": [
         "https://www.joomlack.fr/",
         "https://forum.joomlack.fr/index.php/page-builder-ck/21627-nouvelle-version-de-pbck-et-joomla-3",
@@ -2740,12 +2541,12 @@
     },
     {
       "id": "CVE-2026-56291",
-      "description": "The Joomla extension Balbooa Forms is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
+      "description": "Joomla Extension - balbooa.com - Unauthenticated file upload in Balbooa Forms extension < 2.4.1 - The Joomla extension Balbooa Forms is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-07-09T11:16:40.990",
-      "lastModified": "2026-07-11T05:16:34.310",
+      "lastModified": "2026-07-24T13:30:37.550",
       "references": [
         "https://mysites.guru/blog/balbooa-forms-unauthenticated-file-upload-flaw/",
         "https://www.balbooa.com/joomla-forms",
@@ -2772,12 +2573,12 @@
     },
     {
       "id": "CVE-2026-57827",
-      "description": "The Joomla extension RSFiles is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
+      "description": "Joomla Extension - rsjoomla.com - Unauthenticated file upload in RSFiles component < 1.17.12 - The Joomla extension RSFiles is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-07-11T10:16:34.057",
-      "lastModified": "2026-07-14T18:32:30.320",
+      "lastModified": "2026-07-23T16:17:28.243",
       "references": [
         "https://mysites.guru/blog/rsfiles-unauthenticated-file-upload-rce/",
         "https://www.rsjoomla.com/joomla-extensions/joomla-download-manager.html"
@@ -2830,19 +2631,124 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-5845",
-      "description": "An improper authorization vulnerability in scoped user-to-server (ghu_) token authorization in GitHub Enterprise Server allows an authenticated attacker to access private repositories outside the intended installation scope, which can include write operations, via an authorization fallback that treated a revoked/deleted installation as a global installation context, which could be chained with token revocation timing and SSH push attribution to obtain and reuse a victim-scoped token. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21 and was fixed in versions 3.20.1, 3.19.5, 3.18.8, 3.17.14, 3.16.17, 3.15.21, and 3.14.26. This vulnerability was reported via the GitHub Bug Bounty program.",
+      "id": "CVE-2026-46633",
+      "description": "Twig is a template language for PHP. Prior to 3.26.0, Compiler::string() does not escape single quotes when a template name from a {% use %} tag is placed inside a PHP single-quoted string literal, allowing a crafted template name to terminate the string and inject arbitrary PHP expressions into the compiled cache file. This issue is fixed in version 3.26.0.",
       "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-04-21T23:16:22.473",
-      "lastModified": "2026-06-17T10:59:44.860",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-14T22:16:55.997",
+      "lastModified": "2026-07-16T05:16:19.800",
       "references": [
-        "https://docs.github.com/en/enterprise-server@3.14/admin/release-notes#3.14.26",
-        "https://docs.github.com/en/enterprise-server@3.15/admin/release-notes#3.15.21",
-        "https://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.17",
-        "https://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.14",
-        "https://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.8"
+        "https://github.com/twigphp/Twig/commit/679447fa29083043665482ccf7d64372472621b8",
+        "https://github.com/twigphp/Twig/commit/e9ff55f6910832428e48a35b2e0748189ad49ae3",
+        "https://github.com/twigphp/Twig/releases/tag/v3.26.0",
+        "https://github.com/twigphp/Twig/security/advisories/GHSA-7p85-w9px-jpjp"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-46634",
+      "description": "Twig is a template language for PHP. From 3.9.0 until 3.26.0, template_from_string() compiles an inner template under a synthesized __string_template__<hash> name that can fall outside a SourcePolicyInterface sandbox decision, allowing a sandboxed template that can call template_from_string and include to render an inner template without security policy enforcement. This issue is fixed in version 3.26.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-14T22:16:56.130",
+      "lastModified": "2026-07-16T05:16:19.940",
+      "references": [
+        "https://github.com/twigphp/Twig/commit/1cde8f2b62463f85d47995fc25f8241cb409d915",
+        "https://github.com/twigphp/Twig/releases/tag/v3.26.0",
+        "https://github.com/twigphp/Twig/security/advisories/GHSA-24x9-r6q4-q93w"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-12692",
+      "description": "Unverified password change vulnerability in Vimesoft Inc. Enterprise Video Platform allows Authentication Bypass.\n\nThis issue affects Enterprise Video Platform: from 3.11.0.0 before 3.25.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-17T17:17:13.303",
+      "lastModified": "2026-07-17T17:54:18.640",
+      "references": [
+        "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-0574"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-8297",
+      "description": "Improper neutralization of special elements used in an SQL command ('SQL injection') vulnerability in Gis Informatics Engineering Consulting Laboratory R&D and Software Services Inc. GisLab Laboratory Management System allows SQL Injection.\n\nThis issue affects GisLab Laboratory Management System: from 1.4.03 through 08072026.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-17T17:17:17.860",
+      "lastModified": "2026-07-17T17:54:18.640",
+      "references": [
+        "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-0573"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60296",
+      "description": "Vulnerability in the Oracle Coherence product of Oracle Fusion Middleware (component: Core).  Supported versions that are affected are 12.2.1.4.0, 14.1.1.0.0, 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Coherence.  Successful attacks of this vulnerability can result in takeover of Oracle Coherence. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:32.160",
+      "lastModified": "2026-07-23T18:30:41.573",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60541",
+      "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Enterprise Scheduling System).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite.  Successful attacks of this vulnerability can result in takeover of Oracle SOA Suite. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:53.960",
+      "lastModified": "2026-07-23T18:30:22.737",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60551",
+      "description": "Vulnerability in the Oracle WebCenter Sites product of Oracle Fusion Middleware (component: WebCenter Sites).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Sites.  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Sites. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:55.070",
+      "lastModified": "2026-07-23T18:30:22.737",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60555",
+      "description": "Vulnerability in the Oracle WebCenter Sites product of Oracle Fusion Middleware (component: WebCenter Sites).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Sites.  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Sites. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:55.517",
+      "lastModified": "2026-07-23T18:30:22.737",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60566",
+      "description": "Vulnerability in the Oracle WebCenter Portal product of Oracle Fusion Middleware (component: Runtime Tools).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Portal.  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Portal. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-21T22:17:56.813",
+      "lastModified": "2026-07-24T18:43:24.713",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
@@ -2924,9 +2830,10 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-05-13T16:16:48.167",
-      "lastModified": "2026-07-15T02:21:34.407",
+      "lastModified": "2026-07-22T12:17:56.103",
       "references": [
         "https://github.com/jupyterlab/jupyterlab/security/advisories/GHSA-mqcg-5x36-vfcg",
+        "https://access.redhat.com/errata/RHSA-2026:43038",
         "https://access.redhat.com/security/cve/CVE-2026-42557",
         "https://bugzilla.redhat.com/show_bug.cgi?id=2477086",
         "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42557.json"
@@ -2940,7 +2847,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-05-26T22:16:43.587",
-      "lastModified": "2026-06-17T10:51:33.540",
+      "lastModified": "2026-07-24T12:10:00.210",
       "references": [
         "https://github.com/amir20/dozzle/releases/tag/v10.5.2",
         "https://github.com/amir20/dozzle/security/advisories/GHSA-j643-x8pv-8m67",
@@ -2968,7 +2875,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-05-28T23:16:45.343",
-      "lastModified": "2026-06-17T11:05:41.800",
+      "lastModified": "2026-07-21T11:10:00.100",
       "references": [
         "https://chromereleases.googleblog.com/2026/05/stable-channel-update-for-desktop_0877304591.html",
         "https://issues.chromium.org/issues/500609038"
@@ -2982,13 +2889,13 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-03T14:16:46.337",
-      "lastModified": "2026-07-15T01:16:40.580",
+      "lastModified": "2026-07-22T12:18:17.380",
       "references": [
         "https://github.com/huggingface/transformers/commit/676559d5022b74aaa0cee1cee0842b7f27c5320e",
         "https://huntr.com/bounties/ceb3ce1a-4c45-497a-b25e-cb9a7685e619",
         "https://access.redhat.com/errata/RHSA-2026:34456",
         "https://access.redhat.com/errata/RHSA-2026:37275",
-        "https://access.redhat.com/security/cve/CVE-2026-5241"
+        "https://access.redhat.com/errata/RHSA-2026:42644"
       ],
       "source": "nvd"
     },
@@ -2999,7 +2906,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T14:16:45.177",
-      "lastModified": "2026-07-13T19:02:39.860",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.progress.com/s/article/LoadMaster-Critical-Security-Bulletin-June-2026-CVE-2026-8037-CVE-2026-33691",
         "https://labs.watchtowr.com/enterprise-tech-in-shell-out-progress-kemp-loadmaster-uninitialized-heap-to-pre-auth-rce-cve-2026-8037/"
@@ -3013,7 +2920,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:16:55.550",
-      "lastModified": "2026-06-17T10:12:46.157",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/501115599"
@@ -3027,7 +2934,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:16:59.723",
-      "lastModified": "2026-06-17T10:12:51.280",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/511713779"
@@ -3041,7 +2948,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:00.290",
-      "lastModified": "2026-06-17T10:12:51.973",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/513005991"
@@ -3055,7 +2962,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:00.400",
-      "lastModified": "2026-06-17T10:12:52.123",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/513006660"
@@ -3069,7 +2976,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:00.623",
-      "lastModified": "2026-06-17T10:12:52.407",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/513135862"
@@ -3083,7 +2990,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:02.427",
-      "lastModified": "2026-06-17T10:12:54.640",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/506311914"
@@ -3097,7 +3004,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:03.943",
-      "lastModified": "2026-06-17T10:12:56.343",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/494740162"
@@ -3111,7 +3018,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:06.923",
-      "lastModified": "2026-06-17T10:13:00.180",
+      "lastModified": "2026-07-23T06:10:00.160",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/497651688"
@@ -3125,7 +3032,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:16.950",
-      "lastModified": "2026-06-17T10:13:12.767",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/500560764"
@@ -3139,7 +3046,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-04T23:17:17.790",
-      "lastModified": "2026-06-17T10:13:13.767",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
         "https://issues.chromium.org/issues/501467566"
@@ -3153,7 +3060,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
       "published": "2026-06-08T16:16:39.503",
-      "lastModified": "2026-06-17T10:48:31.530",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://github.com/FlowiseAI/Flowise/releases/tag/flowise%403.1.2",
         "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-6fw7-3q8r-m5vj"
@@ -3167,7 +3074,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
       "published": "2026-06-08T16:16:41.190",
-      "lastModified": "2026-06-17T10:53:40.523",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://github.com/FlowiseAI/Flowise/releases/tag/flowise%403.1.2",
         "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-hp26-q66v-q2w7",
@@ -3182,7 +3089,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T21:17:22.700",
-      "lastModified": "2026-06-17T10:54:43.903",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-64.html"
       ],
@@ -3326,19 +3233,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-48356",
-      "description": "Adobe Commerce is affected by an Unrestricted Upload of File with Dangerous Type vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to inject malicious scripts into a web page, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page. Scope is changed.",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:L",
-      "published": "2026-07-14T20:17:08.437",
-      "lastModified": "2026-07-15T14:26:05.783",
-      "references": [
-        "https://helpx.adobe.com/security/products/magento/apsb26-73.html"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-48284",
       "description": "ColdFusion is affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue does not require user interaction. Scope is changed.",
       "severity": "CRITICAL",
@@ -3352,13 +3246,52 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-48322",
+      "description": "ColdFusion is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue does not require user interaction. Scope is changed.",
+      "severity": "CRITICAL",
+      "cvss": 9.6,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+      "published": "2026-07-14T21:16:58.920",
+      "lastModified": "2026-07-15T17:56:24.253",
+      "references": [
+        "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60540",
+      "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Integration Business Insight).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite.  While the vulnerability is in Oracle SOA Suite, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle SOA Suite accessible data as well as  unauthorized access to critical data or complete access to all Oracle SOA Suite accessible data. CVSS 3.1 Base Score 9.6 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).",
+      "severity": "CRITICAL",
+      "cvss": 9.6,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+      "published": "2026-07-21T22:17:53.847",
+      "lastModified": "2026-07-23T18:30:22.737",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60564",
+      "description": "Vulnerability in the Oracle WebCenter Portal product of Oracle Fusion Middleware (component: Runtime Tools).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Portal.  While the vulnerability is in Oracle WebCenter Portal, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle WebCenter Portal accessible data as well as  unauthorized access to critical data or complete access to all Oracle WebCenter Portal accessible data. CVSS 3.1 Base Score 9.6 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).",
+      "severity": "CRITICAL",
+      "cvss": 9.6,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+      "published": "2026-07-21T22:17:56.570",
+      "lastModified": "2026-07-24T18:43:16.020",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-50208",
       "description": "High-risk\u00a0TrustAllCerts\u00a0routines disable standard TLS certificate validation. Combined with hard-coded DES symmetric encryption keys, a Man-in-the-Middle (MITM) actor could decrypt network traffic.",
       "severity": "CRITICAL",
       "cvss": 9.4,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
       "published": "2026-06-04T09:16:29.277",
-      "lastModified": "2026-06-17T10:57:38.110",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -3406,73 +3339,54 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-40496",
-      "description": "FreeScout is a free self-hosted help desk and shared mailbox. Prior to version 1.8.213, attachment download tokens are generated using a weak and predictable formula: `md5(APP_KEY + attachment_id + size)`. Since attachment_id is sequential and size can be brute-forced in a small range, an unauthenticated attacker can forge valid tokens and download any private attachment without credentials. Version 1.8.213 fixes the issue.",
+      "id": "CVE-2026-48356",
+      "description": "Adobe Commerce is affected by an Unrestricted Upload of File with Dangerous Type vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page. Scope is changed.",
       "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-04-21T02:16:08.350",
-      "lastModified": "2026-06-17T10:45:22.987",
+      "cvss": 9.3,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+      "published": "2026-07-14T20:17:08.437",
+      "lastModified": "2026-07-21T22:17:13.943",
       "references": [
-        "https://github.com/freescout-help-desk/freescout/commit/dbdf8f2260b43a21818255c70f0b61b9de9cd555",
-        "https://github.com/freescout-help-desk/freescout/releases/tag/1.8.213",
-        "https://github.com/freescout-help-desk/freescout/security/advisories/GHSA-2783-wxmm-wmwr"
+        "https://helpx.adobe.com/security/products/magento/apsb26-73.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41677",
-      "description": "rust-openssl provides OpenSSL bindings for the Rust programming language.  From 0.9.0 to before 0.10.78, the *_from_pem_callback APIs did not validate the length returned by the user's callback. A password callback that returns a value larger than the buffer it was given can cause some versions of OpenSSL to over-read this buffer. OpenSSL 3.x is not affected by this. This vulnerability is fixed in 0.10.78.",
+      "id": "CVE-2026-48321",
+      "description": "ColdFusion is affected by an Incorrect Authorization vulnerability that could result in privilege escalation. An attacker could leverage this vulnerability to gain unauthorized read and write access. Exploitation of this issue does not require user interaction. Scope is changed.",
       "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
-      "published": "2026-04-24T18:16:29.270",
-      "lastModified": "2026-06-17T10:46:59.230",
+      "cvss": 9.3,
+      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+      "published": "2026-07-14T21:16:58.813",
+      "lastModified": "2026-07-16T05:16:20.410",
       "references": [
-        "https://github.com/rust-openssl/rust-openssl/security/advisories/GHSA-xmgf-hq76-4vx2"
+        "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41415",
-      "description": "PJSIP is a free and open source multimedia communication library written in C. In 2.16 and earlier, there is an out-of-bounds read when parsing a malformed Content-ID URI in SIP multipart message body. Insufficient length validation can cause reads beyond the intended buffer bounds. This vulnerability is fixed in 2.17.",
+      "id": "CVE-2026-48334",
+      "description": "Illustrator is affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
       "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
-      "published": "2026-04-24T19:17:13.170",
-      "lastModified": "2026-06-17T10:46:41.503",
+      "cvss": 9.3,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+      "published": "2026-07-14T22:17:01.717",
+      "lastModified": "2026-07-21T22:17:13.820",
       "references": [
-        "https://github.com/pjsip/pjproject/commit/4225a93c16661538005017883fbc8f1ea1d5f4b0",
-        "https://github.com/pjsip/pjproject/security/advisories/GHSA-935m-fmf5-j4pm"
+        "https://helpx.adobe.com/security/products/illustrator/apsb26-79.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-41475",
-      "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to 1.4.3, an out-of-bounds read vulnerability in bacnet-stack's WritePropertyMultiple service decoder allows unauthenticated remote attackers to read past allocated buffer boundaries by sending a truncated WPM request. The vulnerability stems from wpm_decode_object_property() calling the deprecated decode_tag_number_and_value() function, which performs no bounds checking on the input buffer. A crafted BACnet/IP packet with a truncated property payload causes the decoder to read 1-7 bytes past the end of the buffer, leading to crashes or information disclosure on embedded BACnet devices. This vulnerability is fixed in 1.4.3.",
+      "id": "CVE-2026-60631",
+      "description": "Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Content Server).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Content.  Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle WebCenter Content, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle WebCenter Content accessible data as well as  unauthorized access to critical data or complete access to all Oracle WebCenter Content accessible data. CVSS 3.1 Base Score 9.3 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N).",
       "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
-      "published": "2026-04-24T20:16:28.063",
-      "lastModified": "2026-06-17T10:46:46.073",
+      "cvss": 9.3,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+      "published": "2026-07-21T22:18:03.733",
+      "lastModified": "2026-07-23T18:30:05.283",
       "references": [
-        "https://github.com/bacnet-stack/bacnet-stack/security/advisories/GHSA-cvv4-v3g6-4jmv",
-        "https://github.com/bacnet-stack/bacnet-stack/security/advisories/GHSA-cvv4-v3g6-4jmv"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41473",
-      "description": "CyberPanel versions prior to\u00a02.4.4 contain an authentication bypass vulnerability in the AI Scanner worker API endpoints that allows unauthenticated remote attackers to write arbitrary data to the database by sending requests to the /api/ai-scanner/status-webhook and /api/ai-scanner/callback endpoints. Attackers can exploit the lack of authentication checks to cause denial of service through storage exhaustion, corrupt scan history records, and pollute database fields with malicious data.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-      "published": "2026-04-24T21:16:19.113",
-      "lastModified": "2026-07-14T21:16:51.670",
-      "references": [
-        "https://github.com/usmannasir/cyberpanel/commit/0a099b1b193946555fbdd387a28486b1521f9961",
-        "https://itsrez.re/post/cyberpanel-rce",
-        "https://www.vulncheck.com/advisories/cyberpanel-unauthenticated-api-access-via-ai-scanner-endpoints"
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
@@ -3642,7 +3556,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-05-08T23:16:38.513",
-      "lastModified": "2026-06-17T10:47:43.977",
+      "lastModified": "2026-07-24T21:10:00.143",
       "references": [
         "https://github.com/getsentry/sentry/commit/0c67558ae7fe08738912d4c5233b53ead048da3b",
         "https://github.com/getsentry/sentry/pull/113720",
@@ -3658,7 +3572,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
       "published": "2026-05-10T06:16:07.397",
-      "lastModified": "2026-07-15T01:16:47.240",
+      "lastModified": "2026-07-24T08:10:00.150",
       "references": [
         "https://github.com/php/php-src/security/advisories/GHSA-74r9-qxhc-fx53",
         "https://access.redhat.com/errata/RHSA-2026:22649",
@@ -3744,7 +3658,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-05-19T18:16:31.710",
-      "lastModified": "2026-06-17T11:04:12.603",
+      "lastModified": "2026-07-23T20:10:00.130",
       "references": [
         "https://www.cisa.gov/news-events/ics-advisories/icsa-26-139-03"
       ],
@@ -3757,7 +3671,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-05-22T23:16:44.163",
-      "lastModified": "2026-06-17T10:38:11.623",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33843"
       ],
@@ -3770,7 +3684,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-05-26T02:16:40.130",
-      "lastModified": "2026-07-15T02:21:32.240",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://github.com/jib/archive-tar-new/commit/17c873492a05eddc0de18c1485e0b2cccd5a9158.patch",
         "https://metacpan.org/release/BINGOS/Archive-Tar-3.08/changes",
@@ -3814,7 +3728,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-05-29T12:16:23.067",
-      "lastModified": "2026-06-17T09:22:41.813",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41268"
       ],
@@ -3827,7 +3741,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-01T19:16:21.943",
-      "lastModified": "2026-06-17T10:20:32.663",
+      "lastModified": "2026-07-22T07:10:00.107",
       "references": [
         "https://github.com/projectcapsule/capsule/releases/tag/v0.13.0",
         "https://github.com/projectcapsule/capsule/security/advisories/GHSA-qjjm-7j9w-pw72",
@@ -3842,7 +3756,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-06-04T10:16:40.123",
-      "lastModified": "2026-06-17T10:57:39.303",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://community.acer.com/en/kb/articles/19707"
       ],
@@ -3855,7 +3769,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-06-04T18:16:31.220",
-      "lastModified": "2026-06-17T10:54:50.250",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://github.com/netty/netty-incubator-codec-ohttp/commit/7ad38d5cc2827af7e067e5c1e1ac37cd4566dad9",
         "https://github.com/netty/netty-incubator-codec-ohttp/security/advisories/GHSA-32hf-8jw3-v4qq"
@@ -3869,7 +3783,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-06-08T16:16:41.043",
-      "lastModified": "2026-06-17T10:53:40.407",
+      "lastModified": "2026-07-23T07:10:00.113",
       "references": [
         "https://github.com/FlowiseAI/Flowise/releases/tag/flowise%403.1.2",
         "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-php6-83fg-gw3g",
@@ -3884,7 +3798,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-06-10T05:16:38.987",
-      "lastModified": "2026-06-17T13:20:12.183",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://www.qnap.com/en/security-advisory/qsa-26-10"
       ],
@@ -3897,7 +3811,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-06-10T05:16:39.103",
-      "lastModified": "2026-06-17T13:20:12.333",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://www.qnap.com/en/security-advisory/qsa-26-10"
       ],
@@ -3910,7 +3824,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-06-10T22:16:55.187",
-      "lastModified": "2026-07-10T16:49:09.977",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://security.paloaltonetworks.com/CVE-2026-0274"
       ],
@@ -3968,13 +3882,13 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-06-12T18:16:34.123",
-      "lastModified": "2026-07-15T16:17:13.553",
+      "lastModified": "2026-07-23T12:18:04.910",
       "references": [
         "https://github.com/MariaDB/server/security/advisories/GHSA-pv9p-5w55-55jm",
         "https://jira.mariadb.org/browse/CONC-819",
         "https://access.redhat.com/errata/RHSA-2026:30135",
-        "https://access.redhat.com/security/cve/CVE-2026-44172",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2488459"
+        "https://access.redhat.com/errata/RHSA-2026:43505",
+        "https://access.redhat.com/security/cve/CVE-2026-44172"
       ],
       "source": "nvd"
     },
@@ -4244,12 +4158,12 @@
     },
     {
       "id": "CVE-2026-57830",
-      "description": "The Joomla extension Helix Ultimate is vulnerable to an unauthenticated arbitrary file deletion.",
+      "description": "Joomla Extension - joomshaper.com - Unauthenticated arbitrary file deletion in Helix Ultimate < 2.2.7 - The Joomla extension Helix Ultimate is vulnerable to an unauthenticated arbitrary file deletion.",
       "severity": "CRITICAL",
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-07-13T08:16:21.713",
-      "lastModified": "2026-07-14T18:18:22.550",
+      "lastModified": "2026-07-23T16:17:28.620",
       "references": [
         "https://www.joomshaper.com/joomla-templates/helixultimate"
       ],
@@ -4347,12 +4261,12 @@
     },
     {
       "id": "CVE-2026-48358",
-      "description": "Adobe Commerce is affected by an Improper Encoding or Escaping of Output vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue does not require user interaction. Scope is changed.",
+      "description": "Adobe Commerce is affected by an Improper Encoding or Escaping of Output vulnerability that could result in arbitrary code execution in the context of the current user. An attacker with high privileges could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed.",
       "severity": "CRITICAL",
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-14T20:17:08.653",
-      "lastModified": "2026-07-15T14:20:06.090",
+      "lastModified": "2026-07-21T22:17:14.197",
       "references": [
         "https://helpx.adobe.com/security/products/magento/apsb26-73.html"
       ],
@@ -4360,14 +4274,128 @@
     },
     {
       "id": "CVE-2026-48319",
-      "description": "ColdFusion is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue does not require user interaction. Scope is changed.",
+      "description": "ColdFusion is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could result in arbitrary code execution in the context of the current user. An attacker with high privileges could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed.",
       "severity": "CRITICAL",
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-14T21:16:58.600",
-      "lastModified": "2026-07-15T17:59:28.410",
+      "lastModified": "2026-07-21T22:17:13.567",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-48324",
+      "description": "ColdFusion is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. An attacker with high privileges could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-07-14T21:16:59.023",
+      "lastModified": "2026-07-21T22:17:13.693",
+      "references": [
+        "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-48805",
+      "description": "Twig is a template language for PHP. Prior to 3.27.0, deprecated internal wrappers in src/Resources/core.php do not forward the current sandbox state to CoreExtension::checkArrow(), arraySome(), and arrayEvery(), allowing legacy calls such as twig_array_some(), twig_array_every(), and twig_check_arrow_in_sandbox() to bypass sandbox callable restrictions. This issue is fixed in version 3.27.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-14T22:17:04.773",
+      "lastModified": "2026-07-17T03:18:15.357",
+      "references": [
+        "https://github.com/twigphp/Twig/commit/e235cae3a1d1e23edc24df4d675f18108c6b167b",
+        "https://github.com/twigphp/Twig/releases/tag/v3.27.0",
+        "https://github.com/twigphp/Twig/security/advisories/GHSA-p42q-9prx-q5wq"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-48806",
+      "description": "Twig is a template language for PHP. Prior to 3.27.0, ArrayExpression does not guard dynamic mapping keys that are coerced to strings, allowing PHP to invoke __toString() on a Stringable object used as a mapping key without calling SandboxExtension::ensureToStringAllowed(). This issue is fixed in version 3.27.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-14T22:17:04.943",
+      "lastModified": "2026-07-17T03:17:51.220",
+      "references": [
+        "https://github.com/twigphp/Twig/commit/9ff41014639ef0e8eb50ac7669191c309d863105",
+        "https://github.com/twigphp/Twig/releases/tag/v3.27.0",
+        "https://github.com/twigphp/Twig/security/advisories/GHSA-5v5v-ww74-355v"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-48807",
+      "description": "Twig is a template language for PHP. Prior to 3.27.0, the sandbox __toString() checks do not fully cover Traversable values passed to join and replace filters or operands evaluated by the in and not in operators, allowing contained Stringable objects to be coerced to strings without consulting the sandbox policy. This issue is fixed in version 3.27.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-14T22:17:05.090",
+      "lastModified": "2026-07-17T03:16:31.287",
+      "references": [
+        "https://github.com/twigphp/Twig/releases/tag/v3.27.0",
+        "https://github.com/twigphp/Twig/security/advisories/GHSA-8x9c-rmqh-456c"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-53512",
+      "description": "Better Auth is an authentication and authorization library for TypeScript. Prior to 1.6.11, the legacy oidcProvider and mcp plugins expose OAuth token endpoints whose refresh_token grant authenticates only possession of the bound refreshToken row and matching client_id, without verifying the confidential client's client_secret, allowing an attacker with a valid refresh_token to mint access tokens and rotated refresh tokens through /api/auth/oauth2/token or /api/auth/mcp/token. The @better-auth/oauth-provider package is not affected. This issue is fixed in version 1.6.11.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-15T18:16:47.420",
+      "lastModified": "2026-07-21T13:33:47.543",
+      "references": [
+        "https://github.com/better-auth/better-auth/commit/1f2ff4215c4affff0b140b0c0a712c0dde35659c",
+        "https://github.com/better-auth/better-auth/pull/9576",
+        "https://github.com/better-auth/better-auth/releases/tag/v1.6.11",
+        "https://github.com/better-auth/better-auth/security/advisories/GHSA-pw9m-5jxm-xr6h"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-45568",
+      "description": "zrok is software for sharing web services, files, and network resources. Prior to 2.0.3, zrok's Python SDK ProxyShare Flask proxy route accepts an absolute URL in the request path and passes it to urllib.parse.urljoin, allowing the requested path to replace the configured target host and causing requests.request to return a server-side response from an attacker-chosen URL. This issue is fixed in version 2.0.3.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-16T17:16:56.423",
+      "lastModified": "2026-07-20T01:58:23.457",
+      "references": [
+        "https://github.com/openziti/zrok/commit/7c1dc3ecd1c89d8cd2e845a72c3878bd2d31b4fe",
+        "https://github.com/openziti/zrok/releases/tag/v2.0.3",
+        "https://github.com/openziti/zrok/security/advisories/GHSA-jh67-hwqw-m5r7"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60567",
+      "description": "Vulnerability in the Oracle Identity Manager product of Oracle Fusion Middleware (component: OIM Legacy UI).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Identity Manager.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Identity Manager accessible data as well as  unauthorized access to critical data or complete access to all Oracle Identity Manager accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-21T22:17:56.927",
+      "lastModified": "2026-07-23T18:30:22.737",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-60606",
+      "description": "Vulnerability in the PeopleSoft Enterprise CC Common Application Objects product of Oracle PeopleSoft (component: Common Application Objects).   The supported version that is affected is 9.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise CC Common Application Objects.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all PeopleSoft Enterprise CC Common Application Objects accessible data as well as  unauthorized access to critical data or complete access to all PeopleSoft Enterprise CC Common Application Objects accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-07-21T22:18:00.903",
+      "lastModified": "2026-07-23T18:30:22.737",
+      "references": [
+        "https://www.oracle.com/security-alerts/cpujul2026.html"
       ],
       "source": "nvd"
     },
@@ -4508,7 +4536,7 @@
       "cvss": 8.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:L",
       "published": "2026-05-08T23:16:39.373",
-      "lastModified": "2026-06-17T10:48:01.890",
+      "lastModified": "2026-07-24T21:10:00.143",
       "references": [
         "https://github.com/gitroomhq/postiz-app/releases/tag/v2.21.7",
         "https://github.com/gitroomhq/postiz-app/security/advisories/GHSA-hhxq-3wg7-4rj8"
@@ -4550,7 +4578,7 @@
       "cvss": 8.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-20T14:16:38.917",
-      "lastModified": "2026-07-14T16:16:53.170",
+      "lastModified": "2026-07-23T12:10:00.110",
       "references": [
         "https://github.com/twigphp/Twig/releases/tag/v3.26.0",
         "https://github.com/twigphp/Twig/security/advisories/GHSA-2q52-x2ff-qgfr",
@@ -4565,7 +4593,7 @@
       "cvss": 8.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T15:16:22.073",
-      "lastModified": "2026-06-17T10:11:50.297",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_3/3.md",
         "https://vuldb.com/submit/814758",
@@ -4581,7 +4609,7 @@
       "cvss": 8.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-29T15:16:22.240",
-      "lastModified": "2026-06-17T10:11:50.430",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_4/4.md",
         "https://vuldb.com/submit/814759",
@@ -4592,12 +4620,12 @@
     },
     {
       "id": "CVE-2026-47932",
-      "description": "ColdFusion versions 2023.19, 2025.8 and earlier are affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to access unauthorized files or directories outside the intended restrictions. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
+      "description": "ColdFusion versions 2023.19, 2025.8 and earlier are affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
       "severity": "HIGH",
       "cvss": 8.8,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T21:17:23.170",
-      "lastModified": "2026-06-17T10:54:44.360",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-64.html"
       ],
@@ -4627,7 +4655,7 @@
       "cvss": 8.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-07-14T18:18:33.430",
-      "lastModified": "2026-07-17T15:13:22.227",
+      "lastModified": "2026-07-22T16:18:30.560",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-57090"
       ],
@@ -4640,7 +4668,7 @@
       "cvss": 8.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-07-14T18:18:43.067",
-      "lastModified": "2026-07-16T20:23:52.260",
+      "lastModified": "2026-07-22T16:18:39.420",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-58594"
       ],
@@ -4653,7 +4681,7 @@
       "cvss": 8.7,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
       "published": "2026-06-12T15:16:27.550",
-      "lastModified": "2026-07-15T02:22:05.480",
+      "lastModified": "2026-07-21T12:18:47.690",
       "references": [
         "https://github.com/netty/netty/releases/tag/netty-4.1.135.Final",
         "https://github.com/netty/netty/releases/tag/netty-4.2.15.Final",
@@ -4670,7 +4698,7 @@
       "cvss": 8.7,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
       "published": "2026-06-12T16:16:30.310",
-      "lastModified": "2026-07-15T02:22:20.037",
+      "lastModified": "2026-07-21T12:18:49.060",
       "references": [
         "https://github.com/netty/netty/releases/tag/netty-4.1.135.Final",
         "https://github.com/netty/netty/releases/tag/netty-4.2.15.Final",
@@ -4690,19 +4718,6 @@
       "lastModified": "2026-07-07T15:15:02.530",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-57983"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-26150",
-      "description": "Server-side request forgery (ssrf) in Microsoft Purview allows an unauthorized attacker to elevate privileges over a network.",
-      "severity": "HIGH",
-      "cvss": 8.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
-      "published": "2026-04-23T22:16:23.177",
-      "lastModified": "2026-06-17T10:25:48.753",
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26150"
       ],
       "source": "nvd"
     },
@@ -4838,7 +4853,7 @@
       "cvss": 8.4,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T21:17:22.813",
-      "lastModified": "2026-06-17T10:54:44.023",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-64.html"
       ],
@@ -4851,7 +4866,7 @@
       "cvss": 8.4,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T21:17:23.050",
-      "lastModified": "2026-06-29T17:23:04.503",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-64.html"
       ],
@@ -4892,7 +4907,7 @@
       "cvss": 8.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L",
       "published": "2026-05-26T22:16:43.293",
-      "lastModified": "2026-06-17T10:51:32.720",
+      "lastModified": "2026-07-24T12:10:00.210",
       "references": [
         "https://github.com/shepherdwind/velocity.js/security/advisories/GHSA-j658-c2gf-x6pq"
       ],
@@ -4937,6 +4952,21 @@
       "lastModified": "2026-06-27T19:38:55.727",
       "references": [
         "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5072/"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-56400",
+      "description": "open-webui before 0.3.14 contains a cross-origin resource sharing misconfiguration allowing arbitrary origins with allow_origins=* and authenticated requests to the /api/v1/functions endpoint. Attackers can execute arbitrary code on the openwebui instance by crafting malicious cross-site requests from attacker-controlled websites when an admin user visits them.",
+      "severity": "HIGH",
+      "cvss": 8.3,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-07-15T12:18:03.017",
+      "lastModified": "2026-07-16T20:03:11.553",
+      "references": [
+        "https://github.com/open-webui/open-webui/security/advisories/GHSA-6xcp-7mpr-m7wm",
+        "https://www.vulncheck.com/advisories/open-webui-remote-code-execution-via-cors-misconfiguration-and-session-validation",
+        "https://github.com/open-webui/open-webui/security/advisories/GHSA-6xcp-7mpr-m7wm"
       ],
       "source": "nvd"
     },
@@ -4998,6 +5028,23 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-29009",
+      "description": "U-Boot before 2026.07-rc2 contains a buffer overflow vulnerability in nfs_readlink_reply() (net/nfs-common.c) when CONFIG_CMD_NFS is enabled, allowing a malicious or compromised NFS server to overflow the 2048-byte nfs_path_buff buffer by returning multiple relative symlink targets that are appended without cumulative length validation. Attackers can send two or more READLINK responses containing relative symlink targets of approximately 1100 bytes each to corrupt adjacent BSS variables including nfs_server_ip, nfs_server_mount_port, nfs_server_port, nfs_our_port, nfs_state, and rpc_id, potentially achieving memory corruption and control over the NFS client state machine.",
+      "severity": "HIGH",
+      "cvss": 8.2,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+      "published": "2026-07-08T17:17:21.173",
+      "lastModified": "2026-07-24T18:16:52.967",
+      "references": [
+        "https://git.u-boot-project.org/u-boot/u-boot/-/commit/d6694018eaddefac6aae974f9cec72fd6e58f1bc",
+        "https://git.u-boot-project.org/u-boot/u-boot/-/releases/v2026.07-rc2",
+        "https://lists.denx.de/pipermail/u-boot/2026-May/617853.html",
+        "https://u-boot.org/",
+        "https://www.vulncheck.com/advisories/u-boot-rc3-buffer-overflow-in-nfs-readlink-reply-via-nfs-readlink"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-47984",
       "description": "Adobe Commerce is affected by an Incorrect Authorization vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to bypass security measures and gain unauthorized read and write access. Exploitation of this issue does not require user interaction.",
       "severity": "HIGH",
@@ -5011,59 +5058,16 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-6023",
-      "description": "In Progress\u00ae Telerik\u00ae UI for AJAX versions 2024.4.1114 through 2026.1.421, the RadFilter control is vulnerable to insecure deserialization when restoring filter state if the state is exposed to the client. If an attacker tampers with this state, a server-side remote code execution is possible.",
+      "id": "CVE-2026-41521",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain an integer overflow vulnerability when processing screen update messages within the vnc-any connection mode. A malicious remote VNC server can send crafted image dimensions that cause an integer overflow during memory buffer size calculation, resulting in an undersized allocation. Subsequent processing of the incoming image data using the original oversized parameters leads to an out-of-bounds read. An unauthenticated remote attacker could exploit this flaw to disclose sensitive information from the heap memory or cause a denial of service (DoS) via a process crash. This issue has been fixed in version 0.10.6.1.",
       "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-22T08:16:13.040",
-      "lastModified": "2026-06-17T11:00:10.837",
+      "cvss": 8.2,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:L",
+      "published": "2026-07-20T17:17:08.460",
+      "lastModified": "2026-07-22T20:07:10.620",
       "references": [
-        "https://www.telerik.com/products/aspnet-ajax/documentation/knowledge-base/kb-security-deserialization-of-untrusted-data-cve-2026-6023"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-26354",
-      "description": "Dell PowerProtect Data Domain with Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.6, LTS2025 release version 8.3.1.0 through 8.3.1.10, LTS2024 release versions 7.13.1.0 through 7.13.1.60, contain a stack-based Buffer Overflow vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to arbitrary command execution.",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-22T19:17:00.677",
-      "lastModified": "2026-06-17T10:26:08.430",
-      "references": [
-        "https://www.dell.com/support/kbdoc/en-us/000450699/dsa-2026-060-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41267",
-      "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, an improper mass assignment (JSON injection) vulnerability in the account registration endpoint of Flowise Cloud allows unauthenticated attackers to inject server-managed fields and nested objects during account creation. This enables client-controlled manipulation of ownership metadata, timestamps, organization association, and role mappings, breaking trust boundaries in a multi-tenant environment. This vulnerability is fixed in 3.1.0.",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-04-23T20:16:15.160",
-      "lastModified": "2026-06-17T10:46:24.640",
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-48m6-ch88-55mj",
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-48m6-ch88-55mj"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41323",
-      "description": "Kyverno is a policy engine designed for cloud native platform engineering teams. Prior to versions 1.18.0-rc1, 1.17.2-rc1, and 1.16.4, Kyverno's apiCall feature in ClusterPolicy automatically attaches the admission controller's ServiceAccount token to outgoing HTTP requests. The service URL has no validation \u2014 it can point anywhere, including attacker-controlled servers. Since the admission controller SA has permissions to patch webhook configurations, a stolen token leads to full cluster compromise. Versions 1.18.0-rc1, 1.17.2-rc1, and 1.16.4 patch the issue.",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-04-24T04:16:20.593",
-      "lastModified": "2026-06-17T10:46:30.423",
-      "references": [
-        "https://github.com/kyverno/kyverno/commit/bc4f91c4801b1eaa2edc0a14e2f1b0af8cf0c1f5",
-        "https://github.com/kyverno/kyverno/commit/c2eab00033e635bda4e4efb58c1b472b41728bb6",
-        "https://github.com/kyverno/kyverno/commit/f70e8ac1e7acd2e3844f9553e4a884f07f953de0",
-        "https://github.com/kyverno/kyverno/security/advisories/GHSA-f9g8-6ppc-pqq4",
-        "https://github.com/kyverno/kyverno/security/advisories/GHSA-f9g8-6ppc-pqq4"
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-v8w6-pf78-9458"
       ],
       "source": "nvd"
     },
@@ -5160,7 +5164,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-09T01:16:09.013",
-      "lastModified": "2026-06-17T11:01:10.303",
+      "lastModified": "2026-07-24T08:10:00.150",
       "references": [
         "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
       ],
@@ -5173,7 +5177,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-19T15:16:33.017",
-      "lastModified": "2026-06-17T11:04:19.247",
+      "lastModified": "2026-07-23T20:10:00.130",
       "references": [
         "https://my.f5.com/manage/s/article/K000161307"
       ],
@@ -5186,7 +5190,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T18:16:57.170",
-      "lastModified": "2026-06-17T11:04:32.117",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://www.ibm.com/support/pages/node/7274065"
       ],
@@ -5212,7 +5216,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-01T09:16:19.267",
-      "lastModified": "2026-06-17T10:51:23.870",
+      "lastModified": "2026-07-22T07:10:00.107",
       "references": [
         "https://lists.apache.org/thread/5xg6xr99glocp3zsg9ht2zlbwlrst7ch",
         "http://www.openwall.com/lists/oss-security/2026/05/29/6"
@@ -5226,7 +5230,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-01T19:16:54.180",
-      "lastModified": "2026-07-15T02:22:35.107",
+      "lastModified": "2026-07-22T08:10:00.117",
       "references": [
         "https://github.com/ROCm/aiter/issues/3076",
         "https://github.com/ROCm/aiter/pull/3170",
@@ -5243,7 +5247,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-09T05:16:37.770",
-      "lastModified": "2026-06-29T14:41:50.613",
+      "lastModified": "2026-07-23T08:10:00.137",
       "references": [
         "https://spring.io/security/cve-2026-41855"
       ],
@@ -5256,7 +5260,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-11T07:16:28.280",
-      "lastModified": "2026-07-17T20:41:43.473",
+      "lastModified": "2026-07-23T09:10:00.113",
       "references": [
         "https://spring.io/security/cve-2026-41699"
       ],
@@ -5380,7 +5384,7 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-07-14T17:16:51.033",
-      "lastModified": "2026-07-16T16:20:13.340",
+      "lastModified": "2026-07-22T16:17:26.970",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-49164"
       ],
@@ -5393,9 +5397,48 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-07-14T17:17:02.327",
-      "lastModified": "2026-07-16T12:45:57.170",
+      "lastModified": "2026-07-22T16:18:12.293",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50694"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-54995",
+      "description": "Use after free in Reliable Multicast Transport Driver (RMCAST) allows an unauthorized attacker to execute code over a network.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-14T17:17:07.143",
+      "lastModified": "2026-07-20T17:18:43.320",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54995"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-50439",
+      "description": "Use after free in Microsoft Message Queuing Queue Manager allows an unauthorized attacker to execute code over a network.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-14T18:17:48.123",
+      "lastModified": "2026-07-22T16:17:56.817",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50439"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-50487",
+      "description": "Use after free in Microsoft Windows DNS allows an unauthorized attacker to elevate privileges over a network.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-14T18:17:54.870",
+      "lastModified": "2026-07-22T16:18:03.447",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50487"
       ],
       "source": "nvd"
     },
@@ -5409,6 +5452,32 @@
       "lastModified": "2026-07-16T20:09:34.043",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-58617"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-47304",
+      "description": "Improper verification of cryptographic signature in .NET allows an unauthorized attacker to bypass a security feature over a network.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-14T19:17:08.830",
+      "lastModified": "2026-07-24T13:39:57.830",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47304"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-13448",
+      "description": "IBM Langflow OSS 1.0.0 through 1.10.1 Lanflow OSS contains an unauthenticated remote code execution vulnerability in the public flow build endpoint ( /api/v1/build_public_tmp/{flow_id}/flow ). The vulnerability stems from an incomplete denylist in the validate_public_flow_no_code_execution() function that fails to block several code-execution agent components including OpenDsStarAgent, CodeActAgentSmolagents, and CSVAgent.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-07-17T20:17:14.713",
+      "lastModified": "2026-07-23T05:16:29.463",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7279997"
       ],
       "source": "nvd"
     },
@@ -5436,7 +5505,7 @@
       "cvss": 8.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-05-20T04:16:46.913",
-      "lastModified": "2026-06-17T10:22:48.077",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2026-24213",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5828",
@@ -5451,7 +5520,7 @@
       "cvss": 8.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-05-20T04:16:47.173",
-      "lastModified": "2026-06-17T10:22:48.183",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2026-24214",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5828",
@@ -5466,7 +5535,7 @@
       "cvss": 8.0,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-05-21T09:16:30.143",
-      "lastModified": "2026-06-17T10:57:21.250",
+      "lastModified": "2026-07-23T16:10:00.137",
       "references": [
         "https://mattermost.com/security-updates"
       ],
@@ -5493,7 +5562,7 @@
       "cvss": 7.8,
       "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-05-19T07:16:29.953",
-      "lastModified": "2026-06-17T10:54:29.310",
+      "lastModified": "2026-07-24T12:10:00.210",
       "references": [
         "https://github.com/Samsung/escargot/pull/1565"
       ],
@@ -5506,7 +5575,7 @@
       "cvss": 7.8,
       "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-05-19T07:16:30.070",
-      "lastModified": "2026-06-17T10:54:29.413",
+      "lastModified": "2026-07-24T12:10:00.210",
       "references": [
         "https://github.com/Samsung/escargot/pull/1565"
       ],
@@ -5519,7 +5588,7 @@
       "cvss": 7.8,
       "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-05-19T08:16:15.730",
-      "lastModified": "2026-06-17T10:54:29.750",
+      "lastModified": "2026-07-24T12:10:00.210",
       "references": [
         "https://github.com/Samsung/escargot/pull/1565"
       ],
@@ -5562,7 +5631,7 @@
       "cvss": 7.7,
       "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
       "published": "2026-05-26T18:16:57.300",
-      "lastModified": "2026-06-17T11:04:32.243",
+      "lastModified": "2026-07-23T11:10:00.120",
       "references": [
         "https://www.ibm.com/support/pages/node/7274065"
       ],
@@ -5754,7 +5823,7 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-20T04:16:43.667",
-      "lastModified": "2026-06-17T09:13:19.130",
+      "lastModified": "2026-07-24T09:10:00.153",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2025-33255",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5805",
@@ -5769,7 +5838,7 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-05-20T04:16:45.537",
-      "lastModified": "2026-06-17T10:22:44.037",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2026-24163",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5805",
@@ -5784,7 +5853,7 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-05-26T17:16:30.050",
-      "lastModified": "2026-06-17T10:22:47.963",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2026-24212",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5830",
@@ -5799,7 +5868,7 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T10:16:44.410",
-      "lastModified": "2026-06-17T10:53:53.617",
+      "lastModified": "2026-07-23T08:10:00.137",
       "references": [
         "https://cert-portal.siemens.com/productcert/html/ssa-860189.html"
       ],
@@ -5826,11 +5895,13 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "published": "2026-06-30T13:19:17.840",
-      "lastModified": "2026-07-01T17:46:34.577",
+      "lastModified": "2026-07-24T19:16:59.350",
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-58016",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2492257",
-        "https://gitlab.gnome.org/GNOME/glib/-/issues/3932"
+        "https://access.redhat.com/errata/RHSA-2026:42063",
+        "https://access.redhat.com/errata/RHSA-2026:42089",
+        "https://access.redhat.com/errata/RHSA-2026:42090",
+        "https://access.redhat.com/errata/RHSA-2026:44481",
+        "https://access.redhat.com/security/cve/CVE-2026-58016"
       ],
       "source": "nvd"
     },
@@ -5861,28 +5932,41 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-49181",
+      "description": "Integer underflow (wrap or wraparound) in Windows DHCP Client allows an unauthorized attacker to elevate privileges over a network.",
+      "severity": "HIGH",
+      "cvss": 7.5,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "published": "2026-07-14T17:16:53.277",
+      "lastModified": "2026-07-20T13:38:14.890",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-49181"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-50330",
+      "description": "Heap-based buffer overflow in Remote Desktop Client allows an unauthorized attacker to elevate privileges over a network.",
+      "severity": "HIGH",
+      "cvss": 7.5,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "published": "2026-07-14T18:17:32.087",
+      "lastModified": "2026-07-22T16:17:40.833",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50330"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-57089",
       "description": "Use after free in Windows SMB Server Network Transport Driver (srvnet.sys) allows an unauthorized attacker to execute code over a network.",
       "severity": "HIGH",
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
       "published": "2026-07-14T18:18:33.237",
-      "lastModified": "2026-07-17T15:14:59.150",
+      "lastModified": "2026-07-23T05:16:37.897",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-57089"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-33608",
-      "description": "An attacker can send a notify request that causes a new secondary domain to be added to the bind backend, but causes said backend to update its configuration to an invalid one, leading to the backend no longer able to run on the next restart, requiring manual operation to fix it.",
-      "severity": "HIGH",
-      "cvss": 7.4,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
-      "published": "2026-04-22T14:16:54.650",
-      "lastModified": "2026-06-17T10:37:46.657",
-      "references": [
-        "https://docs.powerdns.com/authoritative/security-advisories/powerdns-advisory-powerdns-2026-05.html"
       ],
       "source": "nvd"
     },
@@ -5919,7 +6003,7 @@
       "cvss": 7.4,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-05-08T04:16:20.313",
-      "lastModified": "2026-07-20T12:19:18.010",
+      "lastModified": "2026-07-21T12:18:35.560",
       "references": [
         "https://github.com/axios/axios/commit/47915144662f2733e6c051bdcb895a8c8f0586aa",
         "https://github.com/axios/axios/pull/10779",
@@ -5952,7 +6036,7 @@
       "cvss": 7.4,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
       "published": "2026-05-20T13:16:23.923",
-      "lastModified": "2026-07-15T02:21:01.037",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://downloads.isc.org/isc/bind9/9.20.23",
         "https://downloads.isc.org/isc/bind9/9.21.22",
@@ -5969,7 +6053,7 @@
       "cvss": 7.4,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-05-29T16:16:31.497",
-      "lastModified": "2026-06-17T10:55:03.147",
+      "lastModified": "2026-07-21T15:10:00.103",
       "references": [
         "https://github.com/cli/cli/security/advisories/GHSA-8xvp-7hj6-mcj9"
       ],
@@ -5982,7 +6066,7 @@
       "cvss": 7.4,
       "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-04T18:16:32.530",
-      "lastModified": "2026-06-17T10:57:41.843",
+      "lastModified": "2026-07-22T20:10:00.127",
       "references": [
         "https://gitlab.freedesktop.org/libinput/libinput/-/commit/76f0d8a7f57e2868882864b4611281f12f704b55",
         "https://gitlab.freedesktop.org/libinput/libinput/-/work_items/1296",
@@ -6044,52 +6128,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-5935",
-      "description": "IBM Total Storage Service Console (TSSC) / TS4500 IMC 9.2, 9.3, 9.4, 9.5, 9.6 TSSC/IMC\u00a0could allow an unauthenticated user to execute arbitrary commands with normal user privileges on the system due to improper validation of user supplied input.",
-      "severity": "HIGH",
-      "cvss": 7.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-04-23T00:16:46.900",
-      "lastModified": "2026-06-17T10:59:55.040",
-      "references": [
-        "https://www.ibm.com/support/pages/node/7270127"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-6987",
-      "description": "A vulnerability was detected in PicoClaw up to 0.2.4. Impacted is an unknown function of the file /api/gateway/restart of the component Web Launcher Management Plane. Performing a manipulation results in command injection. It is possible to initiate the attack remotely. The project was informed of the problem early through an issue report but has not responded yet.",
-      "severity": "HIGH",
-      "cvss": 7.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-04-25T17:16:33.870",
-      "lastModified": "2026-06-17T11:01:35.847",
-      "references": [
-        "https://github.com/sipeed/picoclaw/issues/2307",
-        "https://vuldb.com/submit/796336",
-        "https://vuldb.com/vuln/359530",
-        "https://vuldb.com/vuln/359530/cti"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-7036",
-      "description": "A vulnerability was identified in Tenda i9 1.0.0.5(2204). This vulnerability affects the function R7WebsSecurityHandlerfunction of the component HTTP Handler. The manipulation leads to path traversal. Remote exploitation of the attack is possible. The exploit is publicly available and might be used.",
-      "severity": "HIGH",
-      "cvss": 7.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-04-26T12:16:22.987",
-      "lastModified": "2026-06-17T11:01:41.220",
-      "references": [
-        "https://github.com/Litengzheng/vuldb_new/blob/main/M3/vul_80/README.md",
-        "https://vuldb.com/submit/798479",
-        "https://vuldb.com/vuln/359616",
-        "https://vuldb.com/vuln/359616/cti",
-        "https://www.tenda.com.cn/"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-8305",
       "description": "A vulnerability was detected in OpenClaw up to 2026.1.24. The impacted element is the function handleBlueBubblesWebhookRequest of the file extensions/bluebubbles/src/monitor.ts of the component bluebubbles Webhook. Performing a manipulation results in improper authentication. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading to version 2026.2.12 is sufficient to resolve this issue. The patch is named a6653be0265f1f02b9de46c06f52ea7c81a836e6. The affected component should be upgraded.",
       "severity": "HIGH",
@@ -6129,7 +6167,7 @@
       "cvss": 7.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-05-13T19:17:24.043",
-      "lastModified": "2026-07-15T02:21:36.453",
+      "lastModified": "2026-07-21T12:18:39.003",
       "references": [
         "https://github.com/netty/netty/security/advisories/GHSA-57rv-r2g8-2cj3",
         "https://access.redhat.com/errata/RHSA-2026:23808",
@@ -6192,7 +6230,7 @@
       "cvss": 7.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-05-20T04:16:45.713",
-      "lastModified": "2026-06-17T10:22:47.420",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2026-24206",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5828",
@@ -6248,19 +6286,16 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-42043",
-      "description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, an attacker who can influence the target URL of an Axios request can use any address in the 127.0.0.0/8 range (other than 127.0.0.1) to completely bypass the NO_PROXY protection. This vulnerability is due to an incomplete for CVE-2025-62718, This vulnerability is fixed in 1.15.1 and 0.31.1.",
+      "id": "CVE-2026-56398",
+      "description": "Open WebUI before 0.9.5 contains a stored cross-site scripting vulnerability in the OAuth authentication flow where the picture claim URL MIME type is inferred from file extension rather than Content-Type header, allowing SVG files to bypass the profile image validator and be stored as data URIs. Authenticated users who visit the profile image endpoint receive attacker-controlled SVG content with inline disposition and no default security headers, enabling script execution in the same origin to steal authentication tokens and achieve account takeover.",
       "severity": "HIGH",
-      "cvss": 7.2,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-      "published": "2026-04-24T18:16:31.457",
-      "lastModified": "2026-07-20T12:19:14.910",
+      "cvss": 7.3,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+      "published": "2026-07-15T12:18:02.870",
+      "lastModified": "2026-07-16T20:03:37.680",
       "references": [
-        "https://github.com/axios/axios/security/advisories/GHSA-pmwg-cvhr-8vh7",
-        "https://access.redhat.com/errata/RHSA-2026:14937",
-        "https://access.redhat.com/errata/RHSA-2026:16476",
-        "https://access.redhat.com/errata/RHSA-2026:16532",
-        "https://access.redhat.com/errata/RHSA-2026:16534"
+        "https://github.com/open-webui/open-webui/security/advisories/GHSA-3wgj-c2hg-vm6q",
+        "https://www.vulncheck.com/advisories/open-webui-stored-cross-site-scripting-via-oauth-picture-claim-svg-data-uri"
       ],
       "source": "nvd"
     },
@@ -6346,7 +6381,7 @@
       "cvss": 7.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
       "published": "2026-05-07T12:16:17.977",
-      "lastModified": "2026-07-20T12:19:11.067",
+      "lastModified": "2026-07-23T12:17:55.390",
       "references": [
         "https://access.redhat.com/errata/RHSA-2026:13274",
         "https://access.redhat.com/errata/RHSA-2026:20611",
@@ -6459,52 +6494,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-40910",
-      "description": "frp is a fast reverse proxy. From 0.43.0 to 0.68.0, frp contains an authentication bypass in the HTTP vhost routing path when routeByHTTPUser is used as part of access control. In proxy-style requests, the routing logic uses the username from Proxy-Authorization to select the routeByHTTPUser backend, while the access control check uses credentials from the regular Authorization header. As a result, an attacker who can reach the HTTP vhost entrypoint and knows or can guess the protected routeByHTTPUser value may access a backend protected by httpUser / httpPassword even with an incorrect Proxy-Authorization password. This issue affects deployments that explicitly use routeByHTTPUser. It does not affect ordinary HTTP proxies that do not use this feature. This vulnerability is fixed in 0.68.1.",
-      "severity": "MEDIUM",
-      "cvss": 6.5,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
-      "published": "2026-04-21T21:16:45.157",
-      "lastModified": "2026-06-17T10:45:52.213",
-      "references": [
-        "https://github.com/fatedier/frp/security/advisories/GHSA-pq96-pwvg-vrr9",
-        "https://github.com/fatedier/frp/security/advisories/GHSA-pq96-pwvg-vrr9"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-32885",
-      "description": "DDEV is an open-source tool for running local web development environments for PHP and Node.js. Versions prior to 1.25.2 have unsanitized extraction in both `Untar()` and `Unzip()` functions in `pkg/archive/archive.go`. Downloads and extracts archives from remote sources without path validation. Version 1.25.2 patches the issue.",
-      "severity": "MEDIUM",
-      "cvss": 6.5,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
-      "published": "2026-04-22T17:16:34.770",
-      "lastModified": "2026-06-17T10:36:30.530",
-      "references": [
-        "https://github.com/ddev/ddev/releases/tag/v1.25.2",
-        "https://github.com/ddev/ddev/security/advisories/GHSA-x2xq-qhjf-5mvg",
-        "https://github.com/ddev/ddev/security/advisories/GHSA-x2xq-qhjf-5mvg"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-42044",
-      "description": "Axios is a promise based HTTP client for the browser and Node.js. From 1.0.0 to before 1.15.2, he Axios library is vulnerable to a Prototype Pollution \"Gadget\" attack that allows any Object.prototype pollution in the application's dependency tree to be escalated into surgical, invisible modification of all JSON API responses \u2014 including privilege escalation, balance manipulation, and authorization bypass. The default transformResponse function at lib/defaults/index.js:124 calls JSON.parse(data, this.parseReviver), where this is the merged config object. Because parseReviver is not present in Axios defaults, not validated by assertOptions, and not subject to any constraints, a polluted Object.prototype.parseReviver function is called for every key-value pair in every JSON response, allowing the attacker to selectively modify individual values while leaving the rest of the response intact. This vulnerability is fixed in 1.15.2.",
-      "severity": "MEDIUM",
-      "cvss": 6.5,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N",
-      "published": "2026-04-24T18:16:31.613",
-      "lastModified": "2026-07-20T12:19:15.490",
-      "references": [
-        "https://github.com/axios/axios/security/advisories/GHSA-3w6x-2g7m-8v23",
-        "https://access.redhat.com/errata/RHSA-2026:16532",
-        "https://access.redhat.com/errata/RHSA-2026:16534",
-        "https://access.redhat.com/errata/RHSA-2026:16535",
-        "https://access.redhat.com/errata/RHSA-2026:16542"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-40685",
       "description": "In Exim before 4.99.2, when JSON lookup is enabled, an out-of-bounds heap write can occur when a JSON operator encounters malformed JSON in an untrusted header, because of an incorrect implementation of \\ skipping.",
       "severity": "MEDIUM",
@@ -6584,6 +6573,23 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-44596",
+      "description": "Yamcs is a mission control framework. Prior to 5.12.7, the authentication endpoint POST /auth/token in yamcs-core, handled by yamcs-core/src/main/java/org/yamcs/http/auth/AuthHandler.java, lacked any rate limiting, account lockout, or failed-attempt throttling, so an unauthenticated remote attacker could perform unlimited password-guessing attempts against any user account, significantly increasing the risk of successful brute-force attacks. This issue is fixed in versions 5.12.7 and 5.13.0.",
+      "severity": "MEDIUM",
+      "cvss": 6.5,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "published": "2026-07-16T17:16:55.880",
+      "lastModified": "2026-07-17T18:44:26.383",
+      "references": [
+        "https://github.com/yamcs/yamcs/commit/309218c651680f79df11a8d0f8628f7033f98a83",
+        "https://github.com/yamcs/yamcs/commit/64392df531fbcbc65f19ee5724c4c23d289f49fc",
+        "https://github.com/yamcs/yamcs/releases/tag/yamcs-5.12.7",
+        "https://github.com/yamcs/yamcs/releases/tag/yamcs-5.13.0",
+        "https://github.com/yamcs/yamcs/security/advisories/GHSA-w5r6-mcgq-7pq4"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-2311",
       "description": "IBM i 7.6, 7.5, 7.4, 7.3, and 7.2 s vulnerable to privilege escalation caused by an invalid IBM i Web Administration GUI authorization check. \u00a0A malicious actor could cause user-controlled code to run with administrator privilege.",
       "severity": "MEDIUM",
@@ -6649,7 +6655,7 @@
       "cvss": 6.3,
       "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
       "published": "2026-05-20T04:16:44.993",
-      "lastModified": "2026-06-17T10:22:42.130",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://nvd.nist.gov/vuln/detail/CVE-2026-24142",
         "https://nvidia.custhelp.com/app/answers/detail/a_id/5805",
@@ -6664,7 +6670,7 @@
       "cvss": 6.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-05-29T14:16:25.340",
-      "lastModified": "2026-06-17T10:11:50.017",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_1/1.md",
         "https://vuldb.com/submit/814756",
@@ -6681,7 +6687,7 @@
       "cvss": 6.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-05-29T14:16:25.563",
-      "lastModified": "2026-06-17T10:11:50.160",
+      "lastModified": "2026-07-21T12:10:00.090",
       "references": [
         "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_2/2.md",
         "https://vuldb.com/submit/814757",
@@ -6697,7 +6703,7 @@
       "cvss": 6.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-05-29T16:16:23.020",
-      "lastModified": "2026-06-17T10:11:50.570",
+      "lastModified": "2026-07-21T15:10:00.103",
       "references": [
         "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_5/5.md",
         "https://vuldb.com/submit/814760",
@@ -6770,27 +6776,13 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-40514",
-      "description": "SmarterTools SmarterMail builds prior to 9610 contain a cryptographic weakness in the file and email sharing endpoints that use DES-CBC encryption with keys and initialization vectors derived from System.Random seeded with insufficient entropy, reducing the seed space to approximately 19,000 possible values. An unauthenticated attacker can use the attachment download endpoint as an oracle to determine the seed in use and derive encryption keys and initialization vectors to forge sharing tokens for arbitrary emails, attachments, or file storage contents without prior access to the targeted content.",
-      "severity": "MEDIUM",
-      "cvss": 5.9,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-      "published": "2026-04-27T15:16:20.160",
-      "lastModified": "2026-06-17T10:45:24.210",
-      "references": [
-        "https://www.smartertools.com/smartermail/release-notes/current",
-        "https://www.vulncheck.com/advisories/smartertools-smartermail-build-9610-cryptographic-weakness-via-weak-rng"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-8673",
       "description": "Unprotected transport of credentials vulnerability in syslink software AG Avantra on Linux, Windows allows Sniffing Attacks.\n\nThis issue affects Avantra: before 25.3.0.",
       "severity": "MEDIUM",
       "cvss": 5.9,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N",
       "published": "2026-05-22T14:16:30.070",
-      "lastModified": "2026-06-17T11:04:16.357",
+      "lastModified": "2026-07-23T16:10:00.137",
       "references": [
         "https://support.avantra.com/hc/en-us/articles/5535621927071"
       ],
@@ -6829,13 +6821,26 @@
       "cvss": 5.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N",
       "published": "2026-05-13T19:17:23.627",
-      "lastModified": "2026-07-15T02:21:36.070",
+      "lastModified": "2026-07-21T12:18:38.593",
       "references": [
         "https://github.com/netty/netty/security/advisories/GHSA-xxqh-mfjm-7mv9",
         "https://access.redhat.com/errata/RHSA-2026:23808",
         "https://access.redhat.com/errata/RHSA-2026:24502",
         "https://access.redhat.com/errata/RHSA-2026:25123",
         "https://access.redhat.com/errata/RHSA-2026:28010"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-56453",
+      "description": "HCL DFXAnalytics is affected by an Account Takeover via Response Manipulation vulnerability. A remote attacker can intercept and alter the contents of the server's HTTP responses before they reach the client application, allowing them to manipulate the authentication or authorization logic to bypass controls and gain unauthorized access to targeted user accounts.",
+      "severity": "MEDIUM",
+      "cvss": 5.5,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:L",
+      "published": "2026-07-16T14:16:54.497",
+      "lastModified": "2026-07-17T19:09:35.767",
+      "references": [
+        "https://support.hcl-software.com/csm?id=kb_article&sysparm_article=KB0131787"
       ],
       "source": "nvd"
     },
@@ -6869,26 +6874,13 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-40971",
-      "description": "When configured to use an SSL bundle, Spring Boot's RabbitMQ auto-configuration does not perform hostname verification when connecting to the RabbitMQ broker.\n\nAffected: Spring Boot 4.0.0\u20134.0.5 (fix 4.0.6), 3.5.0\u20133.5.13 (fix 3.5.14) per vendor advisory.",
-      "severity": "MEDIUM",
-      "cvss": 5.0,
-      "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-04-27T23:16:03.403",
-      "lastModified": "2026-06-17T10:45:57.607",
-      "references": [
-        "https://spring.io/security/cve-2026-40971"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-40974",
       "description": "Spring Boot's Cassandra auto-configuration does not perform hostname verification when establishing an SSL connection to Cassandra.\n\nAffected: Spring Boot 4.0.0\u20134.0.5 (fix 4.0.6), 3.5.0\u20133.5.13 (fix 3.5.14), 3.4.0\u20133.4.15 (fix 3.4.16), 3.3.0\u20133.3.18 (fix 3.3.19), 2.7.0\u20132.7.32 (fix 2.7.33); Cassandra SSL auto-configuration. Versions that are no longer supported are also affected per vendor advisory.",
       "severity": "MEDIUM",
       "cvss": 5.0,
       "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-04-28T00:16:24.523",
-      "lastModified": "2026-06-17T10:45:57.927",
+      "lastModified": "2026-07-24T21:10:00.143",
       "references": [
         "https://spring.io/security/cve-2026-40974"
       ],
@@ -6901,24 +6893,11 @@
       "cvss": 5.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N",
       "published": "2026-05-26T17:16:46.680",
-      "lastModified": "2026-06-17T10:51:16.713",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://github.com/VowpalWabbit/vowpal_wabbit/commit/998e390e80a7e8192d7849b7784bc113dbd190ad",
         "https://github.com/VowpalWabbit/vowpal_wabbit/security/advisories/GHSA-cg2g-xgg7-3xxq",
         "https://github.com/VowpalWabbit/vowpal_wabbit/security/advisories/GHSA-cg2g-xgg7-3xxq"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-33598",
-      "description": "A cached crafted response can cause an out-of-bounds read if custom Lua code calls getDomainListByAddress() or getAddressListByDomain() on a packet cache.",
-      "severity": "MEDIUM",
-      "cvss": 4.8,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L",
-      "published": "2026-04-22T14:16:54.303",
-      "lastModified": "2026-06-17T10:37:45.997",
-      "references": [
-        "https://www.dnsdist.org/security-advisories/powerdns-advisory-for-dnsdist-2026-04.html"
       ],
       "source": "nvd"
     },
@@ -6958,7 +6937,7 @@
       "cvss": 4.7,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
       "published": "2026-05-11T02:16:28.120",
-      "lastModified": "2026-06-17T11:03:45.073",
+      "lastModified": "2026-07-23T20:10:00.130",
       "references": [
         "https://github.com/yaoyue123/iot/blob/main/Tenda/AC10U/fromSetWirelessRepeat.md",
         "https://vuldb.com/submit/810074",
@@ -6975,7 +6954,7 @@
       "cvss": 4.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
       "published": "2026-05-26T17:16:29.143",
-      "lastModified": "2026-06-17T09:14:36.033",
+      "lastModified": "2026-07-24T11:10:00.170",
       "references": [
         "https://www.ibm.com/support/pages/node/7273923"
       ],
@@ -7042,7 +7021,7 @@
       "cvss": 4.0,
       "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:L",
       "published": "2026-05-20T12:16:20.527",
-      "lastModified": "2026-06-17T09:11:15.577",
+      "lastModified": "2026-07-24T10:10:00.197",
       "references": [
         "https://support.hcl-software.com/csm?id=kb_article&sysparm_article=KB0128144"
       ],
@@ -7157,20 +7136,6 @@
       "lastModified": "2026-06-27T18:51:07.113",
       "references": [
         "https://www.jetbrains.com/privacy-security/issues-fixed/"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-41144",
-      "description": "F\u00b4 (F Prime) is a framework that enables development and deployment of spaceflight and other embedded software applications. Prior to version 4.2.0, the bounds check byteOffset + dataSize > fileSize uses U32 addition that wraps around on overflow. An attacker-crafted DataPacket with byteOffset=0xFFFFFF9C and dataSize=100 overflows to 0, bypassing the check entirely. The subsequent file write proceeds at the original ~4GB offset. Additionally, Svc/FileUplink/File.cpp:20-31 performs no sanitization on the destination file path. Combined, these allow writing arbitrary data to any file at any offset. The impact is arbitrary file write leading to remote code execution on embedded targets. Note that this is a logic bug. ASAN does not detect it because all memory accesses are within valid buffers \u2014 the corruption occurs in file I/O. Version 4.2.0 contains a patch. No known workarounds are available.",
-      "severity": "NONE",
-      "cvss": 0.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
-      "published": "2026-04-22T00:16:29.550",
-      "lastModified": "2026-06-17T10:46:13.923",
-      "references": [
-        "https://github.com/nasa/fprime/commit/cacdd555456bd83ab395b521d56c0330470ea798",
-        "https://github.com/nasa/fprime/security/advisories/GHSA-qmvv-rxh4-ccqh"
       ],
       "source": "nvd"
     }

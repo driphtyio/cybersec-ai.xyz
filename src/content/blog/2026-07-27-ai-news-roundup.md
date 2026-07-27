@@ -14,7 +14,7 @@ tags:
   - mitre-attck
   - owasp-agentic-ai
 lastVerified: 2026-07-27
-heroImage: ""
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/2026-07-27-ai-news-roundup-1785178026.webp"
 ---
 
 ## The Week AI Broke Trust

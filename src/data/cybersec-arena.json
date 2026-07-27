@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-07-27",
+    "slug": "2026-07-27-ai-news-roundup",
+    "category": "news",
+    "type": "news-roundup",
+    "modelA": "deepseek-v4-flash",
+    "providerA": "deepseek",
+    "modelB": "mimo-v2.5-pro (intended; provider override fell back to deepseek-v4-flash)",
+    "providerB": "xiaomi (intended)",
+    "scoreA": 9,
+    "scoreB": 7,
+    "winner": "A",
+    "judgeModel": "mimo-v2.5-pro (intended; ran on deepseek-v4-flash)",
+    "qaScore": 10,
+    "qaResult": "PASS",
+    "wordCount": 969,
+    "notes": "Judge picked A for stronger narrative framing ('The Week AI Broke Trust'), broader framework tags, and tighter closing synthesis. B's per-section Defender Takeaway bullets were noted as the main B advantage. NOTE: per-task provider/model override was not honored by the delegation layer for this run — all three roles (A, B, judge) executed on the global default deepseek-v4-flash. Two genuinely distinct drafts were still produced and judged."
+  }
+]

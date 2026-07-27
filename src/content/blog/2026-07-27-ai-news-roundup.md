@@ -61,3 +61,13 @@ Taken together, these five stories paint a clear picture: the convergence of AI 
 - **Watch Gold Eagle and ENISA developments** — both will reshape vulnerability management and AI governance timelines in the second half of 2026.
 
 The age of AI-as-actor is here. The time to build guardrails is now — before the next rogue agent doesn't just steal benchmark data.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

@@ -3,7 +3,6 @@ title: "Nuclei: The Fast, Open-Source Vulnerability Scanner Powering Modern Secu
 description: "Comprehensive review of Nuclei by ProjectDiscovery: features, pricing, pros/cons, use cases, and alternatives"
 pubDate: "2026-07-29"
 tags: ["tool-review", "vulnerability-scanning", "security-tools"]
-heroImage: "https://pub-8b4941339b4c4184a9be8871a4d22c21.r2.dev/nuclei-projectdiscovery-review.jpg"
 lastVerified: "2026-07-29"
 ---
 

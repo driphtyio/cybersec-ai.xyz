@@ -170,26 +170,27 @@
     {
       "model": "deepseek-v4-flash",
       "role": "builder",
-      "provider": "deepseek",
-      "stability": {
-        "model_stats": {
-          "total_calls": 0,
-          "successes": 0,
-          "availability": 1.0
-        }
-      }
+      "provider": "deepseek"
     },
     {
       "model": "mimo-v2.5",
       "role": "builder",
-      "provider": "xiaomi",
-      "stability": {
-        "model_stats": {
-          "total_calls": 0,
-          "successes": 0,
-          "availability": 1.0
-        }
+      "provider": "xiaomi"
+    }
+  ],
+  "stability": {
+    "last_updated": "2026-07-29T11:45:00",
+    "model_stats": {
+      "deepseek-v4-flash": {
+        "total_calls": 0,
+        "successes": 0,
+        "availability": 100.0
+      },
+      "mimo-v2.5": {
+        "total_calls": 0,
+        "successes": 0,
+        "availability": 100.0
       }
     }
-  ]
+  }
 }

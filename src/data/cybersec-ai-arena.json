@@ -155,34 +155,34 @@
         {
           "model": "mimo-v2.5",
           "provider": "xiaomi",
-          "score": 29,
+          "score": 9.7,
           "rank": 1
         },
         {
           "model": "qwen3.7-flash",
           "provider": "openrouter",
-          "score": 25,
+          "score": 8.3,
           "rank": 2
         },
         {
           "model": "deepseek-v4-flash",
           "provider": "deepseek",
-          "score": 19,
+          "score": 6.3,
           "rank": 3
         }
       ],
       "winner": "mimo-v2.5",
-      "winner_score": 29,
+      "winner_score": 9.7,
       "judge_scores": {
         "mimo-v2.5-pro": {
-          "a": 19,
-          "b": 29,
-          "c": 25,
+          "a": 6.3,
+          "b": 9.7,
+          "c": 8.3,
           "winner": "B"
         }
       },
-      "final_score_a": 19,
-      "final_score_b": 29,
+      "final_score_a": 6.3,
+      "final_score_b": 9.7,
       "judges_completed": 1,
       "judges_planned": 1,
       "retries": 0,
@@ -193,17 +193,23 @@
     {
       "model": "mimo-v2.5",
       "wins": 3,
-      "appearances": 3
+      "appearances": 3,
+      "avgScore": 8.8,
+      "bestScore": 9.7
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 1,
-      "appearances": 5
+      "appearances": 5,
+      "avgScore": 7.5,
+      "bestScore": 8.1
     },
     {
       "model": "qwen3.7-flash",
       "wins": 0,
-      "appearances": 1
+      "appearances": 1,
+      "avgScore": 8.3,
+      "bestScore": 8.3
     }
   ],
   "model_pool": [

@@ -4,6 +4,7 @@ description: "Comprehensive review of Nuclei by ProjectDiscovery: features, pric
 pubDate: "2026-07-29"
 tags: ["tool-review", "vulnerability-scanning", "security-tools"]
 lastVerified: "2026-07-29"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/nuclei-hero-1785379014.png"
 ---
 
 # Nuclei: The Fast, Open-Source Vulnerability Scanner Powering Modern Security

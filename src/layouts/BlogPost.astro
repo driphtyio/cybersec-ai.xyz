@@ -33,6 +33,22 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
   <body>
     <Header />
     <main>
+      <input type="checkbox" id="toc-toggle" class="toc-checkbox" hidden />
+      <label for="toc-toggle" class="hamburger-label" aria-label="Toggle table of contents">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </label>
+      <div class="sidebar-overlay"></div>
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-title">On this page</span>
+          <label for="toc-toggle" class="sidebar-collapse-btn" aria-label="Collapse sidebar">◀</label>
+        </div>
+        <nav class="sidebar-body">
+          <ul class="toc-list" id="toc-list"></ul>
+        </nav>
+      </aside>
       <article>
         {heroImage && (heroImage.startsWith('http')
           ? <Image width={1020} height={574} src={heroImage} alt="" class="hero-image" />
@@ -104,6 +120,72 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      // Table of contents generation
+      document.addEventListener('DOMContentLoaded', () => {
+        const toc = document.getElementById('toc-list');
+        if (!toc) return;
+
+        const headings = document.querySelectorAll('.prose h2, .prose h3');
+        if (headings.length === 0) {
+          const sidebar = document.querySelector('.sidebar');
+          if (sidebar) sidebar.style.display = 'none';
+          const hamburger = document.querySelector('.hamburger-label');
+          if (hamburger) hamburger.style.display = 'none';
+          return;
+        }
+
+        let currentH2 = null;
+
+        headings.forEach((heading) => {
+          if (!heading.id) {
+            heading.id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+          }
+
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + heading.id;
+          a.textContent = heading.textContent;
+          a.className = 'toc-link';
+
+          if (heading.tagName === 'H2') {
+            li.appendChild(a);
+            toc.appendChild(li);
+            currentH2 = li;
+          } else if (heading.tagName === 'H3' && currentH2) {
+            let sublist = currentH2.querySelector('.toc-sublist');
+            if (!sublist) {
+              sublist = document.createElement('ul');
+              sublist.className = 'toc-sublist';
+              currentH2.appendChild(sublist);
+            }
+            a.className = 'toc-link toc-link-h3';
+            li.appendChild(a);
+            sublist.appendChild(li);
+          } else {
+            li.appendChild(a);
+            toc.appendChild(li);
+          }
+        });
+
+        // IntersectionObserver scrollspy
+        const links = toc.querySelectorAll('.toc-link');
+        if (typeof IntersectionObserver !== 'undefined' && links.length > 0) {
+          const observed = new Map();
+          links.forEach((link) => {
+            const id = link.getAttribute('href').slice(1);
+            const el = document.getElementById(id);
+            if (el) observed.set(el, link);
+          });
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              const link = observed.get(entry.target);
+              if (link) link.classList.toggle('toc-active', entry.isIntersecting);
+            });
+          }, { rootMargin: '-80px 0px -60% 0px' });
+          observed.forEach((_, el) => observer.observe(el));
+        }
+      });
     </script>
   </body>
 </html>
@@ -123,15 +205,6 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
   }
   .tag:hover { background: rgba(34,197,94,0.12); border-color: var(--accent); }
 
-  .share-bar {
-    display: flex; align-items: center; justify-content: center;
-    gap: 0.75em; max-width: 780px; margin: 2.5em auto 0;
-    padding: 0.75em 1.5em; border-top: 1px solid var(--border-light);
-  }
-  .share-label {
-    font-size: 0.8em; color: rgb(var(--gray)); font-weight: 500;
-    letter-spacing: 0.05em; text-transform: uppercase; margin-right: 0.25em;
-  }
   .share-btn {
     display: inline-flex; align-items: center; justify-content: center;
     width: 38px; height: 38px; border-radius: 50%;
@@ -170,8 +243,358 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
   }
   @media (max-width: 720px) {
     .back-to-top { bottom: 1em; right: 1em; width: 40px; height: 40px; }
-    .share-bar { padding: 0.75em 1em; gap: 0.6em; }
-    .share-btn { width: 34px; height: 34px; }
   }
 
+</style>
+<style is:global>
+/* ======================================
+   TOC SIDEBAR — cybersec-ai.xyz
+   ====================================== */
+
+/* --- Desktop: main becomes grid at 1440px+ --- */
+@media (min-width: 1440px) {
+  main {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+    position: relative;
+  }
+}
+
+/* --- Sidebar — Desktop (≥1440px) --- */
+@media (min-width: 1440px) {
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    width: 260px;
+    padding: 0 0 2em 0;
+    background: transparent;
+    border-right: 1px solid var(--border);
+    transition: width 0.35s ease, opacity 0.25s ease;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .toc-checkbox:checked ~ .sidebar {
+    width: 40px;
+  }
+
+  .sidebar-collapse-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--bg-card);
+    color: rgb(var(--gray));
+    cursor: pointer;
+    font-size: 0.75em;
+    line-height: 1;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.35s ease;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  .sidebar-collapse-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .toc-checkbox:checked ~ .sidebar .sidebar-collapse-btn {
+    transform: rotate(180deg);
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 12px 0;
+    transition: opacity 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .sidebar-title {
+    font-size: 0.8125em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgb(var(--gray));
+  }
+
+  .toc-checkbox:checked ~ .sidebar .sidebar-title {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sidebar-body {
+    padding-right: 8px;
+    transition: opacity 0.25s ease;
+  }
+
+  .toc-checkbox:checked ~ .sidebar .sidebar-body {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .toc-checkbox:checked ~ .sidebar .sidebar-header {
+    padding-right: 0;
+    justify-content: center;
+  }
+}
+
+/* --- TOC list styles (shared) --- */
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-sublist {
+  list-style: none;
+  margin: 0 0 0 16px;
+  padding: 0;
+}
+
+.toc-link {
+  display: block;
+  padding: 5px 0 5px 12px;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: rgb(var(--gray));
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  word-break: break-word;
+}
+
+.toc-link-h2 {
+  font-weight: 500;
+}
+
+.toc-link-h3 {
+  font-size: 0.8125em;
+  padding-left: 12px;
+}
+
+.toc-link:hover {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: transparent;
+}
+
+.toc-link.toc-active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+/* --- Hamburger — Mobile (<1440px) --- */
+@media (max-width: 1439px) {
+  .hamburger-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 110;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .hamburger-label:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg-card));
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: rgb(var(--gray));
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .toc-checkbox:checked ~ .hamburger-label .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .toc-checkbox:checked ~ .hamburger-label .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .toc-checkbox:checked ~ .hamburger-label .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+@media (min-width: 1440px) {
+  .hamburger-label {
+    display: none;
+  }
+}
+
+/* --- Sidebar — Mobile (<1440px) overlay --- */
+@media (max-width: 1439px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    z-index: 105;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: 80px 20px 2em 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .toc-checkbox:checked ~ .sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .sidebar-title {
+    font-size: 0.8125em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgb(var(--gray));
+  }
+
+  .sidebar-collapse-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: transparent;
+    color: rgb(var(--gray));
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1;
+    transition: background 0.2s ease, color 0.2s ease;
+    user-select: none;
+  }
+
+  .sidebar-collapse-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+}
+
+/* --- Sidebar overlay — Mobile backdrop --- */
+@media (max-width: 1439px) {
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  .toc-checkbox:checked ~ .sidebar-overlay {
+    display: block;
+  }
+}
+
+@media (min-width: 1440px) {
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+/* --- Share bar — scale with prose width --- */
+.share-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75em;
+  max-width: 780px;
+  margin: 2.5em auto 0;
+  padding: 0.75em 1.5em;
+  border-top: 1px solid var(--border-light);
+}
+
+.share-label {
+  font-size: 0.8em;
+  color: rgb(var(--gray));
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-right: 0.25em;
+}
+
+@media (min-width: 1200px) {
+  .share-bar {
+    max-width: 860px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .share-bar {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .share-bar {
+    max-width: 1000px;
+  }
+}
+
+/* --- Mobile share-bar compact --- */
+@media (max-width: 720px) {
+  .share-bar {
+    padding: 0.75em 1em;
+    gap: 0.6em;
+  }
+  .share-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* --- Hero image for grid layout (desktop) --- */
+@media (min-width: 1440px) {
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+}
+
+/* --- Responsive fallback: single-column below 1440px --- */
+@media (max-width: 1439px) {
+  main {
+    display: block;
+  }
+}
 </style>

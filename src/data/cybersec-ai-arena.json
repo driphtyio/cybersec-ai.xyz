@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-07-30",
+  "last_updated": "2026-07-31",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -231,29 +231,73 @@
       "judges_planned": 1,
       "retries": 0,
       "notes": "3-builder arena: deepseek-v4-flash (A), mimo-v2.5 (B), qwen3.7-flash via OpenRouter (C). Single judge (mimo-v2.5-pro). Winner C (8.10) \u2014 most technically precise prose, best reference formatting, strong structural organization. A (8.00) close runner-up with more engaging narrative and 6 actionable recommendations. B (7.55) below threshold due to H2 heading and less polished execution. All sources verified (2 returned 403 anti-bot, rest 200)."
+    },
+    {
+      "date": "2026-07-31",
+      "slug": "2026-07-31-consumer-alert",
+      "topic": "Ghost Tapping: The Tap-to-Pay Scam Surge of Summer 2026",
+      "category": "consumer-alert",
+      "type": "standard",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 9.0,
+          "rank": 1
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 8.8,
+          "rank": 2
+        },
+        {
+          "model": "qwen3.7-flash",
+          "provider": "openrouter",
+          "score": 6.9,
+          "rank": 3
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 9.0,
+      "judge_scores": {
+        "mimo-v2.5-pro": {
+          "a": 8.8,
+          "b": 9.0,
+          "c": 6.9,
+          "winner": "B"
+        }
+      },
+      "final_score_a": 8.8,
+      "final_score_b": 9.0,
+      "final_score_c": 6.9,
+      "judges_completed": 1,
+      "judges_planned": 1,
+      "retries": 0,
+      "notes": "3-builder A/B/C arena: deepseek-v4-flash (A), mimo-v2.5 (B), qwen3.7-flash (C). Judge: MiMo V2.5 Pro (via delegate_task \u2014 direct runner failed due to 2K token cap on judge mode). Winner B (9.0) \u2014 highest accuracy with zero misattributions, cleanest sourcing. A (8.8) close runner-up with better headline but had a bank-verdict misattribution. C (6.9) had fabricated technical claims (high-gain receivers) and overconfident reversal claims. All URLs verified HTTP 200."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
-      "wins": 3,
-      "appearances": 4,
-      "avgScore": 8.5,
+      "wins": 4,
+      "appearances": 5,
+      "avgScore": 8.61,
       "bestScore": 9.7
-    },
-    {
-      "model": "qwen3.7-flash",
-      "wins": 1,
-      "appearances": 2,
-      "avgScore": 8.2,
-      "bestScore": 8.3
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 1,
-      "appearances": 6,
-      "avgScore": 7.6,
-      "bestScore": 8.1
+      "appearances": 7,
+      "avgScore": 7.79,
+      "bestScore": 8.8
+    },
+    {
+      "model": "qwen3.7-flash",
+      "wins": 1,
+      "appearances": 3,
+      "avgScore": 7.77,
+      "bestScore": 8.3
     }
   ],
   "model_pool": [

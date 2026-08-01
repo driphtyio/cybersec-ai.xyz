@@ -143,7 +143,7 @@ The 17,000-researcher bug bounty network means detection rules are updated based
 ## Cons
 
 ### Opaque pricing
-There is no published price list. Getting a quote requires a sales conversation — a friction point for smaller teams that just want to evaluate the tool. Enterprise platform deals reportedly run north of $100K/year.
+There is no published price list. Getting a quote requires a sales conversation — a friction point for smaller teams that just want to evaluate the tool. Enterprise platform deals reportedly run north of $100K/year [CostBench Protect AI pricing](https://costbench.com/software/ai-security/protect-ai/).
 
 ### Narrow scope by design
 Guardian does not protect against runtime threats, prompt injection, or data leakage during inference. You need additional tools (Layer, Lakera Guard, or similar) for full coverage. The "platform" pitch sells all three together, which drives up total cost.

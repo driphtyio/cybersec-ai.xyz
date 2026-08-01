@@ -52,8 +52,8 @@ Two campaigns show how organized this is. One operation registered the name "ama
 In mid-June 2026, the FTC released its deepest look yet at impersonation fraud. The headline figure: Americans reported losing **$3.5 billion to imposter scams in 2025** — nearly triple the 2020 total. Almost one in three fraud reports filed last year involved an imposter of some kind [FTC](https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-data-show-people-reported-losing-3-point-5-billion-imposter-scams-2025).
 
 The breakdown is worth understanding:
-- **Business impersonators** took nearly $1 billion, with bank imposters the costliest category
-- **Government impersonators** took about $920 million, driven by toll road and DMV text scams
+- **Business impersonators** took nearly $1 billion, with bank imposters the costliest category [FTC](https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-data-show-people-reported-losing-3-point-5-billion-imposter-scams-2025)
+- **Government impersonators** took about $920 million, driven by toll road and DMV text scams [FTC](https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-data-show-people-reported-losing-3-point-5-billion-imposter-scams-2025)
 - Both categories are up sharply from 2024, when the same categories cost $866 million and $789 million respectively [CNBC](https://www.cnbc.com/2026/06/26/imposter-scams-led-fraud-reports-to-ftc-in-2025-3point5-billion-losses.html)
 
 The costliest opening move is a fake security alert, usually from "your bank." The message says your account is compromised, and a follow-up call talks you into moving money somewhere "safe." The FTC's blunt observation: losses in these cases are often limited only by how much the victim had available [ScamDrill](https://scamdrill.com/blog/scam-trends-july-2026).
@@ -64,7 +64,7 @@ The costliest opening move is a fake security alert, usually from "your bank." T
 
 A brutal heatwave sweeping the US and Europe has driven demand for air conditioners to record levels — and scammers have responded with AI-generated fake stores and deceptive social media ads. Forbes reported on July 5 that scammers are using AI to create professional-looking websites advertising deeply discounted air conditioners that don't exist [Forbes](https://www.forbes.com/sites/steveweisman/2026/07/05/how-ai-is-fueling-a-new-wave-of-air-conditioner-scams/).
 
-The playbook is consistent: a sponsored Facebook or Instagram ad promotes portable AC units at 50% off. The ad links to a site that looks legitimate, with AI-generated product descriptions, fake reviews, and a professional design. Victims enter their credit card information and receive either nothing or a cheap, broken unit from a different seller entirely.
+The playbook is consistent: a sponsored Facebook or Instagram ad promotes portable AC units at 50% off [Forbes](https://www.forbes.com/sites/steveweisman/2026/07/05/how-ai-is-fueling-a-new-wave-of-air-conditioner-scams/). The ad links to a site that looks legitimate, with AI-generated product descriptions, fake reviews, and a professional design. Victims enter their credit card information and receive either nothing or a cheap, broken unit from a different seller entirely.
 
 This pattern extends beyond AC units to any seasonal product in high demand. The AI tools that power these scams have become cheap and accessible — a fake storefront can be spun up in minutes, run for 48 hours collecting payments, and disappear before payment processors catch on.
 
@@ -126,7 +126,7 @@ If a QR code at a restaurant, parking lot, or store looks like a sticker placed 
 Google's June 2026 advisory warns that AITM (Adversary-in-the-Middle) phishing kits can intercept SMS-based two-factor codes in real time. Use an authenticator app or a hardware security key for email, banking, and cryptocurrency accounts instead.
 
 ### Freeze Your Credit
-Contact Equifax, Experian, and TransUnion. Credit freezes are free, take about 15 minutes each, and prevent fraudsters from opening new accounts in your name. This is especially important given the record $3.5 billion in imposter scam losses.
+Contact Equifax, Experian, and TransUnion. Credit freezes are free, take about 15 minutes each, and prevent fraudsters from opening new accounts in your name. This is especially important given the record $3.5 billion in imposter scam losses [FTC](https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-data-show-people-reported-losing-3-point-5-billion-imposter-scams-2025).
 
 ### Never Buy From Social Media Ads Without Research
 Before clicking "buy" on a social media ad for a seasonal product (AC unit, holiday gifts, back-to-school supplies), search for the company name plus "scam" or "review." Check for a real physical address and working customer service line. Genuine businesses have a verifiable track record.

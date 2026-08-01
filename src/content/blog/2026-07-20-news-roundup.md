@@ -31,13 +31,13 @@ The **SANS Institute** published its 2026 AI Survey Insights report on July 13-1
 
 Key findings:
 
-- **78%** of organizations now actively use AI in cybersecurity strategy (up from 50%)
-- **63%** reported "significant shortcomings" in threat detection and response (up from 45%)
-- **40%** cited trust in AI decisions as the top integration barrier (replacing "wiring AI into existing systems")
-- **50%** of cybersecurity leaders reported having a formal AI governance program
-- **44%** described their organization as in the early stages of writing AI governance policy
-- **78%** reported confirmed or suspected AI-enabled attacks in the past year
-- **73%** said AI has changed their training requirements (up from 51%)
+- **78%** of organizations now actively use AI in cybersecurity strategy (up from 50%) [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
+- **63%** reported "significant shortcomings" in threat detection and response (up from 45%) [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
+- **40%** cited trust in AI decisions as the top integration barrier (replacing "wiring AI into existing systems") [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
+- **50%** of cybersecurity leaders reported having a formal AI governance program [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
+- **44%** described their organization as in the early stages of writing AI governance policy [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
+- **78%** reported confirmed or suspected AI-enabled attacks in the past year [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
+- **73%** said AI has changed their training requirements (up from 51%) [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
 
 [SANS Institute](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap)
 
@@ -113,7 +113,7 @@ Attackers can intercept or scrape Client IDs from exposed applications, then use
 
 ## What to Watch
 
-1. **AI governance gap becomes operational risk**: The SANS finding that 63% of organizations report significant shortcomings in AI threat detection — despite 78% adoption — suggests that the AI security industry is about to face a reckoning. Expect major governance frameworks (NIST AI RMF updates, ISO/IEC 42001) to see accelerated adoption as boards demand proof of AI control effectiveness.
+1. **AI governance gap becomes operational risk**: The SANS finding that 63% of organizations report significant shortcomings in AI threat detection — despite 78% adoption [SANS](https://www.sans.org/press/announcements/ai-use-cybersecurity-jumped-from-50-to-78-year-ai-related-failures-rose-sharply-too-new-sans-institute-survey-reveals-governance-gap) — suggests that the AI security industry is about to face a reckoning. Expect major governance frameworks (NIST AI RMF updates, ISO/IEC 42001) to see accelerated adoption as boards demand proof of AI control effectiveness.
 
 2. **Agent data injection emerges as the next prompt injection frontier**: The new agent data injection attack represents a significant evolution beyond traditional prompt injection. AI agents with browser automation and API access are uniquely vulnerable — organizations deploying agentic AI should implement data provenance tracking and action confirmation gates immediately.
 

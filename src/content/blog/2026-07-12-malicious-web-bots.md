@@ -6,11 +6,11 @@ tags: ["bots-automation", "threat-intelligence", "incident-response", "ai-securi
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/cybersec-1783878401.jpg"
 ---
 
-The first half of 2026 has seen a dramatic escalation in automated attacks targeting web applications, API endpoints, and cloud infrastructure. Malicious bots now account for more than 40% of all internet traffic according to recent industry telemetry — with sophisticated, AI-driven variants evading traditional detection methods. This post examines the most significant incidents, exploit techniques, and defensive strategies from the past week.
+The first half of 2026 has seen a dramatic escalation in automated attacks targeting web applications, API endpoints, and cloud infrastructure. Malicious bots now account for more than 40% of all internet traffic according to recent industry telemetry [imperva-bot-report](https://www.imperva.com/blog/2025-imperva-bad-bot-report-how-ai-is-supercharging-the-bot-threat/) — with sophisticated, AI-driven variants evading traditional detection methods. This post examines the most significant incidents, exploit techniques, and defensive strategies from the past week.
 
 ## Executive Summary
 
-Web bots are no longer simple scripts firing off canned payloads. Today's malicious bots use headless browser automation, AI-generated content scraping, and rotating proxy networks that mimic human browsing patterns. Several incidents this week highlight the trend: a credential-stuffing campaign targeting 200+ SaaS platforms used Playwright-based bots that solved CAPTCHAs in real-time; a Web3 bridge lost $23M to a bot-driven oracle manipulation attack; and a wave of exploitation attempts against Apache and NGINX CVE-2026-XXXX variants. The takeaway is clear — traditional rate-limiting and IP-based blocking are no longer sufficient defenses.
+Web bots are no longer simple scripts firing off canned payloads. Today's malicious bots use headless browser automation, AI-generated content scraping, and rotating proxy networks that mimic human browsing patterns. Several incidents this week highlight the trend: a credential-stuffing campaign targeting 200+ SaaS platforms used Playwright-based bots that solved CAPTCHAs in real-time; a Web3 bridge lost $23M to a bot-driven oracle manipulation attack [phemex-defi-hacks-2026](https://phemex.com/blogs/defi-hacks-2026-bridge-exploits-explained); and a wave of exploitation attempts against Apache and NGINX CVE-2026-XXXX variants. The takeaway is clear — traditional rate-limiting and IP-based blocking are no longer sufficient defenses.
 
 ## Background: The Evolution of Malicious Bots
 
@@ -87,7 +87,7 @@ API endpoints are the primary target because they lack the visual challenges tha
 
 1. **IP-based rate limiting alone** — Attackers have access to hundreds of thousands of residential proxies via services like BrightData (formerly Luminati) and Oxylabs. IP blocking is a cat-and-mouse game the defender cannot win.
 
-2. **Simple CAPTCHA (reCAPTCHAv2)** — Vision-language models now solve image CAPTCHAs at 92% accuracy. The economic break-even point (~70% accuracy) was crossed in 2024.
+2. **Simple CAPTCHA (reCAPTCHAv2)** — Vision-language models now solve image CAPTCHAs at 92% accuracy [human-security-ai-traffic](https://www.humansecurity.com/learn/resources/2026-state-of-ai-traffic-cyberthreat-benchmarks/). The economic break-even point (~70% accuracy) was crossed in 2024.
 
 3. **User-agent filtering** — Modern bot frameworks spoof user-agent strings with perfect fidelity, including the subtle order-of-version anomalies that older bots couldn't replicate.
 

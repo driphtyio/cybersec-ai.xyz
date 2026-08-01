@@ -135,7 +135,7 @@ The BioShocking attack is particularly relevant to Check Point's finding that at
 
 ## Recommendations
 
-1. **Audit every AI agent's permission scope today.** For each agent, document what credentials it holds, what systems it can access, and what actions it can take autonomously. Revoke any permission not justified by the agent's documented function. The 78% over-permissioned rate in post-incident analysis is a preventable statistic.
+1. **Audit every AI agent's permission scope today.** For each agent, document what credentials it holds, what systems it can access, and what actions it can take autonomously. Revoke any permission not justified by the agent's documented function. The 78% over-permissioned rate in post-incident analysis is a preventable statistic [Digital Applied, Mar 2026](https://www.digitalapplied.com/blog/ai-agent-security-2026-1-in-8-breaches-agentic-systems).
 
 2. **Deploy agent-specific behavioral monitoring before the next incident.** Traditional EDR will not detect an agent that queries 100 databases it has legitimate access to but has never touched before. Agent observability tools exist — Cycode, HiddenLayer, and emerging Microsoft Defender for AI agents all provide this capability. Pick one.
 

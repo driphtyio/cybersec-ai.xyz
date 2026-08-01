@@ -2,6 +2,7 @@
 title: "Ghost Tapping Is Here: How Fraudsters Are Stealing Hundreds Through Contactless Payments"
 description: "Fraudsters are exploiting tap-to-pay terminals to overcharge or silently drain your cards. Here's how the 'ghost tapping' scam works and how to stop it."
 pubDate: "2026-07-31"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/2026-07-31-consumer-alert-1785522824.webp"
 lastVerified: "2026-07-31"
 tags: ["consumer-alert", "scams", "tap-to-pay", "fraud"]
 ---

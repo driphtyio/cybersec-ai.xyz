@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-01",
+  "last_updated": "2026-08-02",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -319,22 +319,68 @@
       "judges_planned": 1,
       "retries": 0,
       "notes": "3-builder A/B/C arena: deepseek-v4-flash (A), mimo-v2.5 (B), qwen3.7-flash (C). Judge: MiMo V2.5 Pro (via delegate_task). Winner B (8.88) - most accurate (correct v9.17 fix version), strongest inline sourcing, cleanest prose. A (7.75) close runner-up but hallucinated v9.18 fix version. C (7.0) trailed on sourcing and clarity. All sources verified."
+    },
+    {
+      "date": "2026-08-02",
+      "slug": "2026-08-02-bots-exploits",
+      "topic": "Dysphoria Botnet: Blockchain C2 Evasion and IoT Defense",
+      "category": "analysis",
+      "type": "standard",
+      "results": [
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 9.3,
+          "rank": 1
+        },
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.1,
+          "rank": 2
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 7.3,
+          "rank": 3
+        }
+      ],
+      "winner": "deepseek-v4-flash",
+      "winner_score": 9.3,
+      "judge_scores": {
+        "qwen3.7-flash": {
+          "a": 9.3,
+          "b": 8.1,
+          "c": 7.3,
+          "winner": "A",
+          "note": "Judge via delegate_task fallback to deepseek-v4-flash (qwen3.7-flash unavailable). A had strongest sourcing (every claim inline-linked) and best structure. B misplaced CVE list under wrong H2. C had zero clickable inline links."
+        }
+      },
+      "final_score_a": 9.3,
+      "final_score_b": 8.1,
+      "final_score_c": 7.3,
+      "judges_completed": 1,
+      "judges_planned": 1,
+      "retries": 0,
+      "threshold_met": true,
+      "notes": "3-builder A/B/C arena: deepseek-v4-flash (A), mimo-v2.5 (B), poolside/laguna-s-2.1 (C). Judge fallback to deepseek-v4-flash. Winner A (9.3) — all claims inline-linked, proper E-E-A-T block, self-contained H2 answers, FAQ present. Threshold met on first iteration."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
       "wins": 5,
-      "appearances": 6,
-      "avgScore": 8.65,
+      "appearances": 7,
+      "avgScore": 8.58,
       "bestScore": 9.7
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 2,
-      "appearances": 8,
-      "avgScore": 7.78,
-      "bestScore": 8.8
+      "appearances": 9,
+      "avgScore": 7.95,
+      "bestScore": 9.3
     },
     {
       "model": "qwen3.7-flash",
@@ -342,6 +388,13 @@
       "appearances": 4,
       "avgScore": 7.57,
       "bestScore": 8.3
+    },
+    {
+      "model": "poolside/laguna-s-2.1",
+      "wins": 0,
+      "appearances": 1,
+      "avgScore": 7.3,
+      "bestScore": 7.3
     }
   ],
   "model_pool": [
@@ -359,6 +412,12 @@
       "model": "qwen3.7-flash",
       "provider": "openrouter",
       "role": "builder",
+      "context_length": 1000000
+    },
+    {
+      "model": "poolside/laguna-s-2.1",
+      "role": "builder",
+      "provider": "openrouter",
       "context_length": 1000000
     }
   ],

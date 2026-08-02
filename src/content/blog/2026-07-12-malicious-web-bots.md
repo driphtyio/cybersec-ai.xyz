@@ -162,3 +162,13 @@ API endpoints are the primary target because they lack the visual challenges tha
 8. MITRE ATT&CK: Valid Accounts (T1078) — [https://attack.mitre.org/techniques/T1078/](https://attack.mitre.org/techniques/T1078/)
 9. NIST CSF v2.0 — [https://www.nist.gov/cyberframework](https://www.nist.gov/cyberframework)
 10. Cloudflare Bot Management Docs — [https://developers.cloudflare.com/bots/](https://developers.cloudflare.com/bots/)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from None.*

@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-04",
+  "last_updated": "2026-08-05",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -457,28 +457,73 @@
       "retries": 0,
       "threshold_met": true,
       "notes": "3-builder A/B/C arena via arena-direct-runner.py. Judge: openrouter/qwen3.7-flash (real API call). All 3 builders succeeded. Winner C (8.9) - threshold met first iteration. QA fill by GLM-5.2 (zai). All URLs verified HTTP 200."
+    },
+    {
+      "date": "2026-08-05",
+      "slug": "wazuh-review",
+      "topic": "Wazuh Review 2026: Open-Source SIEM/XDR for Small Teams",
+      "category": "tool-review",
+      "type": "standard",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.7,
+          "rank": 1
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 8.0,
+          "rank": 2
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 5.5,
+          "rank": 3
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.7,
+      "judge_scores": {
+        "qwen3.7-flash": {
+          "A": {"accuracy": 8, "sourcing": 9, "quality": 7, "practicality": 8, "engagement": 7, "weighted": 8.0, "threshold_met": true},
+          "B": {"accuracy": 5, "sourcing": 6, "quality": 5, "practicality": 6, "engagement": 6, "weighted": 5.5, "threshold_met": false},
+          "C": {"accuracy": 9, "sourcing": 8, "quality": 9, "practicality": 9, "engagement": 8, "weighted": 8.7, "threshold_met": true},
+          "winner": "C"
+        }
+      },
+      "final_score_a": 8.0,
+      "final_score_b": 5.5,
+      "final_score_c": 8.7,
+      "judges_completed": 1,
+      "judges_planned": 1,
+      "retries": 0,
+      "threshold_met": true,
+      "notes": "3-builder A/B/C arena via arena-direct-runner.py. Judge: openrouter/qwen3.7-flash. All 3 builders succeeded. Draft B (deepseek) triggered fabrication gate (implied hands-on testing). Winner C (mimo-v2.5, 8.7) - threshold met first iteration. QA: converted [Source: X] citations to inline links, fixed description length, fixed Nuclei/Garak internal links, verified all URLs HTTP 200."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
-      "wins": 5,
-      "appearances": 9,
-      "avgScore": 8.5,
+      "wins": 6,
+      "appearances": 10,
+      "avgScore": 8.54,
       "bestScore": 9.7
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 3,
-      "appearances": 10,
-      "avgScore": 8.13,
+      "appearances": 11,
+      "avgScore": 7.76,
       "bestScore": 9.3
     },
     {
       "model": "poolside/laguna-s-2.1",
       "wins": 1,
-      "appearances": 3,
-      "avgScore": 8.0,
+      "appearances": 4,
+      "avgScore": 8.22,
       "bestScore": 8.9
     },
     {

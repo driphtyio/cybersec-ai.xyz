@@ -1,6 +1,6 @@
 ---
 title: "Malicious Web Bots, Real-World Hacks & Exploit Techniques — July 2026"
-description: "A technical roundup of malicious bot activity, real-world security incidents, and exploit techniques from the past week, with defensive measures for SaaS operators."
+description: "Malicious bots now exceed 40% of internet traffic, driven by AI variants that mimic human behavior and defeat legacy defenses. This week’s incidents…"
 pubDate: "2026-07-12"
 tags: ["bots-automation", "threat-intelligence", "incident-response", "ai-security", "cloud-security", "mitre-attck", "mitre-d3fend", "nist-csf"]
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/cybersec-1783878401.jpg"

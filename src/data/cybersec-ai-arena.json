@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-08",
+  "last_updated": "2026-08-09",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -596,21 +596,120 @@
       "retries": 0,
       "threshold_met": true,
       "notes": "3-builder A/B/C arena via arena-direct-runner.py. Builder B (mimo-v2.5) required re-run with provider=xiomi (custom:xiomi rejected). Judge: openrouter/qwen3.7-flash multipass (3 passes each, mean gated). Poolside won tiebreaker on self-contained answer quality. QA: title shortened to 51 chars, description rewritten to 157 chars no stats, internal links fixed to /cves/ and /frameworks/, all URLs verified (NVD/N-able 403 = anti-bot not broken)."
+    },
+    {
+      "date": "2026-08-09",
+      "slug": "2026-08-09-bots-exploits",
+      "topic": "ClickFix Analysis: How Fake CAPTCHA Pages Deliver Malware",
+      "category": "analysis",
+      "type": "standard",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.57,
+          "rank": 1
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 7.55,
+          "rank": 2
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 0.0,
+          "rank": 3,
+          "status": "DNF",
+          "error": "Circuit breaker open for openrouter"
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.57,
+      "judge_scores": {
+        "qwen3.7-flash": {
+          "mimo-v2.5": {
+            "pass_1": {
+              "accuracy": 10.0,
+              "sourcing": 10.0,
+              "quality": 6.0,
+              "practicality": 9.0,
+              "engagement": 9.0,
+              "weighted": 8.95
+            },
+            "pass_2": {
+              "accuracy": 10.0,
+              "sourcing": 9.0,
+              "quality": 4.0,
+              "practicality": 9.0,
+              "engagement": 7.0,
+              "weighted": 8.1
+            },
+            "pass_3": {
+              "accuracy": 10.0,
+              "sourcing": 10.0,
+              "quality": 5.0,
+              "practicality": 9.0,
+              "engagement": 8.0,
+              "weighted": 8.65
+            },
+            "weighted_mean": 8.57,
+            "threshold_met": true
+          },
+          "deepseek-v4-flash": {
+            "pass_1": {
+              "accuracy": 9.0,
+              "sourcing": 8.0,
+              "quality": 5.0,
+              "practicality": 9.0,
+              "engagement": 6.0,
+              "weighted": 7.65
+            },
+            "pass_2": {
+              "accuracy": 9.0,
+              "sourcing": 9.0,
+              "quality": 4.0,
+              "practicality": 8.0,
+              "engagement": 6.0,
+              "weighted": 7.55
+            },
+            "pass_3": {
+              "accuracy": 9.0,
+              "sourcing": 8.0,
+              "quality": 4.0,
+              "practicality": 9.0,
+              "engagement": 6.0,
+              "weighted": 7.45
+            },
+            "weighted_mean": 7.55,
+            "threshold_met": false
+          },
+          "winner": "mimo-v2.5"
+        }
+      },
+      "final_score_mimo": 8.57,
+      "final_score_deepseek": 7.55,
+      "judges_completed": 1,
+      "judges_planned": 1,
+      "retries": 0,
+      "threshold_met": true,
+      "notes": "3-builder A/B/C via arena-direct-runner.py. Poolside DNF (circuit breaker open for openrouter). Judge: qwen3.7-flash multipass 3 passes each, mean gated. MiMo won with 8.57 mean (PASS). DeepSeek failed gate at 7.55. QA: removed code-fence-wrapped frontmatter, trimmed meta description, added inline external links, added sibling post internal links, generated hero image via Lumenfall. All external URLs verified."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
-      "wins": 6,
-      "appearances": 11,
-      "avgScore": 8.49,
+      "wins": 7,
+      "appearances": 12,
+      "avgScore": 8.5,
       "bestScore": 9.7
     },
     {
       "model": "deepseek-v4-flash",
-      "wins": 3,
-      "appearances": 12,
-      "avgScore": 7.9,
+      "wins": 4,
+      "appearances": 14,
+      "avgScore": 7.87,
       "bestScore": 9.3
     },
     {

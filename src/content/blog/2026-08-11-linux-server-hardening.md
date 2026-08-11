@@ -1,6 +1,6 @@
 ---
 title: "Linux Server Hardening: Complete Security Checklist 2026"
-description: "A practical Linux server hardening checklist: SSH keys, firewalls, automatic updates, least privilege, and log monitoring for beginners and sysadmins."
+description: "Microsoft's 2024 Digital Defense Report logged 7,000 password attacks/sec and >99% of 600 million daily incidents as identity-based, making Linux…"
 pubDate: "2026-08-11"
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/linux-server-hardening-1786474537.webp"
 tags:
@@ -111,3 +111,11 @@ Changing the default SSH port from 22 provides a minor security benefit through 
 The most straightforward method is to install and configure the `unattended-upgrades` package. After installation with `sudo apt install unattended-upgrades`, run `sudo dpkg-reconfigure unattended-upgrades` and select "Yes" to enable it. By default, this will automatically download and install security updates for supported packages. You can review and modify its behavior in `/etc/apt/apt.conf.d/50unattended-upgrades`.
 
 A secure server is a maintained server. Implementing this checklist is a major step forward, but remember that security is an ongoing process of monitoring, patching, and adaptation. Regularly review your configurations and stay informed about new threats to ensure your defenses remain effective.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

@@ -10,6 +10,12 @@ const { matches, leaderboard, model_pool, stability } = arenaData;
 const builderModels = model_pool.filter(m => m.role === 'builder');
 const judgeModels = model_pool.filter(m => m.role === 'judge');
 
+/* --- model -> provider map (from model_pool) for leaderboard enrichment --- */
+const providerByModel = {};
+for (const m of model_pool) {
+  if (!providerByModel[m.model]) providerByModel[m.model] = m.provider;
+}
+
 const modelsByProvider = {};
 for (const m of model_pool) {
   if (!modelsByProvider[m.provider]) modelsByProvider[m.provider] = [];
@@ -29,6 +35,35 @@ const sortedMatches = [...matches]
   .filter(m => m.type !== 'router-selection')
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
+/* --- Process feedback aggregates (computed from match JSON, never fabricated) --- */
+let judgesCompleted = 0;
+let judgesPlanned = 0;
+let totalRetries = 0;
+let failedJudgeCalls = 0;
+for (const m of matches) {
+  judgesCompleted += m.judges_completed != null ? m.judges_completed : 0;
+  judgesPlanned += m.judges_planned != null ? m.judges_planned : 0;
+  totalRetries += m.retries != null ? m.retries : 0;
+  const js = m.judge_scores || {};
+  for (const jv of Object.values(js)) {
+    if (jv && jv.status === 'failed') failedJudgeCalls++;
+  }
+}
+const completionPct = judgesPlanned > 0 ? Math.round((judgesCompleted / judgesPlanned) * 100) : null;
+
+/* --- 5 most recent match notes --- */
+const recentNotes = [];
+for (const m of sortedMatches) {
+  if (m.notes) {
+    recentNotes.push({ date: m.date, topic: m.topic, note: m.notes });
+    if (recentNotes.length === 5) break;
+  }
+}
+
+function truncate(s, n) {
+  return s.length > n ? s.slice(0, n).trimEnd() + '…' : s;
+}
+
 function groupByProvider(models) {
   const grouped = {};
   for (const m of models) {
@@ -37,6 +72,24 @@ function groupByProvider(models) {
   }
   return Object.entries(grouped).sort((a, b) => a[0].localeCompare(b[0]));
 }
+
+/* --- judge_scores shape detection --- */
+function isClassicJudge(jv) {
+  return jv && (typeof jv.a === 'number' || typeof jv.b === 'number' || typeof jv.c === 'number');
+}
+
+function isRubricJudge(jv) {
+  if (!jv || typeof jv !== 'object') return false;
+  return Object.values(jv).some(
+    v => v && typeof v === 'object' && (typeof v.weighted === 'number' || typeof v.weighted_mean === 'number' || v.pass_1)
+  );
+}
+
+function fmtCtx(n) {
+  if (n >= 1000000) return `${(n / 1000000).toFixed(0)}M`;
+  if (n >= 1000) return `${Math.round(n / 1000)}K`;
+  return String(n);
+}
 ---
 
 <!doctype html>
@@ -44,8 +97,11 @@ function groupByProvider(models) {
   <head>
     <BaseHead title={`Arena — ${SITE_TITLE}`} description="CyberSec AI Arena — model battle arena for security content matches." />
     <style>
-      :root { --accent: #ef4444; --accent-dim: rgba(239,68,68,0.1); }
-      .arena { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+      :root { --accent: #ef4444; --accent-dim: rgba(239,68,68,0.1); --text-muted: #9aa4b2; --arena-green: #4ade80; --arena-red: #f87171; }
+      .arena { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+      @media (min-width: 1200px) { .arena { max-width: 1240px; } }
+      @media (min-width: 1440px) { .arena { max-width: 1400px; } }
+      @media (min-width: 1600px) { .arena { max-width: 1440px; } }
       .hero { text-align: center; margin-bottom: 2rem; }
       .hero-title { font-size: 2rem; margin-bottom: 0.5rem; }
       .hero-subtitle { color: var(--text-muted); font-size: 0.95rem; }
@@ -68,8 +124,23 @@ function groupByProvider(models) {
       .lb-model { font-weight: 600; }
       .lb-provider-badge { font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; background: var(--accent-dim); color: var(--accent); }
       .lb-score { font-weight: 600; color: var(--accent); }
-      .wins { color: #4ade80; font-weight: 600; }
+      .lb-winrate { font-weight: 600; color: var(--arena-green); }
+      .wins { color: var(--arena-green); font-weight: 600; }
       .losses { color: var(--text-muted); }
+
+      /* --- Process Feedback --- */
+      .pf-card { border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; background: var(--bg-card); }
+      .pf-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+      .pf-stat { background: var(--accent-dim); border-radius: 6px; padding: 0.6rem 0.75rem; text-align: center; }
+      .pf-value { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+      .pf-unit { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+      .pf-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.15rem; }
+      .pf-notes-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 0.5rem; }
+      .pf-note { display: flex; gap: 0.6rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border-light); font-size: 0.8rem; }
+      .pf-note:last-child { border-bottom: none; }
+      .pf-note-date { flex-shrink: 0; color: var(--accent); font-weight: 600; font-size: 0.72rem; padding-top: 0.1rem; }
+      .pf-note-text { color: rgb(var(--gray-dark)); }
+
       .match-list { display: flex; flex-direction: column; gap: 0.5rem; }
       .match-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
       .match-summary { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; cursor: pointer; list-style: none; }
@@ -93,15 +164,36 @@ function groupByProvider(models) {
       .result-provider-tag { font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 3px; background: var(--border); color: var(--text-muted); }
       .result-score { font-weight: 600; font-size: 0.9rem; color: var(--accent); }
       .result-score-unit { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; }
+
+      /* --- Judging process (per match) --- */
+      .judge-block { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); }
+      .judge-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+      .judge-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+      .judge-meta { font-size: 0.7rem; color: var(--text-muted); }
+      .judge-list { display: flex; flex-direction: column; gap: 0.3rem; }
+      .judge-row { display: flex; align-items: flex-start; gap: 0.5rem; flex-wrap: wrap; padding: 0.35rem 0.5rem; border-radius: 6px; background: rgba(255,255,255,0.02); font-size: 0.78rem; }
+      .judge-name { font-weight: 600; font-size: 0.78rem; }
+      .judge-scores { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
+      .judge-score { padding: 0.1rem 0.4rem; border-radius: 4px; background: var(--border); color: var(--text-muted); font-size: 0.72rem; }
+      .judge-score.win { background: rgba(74,222,128,0.15); color: var(--arena-green); font-weight: 600; }
+      .judge-pick { font-size: 0.7rem; color: var(--arena-green); font-weight: 600; }
+      .judge-fail-badge { color: var(--arena-red); font-weight: 600; font-size: 0.72rem; }
+      .judge-error { color: var(--arena-red); font-size: 0.72rem; flex-basis: 100%; }
+      .judge-note { color: var(--text-muted); font-size: 0.72rem; flex-basis: 100%; font-style: italic; }
+      .judge-fallback { font-size: 0.65rem; padding: 0.05rem 0.35rem; border-radius: 3px; background: rgba(251,191,36,0.12); color: #fbbf24; }
+      .judge-empty { color: var(--text-muted); font-size: 0.8rem; margin: 0; }
+
       .provider-grid { display: flex; flex-direction: column; gap: 0.75rem; }
       .provider-card { border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; }
       .provider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
       .provider-name { font-weight: 600; font-size: 0.9rem; }
       .provider-count { font-size: 0.75rem; color: var(--text-muted); }
       .provider-models { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-      .model-chip { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 6px; background: var(--accent-dim); display: flex; align-items: center; gap: 0.3rem; }
+      .model-chip { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 6px; background: var(--accent-dim); display: inline-flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; }
       .mc-name { font-weight: 500; }
       .mc-role { font-size: 0.7rem; }
+      .mc-provider { font-size: 0.65rem; color: var(--text-muted); }
+      .mc-ctx { font-size: 0.65rem; color: var(--text-muted); background: var(--border); padding: 0.05rem 0.3rem; border-radius: 3px; }
       .mc-status { font-size: 0.65rem; color: var(--text-muted); }
       .last-updated { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
       @media (max-width: 768px) {
@@ -147,26 +239,72 @@ function groupByProvider(models) {
                   <th class="th-center">#</th>
                   <th>Model</th>
                   <th>Provider</th>
-                  <th class="th-num">Avg</th>
+                  <th class="th-num">Appearances</th>
                   <th class="th-center">W/L</th>
+                  <th class="th-num">Win Rate</th>
+                  <th class="th-num">Avg</th>
                   <th class="th-num">Best</th>
                 </tr>
               </thead>
               <tbody>
-                {sortedLeaderboard.map((m, i) => (
-                  <tr class="lb-row">
-                    <td class="lb-rank">{i < 3 ? rankEmojis[i] : `#${i + 1}`}</td>
-                    <td class="lb-model">{m.model}</td>
-                    <td class="lb-provider"><span class="lb-provider-badge">{m.provider || '—'}</span></td>
-                    <td class="lb-score">{m.avgScore.toFixed(1)}</td>
-                    <td class="lb-center"><span class="wins">{m.wins}</span><span class="losses">/{m.losses}</span></td>
-                    <td class="lb-num">{m.bestScore.toFixed(1)}</td>
-                  </tr>
-                ))}
+                {sortedLeaderboard.map((m, i) => {
+                  const losses = Math.max(0, m.appearances - m.wins);
+                  const winRate = m.appearances > 0 ? Math.round((m.wins / m.appearances) * 100) : 0;
+                  return (
+                    <tr class="lb-row">
+                      <td class="lb-rank">{i < 3 ? rankEmojis[i] : `#${i + 1}`}</td>
+                      <td class="lb-model">{m.model}</td>
+                      <td class="lb-provider"><span class="lb-provider-badge">{providerByModel[m.model] || '—'}</span></td>
+                      <td class="lb-num">{m.appearances}</td>
+                      <td class="lb-center"><span class="wins">{m.wins}</span><span class="losses">-{losses}</span></td>
+                      <td class="lb-num"><span class="lb-winrate">{winRate}%</span></td>
+                      <td class="lb-score">{m.avgScore.toFixed(1)}</td>
+                      <td class="lb-num">{m.bestScore.toFixed(1)}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
         )}
+      </section>
+
+      <section class="section" id="process-feedback">
+        <div class="section-header">
+          <h2>Process Feedback</h2>
+          <span class="section-meta">judging reliability across {totalMatches} matches</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-stats">
+            <div class="pf-stat">
+              <div class="pf-value">{judgesCompleted}<span class="pf-unit">/{judgesPlanned}</span></div>
+              <div class="pf-label">Judge calls completed</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-value">{completionPct != null ? `${completionPct}%` : '—'}</div>
+              <div class="pf-label">Completion rate</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-value">{totalRetries}</div>
+              <div class="pf-label">Total retries</div>
+            </div>
+            <div class="pf-stat">
+              <div class="pf-value">{failedJudgeCalls}</div>
+              <div class="pf-label">Failed judge calls</div>
+            </div>
+          </div>
+          {recentNotes.length > 0 && (
+            <div class="pf-notes">
+              <div class="pf-notes-title">Recent match notes</div>
+              {recentNotes.map(n => (
+                <div class="pf-note">
+                  <span class="pf-note-date">{n.date}</span>
+                  <span class="pf-note-text" title={n.topic}>{truncate(n.note, 160)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
       <section class="section" id="matches">
@@ -182,6 +320,10 @@ function groupByProvider(models) {
               const sortedResults = [...match.results].sort((a, b) => a.rank - b.rank);
               const winner = sortedResults[0];
               const winnerColor = winner.score >= 9 ? '#4ade80' : winner.score >= 7 ? '#ef4444' : '#f87171';
+              const judgeEntries = Object.entries(match.judge_scores || {});
+              const jc = match.judges_completed != null ? match.judges_completed : 0;
+              const jp = match.judges_planned != null ? match.judges_planned : 0;
+              const retries = match.retries != null ? match.retries : 0;
               return (
                 <details class="match-card">
                   <summary class="match-summary">
@@ -210,6 +352,77 @@ function groupByProvider(models) {
                         </div>
                       ))}
                     </div>
+                    <div class="judge-block">
+                      <div class="judge-head">
+                        <span class="judge-title">Judging process</span>
+                        <span class="judge-meta">judges {jc}/{jp} · retries {retries}</span>
+                      </div>
+                      {judgeEntries.length === 0 ? (
+                        match.judge_model ? (
+                          <div class="judge-row">
+                            <span class="judge-name">{match.judge_model}</span>
+                            {match.judge_passes != null && <span class="judge-score">{match.judge_passes} passes</span>}
+                            {match.judge_note && <span class="judge-note">{match.judge_note}</span>}
+                          </div>
+                        ) : (
+                          <p class="judge-empty">No judge data</p>
+                        )
+                      ) : (
+                        <div class="judge-list">
+                          {judgeEntries.map(([jname, jv]) => {
+                            if (jv && jv.status === 'failed') {
+                              return (
+                                <div class="judge-row">
+                                  <span class="judge-name">{jname}</span>
+                                  <span class="judge-fail-badge">✗ failed</span>
+                                  {jv.error && <span class="judge-error">{jv.error}</span>}
+                                </div>
+                              );
+                            }
+                            if (isClassicJudge(jv)) {
+                              const scores = [['A', jv.a], ['B', jv.b], ['C', jv.c]].filter(([, s]) => typeof s === 'number');
+                              return (
+                                <div class="judge-row">
+                                  <span class="judge-name">{jname}</span>
+                                  {jv.status === 'fallback' && <span class="judge-fallback">fallback</span>}
+                                  <span class="judge-scores">
+                                    {scores.map(([letter, s]) => (
+                                      <span class={`judge-score ${jv.winner === letter ? 'win' : ''}`}>{letter} {s.toFixed(1)}</span>
+                                    ))}
+                                    {jv.winner && <span class="judge-pick">winner {jv.winner}</span>}
+                                  </span>
+                                  {jv.note && <span class="judge-note">{jv.note}</span>}
+                                </div>
+                              );
+                            }
+                            if (isRubricJudge(jv)) {
+                              const entries = Object.entries(jv).filter(([k, v]) => k !== 'winner' && k !== 'note' && v && typeof v === 'object');
+                              return (
+                                <div class="judge-row">
+                                  <span class="judge-name">{jname}</span>
+                                  <span class="judge-scores">
+                                    {entries.map(([k, v]) => {
+                                      const sc = v.weighted_mean != null ? v.weighted_mean : v.weighted;
+                                      return (
+                                        <span class={`judge-score ${String(jv.winner) === k ? 'win' : ''}`}>{k} {sc != null ? sc.toFixed(1) : '—'}</span>
+                                      );
+                                    })}
+                                    {jv.winner && <span class="judge-pick">winner {jv.winner}</span>}
+                                  </span>
+                                  {jv.note && <span class="judge-note">{jv.note}</span>}
+                                </div>
+                              );
+                            }
+                            return (
+                              <div class="judge-row">
+                                <span class="judge-name">{jname}</span>
+                                <span class="judge-note">No judge data</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </details>
               );
@@ -233,12 +446,16 @@ function groupByProvider(models) {
               </div>
               <div class="provider-models">
                 {models.map(m => {
-                  const stats = stability.model_stats[m.model] || { total_calls: 0, successes: 0, availability: 100 };
+                  const stats = stability.model_stats[m.model] || {};
+                  const calls = stats.total_calls || 0;
+                  const avail = calls > 0 && stats.availability != null ? `${stats.availability.toFixed(0)}%` : 'n/a';
                   return (
-                    <span class="model-chip" title={m.model}>
-                      <span class="mc-name">{m.model}</span>
+                    <span class="model-chip" title={`${m.model} · ${m.provider}${m.context_length ? ` · ${fmtCtx(m.context_length)} ctx` : ''} · availability ${avail}${calls > 0 ? ` · ${calls} calls` : ''}`}>
                       <span class="mc-role">🏗️</span>
-                      <span class="mc-status">[{stats.availability.toFixed(0)}%]</span>
+                      <span class="mc-name">{m.model}</span>
+                      <span class="mc-provider">{m.provider}</span>
+                      {m.context_length ? <span class="mc-ctx">{fmtCtx(m.context_length)} ctx</span> : null}
+                      <span class="mc-status">[{avail}{calls > 0 ? ` · ${calls} calls` : ''}]</span>
                     </span>
                   );
                 })}
@@ -264,12 +481,16 @@ function groupByProvider(models) {
               </div>
               <div class="provider-models">
                 {models.map(m => {
-                  const stats = stability.model_stats[m.model] || { total_calls: 0, successes: 0, availability: 100 };
+                  const stats = stability.model_stats[m.model] || {};
+                  const calls = stats.total_calls || 0;
+                  const avail = calls > 0 && stats.availability != null ? `${stats.availability.toFixed(0)}%` : 'n/a';
                   return (
-                    <span class="model-chip" title={m.model}>
-                      <span class="mc-name">{m.model}</span>
+                    <span class="model-chip" title={`${m.model} · ${m.provider}${m.context_length ? ` · ${fmtCtx(m.context_length)} ctx` : ''} · availability ${avail}${calls > 0 ? ` · ${calls} calls` : ''}`}>
                       <span class="mc-role">⚖️</span>
-                      <span class="mc-status">[{stats.availability.toFixed(0)}%]</span>
+                      <span class="mc-name">{m.model}</span>
+                      <span class="mc-provider">{m.provider}</span>
+                      {m.context_length ? <span class="mc-ctx">{fmtCtx(m.context_length)} ctx</span> : null}
+                      <span class="mc-status">[{avail}{calls > 0 ? ` · ${calls} calls` : ''}]</span>
                     </span>
                   );
                 })}

@@ -847,34 +847,30 @@
     {
       "model": "mimo-v2.5",
       "wins": 8,
-      "losses": 6,
-      "matches": 14,
       "avgScore": 8.48,
-      "winRate": 57.1
+      "bestScore": 9.7,
+      "appearances": 14
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 5,
-      "losses": 11,
-      "matches": 16,
       "avgScore": 7.93,
-      "winRate": 31.2
+      "bestScore": 9.3,
+      "appearances": 16
     },
     {
       "model": "poolside/laguna-s-2.1",
       "wins": 2,
-      "losses": 3,
-      "matches": 5,
       "avgScore": 8.03,
-      "winRate": 40.0
+      "bestScore": 8.9,
+      "appearances": 5
     },
     {
       "model": "qwen3.7-flash",
       "wins": 1,
-      "losses": 3,
-      "matches": 4,
       "avgScore": 7.57,
-      "winRate": 25.0
+      "bestScore": 8.3,
+      "appearances": 4
     }
   ],
   "model_pool": [

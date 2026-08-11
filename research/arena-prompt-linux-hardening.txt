@@ -1,0 +1,79 @@
+You are a cybersecurity technical writer. Write a complete blog post for cybersec-ai.xyz following this EXACT plan.
+
+TITLE: Linux Server Hardening: Complete Security Checklist 2026
+SLUG: 2026-08-11-linux-server-hardening
+
+FRONTMATTER (exact):
+---
+title: "Linux Server Hardening: Complete Security Checklist 2026"
+description: "A practical Linux server hardening checklist: SSH keys, firewalls, automatic updates, least privilege, and log monitoring for beginners and sysadmins."
+pubDate: "2026-08-11"
+heroImage: ""
+tags:
+  - "linux-security"
+  - "server-hardening"
+  - "ssh"
+  - "sysadmin"
+  - "devsecops"
+lastVerified: "2026-08-11"
+---
+
+REQUIRED SECTIONS (exact H2s, exact order):
+1. Opening hook (no heading) - 2-3 stat-driven paragraphs, keyword 'how to harden a Linux server for beginners' in first ~100 words
+2. ## How This Guide Was Built (E-E-A-T block, 40-60 words)
+3. ## Lock Down SSH: Keys, No Root, No Password Auth
+4. ## Turn On the Firewall: UFW, iptables, and nftables Basics
+5. ## Automate Security Updates: unattended-upgrades and dnf-automatic
+6. ## Users & Permissions: Least Privilege with sudo
+7. ## Harden the File System: Mount Options and Audit Logging
+8. ## Shrink the Attack Surface: Disable Unused Services and Harden systemd Units
+9. ## Watch the Logs: journalctl and auditd Basics
+10. ## Putting It Together: The 10-Command Quick Start
+11. ## FAQ (exactly 3 question-shaped H3s)
+12. Conclusion (no heading, 2-3 sentences)
+
+MUST-INCLUDE FACTS (cite each inline with URL):
+1. Microsoft blocked 7,000 password attacks/sec; >99% of 600M daily identity attacks - https://www.microsoft.com/en-us/security/security-insider/threat-landscape/microsoft-digital-defense-report-2024
+2. OpenSSH: PermitRootLogin defaults to prohibit-password, PasswordAuthentication defaults to yes - https://man7.org/linux/man-pages/man5/sshd_config.5.html
+3. ed25519 keys: ssh-keygen -t ed25519, Ubuntu recommends ed25519 - https://ubuntu.com/server/docs/how-to/security/openssh-server/
+4. SSH overrides in /etc/ssh/sshd_config.d/*.conf, test with sudo sshd -t - https://ubuntu.com/server/docs/how-to/security/openssh-server/
+5. UFW ships disabled, enable with sudo ufw enable, default deny incoming - https://ubuntu.com/server/docs/how-to/security/firewalls/
+6. All Linux firewalls ride netfilter; nftables is modern successor, RHEL 9 default - https://wiki.nftables.org/wiki-nftables/index.php/Main_Page
+7. unattended-upgrades default installs security updates only - https://wiki.debian.org/UnattendedUpgrades
+8. RHEL: dnf-automatic, enable dnf-automatic-install.timer - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_software_with_the_dnf_tool/assembly_automating-software-updates-in-rhel-9_managing-software-with-the-dnf-tool
+9. NIST SP 800-123: least privilege, remove/disable unnecessary services - https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf
+10. systemd-analyze security audits exposure level - https://man7.org/linux/man-pages/man1/systemd-analyze.1.html
+
+FORMAT RULES:
+- 800-1500 words (target 1100-1400)
+- Every H2 must start with a self-contained 40-60 word answer paragraph
+- ALL citations as inline markdown links [Source Name](URL) - NO numbered references [1], [2]
+- 2 or more external authority links in body
+- FAQ: exactly 3 H3s ending in ?
+- 10-command quick-start block with exactly 10 commands
+- HERO_IMAGE_PROMPT as literal last line
+- No banned words: delve, unlock, revolutionize, landscape, game-changer, transformative
+- No 'as an AI', no fabricated testing claims, no exclamation marks
+
+FAQ QUESTIONS:
+1. ### Why should I disable root login over SSH?
+2. ### Is changing the SSH port worth it?
+3. ### How do I enable automatic security updates on Ubuntu?
+
+10-COMMAND QUICK START:
+ssh-keygen -t ed25519
+chmod go-w ~/.ssh/authorized_keys
+sudo sshd -t && sudo systemctl restart ssh
+sudo ufw enable
+sudo ufw allow 22
+sudo apt install unattended-upgrades && sudo dpkg-reconfigure unattended-upgrades
+sudo usermod -aG sudo <user>
+sudo systemctl disable --now <service>
+systemd-analyze security <service>
+journalctl -u ssh.service -f
+
+INTERNAL LINKS: Link to /blog/2026-08-04-api-security-hardening/ and /blog/2026-08-09-bots-exploits/
+
+HERO_IMAGE_PROMPT: 16:9 cybersecurity hero banner, dark navy palette matching the blog's existing dark/cyan aesthetic. Isometric 3D-vector hybrid scene of a glowing Linux server rack on the left, with a terminal window floating in front showing a checklist of security icons (key, padlock, shield, gear). From the terminal, a luminous cyan shield extends rightward and blocks a stream of red attack packets (abstract glitch shapes and X marks, no skulls, no gore) that shatter into pixels before reaching a small protected database icon on the right. Subtle circuit-board grid lines and matrix-style code glyphs in the background, cinematic rim lighting, high contrast, clean modern vector-3D hybrid style. Color palette: deep navy (#0a1128), cyan (#22d3ee), red accent (#f87171), white (#e2e8f0). No text, no words, no logos, no human hands or faces, no UI chrome. Professional cybersecurity blog hero, safe for work.
+
+Write the COMPLETE blog post with frontmatter. Output ONLY the markdown content.

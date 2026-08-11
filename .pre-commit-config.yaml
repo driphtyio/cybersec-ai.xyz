@@ -25,7 +25,7 @@ repos:
       - id: enforce-sources
         name: Enforce sourced statistics in blog posts
         description: Detects unsourced statistical claims in markdown blog posts
-        entry: python3 /home/techgeek/.local/bin/enforce-sources.py --check --blog nocodeinsider
+        entry: python3 /home/techgeek/.local/bin/enforce-sources.py --check --blog cybersecai
         language: system
         pass_filenames: false
         stages: [pre-commit]
@@ -33,7 +33,7 @@ repos:
       - id: quality-ratchet
         name: Blog quality ratchet
         description: Verifies content quality meets minimum thresholds before commit
-        entry: python3 /home/techgeek/.local/bin/quality-ratchet.py --check nocodeinsider
+        entry: python3 /home/techgeek/.local/bin/quality-ratchet.py --check cybersecai
         language: system
         pass_filenames: false
         stages: [pre-commit]

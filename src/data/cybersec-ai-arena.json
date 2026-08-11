@@ -844,8 +844,18 @@
     },
     {
       "model": "mimo-v2.5-pro",
-      "role": "judge",
+      "role": "planner",
       "provider": "xiaomi"
+    },
+    {
+      "model": "openai/gpt-5.6-luna",
+      "role": "research",
+      "provider": "openrouter"
+    },
+    {
+      "model": "glm-5.2",
+      "role": "qa",
+      "provider": "zai"
     }
   ],
   "stability": {

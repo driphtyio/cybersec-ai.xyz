@@ -9,6 +9,9 @@ const { matches, leaderboard, model_pool, stability } = arenaData;
 
 const builderModels = model_pool.filter(m => m.role === 'builder');
 const judgeModels = model_pool.filter(m => m.role === 'judge');
+const researchModels = model_pool.filter(m => m.role === 'research');
+const plannerModels = model_pool.filter(m => m.role === 'planner');
+const qaModels = model_pool.filter(m => m.role === 'qa');
 
 /* --- model -> provider map (from model_pool) for leaderboard enrichment --- */
 const providerByModel = {};
@@ -487,6 +490,111 @@ function fmtCtx(n) {
                   return (
                     <span class="model-chip" title={`${m.model} · ${m.provider}${m.context_length ? ` · ${fmtCtx(m.context_length)} ctx` : ''} · availability ${avail}${calls > 0 ? ` · ${calls} calls` : ''}`}>
                       <span class="mc-role">⚖️</span>
+                      <span class="mc-name">{m.model}</span>
+                      <span class="mc-provider">{m.provider}</span>
+                      {m.context_length ? <span class="mc-ctx">{fmtCtx(m.context_length)} ctx</span> : null}
+                      <span class="mc-status">[{avail}{calls > 0 ? ` · ${calls} calls` : ''}]</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      )}
+
+      {researchModels.length > 0 && (
+      <section class="section" id="research-models">
+        <div class="section-header">
+          <h2>Research Models</h2>
+          <span class="section-meta">{researchModels.length} model{researchModels.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="provider-grid">
+          {groupByProvider(researchModels).map(([provider, models]) => (
+            <div class="provider-card">
+              <div class="provider-header">
+                <span class="provider-name">{provider}</span>
+                <span class="provider-count">{models.length} model{models.length !== 1 ? 's' : ''}</span>
+              </div>
+              <div class="provider-models">
+                {models.map(m => {
+                  const stats = stability.model_stats[m.model] || {};
+                  const calls = stats.total_calls || 0;
+                  const avail = calls > 0 && stats.availability != null ? `${stats.availability.toFixed(0)}%` : 'n/a';
+                  return (
+                    <span class="model-chip" title={`${m.model} · ${m.provider}${m.context_length ? ` · ${fmtCtx(m.context_length)} ctx` : ''} · availability ${avail}${calls > 0 ? ` · ${calls} calls` : ''}`}>
+                      <span class="mc-role">🔬</span>
+                      <span class="mc-name">{m.model}</span>
+                      <span class="mc-provider">{m.provider}</span>
+                      {m.context_length ? <span class="mc-ctx">{fmtCtx(m.context_length)} ctx</span> : null}
+                      <span class="mc-status">[{avail}{calls > 0 ? ` · ${calls} calls` : ''}]</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      )}
+
+      {plannerModels.length > 0 && (
+      <section class="section" id="planner-models">
+        <div class="section-header">
+          <h2>Planner Models</h2>
+          <span class="section-meta">{plannerModels.length} model{plannerModels.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="provider-grid">
+          {groupByProvider(plannerModels).map(([provider, models]) => (
+            <div class="provider-card">
+              <div class="provider-header">
+                <span class="provider-name">{provider}</span>
+                <span class="provider-count">{models.length} model{models.length !== 1 ? 's' : ''}</span>
+              </div>
+              <div class="provider-models">
+                {models.map(m => {
+                  const stats = stability.model_stats[m.model] || {};
+                  const calls = stats.total_calls || 0;
+                  const avail = calls > 0 && stats.availability != null ? `${stats.availability.toFixed(0)}%` : 'n/a';
+                  return (
+                    <span class="model-chip" title={`${m.model} · ${m.provider}${m.context_length ? ` · ${fmtCtx(m.context_length)} ctx` : ''} · availability ${avail}${calls > 0 ? ` · ${calls} calls` : ''}`}>
+                      <span class="mc-role">📋</span>
+                      <span class="mc-name">{m.model}</span>
+                      <span class="mc-provider">{m.provider}</span>
+                      {m.context_length ? <span class="mc-ctx">{fmtCtx(m.context_length)} ctx</span> : null}
+                      <span class="mc-status">[{avail}{calls > 0 ? ` · ${calls} calls` : ''}]</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      )}
+
+      {qaModels.length > 0 && (
+      <section class="section" id="qa-models">
+        <div class="section-header">
+          <h2>QA Models</h2>
+          <span class="section-meta">{qaModels.length} model{qaModels.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="provider-grid">
+          {groupByProvider(qaModels).map(([provider, models]) => (
+            <div class="provider-card">
+              <div class="provider-header">
+                <span class="provider-name">{provider}</span>
+                <span class="provider-count">{models.length} model{models.length !== 1 ? 's' : ''}</span>
+              </div>
+              <div class="provider-models">
+                {models.map(m => {
+                  const stats = stability.model_stats[m.model] || {};
+                  const calls = stats.total_calls || 0;
+                  const avail = calls > 0 && stats.availability != null ? `${stats.availability.toFixed(0)}%` : 'n/a';
+                  return (
+                    <span class="model-chip" title={`${m.model} · ${m.provider}${m.context_length ? ` · ${fmtCtx(m.context_length)} ctx` : ''} · availability ${avail}${calls > 0 ? ` · ${calls} calls` : ''}`}>
+                      <span class="mc-role">✅</span>
                       <span class="mc-name">{m.model}</span>
                       <span class="mc-provider">{m.provider}</span>
                       {m.context_length ? <span class="mc-ctx">{fmtCtx(m.context_length)} ctx</span> : null}

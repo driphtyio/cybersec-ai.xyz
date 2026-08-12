@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-11",
+  "last_updated": "2026-08-12",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -841,29 +841,89 @@
         "method": "multipass-mean"
       },
       "qa_model": "glm-5.2"
+    },
+    {
+      "date": "2026-08-12",
+      "slug": "nessus-review-2026",
+      "topic": "Tenable Nessus Vulnerability Scanner Review 2026",
+      "category": "tool-review",
+      "type": "standard",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.88,
+          "rank": 1,
+          "word_count": 940,
+          "pass_scores": [
+            9.0,
+            9.2,
+            8.45
+          ]
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 8.23,
+          "rank": 2,
+          "word_count": 1151,
+          "pass_scores": [
+            7.95,
+            9.1,
+            7.65
+          ]
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 8.07,
+          "rank": 3,
+          "word_count": 993,
+          "pass_scores": [
+            8.65,
+            7.55,
+            8.0
+          ]
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.88,
+      "threshold_met": true,
+      "judge": {
+        "model": "qwen3.7-flash",
+        "passes": 3,
+        "method": "multipass-mean"
+      },
+      "plan_model": "deepseek-v4-flash",
+      "qa_model": "glm-5.2",
+      "redo_iterations": 1,
+      "notes": "Re-do iteration 1 needed after initial v1 scores all below 8.0 (mimo 7.40, deepseek 7.02, poolside 6.90). Improved brief with mandatory inline citation requirements and verified-fact judge preamble. v2 scores all passed 8.0 threshold."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
-      "wins": 8,
-      "avgScore": 8.48,
+      "wins": 9,
+      "avgScore": 8.51,
       "bestScore": 9.7,
-      "appearances": 14
+      "appearances": 15
     },
     {
       "model": "deepseek-v4-flash",
-      "wins": 5,
-      "avgScore": 7.93,
+      "wins": 4,
+      "avgScore": 7.95,
       "bestScore": 9.3,
-      "appearances": 16
+      "appearances": 17
     },
     {
       "model": "poolside/laguna-s-2.1",
       "wins": 2,
-      "avgScore": 8.03,
+      "avgScore": 8.04,
       "bestScore": 8.9,
-      "appearances": 5
+      "appearances": 6
     },
     {
       "model": "qwen3.7-flash",

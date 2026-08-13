@@ -1,6 +1,6 @@
 ---
 title: "Ransomware in 2026: Record Volume, AI Tooling, Data Theft"
-description: "Ransomware in 2026 is surging to record levels as AI-built tooling lowers the barrier to entry and data theft replaces encryption as the primary extortion lever."
+description: "Check Point: July 2026 ransomware hit 964 leak-site victims (+49% June, +87% YoY), topping H1's 672; Q2 saw 2,139 (+33% YoY). North America took 45% (US…"
 pubDate: 2026-08-13
 tags: ["ransomware", "threat landscape", "extortion", "data theft", "AI security"]
 lastVerified: 2026-08-13
@@ -67,3 +67,11 @@ Yes — AI-assisted tool development is lowering barriers, and Q2 2026 saw activ
 ### Should we still back up our data?
 
 Yes — backups neutralize encryption-based attacks, which is why payment rates fell to ~23% from 85% in 2019 [Check Point](https://blog.checkpoint.com/security/ransomware-didnt-slow-down-in-q2-2026-it-just-spread-out/). However, backups alone won't stop data theft, so exfiltration detection is also essential.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

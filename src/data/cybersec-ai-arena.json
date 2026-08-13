@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-12",
+  "last_updated": "2026-08-13",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -901,15 +901,80 @@
       "qa_model": "glm-5.2",
       "redo_iterations": 1,
       "notes": "Re-do iteration 1 needed after initial v1 scores all below 8.0 (mimo 7.40, deepseek 7.02, poolside 6.90). Improved brief with mandatory inline citation requirements and verified-fact judge preamble. v2 scores all passed 8.0 threshold."
+    },
+    {
+      "date": "2026-08-13",
+      "slug": "2026-08-13-deep-research",
+      "topic": "Ransomware Threat Landscape 2026: Record Volume, AI-Built Tooling, and the Shift to Data Theft",
+      "category": "deep-research",
+      "type": "standard",
+      "plan_model": "mimo-v2.5-pro",
+      "results": [
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 8.33,
+          "rank": 1,
+          "word_count": 1125,
+          "pass_scores": [
+            8.3,
+            8.5,
+            8.2
+          ],
+          "winner": true,
+          "feedback": "Best structural compliance and sourcing. Strong self-contained H2 openings and complete FAQ."
+        },
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.08,
+          "rank": 2,
+          "word_count": 1013,
+          "pass_scores": [
+            8.05,
+            8.1,
+            8.1
+          ],
+          "winner": false,
+          "feedback": "Passed gate. Solid accuracy and sourcing; slightly lower quality on H2 self-containment."
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 7.93,
+          "rank": 3,
+          "word_count": 1443,
+          "pass_scores": [
+            8.0,
+            8.1,
+            7.7
+          ],
+          "winner": false,
+          "feedback": "FAIL (mean < 8.0). Quality criterion dragged the mean down (3-5 across passes) despite 9s in accuracy/sourcing."
+        }
+      ],
+      "winner": "poolside/laguna-s-2.1",
+      "winner_score": 8.33,
+      "threshold_met": true,
+      "judge": {
+        "model": "qwen3.7-flash",
+        "passes": 3,
+        "method": "multipass-mean"
+      },
+      "qa_model": "glm-5.2",
+      "notes": "3-builder A/B/C arena via arena-direct-runner.py. Planner: mimo-v2.5-pro via importlib wrapper (timeout=300). Judge: openrouter/qwen3.7-flash multipass 3 passes each, mean gated; verified-fact preamble prepended (qwen penalizes recent 2026 events without it); judge hit HTTP 429 once per draft, retried OK. OpenRouter breaker was open (3 failures from earlier qwen 429s) \u2014 reset state file before poolside retry. Winner poolside 8.33 (PASS), mimo 8.08 (PASS), deepseek 7.93 (FAIL). QA (glm-5.2, real model via direct runner): renamed [Source N] labels to named inline citations, fixed CVE typo (CVE-2023-49660 -> CVE-2023-4966 Citrix Bleed), shortened title 80->57 chars, expanded meta to 160 chars, added /frameworks/ internal link. All 10 URLs (4 external + 6 internal) verified HTTP 200. HERO IMAGE FAILED: Lumenfall R2 upload Authentication error (code 10000) + HF FLUX HTTP 410 Gone; paid OpenRouter phase gated off by policy -> heroImage omitted per skill rule."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
       "wins": 9,
-      "avgScore": 8.51,
+      "avgScore": 8.48,
       "bestScore": 9.7,
-      "appearances": 15
+      "appearances": 16
     },
     {
       "model": "deepseek-v4-flash",
@@ -920,10 +985,10 @@
     },
     {
       "model": "poolside/laguna-s-2.1",
-      "wins": 2,
-      "avgScore": 8.04,
+      "wins": 3,
+      "avgScore": 8.08,
       "bestScore": 8.9,
-      "appearances": 6
+      "appearances": 7
     },
     {
       "model": "qwen3.7-flash",

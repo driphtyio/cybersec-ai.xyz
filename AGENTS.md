@@ -6,6 +6,23 @@
 |------|---------|
 | `DESIGN.md` | Brand design system (colors, typography, spacing) — read before designing pages |
 
+## Content Focus
+
+CyberSec AI is for **IT pros and security analysts**: AI + cybersecurity content — security news with analysis, CVE deep-dives, tool reviews, security guides, AI/LLM security (prompt injection, agent security), and consumer alerts. For practitioners who want data-driven security coverage, not link lists.
+
+### Audience
+**Who reads CyberSec AI:** Security practitioners and informed consumers. They want actionable hardening guides, data-driven CVE analysis, and clear-eyed coverage of AI/LLM security risks — with sources, not rumor.
+
+### Content Types (in priority order)
+1. **Security Guides** — How-to harden systems, networks, and configurations
+2. **CVE Deep-Dives** — Data-driven vulnerability analysis with real sources
+3. **AI/LLM Security** — Prompt injection, excessive agency, agent security
+4. **Tool Reviews** — Defensive security tool evaluations
+5. **News with Analysis** — Data and context, not link lists
+6. **Consumer Alerts** — Practical warnings for informed consumers
+
+**NOT on CyberSec AI:** Beginner cybersecurity basics, rumor/tips roundups without sourcing.
+
 ## Task Workflow (for any cron or manual session)
 
 1. **Read** — Load the relevant skill(s): content-pipeline, static-blog, blog-empire. Also check for per-repo skills: `python3 ~/.local/bin/repo-skills-loader.py .`

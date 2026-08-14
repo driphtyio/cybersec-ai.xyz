@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-13",
+  "last_updated": "2026-08-14",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -966,29 +966,94 @@
       },
       "qa_model": "glm-5.2",
       "notes": "3-builder A/B/C arena via arena-direct-runner.py. Planner: mimo-v2.5-pro via importlib wrapper (timeout=300). Judge: openrouter/qwen3.7-flash multipass 3 passes each, mean gated; verified-fact preamble prepended (qwen penalizes recent 2026 events without it); judge hit HTTP 429 once per draft, retried OK. OpenRouter breaker was open (3 failures from earlier qwen 429s) \u2014 reset state file before poolside retry. Winner poolside 8.33 (PASS), mimo 8.08 (PASS), deepseek 7.93 (FAIL). QA (glm-5.2, real model via direct runner): renamed [Source N] labels to named inline citations, fixed CVE typo (CVE-2023-49660 -> CVE-2023-4966 Citrix Bleed), shortened title 80->57 chars, expanded meta to 160 chars, added /frameworks/ internal link. All 10 URLs (4 external + 6 internal) verified HTTP 200. HERO IMAGE FAILED: Lumenfall R2 upload Authentication error (code 10000) + HF FLUX HTTP 410 Gone; paid OpenRouter phase gated off by policy -> heroImage omitted per skill rule."
+    },
+    {
+      "date": "2026-08-14",
+      "slug": "2026-08-14-consumer-alert",
+      "topic": "Consumer Alert - Delivery Phishing After Logistics Breaches (CEVA Logistics + ShipMonk/Trezor, Metabase zero-day)",
+      "category": "news",
+      "type": "standard",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.42,
+          "rank": 1
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 8.4,
+          "rank": 2
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 6.85,
+          "rank": 3
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.42,
+      "threshold_met": true,
+      "judge": {
+        "model": "qwen3.7-flash",
+        "passes": 3,
+        "method": "multipass-mean"
+      },
+      "judge_scores": {
+        "mimo-v2.5": {
+          "mean": 8.42,
+          "passes": [
+            8.05,
+            8.7,
+            8.5
+          ]
+        },
+        "deepseek-v4-flash": {
+          "mean": 8.4,
+          "passes": [
+            8.95,
+            8.2,
+            8.05
+          ]
+        },
+        "poolside/laguna-s-2.1": {
+          "mean": 6.85,
+          "passes": [
+            6.8,
+            6.85,
+            6.9
+          ]
+        }
+      },
+      "plan_model": "deepseek-v4-flash",
+      "research_model": "deepseek-v4-flash",
+      "qa_model": "deepseek-v4-flash",
+      "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-2026-08-14-consumer-alert). Research + planner + QA subagents ran on deepseek-v4-flash (delegation config pins all subagents to deepseek in cron; intended roles: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA). Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes Aug 2026 events). Scores: mimo 8.42 PASS (winner), deepseek 8.40 PASS, poolside 6.85 FAIL (zero inline citations -> Sourcing 3-5). threshold_met=true, no re-do needed. QA fill: added 3 internal links (/cves/, two sibling consumer alerts), FAQ answers gained inline sources, steps converted to numbered list, all 7 external URLs curl-verified HTTP 200. Hero image: gen-image-verified.sh (Lumenfall phase 1)."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
-      "wins": 9,
+      "wins": 10,
       "avgScore": 8.48,
       "bestScore": 9.7,
-      "appearances": 16
+      "appearances": 17
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 4,
-      "avgScore": 7.95,
+      "avgScore": 7.97,
       "bestScore": 9.3,
-      "appearances": 17
+      "appearances": 19
     },
     {
       "model": "poolside/laguna-s-2.1",
       "wins": 3,
-      "avgScore": 8.08,
+      "avgScore": 7.93,
       "bestScore": 8.9,
-      "appearances": 7
+      "appearances": 8
     },
     {
       "model": "qwen3.7-flash",

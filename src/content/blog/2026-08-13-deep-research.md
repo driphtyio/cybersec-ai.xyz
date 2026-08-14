@@ -1,9 +1,10 @@
 ---
 title: "Ransomware in 2026: Record Volume, AI Tooling, Data Theft"
-description: "Check Point: July 2026 ransomware hit 964 leak-site victims (+49% June, +87% YoY), topping H1's 672; Q2 saw 2,139 (+33% YoY). North America took 45% (US…"
+description: "Ransomware surged in mid-2026: July hit 964 leak-site victims, up 49% from June and 87% year over year, far above H1 2026's 672 monthly average; Q2's…"
 pubDate: 2026-08-13
 tags: ["ransomware", "threat landscape", "extortion", "data theft", "AI security"]
 lastVerified: 2026-08-13
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/20260813-research-1786677566.webp"
 ---
 
 Ransomware volume surged in July 2026, with 964 victims reported on leak sites — up 49% from June and 87% year over year, shattering the H1 2026 average of roughly 672 incidents per month [Check Point](https://blog.checkpoint.com/security/july-2026-cyber-threats-surge-ransomware-attacks-double-year-over-year-as-genai-data-exposure-widens/).

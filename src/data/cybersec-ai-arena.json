@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-14",
+  "last_updated": "2026-08-15",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1031,6 +1031,65 @@
       "research_model": "deepseek-v4-flash",
       "qa_model": "deepseek-v4-flash",
       "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-2026-08-14-consumer-alert). Research + planner + QA subagents ran on deepseek-v4-flash (delegation config pins all subagents to deepseek in cron; intended roles: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA). Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes Aug 2026 events). Scores: mimo 8.42 PASS (winner), deepseek 8.40 PASS, poolside 6.85 FAIL (zero inline citations -> Sourcing 3-5). threshold_met=true, no re-do needed. QA fill: added 3 internal links (/cves/, two sibling consumer alerts), FAQ answers gained inline sources, steps converted to numbered list, all 7 external URLs curl-verified HTTP 200. Hero image: gen-image-verified.sh (Lumenfall phase 1)."
+    },
+    {
+      "id": "arena-cve-2026-65640",
+      "date": "2026-08-15",
+      "slug": "2026-08-15-cve-analysis",
+      "topic": "CVE-2026-65640 WordPress Imagick RCE Analysis: ImageTragick's Return",
+      "category": "analysis",
+      "type": "cve-deep-dive",
+      "results": [
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 8.42,
+          "rank": 1
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 7.85,
+          "rank": 2
+        },
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 0.0,
+          "rank": 3,
+          "status": "dnf",
+          "error": "Timeout (60s) via arena-direct-runner.py"
+        }
+      ],
+      "winner": "deepseek-v4-flash",
+      "winner_score": 8.42,
+      "threshold_met": true,
+      "judge_scores": {
+        "deepseek-v4-flash": {
+          "mean": 8.42,
+          "passes": [
+            8.2,
+            7.9,
+            9.15
+          ]
+        },
+        "poolside/laguna-s-2.1": {
+          "mean": 7.85,
+          "passes": [
+            7.95,
+            7.9,
+            7.7
+          ]
+        },
+        "mimo-v2.5": {
+          "status": "dnf",
+          "error": "Timeout (60s)"
+        }
+      },
+      "plan_model": "deepseek-v4-flash",
+      "research_model": "deepseek-v4-flash",
+      "qa_model": "deepseek-v4-flash",
+      "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-cve-2026-65640). Topic: WordPress Imagick/Ghostscript authenticated RCE (CVE-2026-65640, CVSS 8.8, disclosed 2026-08-12, fixed 7.0.4 + backports to 4.7.35). Research + planner + QA subagents ran on deepseek-v4-flash (delegation config pins subagents to deepseek in cron; intended roles: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA). Builder B (mimo-v2.5) DNF: 60s API timeout. Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes Aug 2026 events). deepseek 8.42 PASS (winner, threshold_met=true). poolside first run 8.65 on 2 passes (3rd dropped by 429 rate limit), full 3-pass rerun 7.85 FAIL \u2014 judge noise documented; recorded score = full 3-pass mean 7.85. No re-do needed (winner >= 8.0). QA fill (deepseek fallback): added frontmatter (quoted title/pubDate/lastVerified, 157-char prose-only meta), stripped HERO_IMAGE_PROMPT, verified all 7 external URLs curl HTTP 200, verified /cves/ + 3 sibling post links, anti-slop clean, no implied hands-on claims. Hero image: gen-image-verified.sh Lumenfall phase 1, HTTP 200."
     }
   ],
   "leaderboard": [
@@ -1043,17 +1102,17 @@
     },
     {
       "model": "deepseek-v4-flash",
-      "wins": 4,
-      "avgScore": 7.97,
+      "wins": 5,
+      "avgScore": 8.0,
       "bestScore": 9.3,
       "appearances": 19
     },
     {
       "model": "poolside/laguna-s-2.1",
       "wins": 3,
-      "avgScore": 7.93,
+      "avgScore": 7.92,
       "bestScore": 8.9,
-      "appearances": 8
+      "appearances": 9
     },
     {
       "model": "qwen3.7-flash",

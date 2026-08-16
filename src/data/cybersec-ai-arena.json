@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-15",
+  "last_updated": "2026-08-16",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1090,29 +1090,120 @@
       "research_model": "deepseek-v4-flash",
       "qa_model": "deepseek-v4-flash",
       "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-cve-2026-65640). Topic: WordPress Imagick/Ghostscript authenticated RCE (CVE-2026-65640, CVSS 8.8, disclosed 2026-08-12, fixed 7.0.4 + backports to 4.7.35). Research + planner + QA subagents ran on deepseek-v4-flash (delegation config pins subagents to deepseek in cron; intended roles: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA). Builder B (mimo-v2.5) DNF: 60s API timeout. Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes Aug 2026 events). deepseek 8.42 PASS (winner, threshold_met=true). poolside first run 8.65 on 2 passes (3rd dropped by 429 rate limit), full 3-pass rerun 7.85 FAIL \u2014 judge noise documented; recorded score = full 3-pass mean 7.85. No re-do needed (winner >= 8.0). QA fill (deepseek fallback): added frontmatter (quoted title/pubDate/lastVerified, 157-char prose-only meta), stripped HERO_IMAGE_PROMPT, verified all 7 external URLs curl HTTP 200, verified /cves/ + 3 sibling post links, anti-slop clean, no implied hands-on claims. Hero image: gen-image-verified.sh Lumenfall phase 1, HTTP 200."
+    },
+    {
+      "id": "arena-2026-08-16-bots-exploits",
+      "date": "2026-08-16",
+      "slug": "2026-08-16-bots-exploits",
+      "topic": "Residential Proxy Botnet Analysis: The 2026 Takedown Wave",
+      "category": "analysis",
+      "type": "bots-exploits",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.22,
+          "rank": 1,
+          "word_count": 1121,
+          "pass_scores": [
+            9.25,
+            7.65,
+            7.75
+          ],
+          "winner": true,
+          "feedback": "PASS (mean >= 8.0). Strong accuracy + sourcing with inline citations; quality dipped on pass 2-3 (H2 self-containment)."
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 7.98,
+          "rank": 2,
+          "pass_scores": [
+            7.75,
+            7.95,
+            8.25
+          ],
+          "winner": false,
+          "feedback": "FAIL (mean < 8.0) by 0.02. Judge noise documented: quality criterion 4.0 across passes despite solid accuracy/sourcing."
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 7.05,
+          "rank": 3,
+          "pass_scores": [
+            6.7,
+            6.8,
+            7.65
+          ],
+          "winner": false,
+          "feedback": "FAIL. Sourcing 3-6: E-E-A-T block and body lack inline citations (named sources without links)."
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.22,
+      "threshold_met": true,
+      "judge": {
+        "model": "qwen3.7-flash",
+        "passes": 3,
+        "method": "multipass-mean"
+      },
+      "judge_scores": {
+        "mimo-v2.5": {
+          "mean": 8.22,
+          "passes": [
+            9.25,
+            7.65,
+            7.75
+          ]
+        },
+        "deepseek-v4-flash": {
+          "mean": 7.98,
+          "passes": [
+            7.75,
+            7.95,
+            8.25
+          ]
+        },
+        "poolside/laguna-s-2.1": {
+          "mean": 7.05,
+          "passes": [
+            6.7,
+            6.8,
+            7.65
+          ]
+        }
+      },
+      "plan_model": "deepseek-v4-flash",
+      "research_model": "deepseek-v4-flash",
+      "qa_model": "deepseek-v4-flash",
+      "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-2026-08-16-bots-exploits). Topic: residential proxy botnet takedowns (IPIDEA Jan 28, Asocks May 28, NetNut Jul 2 2026 + 5socks/Anyproxy precedent). Research + planner + QA ran on deepseek-v4-flash (delegation config pins subagents to deepseek in cron; intended roles: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA). Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes 2026 events). Winner mimo-v2.5 8.22 (PASS), deepseek 7.98 (FAIL by 0.02, judge noise), poolside 7.05 (FAIL, missing inline citations). threshold_met=true, no re-do needed. QA fill: added inline citations to all 3 FAQ answers + defensive list items, added 3rd internal link (/frameworks/, 2026-08-02 bots-exploits, 2026-07-12 malicious-web-bots), stripped HERO_IMAGE_PROMPT, meta 155 chars prose-only, all 11 URLs (7 external + 4 internal) curl-verified HTTP 200, no implied hands-on claims."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
-      "wins": 10,
-      "avgScore": 8.48,
+      "wins": 11,
+      "avgScore": 8.46,
       "bestScore": 9.7,
-      "appearances": 17
+      "appearances": 18
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 5,
       "avgScore": 8.0,
       "bestScore": 9.3,
-      "appearances": 19
+      "appearances": 20
     },
     {
       "model": "poolside/laguna-s-2.1",
       "wins": 3,
-      "avgScore": 7.92,
+      "avgScore": 7.83,
       "bestScore": 8.9,
-      "appearances": 9
+      "appearances": 10
     },
     {
       "model": "qwen3.7-flash",

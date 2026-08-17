@@ -1,6 +1,6 @@
 {
-  "count": 462,
-  "updated": "2026-08-14T07:13:17.957030",
+  "count": 482,
+  "updated": "2026-08-17T11:01:34.556233",
   "cves": [
     {
       "id": "CVE-2026-42960",
@@ -411,16 +411,17 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-72851",
-      "description": "Budibase before 3.40.0 contains an unauthenticated SQL injection vulnerability in webhook-triggered automations with EXECUTE_QUERY steps. Attackers can POST attacker-controlled JSON to the webhook trigger endpoint to inject SQL payloads that execute with builder-configured database credentials, enabling data exfiltration, modification, and persistence in connected datasources like Snowflake.",
+      "id": "CVE-2026-73678",
+      "description": "MindsDB Minds Platform version 26.1.0 and earlier contains an unauthenticated remote code execution vulnerability that allows unauthenticated attackers to execute arbitrary OS commands by submitting crafted prompts to the unprotected POST /api/v1/responses/ endpoint, which reaches the Anton agent's scratchpad tool that calls exec() on attacker-influenced Python source without sandboxing. Attackers can first configure their own LLM API key through the unauthenticated PUT /api/v1/settings/ endpoint, then POST a prompt directing the agent to invoke the scratchpad tool with arbitrary Python code, achieving full OS command execution as the user running the desktop application and enabling access to SSH keys, stored credentials, and environment secrets.",
       "severity": "CRITICAL",
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-13T22:17:24.450",
-      "lastModified": "2026-08-13T22:17:24.450",
+      "published": "2026-08-14T19:18:01.457",
+      "lastModified": "2026-08-14T19:18:01.457",
       "references": [
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-x7h8-ww3q-xv7c",
-        "https://www.vulncheck.com/advisories/budibase-before-sql-injection-via-unauthenticated-webhook"
+        "https://github.com/mindsdb/minds-platform",
+        "https://github.com/mindsdb/minds-platform/security/advisories/GHSA-jcxw-h8ph-pxpv",
+        "https://www.vulncheck.com/advisories/mindsdb-minds-platform-unauthenticated-rce-via-scratchpad-exec"
       ],
       "source": "nvd"
     },
@@ -694,7 +695,7 @@
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-08-12T20:17:53.650",
-      "lastModified": "2026-08-12T20:17:53.650",
+      "lastModified": "2026-08-14T19:07:46.080",
       "references": [
         "https://access.redhat.com/security/cve/CVE-2026-73268",
         "https://bugzilla.redhat.com/show_bug.cgi?id=2514219"
@@ -716,16 +717,49 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-72842",
-      "description": "luci-app-lxc contains an ACL inconsistency vulnerability that allows low-privileged authenticated LuCI users to access backend container management routes without proper authorization checks. Attackers can exploit path traversal via `/.%2E` in the `lxc_name` parameter to escape container directories and control host-side scripts executed through `lxc.hook.start-host`, achieving root code execution on the OpenWrt host.",
+      "id": "CVE-2026-17186",
+      "description": "IBM Db2 Mirror for i 7.4, 7.5, and 7.6 could allow a remote attacker to execute arbitrary CL commands due to improper neutralization of special elements in a command.",
+      "severity": "CRITICAL",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
+      "published": "2026-08-14T20:16:51.127",
+      "lastModified": "2026-08-14T20:16:51.127",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283359"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-19959",
+      "description": "A weakness has been identified in Edimax EW-7478APC 1.04. This affects the function formWanTcpipSetup of the file /goform/formWanTcpipSetup. This manipulation of the argument pppUserName causes stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
       "severity": "CRITICAL",
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-13T22:17:23.977",
-      "lastModified": "2026-08-13T22:17:23.977",
+      "published": "2026-08-16T23:16:24.710",
+      "lastModified": "2026-08-16T23:16:24.710",
       "references": [
-        "https://github.com/openwrt/luci/security/advisories/GHSA-jf59-v86x-fwf2",
-        "https://www.vulncheck.com/advisories/openwrt-luci-app-lxc-acl-inconsistency-authentication-bypass"
+        "https://lavender-bicycle-a5a.notion.site/EDIMAX-EW-7478APC-formWanTcpipSetup-34b53a41781f8047b36bd11dbcaa84dc?source=copy_link",
+        "https://vuldb.com/cve/CVE-2026-19959",
+        "https://vuldb.com/submit/872873",
+        "https://vuldb.com/vuln/391136",
+        "https://vuldb.com/vuln/391136/cti"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-19961",
+      "description": "A vulnerability was detected in Edimax EW-7478APC 1.04. Affected is the function formWlSiteSurvey of the file /goform/formWlSiteSurvey. Performing a manipulation of the argument selSSID results in buffer overflow. The attack is possible to be carried out remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-08-16T23:16:25.050",
+      "lastModified": "2026-08-16T23:16:25.050",
+      "references": [
+        "https://lavender-bicycle-a5a.notion.site/EDIMAX-EW-7478APC-formWlSiteSurvey-34b53a41781f804fb328d87416095401?source=copy_link",
+        "https://vuldb.com/cve/CVE-2026-19961",
+        "https://vuldb.com/submit/872875",
+        "https://vuldb.com/vuln/391138",
+        "https://vuldb.com/vuln/391138/cti"
       ],
       "source": "nvd"
     },
@@ -2554,22 +2588,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-73532",
-      "description": "Fluent Forms Pro 6.2.7 contains an embedded malicious code vulnerability introduced via a tampered plugin build served through a decommissioned update server. The tampered build introduced a rogue PHP file (libs/class-license-sync.php), loaded via a require_once directive added to fluentformpro.php, that established a backdoor REST API endpoint, dropped persistent PHP files in mu-plugins and uploads directories, installed a passwordless administrator account, and registered scheduled tasks that survived plugin removal.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-13T16:19:05.480",
-      "lastModified": "2026-08-13T16:19:05.480",
-      "references": [
-        "https://patchstack.com/database/wordpress/plugin/fluentformpro/vulnerability/wordpress-fluent-forms-pro-add-on-pack-plugin-6-2-7-6-2-7-remote-code-execution-vulnerability",
-        "https://wordpress.org/plugins/fluentform/",
-        "https://wpmanageninja.com/security-incident-on-31-july-2026/",
-        "https://www.vulncheck.com/advisories/fluent-forms-pro-embedded-malicious-code-via-tampered-plugin-build"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-73533",
       "description": "Ninja Tables Pro 5.2.11 contains an embedded malicious code vulnerability introduced via a tampered plugin build served through a decommissioned update server. The tampered build introduced a rogue PHP file (app/Library/updater/NinjaTableDataSync.php) that established a backdoor REST API endpoint, dropped persistent PHP files in mu-plugins and uploads directories, installed a passwordless administrator account, and registered scheduled tasks that survived plugin removal.",
       "severity": "CRITICAL",
@@ -2585,62 +2603,240 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-19747",
-      "description": "A weakness has been identified in Tenda CH7, CH7G, CH10, CP3, CP3 Pro, CP7, TC3B14C, TC3B15C, TC3T14C and TC3T15C up to 20260625. This impacts the function CAte::HandleCmd of the file Kylin of the component ATE Module. This manipulation causes command injection. The attack is possible to be carried out remotely.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-13T20:17:21.570",
-      "lastModified": "2026-08-13T20:17:21.570",
-      "references": [
-        "https://github.com/howitouchyou/Tenda-Smart-Camera-Vulnerability/blob/main/Tenda%20Command%20Injection/Tenda%20Command%20Injection.md",
-        "https://vuldb.com/cve/CVE-2026-19747",
-        "https://vuldb.com/submit/868463",
-        "https://vuldb.com/vuln/389498",
-        "https://vuldb.com/vuln/389498/cti"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-17482",
       "description": "IBM Documentation Offline 1.0.0 through 1.4.1 could allow a remote attacker to execute arbitrary code due to improper control of file paths.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-08-13T21:17:43.543",
-      "lastModified": "2026-08-13T21:17:43.543",
+      "lastModified": "2026-08-14T19:03:43.847",
       "references": [
         "https://www.ibm.com/support/pages/node/7283484"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-72776",
-      "description": "AgenticSeek (commit fc242c7) contains an unauthenticated remote code execution vulnerability that allows any network-adjacent attacker to execute arbitrary commands by submitting crafted queries to the unprotected POST /query API endpoint bound to 0.0.0.0:7777 with wildcard CORS. Attackers can send unauthenticated HTTP requests that cause the autonomous agent to generate and execute shell commands through BashInterpreter using subprocess.Popen with shell=True and safety=False, bypassing the incomplete command blocklist to achieve full host-level code execution.",
+      "id": "CVE-2026-72826",
+      "description": "The getgrav/grav-plugin-api plugin before 1.0.13 fails to validate that the scopes of a newly created API key are a subset of the caller's scopes in createApiKey. The self-target path of requireApiKeyPermission() requires only the baseline api.access scope, and the new key's scopes are read directly from the request body with no subset check. An attacker holding a minimal-scope API key on a super account can submit an empty scopes array to mint an unscoped, full-access super key, bypassing scope restrictions (and enabling further chains such as configuration write to RCE).",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-13T22:17:23.340",
-      "lastModified": "2026-08-13T22:17:23.340",
+      "published": "2026-08-14T12:16:45.780",
+      "lastModified": "2026-08-14T12:16:45.780",
       "references": [
-        "https://github.com/Fosowl/agenticSeek",
-        "https://github.com/Fosowl/agenticSeek/issues/520",
-        "https://github.com/Fosowl/agenticSeek/pull/534/changes/f1eb2cfc721f8a21dd16a8b048a9ca89f3259f6f",
-        "https://www.vulncheck.com/advisories/agenticseek-unauthenticated-rce-via-query-api-endpoint"
+        "https://github.com/getgrav/grav/security/advisories/GHSA-95v9-4fcj-96gh",
+        "https://www.vulncheck.com/advisories/grav-before-scope-bypass-via-createapikey"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-72839",
-      "description": "filebrowser through 2.63.16 fails to properly restrict scope and permissions when self-signup is enabled with default CreateUserDir setting. Unauthenticated attackers can register accounts that inherit the server root scope with full create, modify, delete, rename, share, and download permissions, allowing unrestricted access to all files.",
+      "id": "CVE-2026-17182",
+      "description": "IBM Db2 Mirror for i 7.4, 7.5, and 7.6 could allow a remote attacker to bypass authentication and obtain or alter sensitive information due to improper validation of request URI path segments.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-13T22:17:23.490",
-      "lastModified": "2026-08-13T22:17:23.490",
+      "published": "2026-08-14T20:16:50.893",
+      "lastModified": "2026-08-14T20:16:50.893",
       "references": [
-        "https://github.com/filebrowser/filebrowser/security/advisories/GHSA-6759-996p-gpj6",
-        "https://www.vulncheck.com/advisories/filebrowser-through-privilege-escalation-via-signup"
+        "https://www.ibm.com/support/pages/node/7283359"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17184",
+      "description": "IBM Db2 Mirror for i 7.4, 7.5, and 7.6 could allow a remote attacker to execute arbitrary code due to external control of file name or path.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-14T20:16:51.010",
+      "lastModified": "2026-08-14T20:16:51.010",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283359"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-15303",
+      "description": "The 6Storage Rentals plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 2.27.0. This is due to the six_storage_create_wp_user() AJAX handler being registered on wp_ajax_nopriv_six_storage_create_wp_user without any nonce, capability, credential, or ownership verification, while calling wp_set_current_user() and wp_set_auth_cookie() for any WordPress user resolved by the attacker-supplied email address. This makes it possible for unauthenticated attackers to log in as any existing WordPress user, including administrators, by submitting that user's email address.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-15T03:16:47.670",
+      "lastModified": "2026-08-15T03:16:47.670",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.27.0/inc/Base/Six_Storage_DashboardController.php#L14",
+        "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.27.0/inc/Base/Six_Storage_DashboardController.php#L3834",
+        "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.27.0/inc/Base/Six_Storage_DashboardController.php#L3905",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/94e987be-bdfc-4691-b250-2b7d7249df0a?source=cve"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-15341",
+      "description": "The User Session Synchronizer plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in all versions up to, and including, 1.4.0. The `synchronize_session()` function, hooked on `init` and therefore executed on every request, performs no nonce, capability, or shared-secret validation against the attacker-supplied `ussync-key`, `ussync-token`, and `ussync-ref` parameters; when `ussync-key` references an unregistered slot, `get_option()` returns `false` for both the secret key and the domain list, causing the AES-256-CBC encryption key to degrade to the fully predictable `md5('')` and the referer allowlist to collapse to an empty-string match, while the AES IV is unconditionally hard-coded as `md5('another-secret')`. This makes it possible for unauthenticated attackers to supply a crafted request encrypting any known or guessable user email address in the `ussync-ref` parameter, causing the handler to call `wp_set_auth_cookie()` for the matched user and granting full authentication as that user \u2014 including administrators \u2014 with no prior knowledge of site secrets.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-15T03:16:47.943",
+      "lastModified": "2026-08-15T03:16:47.943",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L117",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L286",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L310",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L422",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L598"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-15826",
+      "description": "The User Profile Builder plugin for WordPress is vulnerable to Authentication Bypass via Type Confusion in versions up to, and including, 3.16.4. This is due to the wppb_log_in_user() function calling absint() on the return value of wp_insert_user() before performing an is_wp_error() check \u2014 when a registration is submitted with a 61\u201370 character username, WordPress core rejects it with a WP_Error object, but absint() coerces that object to the integer 1 before the error check can short-circuit execution, causing the plugin to bind and return a transient-backed autologin nonce tied to user ID 1. This makes it possible for unauthenticated attackers to log in as the site's Administrator account (user ID 1), resulting in full administrative takeover of the site.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-15T07:16:19.280",
+      "lastModified": "2026-08-15T07:16:19.280",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/features/functions.php#L1481",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L262",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L364",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L742",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L945"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-16142",
+      "description": "The TrueBooker plugin for WordPress is vulnerable to Account Takeover in all versions up to, and including, 1.2.6. This is due to the add_front_user_update() AJAX handler being registered for unauthenticated users and accepting an arbitrary truebooker_wp_user_id value, which is passed directly to wp_update_user() without verifying authentication or ownership. This makes it possible for unauthenticated attackers to change any WordPress user account email address, including an administrator, by submitting the target user ID and an attacker-controlled email address. An attacker can then use the native WordPress password reset flow to receive the reset link at the attacker-controlled email address and take over the account.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-15T09:16:29.560",
+      "lastModified": "2026-08-15T09:16:29.560",
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3640018/truebooker-appointment-booking",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f0d3f7cb-4974-4b0f-9658-1895e5966276?source=cve"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-19598",
+      "description": "The Pods \u2013 Custom Content Types and Fields plugin for WordPress is vulnerable to Privilege Escalation via Authorization Bypass in all versions up to, and including, 3.3.9. The vulnerability exists because the pods_admin AJAX router funnels every access check \u2014 including the method allowlist, nonce verification, login enforcement, and capability gate \u2014 through pods_error(), which under the JSON meta-box-loader compatibility path only writes failures to the PHP error log and returns false instead of terminating the request, rendering all guards ineffective.  This makes it possible for unauthenticated attackers to escalate their privileges to Administrator or overwrite the password of any user account, including the site owner's, enabling complete site takeover, or perform another administrator action.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-15T18:16:23.860",
+      "lastModified": "2026-08-15T18:16:23.860",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/pods/tags/3.3.9/includes/general.php#L400",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3628032a-3121-45a7-8a78-cfcd8ba6af2f?source=cve"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73046",
+      "description": "SiYuan before v3.7.4 improperly restricts excessive authentication attempts in the CheckAuth() middleware. The HTTP Basic Authentication branch, which guards nearly the entire /api/* surface, accepts the workspace access code (Conf.AccessAuthCode) as the Basic Auth password but never consults the CAPTCHA/lockout gate or increments the failure counter used by the cookie/session login path. This allows unauthenticated remote attackers to brute-force the admin access code with unlimited automated requests and obtain full RoleAdministrator access to the kernel. A secondary weakness exists because the access code is compared using a non-constant-time string comparison.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:54.600",
+      "lastModified": "2026-08-15T22:16:54.600",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-w3xh-mmmh-r54v",
+        "https://www.vulncheck.com/advisories/siyuan-before-authentication-bypass-via-http-basic-auth"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-19924",
+      "description": "A security vulnerability has been detected in Tenda AC10 16.03.10.09_multi_TDE01. This vulnerability affects the function R7WebsSecurityHandler of the component httpd. The manipulation leads to improper authentication. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-16T02:16:47.247",
+      "lastModified": "2026-08-16T02:16:47.247",
+      "references": [
+        "https://github.com/teiwiet/tenda-ac10-vulnerabilities/blob/main/authen-bypass-tenda-ac10.md",
+        "https://vuldb.com/cve/CVE-2026-19924",
+        "https://vuldb.com/submit/871957",
+        "https://vuldb.com/vuln/390174",
+        "https://vuldb.com/vuln/390174/cti"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-16098",
+      "description": "The ProSolution WP Client plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 2.0.10 via the proSol_handleFileUpload function. This is due to missing validation of the attacker-controlled Content-Disposition header filename, which overrides the allow-listed multipart filename before the file is saved, and a post-save extension check that fails to delete the already-written file. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible. The nonce required to reach the upload handler is publicly exposed via wp_localize_script on any front-end page rendering the job portal shortcode, allowing unauthenticated visitors to obtain a valid nonce and bypass that gating check entirely.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-16T05:16:47.667",
+      "lastModified": "2026-08-16T05:16:47.667",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/includes/UploadHandler.php#L1090",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/includes/UploadHandler.php#L1327",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/includes/class-prosolwpclient.php#L254",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/public/class-prosolwpclient-public.php#L1033",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3644463%40prosolution-wp-client&new=3644463%40prosolution-wp-client"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-18432",
+      "description": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 3.29.9. The vulnerability exists because `ActionUser::conditions_logic()` gates the `current_user_can('edit_user', $user_id)` authorization check behind an `is_numeric()` test, causing the check to be skipped entirely when `$user_id` is a non-numeric string \u2014 a condition that can be induced by passing a crafted value such as `1one` through the unvalidated `item_id` parameter of the unauthenticated `wp_ajax_nopriv_frontend_admin/forms/change_form` AJAX endpoint. This makes it possible for attackers to escalate privileges to administrator by obtaining a server-signed `_acf_objects` payload carrying the non-numeric user ID, which WordPress subsequently coerces to integer 1 (the default administrator), allowing the attacker to overwrite that account's password or email address. Exploitation by unauthenticated users requires a public-facing frontend user form to be configured; in all other cases a subscriber-level account is sufficient.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-16T05:16:48.307",
+      "lastModified": "2026-08-16T05:16:48.307",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/actions/user.php#L565",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/actions/user.php#L680",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/classes/display.php#L1654",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/classes/display.php#L1953",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/classes/display.php#L37"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2024-13784",
+      "description": "The Contact Form, Survey, Quiz & Popup Form Builder \u2013 ARForms plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 1.8.5 via deserialization of untrusted input from form submissions. This makes it possible for unauthenticated attackers to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-16T09:16:19.900",
+      "lastModified": "2026-08-16T09:16:19.900",
+      "references": [
+        "https://wordpress.org/plugins/arforms-form-builder/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5e0116d6-91c3-4212-9c68-6b706ab09768?source=cve"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73056",
+      "description": "SiYuan kernel versions before 3.7.4 contain an improper restriction of excessive authentication attempts vulnerability in the CheckAuth() middleware. The middleware accepts the API token (Conf.Api.Token) via an Authorization header (Token/Bearer) or a ?token= query parameter, and neither path is protected by the application's CAPTCHA/lockout mechanism (NeedCaptcha/WrongAuthCount). As a result, an unauthenticated remote attacker can perform unlimited automated guesses of the API token, particularly when a short or weak custom token has been configured, and upon success gains full RoleAdministrator access enabling arbitrary file operations and SQL queries.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-16T14:16:55.083",
+      "lastModified": "2026-08-16T14:16:55.083",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-m6w6-p7pc-fpg2",
+        "https://www.vulncheck.com/advisories/siyuan-kernel-before-unthrottled-brute-force-via-api-token"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73061",
+      "description": "Scriban before 7.2.2 contains an access-modifier bypass vulnerability in TypedObjectAccessor that allows template code to write CLR object properties without setter-visibility checks. Attackers can modify properties with private, internal, or init-only setters, and perform mass assignment on public-setter properties, permanently altering live host objects after template rendering.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-16T14:16:55.770",
+      "lastModified": "2026-08-16T14:16:55.770",
+      "references": [
+        "https://github.com/scriban/scriban/security/advisories/GHSA-7jvp-hj45-2f2m",
+        "https://www.vulncheck.com/advisories/scriban-before-arbitrary-property-write-via-typedobjectaccessor"
       ],
       "source": "nvd"
     },
@@ -3122,19 +3318,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-14525",
-      "description": "IBM WebSphere Application Server - Liberty 17.0.0.3 through 26.0.0.8 IBM WebSphere Application Server Liberty is vulnerable to an authentication bypass when the rtcomm-1.0 or rtcommGateway-1.0 feature is enabled.",
-      "severity": "CRITICAL",
-      "cvss": 9.4,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
-      "published": "2026-08-13T20:17:14.250",
-      "lastModified": "2026-08-13T20:36:48.443",
-      "references": [
-        "https://www.ibm.com/support/pages/node/7283488"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-34691",
       "description": "Adobe Experience Manager Forms JEE versions LTS SP1, 6.5.24.0 and earlier are affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by an attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field, potentially gaining elevated access or control over the victim's account or session. Scope is changed.",
       "severity": "CRITICAL",
@@ -3223,6 +3406,19 @@
       "lastModified": "2026-07-24T14:05:44.813",
       "references": [
         "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-50252.txt"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17181",
+      "description": "IBM Db2 Mirror for i 7.4, 7.5, and 7.6 could allow a remote attacker to write files to arbitrary locations due to path traversal.",
+      "severity": "CRITICAL",
+      "cvss": 9.3,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:L",
+      "published": "2026-08-14T20:16:50.777",
+      "lastModified": "2026-08-14T20:16:50.777",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283359"
       ],
       "source": "nvd"
     },
@@ -4108,44 +4304,84 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-53791",
-      "description": "rsync daemon before 3.5.0\u00a0contains an IP address spoofing vulnerability that allows unauthenticated remote attackers to bypass IP-based access controls by sending a crafted PROXY protocol header with a forged source address. Attackers who can connect directly to the rsync daemon can inject a spoofed source IP in the PROXY protocol header to circumvent hosts allow/deny rules, gaining unauthorized access that would otherwise be blocked based on their real source address.",
+      "id": "CVE-2026-14484",
+      "description": "The RapiSafe \u2013 Secure Multi File Upload for Contact Form 7 plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the handleAjaxRemoveUpload function in all versions up to, and including, 1.0.4. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). The nonce required to invoke the removal handler is exposed in public-facing JavaScript as RSMFCF7Vars.nonce on every Contact Form 7 page rendering a RapiSafe upload field, making it obtainable by any unauthenticated visitor.",
       "severity": "CRITICAL",
       "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-13T15:19:43.363",
-      "lastModified": "2026-08-13T15:19:43.363",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "published": "2026-08-15T03:16:47.263",
+      "lastModified": "2026-08-15T03:16:47.263",
       "references": [
-        "https://github.com/RsyncProject/rsync/releases/tag/v3.5.0",
-        "https://github.com/RsyncProject/rsync/security/advisories/GHSA-h2q9-5fr8-w635",
-        "https://www.vulncheck.com/advisories/rsync-daemon-ip-spoofing-via-proxy-protocol-header"
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L201",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L235",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L237",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L244",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L264"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-19297",
-      "description": "IBM Langflow OSS 1.0.0 through 1.9.6 could allow a remote attacker to obtain unauthorized access to user accounts due to improper restriction of excessive authentication attempts.",
+      "id": "CVE-2026-18855",
+      "description": "The Link Library plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the ll_delete_link_fields function in all versions up to, and including, 7.9.4 This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). Exploitation requires the administrator to have enabled the 'Delete local file on link deletion' plugin option (disabled by default) and to subsequently permanently delete the attacker-submitted link, which is a routine moderation action.",
       "severity": "CRITICAL",
       "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-13T21:17:45.870",
-      "lastModified": "2026-08-13T21:17:45.870",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "published": "2026-08-15T19:16:32.160",
+      "lastModified": "2026-08-15T19:16:32.160",
       "references": [
-        "https://www.ibm.com/support/pages/node/7283558"
+        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/link-library-admin.php#L7865",
+        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/link-library-admin.php#L7874",
+        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/link-library.php#L2288",
+        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/usersubmission.php#L476",
+        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/usersubmission.php#L52"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-72850",
-      "description": "Budibase before 3.40.0 fails to properly sanitize S3 object keys, allowing authenticated builders to upload files with traversal sequences that are preserved during export. Attackers can craft filenames containing .. segments that escape the temporary directory during workspace export, writing arbitrary content to any path writable by the Budibase process.",
+      "id": "CVE-2026-14524",
+      "description": "The ProSolution WP Client plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the proSol_fileDeleteProcess function in all versions up to, and including, 2.0.8. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). An attacker must first call the proSol_fileUploadModalProcess handler to poison their own session with a path-traversal key, then call proSol_fileDeleteProcess with that key as the filename parameter; both steps require only the publicly exposed frontend nonce.",
       "severity": "CRITICAL",
       "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-13T22:17:24.307",
-      "lastModified": "2026-08-13T22:17:24.307",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "published": "2026-08-16T05:16:46.493",
+      "lastModified": "2026-08-16T05:16:46.493",
       "references": [
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-pxwc-66g3-5f27",
-        "https://www.vulncheck.com/advisories/budibase-before-arbitrary-file-write-via-path-traversal"
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.3/includes/class-prosolwpclient.php#L260",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.3/public/class-prosolwpclient-public.php#L1135",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.3/public/class-prosolwpclient-public.php#L1256",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3634993%40prosolution-wp-client&new=3634993%40prosolution-wp-client",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4e9698f0-b228-4f4e-838b-c0c0a193d675?source=cve"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-18316",
+      "description": "The Solace Extra plugin for WordPress is vulnerable to unauthorized modification and loss of data due to a missing capability check on the import_zip() function in versions up to, and including, 1.6.0. The handler is registered on both wp_ajax_action-import-zip and wp_ajax_nopriv_action-import-zip and only verifies the 'ajax-nonce' nonce, which is emitted on every admin page via wp_localize_script (unrestricted admin_enqueue_scripts hook) and is therefore accessible to any authenticated user including Subscribers. This makes it possible for authenticated attackers, with Subscriber-level access and above, to wipe navigation menus, sidebar widgets (via update_option('sidebars_widgets', array())), all theme mods (via remove_theme_mods()), and Elementor templates, as well as trigger arbitrary demo-content imports.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "published": "2026-08-16T06:16:51.683",
+      "lastModified": "2026-08-16T06:16:51.683",
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/solace-extra/tags/1.6.0/admin/class-solace-extra-admin.php#L289",
+        "https://plugins.trac.wordpress.org/browser/solace-extra/tags/1.6.0/admin/import.php#L2382",
+        "https://plugins.trac.wordpress.org/browser/solace-extra/tags/1.6.0/includes/class-solace-extra.php#L336",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3627961%40solace-extra&new=3627961%40solace-extra",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4e427c4e-3e27-49e3-ba64-6241b430d5d8?source=cve"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-74790",
+      "description": "Scriban before 7.0.0 caches TypedObjectAccessor by Type only without considering MemberFilter changes, allowing reused TemplateContext instances to expose members that should be hidden. Attackers can access filtered properties and fields by reusing a TemplateContext after tightening its MemberFilter, bypassing sandbox policies across requests or tenants.",
+      "severity": "CRITICAL",
+      "cvss": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "published": "2026-08-16T14:16:57.050",
+      "lastModified": "2026-08-16T14:16:57.050",
+      "references": [
+        "https://github.com/scriban/scriban/security/advisories/GHSA-5wr9-m6jw-xx44",
+        "https://www.vulncheck.com/advisories/scriban-before-memberfilter-bypass-via-templatecontext-cache"
       ],
       "source": "nvd"
     },
@@ -4265,15 +4501,100 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-45495",
-      "description": "Microsoft Edge (Chromium-based) Remote Code Execution Vulnerability",
-      "severity": "HIGH",
-      "cvss": 8.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-      "published": "2026-05-18T18:17:38.600",
-      "lastModified": "2026-06-17T10:52:09.390",
+      "id": "CVE-2026-73041",
+      "description": "SiYuan versions before v3.7.4 fail to validate or escape annotation fields written to disk by the setFileAnnotation endpoint. Attackers can inject malicious markup into annotation fields that execute as script in the PDF renderer with full Node.js access when a user opens an annotated PDF.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:53.883",
+      "lastModified": "2026-08-15T22:16:53.883",
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45495"
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-fqpw-c3pj-w8g9",
+        "https://www.vulncheck.com/advisories/siyuan-before-remote-code-execution-via-pdf-annotations"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73042",
+      "description": "SiYuan before v3.7.4 fails to properly escape database menu metadata in HTML interpolation, allowing stored values to execute script when users open group, view, or field-edit menus. Attackers can inject markup through field descriptions or names that close containing elements and execute arbitrary code via event handlers, reaching Node built-ins due to Electron's insecure configuration.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:54.030",
+      "lastModified": "2026-08-15T22:16:54.030",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-gcm3-qcq3-72rv",
+        "https://www.vulncheck.com/advisories/siyuan-before-remote-code-execution-via-menu-metadata"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73043",
+      "description": "SiYuan versions before v3.7.4 contain a remote code execution vulnerability in the Template calculation operator, which renders user-authored Go templates and stores output verbatim without sanitization. Attackers can inject malicious HTML and JavaScript into template calculations that execute in the desktop client renderer with Node integration enabled, allowing arbitrary code execution when the database is opened.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:54.200",
+      "lastModified": "2026-08-15T22:16:54.200",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-rwh7-gm74-67h6",
+        "https://www.vulncheck.com/advisories/siyuan-before-remote-code-execution-via-template-calculation"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73044",
+      "description": "SiYuan versions before v3.7.4 fail to validate or escape table column width values, allowing stored cross-site scripting injection into style attributes. Attackers can inject malicious payloads through the setAttrViewColWidth API that break out of style attributes and inject event handlers on every table cell, executing arbitrary code in the Electron renderer with Node integration enabled.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:54.330",
+      "lastModified": "2026-08-15T22:16:54.330",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-rj55-w3xr-gj62",
+        "https://www.vulncheck.com/advisories/siyuan-before-stored-cross-site-scripting-via-column-width"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73050",
+      "description": "SiYuan versions before v3.7.4 fail to validate or escape the color field in attribute-view select options, allowing stored cross-site scripting through eight unescaped render sites. Attackers can inject event-handler attributes by including quotation marks in the color value, executing arbitrary JavaScript when viewing databases containing the malicious select field.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:54.870",
+      "lastModified": "2026-08-15T22:16:54.870",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-m7cc-jh9q-wxg8",
+        "https://www.vulncheck.com/advisories/siyuan-before-stored-xss-via-select-option-color"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73052",
+      "description": "SiYuan before v3.7.4 stores attribute-view field names without HTML escaping and interpolates them directly into option elements via innerHTML in the sort menu. Attackers can inject markup by renaming a database field to execute arbitrary JavaScript when users open the sort menu, with Node integration enabled in the desktop client enabling code execution.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:55.017",
+      "lastModified": "2026-08-15T22:16:55.017",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-g3jx-227v-x2x4",
+        "https://www.vulncheck.com/advisories/siyuan-before-stored-xss-via-attribute-view-field-names"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-73053",
+      "description": "SiYuan versions before v3.7.4 contain a cross-site scripting vulnerability in the unicode2Emoji function that fails to sanitize codepoint branch output. Attackers can craft document icons with hex-encoded markup that executes in the renderer with Node integration enabled, achieving arbitrary code execution on the host system.",
+      "severity": "CRITICAL",
+      "cvss": 9.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "published": "2026-08-15T22:16:55.157",
+      "lastModified": "2026-08-15T22:16:55.157",
+      "references": [
+        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-vx5w-qrvp-mmcq",
+        "https://www.vulncheck.com/advisories/siyuan-before-cross-site-scripting-via-unicode2emoji"
       ],
       "source": "nvd"
     },
@@ -4417,6 +4738,19 @@
       "lastModified": "2026-08-05T14:39:44.343",
       "references": [
         "https://www.ibm.com/support/pages/node/7281897"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-65768",
+      "description": "Improper limitation of a pathname to a restricted directory ('path traversal') in Microsoft Teams for Android allows an unauthorized attacker to execute code over a network.",
+      "severity": "HIGH",
+      "cvss": 8.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "published": "2026-08-11T17:18:56.117",
+      "lastModified": "2026-08-14T13:27:22.883",
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65768"
       ],
       "source": "nvd"
     },
@@ -5066,9 +5400,10 @@
       "cvss": 8.1,
       "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-07-15T17:16:47.380",
-      "lastModified": "2026-08-11T14:37:37.570",
+      "lastModified": "2026-08-14T21:17:12.917",
       "references": [
-        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-roomos-AqNMbEq"
+        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-roomos-AqNMbEq",
+        "https://www.cve.org/Media/News/item/blog/2026/06/16/Preserving-Vulnerability-Level-Identification"
       ],
       "source": "nvd"
     },
@@ -5574,9 +5909,10 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-07-15T17:16:47.507",
-      "lastModified": "2026-08-11T14:34:12.060",
+      "lastModified": "2026-08-14T21:17:13.087",
       "references": [
-        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-roomos-AqNMbEq"
+        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-roomos-AqNMbEq",
+        "https://www.cve.org/Media/News/item/blog/2026/06/16/Preserving-Vulnerability-Level-Identification"
       ],
       "source": "nvd"
     },
@@ -5845,38 +6181,6 @@
       "lastModified": "2026-08-07T13:16:53.553",
       "references": [
         "https://www.ibm.com/support/pages/node/7282648"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-8751",
-      "description": "A security flaw has been discovered in h2oai h2o-3 up to 7402. This affects the function importBinaryModel of the file h2o-core/src/main/java/hex/Model.java of the component JAR Handler. Performing a manipulation results in deserialization. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "severity": "HIGH",
-      "cvss": 7.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-05-17T12:16:42.533",
-      "lastModified": "2026-06-17T11:04:24.083",
-      "references": [
-        "https://vuldb.com/submit/810107",
-        "https://vuldb.com/vuln/364378",
-        "https://vuldb.com/vuln/364378/cti",
-        "https://vulnplus-note.wetolink.com/share/b5nsQg6EcsBS"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-8757",
-      "description": "A vulnerability was found in adenhq hive up to 0.11.0. This affects the function _read_events_tail of the file core/framework/server/routes_sessions.py of the component Delete Request Handler. Performing a manipulation results in path traversal. The attack may be initiated remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "severity": "HIGH",
-      "cvss": 7.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-05-17T14:16:21.380",
-      "lastModified": "2026-06-17T11:04:24.873",
-      "references": [
-        "https://gist.github.com/YLChen-007/ff3ff201b05d13d41f949f86e9187bd2",
-        "https://vuldb.com/submit/811276",
-        "https://vuldb.com/vuln/364384",
-        "https://vuldb.com/vuln/364384/cti"
       ],
       "source": "nvd"
     },

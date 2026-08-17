@@ -82,5 +82,3 @@ If you run a maintained kernel with SCTP support, you are likely affected; the b
 ### What does a CISA KEV listing mean for non-federal organizations?
 
 A KEV listing means CISA has confirmed active exploitation in the wild. For federal agencies, remediation is mandatory under BOD 26-04; for private organizations, it is a strong signal to prioritize that CVE above others. Patch by the CISA-specified due date — three days for both — in any sector. See the [CVE database](/cves/).
-
-HERO_IMAGE_PROMPT: Wide 16:9 cinematic cybersecurity newsroom scene, dark command-center desk at night with three monitors showing a plunging Bitcoin wallet-drain chart, a Linux kernel code diff, and a red CISA KEV alert banner; a Chrome browser window and a hardware wallet in the foreground; photorealistic, teal-and-red rim lighting, shallow depth of field, high detail, no text artifacts

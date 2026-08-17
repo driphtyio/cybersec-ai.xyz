@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-16",
+  "last_updated": "2026-08-17",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1181,29 +1181,122 @@
       "research_model": "deepseek-v4-flash",
       "qa_model": "deepseek-v4-flash",
       "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-2026-08-16-bots-exploits). Topic: residential proxy botnet takedowns (IPIDEA Jan 28, Asocks May 28, NetNut Jul 2 2026 + 5socks/Anyproxy precedent). Research + planner + QA ran on deepseek-v4-flash (delegation config pins subagents to deepseek in cron; intended roles: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA). Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes 2026 events). Winner mimo-v2.5 8.22 (PASS), deepseek 7.98 (FAIL by 0.02, judge noise), poolside 7.05 (FAIL, missing inline citations). threshold_met=true, no re-do needed. QA fill: added inline citations to all 3 FAQ answers + defensive list items, added 3rd internal link (/frameworks/, 2026-08-02 bots-exploits, 2026-07-12 malicious-web-bots), stripped HERO_IMAGE_PROMPT, meta 155 chars prose-only, all 11 URLs (7 external + 4 internal) curl-verified HTTP 200, no implied hands-on claims."
+    },
+    {
+      "id": "arena-2026-08-17-news-roundup",
+      "date": "2026-08-17",
+      "slug": "2026-08-17-news-roundup",
+      "topic": "Cybersecurity News Roundup \u2014 Metabase CVE-2026-72898 (CVSS 10 SQLi 0-day, KEV), Microsoft Patch Tuesday Aug 2026 (398 CVEs, CVE-2026-68820 WinSock zero-day), SAP Commerce Cloud CVE-2026-58231, macOS Screen Sharing CVE-2026-65400 (Monero miners), Cisco ASA/FTD CVE-2026-20349",
+      "category": "news",
+      "type": "news-roundup",
+      "results": [
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 8.68,
+          "rank": 1,
+          "word_count": 1275,
+          "pass_scores": [
+            8.65,
+            8.65,
+            8.75
+          ],
+          "winner": true,
+          "feedback": "PASS (mean >= 8.0). Highest mean across builders; accuracy 9.0 and sourcing 10.0 on every pass. QA stripped leading/trailing markdown code fence that wrapped the raw draft and fixed one slop word."
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 8.55,
+          "rank": 2,
+          "word_count": 1230,
+          "pass_scores": [
+            8.5,
+            8.25,
+            8.9
+          ],
+          "winner": false,
+          "feedback": "PASS (mean >= 8.0). Strong accuracy/sourcing; quality criterion noisy across passes (6.0/4.0/7.0)."
+        },
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 7.6,
+          "rank": 3,
+          "word_count": 1154,
+          "pass_scores": [
+            7.0,
+            8.2,
+            7.6
+          ],
+          "winner": false,
+          "feedback": "FAIL (mean < 8.0). First builder attempt hit the runner's 60s API timeout; retried via call_model(timeout=300) -> 1154w draft. Judge quality criterion 2.0 on pass 1."
+        }
+      ],
+      "winner": "poolside/laguna-s-2.1",
+      "winner_score": 8.68,
+      "threshold_met": true,
+      "judge": {
+        "model": "qwen3.7-flash",
+        "passes": 3,
+        "method": "multipass-mean"
+      },
+      "judge_scores": {
+        "poolside/laguna-s-2.1": {
+          "mean": 8.68,
+          "passes": [
+            8.65,
+            8.65,
+            8.75
+          ]
+        },
+        "deepseek-v4-flash": {
+          "mean": 8.55,
+          "passes": [
+            8.5,
+            8.25,
+            8.9
+          ]
+        },
+        "mimo-v2.5": {
+          "mean": 7.6,
+          "passes": [
+            7.0,
+            8.2,
+            7.6
+          ]
+        }
+      },
+      "plan_model": "deepseek-v4-flash",
+      "research_model": "deepseek-v4-flash",
+      "qa_model": "deepseek-v4-flash",
+      "notes": "3-builder A/B/C arena via arena-direct-runner.py (match-id arena-2026-08-17-news-roundup). Topic: weekly news roundup Aug 10-17 2026. Research gathered by cron agent directly (web_search + web_extract, all 7 external URLs curl-verified HTTP 200 on 2026-08-17); planner delegated via delegate_task but delegation config pins subagents to deepseek-v4-flash in cron (intended: gpt-5.6-luna research, mimo-v2.5-pro planner, glm-5.2 QA) \u2014 recorded honestly. Builder B (mimo-v2.5) first attempt 60s timeout, retried with call_model(timeout=300). Judge: openrouter/qwen3.7-flash multipass 3 passes per draft (tb-judge-multipass.py), mean-gated; verified-fact preamble prepended to judge copies (qwen training cutoff otherwise penalizes Aug 2026 events). Winner poolside/laguna-s-2.1 8.68 (PASS), deepseek 8.55 (PASS), mimo 7.60 (FAIL). threshold_met=true, no re-do needed. QA fill (done by cron agent): stripped ```markdown/``` code fence wrapping poolside draft, fixed 1 slop word (landscape), verified all 7 external URLs HTTP 200, no [N] refs, no implied hands-on claims, FAQ + E-E-A-T block + long-tail H2 present, meta 157 chars prose-only. Hero image: gen-image-verified.sh Lumenfall phase 1, HTTP 200."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
       "wins": 11,
-      "avgScore": 8.46,
+      "avgScore": 8.42,
       "bestScore": 9.7,
-      "appearances": 18
+      "appearances": 19
     },
     {
       "model": "deepseek-v4-flash",
       "wins": 5,
-      "avgScore": 8.0,
+      "avgScore": 8.03,
       "bestScore": 9.3,
-      "appearances": 20
+      "appearances": 21
     },
     {
       "model": "poolside/laguna-s-2.1",
-      "wins": 3,
-      "avgScore": 7.83,
+      "wins": 4,
+      "avgScore": 7.91,
       "bestScore": 8.9,
-      "appearances": 10
+      "appearances": 11
     },
     {
       "model": "qwen3.7-flash",

@@ -80,3 +80,12 @@ The most important step is enforcing Pod Security Admission with the restricted 
 ### Which tools should I use to harden a Kubernetes cluster?
 
 Use kube-bench for CIS baseline assessment, Pod Security Admission for pod security, NetworkPolicy for traffic segmentation, and Trivy for image scanning. [kube-bench](https://github.com/aquasecurity/kube-bench) and [Trivy](https://github.com/aquasecurity/trivy) are both open-source from Aqua Security. These tools cover the core hardening steps described in this guide.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

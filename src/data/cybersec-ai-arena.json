@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-19",
+  "last_updated": "2026-08-20",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1392,35 +1392,92 @@
       "passes": 3,
       "retries": 0,
       "notes": "A/B/C arena: 3 builders, all passed 8.0 gate (multipass mean). Winner deepseek-v4-flash 9.28. Judge pass 3 of draft 1 fell back to deepseek-v4-flash-0731 on qwen 429. Research/plan/QA ran on deepseek-v4-flash due to delegation config pinning. QA verified 22/22 URLs HTTP 200, zero fixes. Verified-fact preamble used for judging (2026 facts)."
+    },
+    {
+      "id": "cs-deep-research-20260820",
+      "date": "2026-08-20",
+      "type": "content",
+      "topic": "MCP Security in 2026: The New Attack Surface of Agentic AI",
+      "slug": "2026-08-20-mcp-security",
+      "category": "deep-research",
+      "plan_model": "deepseek-v4-flash",
+      "research_model": "deepseek-v4-flash",
+      "qa_model": "deepseek-v4-flash",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 9.25,
+          "rank": 1,
+          "status": "success"
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 9.07,
+          "rank": 2,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 6.47,
+          "rank": 3,
+          "status": "success"
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 9.25,
+      "threshold_met": true,
+      "judge_mean": 9.25,
+      "judge_model": "qwen/qwen3.7-flash",
+      "judge_scores": {
+        "mimo-v2.5": [
+          9.55,
+          8.95
+        ],
+        "deepseek-v4-flash": [
+          9.55,
+          8.95,
+          8.7
+        ],
+        "poolside/laguna-s-2.1": [
+          6.75,
+          6.2
+        ]
+      },
+      "passes": 3,
+      "retries": 0,
+      "notes": "Deep-research arena: MCP security (75K+ servers, tool poisoning, GhostSplice, GhostApproval). Winner mimo-v2.5 9.25; deepseek-v4-flash 9.07 PASS; poolside/laguna-s-2.1 6.47 FAIL (28 '[Source: X]' label citations w/o clickable URLs -> sourcing 2.0). qwen3.7-flash 429 rate-limited during judging -> deepseek-v4-flash-0731 fallback per script; 1 pass dropped for mimo and poolside (mean over 2 valid passes). Research/plan/QA ran on deepseek-v4-flash due to delegation config pinning (Luna/MiMo-Pro/GLM-5.2 not routable in cron delegation). Verified-fact preamble used for judging (2026 facts). QA fixed code fences, lastVerified quoting, slop, description; 29 external links curl-verified 200."
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
       "provider": "xiaomi",
-      "wins": 11,
+      "wins": 12,
       "losses": 10,
-      "avgScore": 8.32,
+      "avgScore": 8.36,
       "bestScore": 9.7,
-      "appearances": 21
+      "appearances": 22
     },
     {
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
       "wins": 8,
-      "losses": 16,
-      "avgScore": 8.04,
+      "losses": 17,
+      "avgScore": 8.08,
       "bestScore": 9.3,
-      "appearances": 24
+      "appearances": 25
     },
     {
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "wins": 4,
-      "losses": 9,
-      "avgScore": 7.7,
+      "losses": 10,
+      "avgScore": 7.61,
       "bestScore": 8.9,
-      "appearances": 13
+      "appearances": 14
     },
     {
       "model": "qwen3.7-flash",

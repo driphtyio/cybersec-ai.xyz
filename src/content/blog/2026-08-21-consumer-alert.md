@@ -1,6 +1,6 @@
 ---
 title: "How to Protect Yourself After a Data Breach: H1 2026"
-description: "How to protect yourself after a data breach — freeze your credit, set fraud alerts, and lock down accounts with a verified, step-by-step plan right now."
+description: "H1 2026 saw 471.2 million data-breach victim notices—already eclipsing 2025’s 297.5 million—across 1,803 compromises, driven largely by a single…"
 pubDate: "2026-08-21"
 tags: ["consumer-alert", "data-breach", "identity-theft", "credit-freeze"]
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/2026-08-21-consumer-alert-1787340547.webp"

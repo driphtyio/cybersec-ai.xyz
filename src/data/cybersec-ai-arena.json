@@ -1449,6 +1449,68 @@
       "passes": 3,
       "retries": 0,
       "notes": "Deep-research arena: MCP security (75K+ servers, tool poisoning, GhostSplice, GhostApproval). Winner mimo-v2.5 9.25; deepseek-v4-flash 9.07 PASS; poolside/laguna-s-2.1 6.47 FAIL (28 '[Source: X]' label citations w/o clickable URLs -> sourcing 2.0). qwen3.7-flash 429 rate-limited during judging -> deepseek-v4-flash-0731 fallback per script; 1 pass dropped for mimo and poolside (mean over 2 valid passes). Research/plan/QA ran on deepseek-v4-flash due to delegation config pinning (Luna/MiMo-Pro/GLM-5.2 not routable in cron delegation). Verified-fact preamble used for judging (2026 facts). QA fixed code fences, lastVerified quoting, slop, description; 29 external links curl-verified 200."
+    },
+    {
+      "id": "arena-2026-08-21-consumer-alert",
+      "date": "2026-08-21",
+      "topic": "ITRC H1 2026: record 471.2M breach victim notices + AI-enabled attacks + insider surge \u2014 what consumers should do (credit freeze)",
+      "slug": "2026-08-21-consumer-alert",
+      "category": "consumer-alert",
+      "type": "content",
+      "plan_model": "deepseek-v4-flash",
+      "research_model": "deepseek-v4-flash",
+      "qa_model": "deepseek-v4-flash",
+      "results": [
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "score": 8.6,
+          "rank": 1,
+          "status": "success"
+        },
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "score": 8.05,
+          "rank": 2,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "score": 6.88,
+          "rank": 3,
+          "status": "success"
+        }
+      ],
+      "winner": "deepseek-v4-flash",
+      "winner_score": 8.6,
+      "threshold_met": true,
+      "judge_mean": 8.6,
+      "judge_model": "qwen/qwen3.7-flash",
+      "judge_scores": {
+        "deepseek-v4-flash": [
+          8.65,
+          8.65,
+          8.5
+        ],
+        "mimo-v2.5": [
+          8.3,
+          7.55,
+          8.3
+        ],
+        "poolside/laguna-s-2.1": [
+          6.8,
+          5.4,
+          8.45
+        ]
+      },
+      "passes": 3,
+      "retries": 0,
+      "notes": "Consumer-alert arena: ITRC H1 2026 record (471.2M victim notices vs 297.5M FY2025; Canvas 275M; IBM 1-in-4 AI-enabled +56%; insiders 21 vs 3; NK remote IT workers). Winner deepseek-v4-flash 8.60 PASS; mimo-v2.5 8.05 PASS; poolside/laguna-s-2.1 6.88 FAIL (sourcing 2-6 spread, mean below gate). qwen3.7-flash multipass (3 passes, mean-gated) with verified-fact preamble. Plan/research/QA ran on deepseek-v4-flash due to delegation config pinning (Luna/MiMo-Pro/GLM-5.2 not routable in cron delegation). QA: all 6 external source URLs curl-verified 200; internal links verified live (dead MCP deep-dive link replaced with voice-clone alert); meta 152 chars; body 1239 words; no [N] refs, no slop, no hands-on claims."
     }
   ],
   "leaderboard": [
@@ -1457,25 +1519,25 @@
       "provider": "xiaomi",
       "wins": 12,
       "losses": 10,
-      "avgScore": 8.36,
+      "avgScore": 8.4,
       "bestScore": 9.7,
       "appearances": 22
     },
     {
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
-      "wins": 8,
+      "wins": 7,
       "losses": 17,
-      "avgScore": 8.08,
+      "avgScore": 8.1,
       "bestScore": 9.3,
-      "appearances": 25
+      "appearances": 24
     },
     {
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "wins": 4,
       "losses": 10,
-      "avgScore": 7.61,
+      "avgScore": 7.8,
       "bestScore": 8.9,
       "appearances": 14
     },
@@ -1484,7 +1546,7 @@
       "provider": "openrouter",
       "wins": 1,
       "losses": 3,
-      "avgScore": 7.57,
+      "avgScore": 7.6,
       "bestScore": 8.3,
       "appearances": 4
     }

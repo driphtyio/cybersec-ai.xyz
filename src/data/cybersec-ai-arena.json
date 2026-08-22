@@ -1511,43 +1511,103 @@
       "passes": 3,
       "retries": 0,
       "notes": "Consumer-alert arena: ITRC H1 2026 record (471.2M victim notices vs 297.5M FY2025; Canvas 275M; IBM 1-in-4 AI-enabled +56%; insiders 21 vs 3; NK remote IT workers). Winner deepseek-v4-flash 8.60 PASS; mimo-v2.5 8.05 PASS; poolside/laguna-s-2.1 6.88 FAIL (sourcing 2-6 spread, mean below gate). qwen3.7-flash multipass (3 passes, mean-gated) with verified-fact preamble. Plan/research/QA ran on deepseek-v4-flash due to delegation config pinning (Luna/MiMo-Pro/GLM-5.2 not routable in cron delegation). QA: all 6 external source URLs curl-verified 200; internal links verified live (dead MCP deep-dive link replaced with voice-clone alert); meta 152 chars; body 1239 words; no [N] refs, no slop, no hands-on claims."
+    },
+    {
+      "date": "2026-08-22",
+      "slug": "2026-08-22-cve-analysis",
+      "topic": "CVE-2026-33032 Analysis: nginx-ui MCP Auth Bypass",
+      "category": "cve",
+      "type": "standard",
+      "plan_model": "mimo-v2.5-pro",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "family": "mimo",
+          "score": 8.22,
+          "rank": 1,
+          "status": "success"
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "family": "deepseek",
+          "score": 7.82,
+          "rank": 2,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "family": "poolside",
+          "score": 6.65,
+          "rank": 3,
+          "status": "success"
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.22,
+      "threshold_met": true,
+      "judge_mean": 8.22,
+      "judge_scores": {
+        "qwen3.7-flash": {
+          "mimo-v2.5": 8.22,
+          "deepseek-v4-flash": 7.82,
+          "poolside-laguna-s-2.1": 6.65,
+          "passes": 3,
+          "note": "multipass mean of 3 passes; mimo PASS (>=8.0)"
+        }
+      },
+      "notes": "CVE-2026-33032 nginx-ui MCP auth bypass deep-dive. Research ran on deepseek-v4-flash (delegation pin; gpt-5.6-luna unavailable in cron). Plan by mimo-v2.5-pro (direct xiaomi call via arena-direct-runner importlib). Judge: qwen3.7-flash multipass 3x (mimo 7.65/9.0/8.0 -> 8.22 PASS; deepseek 7.5/7.95/8.0 -> 7.82; poolside 6.2/6.55/7.2 -> 6.65). QA: GLM-5.2 (zai direct) filled internal links + expanded to 968 words; NVD 403 is curl UA-blocking (200 with browser UA). Verified-fact preamble used for judge (2026-08-22 events).",
+      "retries": 0
     }
   ],
   "leaderboard": [
     {
       "model": "mimo-v2.5",
       "provider": "xiaomi",
-      "wins": 12,
+      "family": "mimo",
+      "wins": 13,
       "losses": 10,
       "avgScore": 8.4,
       "bestScore": 9.7,
-      "appearances": 22
+      "rank": 1,
+      "appearances": 23
     },
     {
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
+      "family": "deepseek",
       "wins": 7,
-      "losses": 17,
+      "losses": 18,
       "avgScore": 8.1,
       "bestScore": 9.3,
-      "appearances": 24
+      "rank": 2,
+      "appearances": 25
     },
     {
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
+      "family": "poolside",
       "wins": 4,
-      "losses": 10,
-      "avgScore": 7.8,
+      "losses": 11,
+      "avgScore": 7.7,
       "bestScore": 8.9,
-      "appearances": 14
+      "rank": 3,
+      "appearances": 15
     },
     {
       "model": "qwen3.7-flash",
       "provider": "openrouter",
+      "family": "",
       "wins": 1,
       "losses": 3,
       "avgScore": 7.6,
       "bestScore": 8.3,
+      "rank": 4,
       "appearances": 4
     }
   ],

@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-08-25",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1671,6 +1671,59 @@
       },
       "notes": "News roundup arena: Siemens S7 PLC / CISA AA26-231A (five-agency active-threat advisory, AI-generated Python exploit scripts vs internet-exposed S7 PLCs via snap7/S7comm TCP 102, Censys/ZoomEye scanning, S7-200..1500 incl. F-series) + Mandiant AVDH (100+ true-positive critical findings in 2 days in stolen repos; 12 CVEs; named two rated MEDIUM in NVD) + Elementor Pro CVE-2026-32475 (CVSS 9.0, fixed 4.2.2, no in-the-wild exploitation as of Aug 20). All 3 builders PASS: mimo-v2.5 9.22, poolside 9.07, deepseek-v4-flash 8.60. qwen3.7-flash multipass 3x with verified-fact preamble (2026-08-18..24 facts); deepseek passes 1&3 used deepseek-v4-flash-0731 fallback on qwen 429. Research ran on deepseek-v4-flash (delegation config pin; gpt-5.6-luna not routable in cron). Plan by mimo-v2.5-pro (direct xiaomi call via arena-direct-runner importlib). QA by glm-5.2 (zai direct): added lastVerified quoted, meta ~154 chars prose, 4 internal links (frameworks hub, /cves/, MCP security deep-dive, UniFi Mirai chain), no slop, no [N] refs; all 10 external URLs curl-verified 200.",
       "retries": 0
+    },
+    {
+      "date": "2026-08-25",
+      "slug": "docker-security-hardening",
+      "topic": "Security Guide \u2014 Beginner's Guide to Docker Security 2026 (Docker/container hardening for beginners)",
+      "category": "guide",
+      "type": "standard",
+      "results": [
+        {
+          "model": "mimo-v2.5",
+          "model_id": "mimo-v2.5",
+          "provider": "xiaomi",
+          "family": "mimo",
+          "score": 8.53,
+          "rank": 1,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "model_id": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "family": "poolside",
+          "score": 8.38,
+          "rank": 2,
+          "status": "success"
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "model_id": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "family": "deepseek",
+          "score": 8.22,
+          "rank": 3,
+          "status": "success"
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.53,
+      "threshold_met": true,
+      "judge_mean": 8.53,
+      "judge_model": "qwen/qwen3.7-flash",
+      "judge_scores": {
+        "qwen3.7-flash": {
+          "mimo-v2.5": 8.53,
+          "poolside-laguna-s-2.1": 8.38,
+          "deepseek-v4-flash": 8.22,
+          "passes": 3,
+          "note": "multipass mean of 3 passes; ALL 3 PASS (>=8.0). mimo per-pass 8.35/8.60/8.65; poolside 8.15/8.60/8.40; deepseek 8.25/8.05/8.35. qwen 429 on some passes fell back to deepseek-v4-flash-0731 (documented fallback)."
+        }
+      },
+      "plan_model": "mimo-v2.5-pro",
+      "notes": "Docker/container security hardening guide (sibling to kubernetes-security-hardening, linux-server-hardening, api-security-hardening). All 3 builders PASS (mean >= 8.0): mimo-v2.5 8.53, poolside 8.38, deepseek-v4-flash 8.22. Research ran on deepseek-v4-flash (delegation config pin; gpt-5.6-luna not routable in cron) with all 38 source URLs curl-verified 200. Plan by mimo-v2.5-pro (direct xiaomi call via arena-direct-runner importlib). QA by glm-5.2 (zai direct): inline citations only, meta 154 chars prose, E-E-A-T block honest no-hands-on, FAQ 3 question H3s, 6 internal links (/frameworks/, /scan/, /cves/, linux-server-hardening, trivy-review, kubernetes-security-hardening), no slop, no [N] refs; all 23 unique external URLs curl-verified 200 (NVD behind bot-protection 403 on plain curl, 200 with browser UA).",
+      "retries": 0
     }
   ],
   "leaderboard": [
@@ -1678,8 +1731,8 @@
       "model": "mimo-v2.5",
       "provider": "xiaomi",
       "family": "mimo",
-      "matches": 25,
-      "wins": 14,
+      "matches": 26,
+      "wins": 15,
       "losses": 11,
       "avgScore": 8.5,
       "bestScore": 9.7,
@@ -1689,9 +1742,9 @@
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
       "family": "deepseek",
-      "matches": 27,
+      "matches": 28,
       "wins": 8,
-      "losses": 19,
+      "losses": 20,
       "avgScore": 8.2,
       "bestScore": 9.3,
       "rank": 2
@@ -1700,10 +1753,10 @@
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "family": "poolside",
-      "matches": 17,
+      "matches": 18,
       "wins": 4,
-      "losses": 13,
-      "avgScore": 7.7,
+      "losses": 14,
+      "avgScore": 7.8,
       "bestScore": 9.1,
       "rank": 3
     },
@@ -1759,27 +1812,27 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-08-24",
+    "last_updated": "2026-08-25",
     "model_stats": {
       "deepseek-v4-flash": {
-        "total_calls": 0,
-        "successes": 0,
+        "total_calls": 1,
+        "successes": 1,
         "availability": 100.0,
-        "last_match": "2026-08-24",
+        "last_match": "2026-08-25",
         "last_result": "loss"
       },
       "mimo-v2.5": {
-        "total_calls": 0,
-        "successes": 0,
+        "total_calls": 1,
+        "successes": 1,
         "availability": 100.0,
-        "last_match": "2026-08-24",
+        "last_match": "2026-08-25",
         "last_result": "win"
       },
       "poolside/laguna-s-2.1": {
-        "total_calls": 0,
-        "successes": 0,
+        "total_calls": 1,
+        "successes": 1,
         "availability": 100.0,
-        "last_match": "2026-08-24",
+        "last_match": "2026-08-25",
         "last_result": "loss"
       }
     }

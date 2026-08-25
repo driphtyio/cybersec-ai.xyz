@@ -1,6 +1,6 @@
 ---
 title: "Beginner's Guide to Docker Security 2026"
-description: "Hardening Docker containers means using minimal images, non-root users, read-only filesystems, dropped capabilities, seccomp profiles, and image scanning."
+description: "This beginner's Docker hardening guide, built from official docs and industry reports but not hands-on testing (last verified August 2026), warns that…"
 pubDate: "2026-08-25"
 tags: ["docker", "container-security", "hardening", "devsecops"]
 lastVerified: "2026-08-25"
@@ -76,3 +76,11 @@ Images should be scanned at build time in your CI/CD pipeline and regularly ther
 ### Is Docker secure by default?
 
 Docker provides several security defaults, such as a default seccomp profile, but it is not fully secure out of the box. The [Docker security overview](https://docs.docker.com/engine/security/) explains that containers share the host kernel, requiring explicit hardening measures like those covered in this guide to minimize risks effectively.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

@@ -4,6 +4,7 @@ description: "Hardening Docker containers means using minimal images, non-root u
 pubDate: "2026-08-25"
 tags: ["docker", "container-security", "hardening", "devsecops"]
 lastVerified: "2026-08-25"
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/docker-security-hardening-1787686417.webp"
 ---
 
 This guide covers the fundamentals of how to harden Docker containers for beginners, providing a clear path to securing your containerized applications. It focuses on Docker-native hardening techniques that form the essential first layer of a defense-in-depth strategy.

@@ -67,3 +67,14 @@ We did not run a head-to-head benchmark, so we will not rank them on detection. 
 ### Can Semgrep scan AI-generated code?
 
 Yes. Semgrep Guardian is purpose-built to scan AI-generated code, and Semgrep ships an MCP server so AI coding tools like Cursor and Replit can trigger scans [official Semgrep docs](https://docs.semgrep.dev/). Vendor claims say Multimodal finds up to 3.5x more true positives at lower cost — treat that as a vendor claim, not independent proof.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+- **[Hermes Tutorials](https://hermes-tutorials.dev/)** — Hermes Agent setup, configuration, and advanced workflows
+- **[NoCode Insider](https://nocodeinsider.com/)** — AI workflow automation with no-code tools, agents, and APIs
+
+*Cross-links automatically generated from None.*

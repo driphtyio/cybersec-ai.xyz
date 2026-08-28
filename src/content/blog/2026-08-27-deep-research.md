@@ -94,3 +94,12 @@ Based on current evidence, no. Huntress documented EvilTokens device-code phishi
 
 ### What should an IR playbook for token theft look like?
 An assume-breach playbook for token theft must go beyond a password reset: revoke all active sessions and refresh tokens for the compromised account, force re-authentication with phishing-resistant MFA, audit attacker-registered MFA devices and malicious OAuth consents, and analyze all data accessed during the token's valid lifespan to determine the full scope of compromise.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from None.*

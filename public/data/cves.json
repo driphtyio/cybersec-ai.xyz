@@ -1,6 +1,6 @@
 {
-  "count": 500,
-  "updated": "2026-08-24T11:01:42.025524",
+  "count": 427,
+  "updated": "2026-08-31T11:01:27.158778",
   "cves": [
     {
       "id": "CVE-2026-10611",
@@ -339,65 +339,58 @@
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-30T03:16:24.957",
-      "lastModified": "2026-08-05T14:54:01.933",
+      "lastModified": "2026-08-28T00:18:04.990",
       "references": [
         "https://helpx.adobe.com/security/products/campaign/apsb26-114.html"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-70880",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Hyperion Data Relationship Management.  While the vulnerability is in Oracle Hyperion Data Relationship Management, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Data Relationship Management. CVSS 3.1 Base Score 10.0 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).",
+      "id": "CVE-2026-81735",
+      "description": "startServer.ts in the mcp-http-server package of UI-TARS-desktop defaulted its listen address to '::' when no host was given, so startSseAndStreamableHttpMcpServer bound the Streamable HTTP and SSE MCP transports to every interface, and its authentication middleware was optional: middlewares are applied only when a caller supplies them. The @agent-infra/mcp-server-commands and @agent-infra/mcp-server-filesystem entry points call startSseAndStreamableHttpMcpServer with a host and port alone and pass no middleware, so neither server required a credential. The commands server exposes a run_command tool that hands its caller-supplied command string to promisify(child_process.exec), so any unauthenticated client able to reach the port could run arbitrary commands as the user running the server, and the filesystem server exposed its file read and write tools on the same terms. The listen default became 127.0.0.1 in commit c2ad42e3eb9b27830db41a3e6f51ca7179d9b168; the package version stayed at 1.2.4 across that change, so the boundary is the commit rather than a release.",
       "severity": "CRITICAL",
       "cvss": 10.0,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:44.490",
-      "lastModified": "2026-08-20T13:07:28.683",
+      "published": "2026-08-27T17:21:03.677",
+      "lastModified": "2026-08-27T17:21:03.677",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/bytedance/UI-TARS-desktop",
+        "https://github.com/bytedance/UI-TARS-desktop/blob/e9f3387288da4af2ad99972da2ac916cdabce093/packages/agent-infra/mcp-http-server/src/startServer.ts#L263",
+        "https://github.com/bytedance/UI-TARS-desktop/commit/c2ad42e3eb9b27830db41a3e6f51ca7179d9b168",
+        "https://github.com/bytedance/UI-TARS-desktop/pull/1918",
+        "https://www.vulncheck.com/advisories/ui-tars-desktop-agent-infra-mcp-servers-bind-every-interface-without-authentication-exposing-arbitrary-command-execution"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-9813",
-      "description": "FlowIntel up to version 3.3.0\u00a0contains a server-side request forgery (SSRF) vulnerability in the external reference URL probe functionality in app/case/task.py. An attacker who can submit an external reference URL can cause the application server to issue an HTTP HEAD request to an attacker-specified destination. Due to insufficient validation of the URL scheme and resolved destination address, affected versions may allow requests to loopback, link-local, private, reserved, or other restricted network resources, potentially enabling interaction with internal services or cloud metadata endpoints from the server's network context.",
+      "id": "CVE-2026-82456",
+      "description": "argocd-mcp 0.8.0 binds its HTTP transport to every network interface and accepts MCP sessions without requiring caller credentials when ARGOCD_API_TOKEN is configured. Attackers who can reach the listener can invoke the full tool surface using the operator's stored token to create applications, request syncs, and modify Argo CD resources.",
       "severity": "CRITICAL",
-      "cvss": 9.9,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-05-28T10:16:40.243",
-      "lastModified": "2026-06-17T11:05:40.403",
+      "cvss": 10.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-08-29T14:16:38.767",
+      "lastModified": "2026-08-29T14:16:38.767",
       "references": [
-        "https://github.com/flowintel/flowintel/commit/68b523b47854c54bf36fd706c0fd5353063b5409"
+        "https://github.com/argoproj-labs/mcp-for-argocd",
+        "https://github.com/argoproj-labs/mcp-for-argocd/security/advisories/GHSA-rp45-5x3v-48mr",
+        "https://www.vulncheck.com/advisories/argocd-mcp-0.8.0-authentication-bypass-via-unauthenticated-http"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-44477",
-      "description": "CloudNativePG is a platform designed to manage PostgreSQL databases within Kubernetes environments. Prior to 1.29.1 and 1.28.3, the CloudNativePG metrics exporter opens its PostgreSQL connection as the postgres superuser via the pod-local Unix socket, then demotes the session with SET ROLE pg_monitor. SET ROLE changes only current_user; session_user remains postgres. Any SQL expression evaluated inside the scrape session can invoke RESET ROLE to recover real superuser privileges, then use COPY ... TO PROGRAM to spawn an OS-level subprocess as the postgres user inside the primary pod. The READ ONLY transaction flag does not block this; it gates writes to database state, not external processes. This vulnerability is fixed in 1.29.1 and 1.28.3.",
+      "id": "CVE-2026-82542",
+      "description": "A weakness has been identified in Tenda HG10 300001138. Affected by this issue is the function formIPv6Routing of the file /boaform/admin/formIPv6Routing of the component Boa Web Server. This manipulation of the argument destNet causes buffer overflow. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks.",
       "severity": "CRITICAL",
-      "cvss": 9.9,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-05-28T17:16:30.590",
-      "lastModified": "2026-07-15T02:21:54.357",
+      "cvss": 10.0,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-08-30T13:16:56.267",
+      "lastModified": "2026-08-30T13:16:56.267",
       "references": [
-        "https://github.com/cloudnative-pg/cloudnative-pg/pull/10576",
-        "https://github.com/cloudnative-pg/cloudnative-pg/security/advisories/GHSA-423p-g724-fr39",
-        "https://access.redhat.com/security/cve/CVE-2026-44477",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2482763",
-        "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44477.json"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-44881",
-      "description": "Portainer Community Edition is a lightweight service delivery platform for containerized applications that can be used to manage Docker, Swarm, Kubernetes and ACI environments. From 2.33.0 to before 2.33.8, 2.39.2, and 2.41.0, Portainer supports deploying stacks from Git repositories. When a Git-backed stack is created or updated, Portainer clones the repository using go-git v5, which translates Git blob entries with mode 0o120000 (symlink) into real OS symlinks on the host filesystem via os.Symlink. The only entry blocked from becoming a symlink is .gitmodules; every other path is created as a symlink without validation. Portainer's GET /api/stacks/{id}/file endpoint then reads the stack entry point with os.ReadFile, which follows OS symlinks transparently. A repository containing docker-compose.yml as a symlink to an arbitrary filesystem path causes the symlink target's contents to be returned verbatim in the HTTP response. Any authenticated user with rights to create or update a Git-backed stack \u2014 the default configuration in Portainer CE \u2014 can read arbitrary files accessible to the Portainer process. This vulnerability is fixed in 2.33.8, 2.39.2, and 2.41.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.9,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-05-28T22:16:59.247",
-      "lastModified": "2026-07-21T10:10:00.103",
-      "references": [
-        "https://github.com/portainer/portainer/security/advisories/GHSA-rpgq-m5fp-32wr"
+        "https://github.com/SunnyYANGyaya/cuicuishark-sheep-fishIOT/blob/main/Tenda/HG10/bof-formIPv6Route-destNt.md",
+        "https://vuldb.com/cve/CVE-2026-82542",
+        "https://vuldb.com/submit/888876",
+        "https://vuldb.com/vuln/397058",
+        "https://vuldb.com/vuln/397058/cti"
       ],
       "source": "nvd"
     },
@@ -535,19 +528,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-48322",
-      "description": "ColdFusion is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed.",
-      "severity": "CRITICAL",
-      "cvss": 9.9,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-07-14T21:16:58.920",
-      "lastModified": "2026-08-05T17:32:54.280",
-      "references": [
-        "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-54052",
       "description": "n8n-MCP is an MCP server that provides AI assistants access to n8n node documentation, properties, and operations. Prior to 2.56.1, in HTTP mode with multi-tenancy enabled through ENABLE_MULTI_TENANT=true, n8n-mcp's local workflow version history backups were not isolated per tenant, allowing an authenticated tenant to read workflow version snapshots belonging to other tenants and delete or destroy other tenants' stored backups, including full node definitions, credential references, and authorization headers. This issue is fixed in version 2.56.1.",
       "severity": "CRITICAL",
@@ -607,20 +587,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-73268",
-      "description": "A flaw was found in the cluster-curator-controller component of multicluster engine (MCE). A tenant with create or update permissions on ClusterCurator resources can inject an arbitrary Job specification. This is possible because the CreateJob() function does not validate user-controlled input when unmarshaling the spec.install.overrideJob raw extension. Successful exploitation allows the injected Job to run with the controller's elevated privileges, leading to arbitrary code execution and privilege escalation, potentially accessing cluster-wide secrets.",
-      "severity": "CRITICAL",
-      "cvss": 9.9,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-12T20:17:53.650",
-      "lastModified": "2026-08-14T19:07:46.080",
-      "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-73268",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2514219"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-17186",
       "description": "IBM Db2 Mirror for i 7.4, 7.5, and 7.6 could allow a remote attacker to execute arbitrary CL commands due to improper neutralization of special elements in a command.",
       "severity": "CRITICAL",
@@ -634,414 +600,59 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62608",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows low privileged attacker with network access via CORBA to compromise Oracle Reports Developer.  While the vulnerability is in Oracle Reports Developer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
+      "id": "CVE-2026-66788",
+      "description": "A flaw was found in Lighthouse. A remote attacker, by compromising a spoke cluster, can exploit a vulnerability where the destination namespace for resource injection is derived from an attacker-controlled label or annotation on the broker object. This allows the attacker to inject unauthorized EndpointSlices and ServiceImports into any namespace on peer clusters, including critical system namespaces like kube-system and openshift-*. This could lead to privilege escalation or other forms of system compromise within the cluster.",
       "severity": "CRITICAL",
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:13.300",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-20T19:16:58.823",
+      "lastModified": "2026-08-28T21:17:10.720",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://access.redhat.com/security/cve/CVE-2026-66788",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2507533"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-75976",
-      "description": "A weakness has been identified in TRENDnet TEW-823DRU 1.1.02b01. Impacted is the function strcpy of the file /cgi-bin/wan.cgi of the component NVRAM. This manipulation of the argument wan_l2tp_password causes stack-based buffer overflow. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+      "id": "CVE-2026-18527",
+      "description": "IBM Administration Runtime Expert for i 1R1M0 IBM Application Runtime Expert (ARE) for i could allow a remote attacker to gain elevated privileges, caused by ARE GUI component processing. An unauthenticated attacker can exploit this vulnerability to execute actions under another user's authenticated profile gaining elevated privileges on the IBM i system.",
       "severity": "CRITICAL",
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-19T00:16:28.510",
-      "lastModified": "2026-08-20T12:48:31.843",
+      "published": "2026-08-28T22:16:46.620",
+      "lastModified": "2026-08-28T22:16:46.620",
       "references": [
-        "https://github.com/meishigana/CVE/blob/main/team15_20260702/10_823dru-rc-bof/poc/poc-rc-overflow.py",
-        "https://github.com/meishigana/CVE/tree/main/team15_20260702/10_823dru-rc-bof",
-        "https://vuldb.com/cve/CVE-2026-75976",
-        "https://vuldb.com/submit/877796",
-        "https://vuldb.com/vuln/391892"
+        "https://www.ibm.com/support/pages/node/7284580"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-70496",
-      "description": "A flaw was found in search-v2-operator. The operator's ClusterRole has permissions equivalent to a cluster administrator, allowing it to impersonate other entities, write Role-Based Access Control (RBAC) configurations, approve Certificate Signing Requests (CSRs), and manage ManifestWork. This grants excessive privileges beyond what is necessary for the operator's intended function, potentially leading to privilege escalation within the cluster.",
+      "id": "CVE-2026-19295",
+      "description": "IBM Langflow OSS 1.0.0 through 1.11.1 allows an authenticated attacker to execute arbitrary operating system commands in the server process by saving a flow with a crafted type field value and triggering a build of a wrapper flow that references it. This allowed privilege escalation from \"authenticated flow user\" to arbitrary OS-level command execution under the server process identity, bypassing the LANGFLOW_ALLOW_CUSTOM_COMPONENTS=false policy control.",
       "severity": "CRITICAL",
       "cvss": 9.9,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-19T19:17:23.230",
-      "lastModified": "2026-08-20T13:08:53.900",
+      "published": "2026-08-28T22:16:47.613",
+      "lastModified": "2026-08-28T22:16:47.613",
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-70496",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2511032"
+        "https://www.ibm.com/support/pages/node/7284733"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-8376",
-      "description": "Perl versions through 5.43.10 have a heap buffer overflow when compiling regular expressions with a repeated fixed string on 32-bit builds.\n\nPerl_study_chunk in regcomp_study.c checked the size of the joined substring buffer in characters rather than bytes. For a quantified fixed substring with a large minimum count, the byte length mincount * l could overflow SSize_t, producing an undersized SvGROW allocation; the subsequent copy writes past the end of the buffer.\n\nA caller that compiles an attacker-controlled regular expression on a 32-bit perl build triggers a heap buffer overflow at compile time.",
+      "id": "CVE-2026-82592",
+      "description": "A vulnerability was detected in D-Link DIR-825M 1.1.8. This affects the function sub_46725C of the file /boafrm/formDiskFormat of the component Disk Formatting Handler Endpoint. The manipulation of the argument partition results in stack-based buffer overflow. The attack can be executed remotely. The exploit is now public and may be used.",
       "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T00:16:57.150",
-      "lastModified": "2026-07-23T11:10:00.120",
+      "cvss": 9.9,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-08-30T23:17:08.303",
+      "lastModified": "2026-08-30T23:17:08.303",
       "references": [
-        "https://github.com/Perl/perl5/commit/5e7f119eb2bb1181be908701f22bf7068e722f1c.patch",
-        "http://www.openwall.com/lists/oss-security/2026/05/26/1"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48686",
-      "description": "FastNetMon Community Edition through 1.2.9 contains a stack-based buffer overflow in the BGP NLRI (Network Layer Reachability Information) decoder. The function decode_bgp_subnet_encoding_ipv4_raw() in src/bgp_protocol.cpp reads prefix_bit_length directly from the BGP packet (line 99) without validating it is <= 32 for IPv4 prefixes. This value is passed to how_much_bytes_we_need_for_storing_certain_subnet_mask() which computes ceil(prefix_bit_length / 8), returning up to 32 bytes for a prefix_bit_length of 255. The result is used as the length argument to memcpy() (line 106), which copies into a 4-byte uint32_t stack variable (prefix_ipv4). This causes a stack buffer overflow of up to 28 bytes, which can be exploited for arbitrary code execution. Additionally, the unvalidated prefix_bit_length is passed to convert_cidr_to_binary_netmask_local_function_copy() (line 111), where a shift of (32 - cidr) with cidr > 32 causes undefined behavior.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T16:16:26.693",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://github.com/pavel-odintsov/fastnetmon",
-        "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/bgp_protocol.cpp",
-        "https://lorikeetsecurity.com/blog/fastnetmon-cve-2026-48686-bgp-nlri-stack-overflow"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48687",
-      "description": "FastNetMon Community Edition through 1.2.9 contains an OS command injection vulnerability in the Juniper router integration plugin. The _log() function in src/juniper_plugin/fastnetmon_juniper.php (lines 117-118) constructs shell commands by concatenating the $msg parameter directly into exec() calls: exec(\"echo `date` \\\"- {FASTNETMON] - \" . $msg . \" \\\" >> \" . $FILE_LOG_TMP). The $msg variable contains unsanitized data derived from command-line arguments argv[1] through argv[3], which represent the attack IP address, direction, and power. While FastNetMon's C++ core currently passes IP addresses via inet_ntoa() (which only produces safe dotted-decimal notation), the PHP script performs no input validation or shell escaping. If the script is invoked directly, by another orchestration system, or if future code changes pass string-sourced IPs, arbitrary commands can be injected. The correct fix is to replace exec() with file_put_contents() or use escapeshellarg() on all parameters.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T16:16:26.800",
-      "lastModified": "2026-07-21T19:10:00.107",
-      "references": [
-        "https://github.com/pavel-odintsov/fastnetmon",
-        "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/juniper_plugin/fastnetmon_juniper.php",
-        "https://lorikeetsecurity.com/blog/fastnetmon-cve-2026-48687-juniper-cmd-injection"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35221",
-      "description": "Improperly built filter clauses lead to a SQL injection vulnerability in the search query for com_finder.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:35.823",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1038-20260506-core-authenticated-blind-sqli-in-com-finder.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35222",
-      "description": "Improperly validated order clauses lead to a SQL injection vulnerability in com_tags.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:35.950",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1039-20260507-core-authenticated-blind-sqli-in-com-tags.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-35223",
-      "description": "An improper access check allows unauthorized access to com_config webservice endpoints.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:36.080",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1040-20260508-core-improper-access-check-in-com-config-webservice-endpoints.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-40383",
-      "description": "An improper validation of user-supplied input leads to a local file inclusion vulnerability.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:39.360",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1041-20260509-core-lfi-in-htmlview-layout-parameter.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48691",
-      "description": "FastNetMon Community Edition through 1.2.9 contains an integer overflow in the BGP AS_PATH attribute encoder. In src/bgp_protocol.hpp, the IPv4UnicastAnnounce::get_attributes() function computes attribute_length as 'sizeof(bgp_as_path_segment_element_t) + this->as_path_asns.size() * sizeof(uint32_t)' and stores it in a uint8_t field (line 600-605). Since uint8_t can only hold values 0-255, an AS_PATH containing more than 63 ASNs (2 + 64*4 = 258 > 255) causes silent truncation. The truncated length is used for buffer sizing, while the actual data written is the full untruncated amount, resulting in a heap buffer overflow. Similarly, the path_segment_length field at line 621 is also uint8_t, truncating with more than 255 ASNs.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:53.670",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://github.com/pavel-odintsov/fastnetmon",
-        "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/bgp_protocol.hpp",
-        "https://lorikeetsecurity.com/blog/fastnetmon-cve-2026-48691-bgp-as-path-overflow"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48898",
-      "description": "An improper access check allows privilege escalation through the com_users batch task.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:54.460",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1045-20260513-core-privilege-escalation-through-com-users-batch-task.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48899",
-      "description": "An improper access check allows privilege escalation through the com_users batch task.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:54.587",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1047-20260515-core-incorrect-access-control-in-sample-data-plugins.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48904",
-      "description": "An improper access check allows privelege escalation through the com_users group editing webservice endpoint.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:55.203",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://developer.joomla.org/security-centre/1046-20260514-core-privilege-escalation-through-com-users-webservice-endpoints.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48689",
-      "description": "FastNetMon Community Edition through 1.2.9 contains an off-by-one heap-based buffer overflow in the dynamic_binary_buffer_t class (src/dynamic_binary_buffer.hpp). Five methods (append_dynamic_buffer, append_data_as_pointer, append_data_as_object_ptr, memcpy_from_ptr, memcpy_from_object_ptr) use an incorrect bounds check of the form 'if (offset + length > maximum_internal_storage_size + 1)' instead of the correct 'if (offset + length > maximum_internal_storage_size)'. This allows writing exactly one byte past the end of the heap-allocated buffer. The class is used pervasively in BGP message encoding/decoding, NetFlow template processing, and Flow Spec NLRI construction. An attacker who can send network traffic (NetFlow, sFlow, IPFIX, or BGP) to a FastNetMon instance can trigger this overflow, potentially achieving arbitrary code execution by corrupting heap metadata. Notably, the append_byte() method uses the correct bounds check, confirming the inconsistency.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T19:16:28.663",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://github.com/pavel-odintsov/fastnetmon",
-        "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/dynamic_binary_buffer.hpp",
-        "https://lorikeetsecurity.com/blog/fastnetmon-cve-2026-48689-dynamic-buffer-off-by-one"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48027",
-      "description": "Nx Console is the user interface for Nx & Lerna. On 19 May 2026, a malicious version of Nx Console, 18.95.0, was published at 12:30 PM UTC and removed soon after at 12:48 PM UTC, leaving it available for ~18 minutes in Visual Studio Marketplace. For OpenVSX, the problem was detected later, and the compromised version was available from 12:33 UTC to 13:09 UTC (~36 minutes). Version 18.100.0 of Nx Console is not compromised and users may remediate by upgrading to that version.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-27T17:16:41.787",
-      "lastModified": "2026-06-17T10:54:50.133",
-      "references": [
-        "https://github.com/nrwl/nx-console/issues/3139",
-        "https://github.com/nrwl/nx-console/security/advisories/GHSA-c9j4-9m59-847w",
-        "https://nx.dev/blog/nx-console-v18-95-0-postmortem#indicators-of-compromise",
-        "https://www.stepsecurity.io/blog/nx-console-vs-code-extension-compromised",
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-48027"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-49197",
-      "description": "Web endpoints intended for the Acer Connect app improperly validate the HTTP Authorization header, failing to block requests when Base64 decoding fails.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T09:16:17.877",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://community.acer.com/en/kb/articles/19672"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-49199",
-      "description": "Crafted MQTT messages can trigger command injection, resulting in root-level code execution on the target device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T09:16:18.143",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://community.acer.com/en/kb/articles/19672"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-49200",
-      "description": "The acer_cgi.log file in the device firmware is accessible without authentication via the web interface. This file contains cleartext login credentials (for web and Telnet), leading to unauthorized system access.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T09:16:18.270",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://community.acer.com/en/kb/articles/19673"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-49201",
-      "description": "The upload.cgi binary, responsible for processing device backups, contains a hardcoded AES encryption key. This allows an attacker to decrypt, modify, and re-encrypt system backups, facilitating persistent backdoor injection.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T11:16:17.183",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://community.acer.com/en/kb/articles/19673"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41269",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:23.190",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41269"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41270",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:23.323",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41270"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41272",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:23.570",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41272"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41273",
-      "description": "Nozomi Networks Labs identified a CWE-288: Authentication Bypass Using an Alternate Path or Channel in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to bypass authentication of the Console web application and perform actions as an authenticated user.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:23.690",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41273"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41274",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:23.810",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41274"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41275",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:23.930",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41275"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41276",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:24.050",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41276"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41277",
-      "description": "Nozomi Networks Labs identified a CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') in the Console WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to execute arbitrary operating system commands on the device.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T12:16:24.167",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41277"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-46376",
-      "description": "FreePBX is an open source IP PBX. From 15.0.42 to before 16.0.45 and 17.0.7, unauthenticated users may be able to access the User Control Panel (UCP) using hard-coded initial template credentials if these were not immediately changed by the Administrator who enabled UCP. Authenticated access to ACP is required for the initial setup of UCP generic templates, but after that, without further steps by the admin, unauthenticated users may be able to gain access. This vulnerability is fixed in 16.0.45 and 17.0.7.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T14:16:31.677",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://github.com/FreePBX/security-reporting/security/advisories/GHSA-m55x-h47x-v3gx"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-45700",
-      "description": "FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.26.0, FreeRDP's planar bitmap decoder has an out-of-bounds heap write when decoding RLE planar data. In libfreerdp/codec/planar.c, freerdp_bitmap_decompress_planar() validates the X destination coordinate nXDst against the caller-provided destination stride (nDstStep) even when it is writing into the internal temp buffer pTempData. An attacker can bypass the check with a large nDstStep and a large nXDst, causing planar_decompress_plane_rle() to write past the end of pTempData. This vulnerability is fixed in 3.26.0.",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T20:16:27.533",
-      "lastModified": "2026-07-29T13:18:47.550",
-      "references": [
-        "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-mpxh-8fq3-x8mh",
-        "https://access.redhat.com/errata/RHSA-2026:36203",
-        "https://access.redhat.com/errata/RHSA-2026:37207",
-        "https://access.redhat.com/errata/RHSA-2026:38501",
-        "https://access.redhat.com/errata/RHSA-2026:46383"
+        "https://github.com/Robots10/IoT_vlu/blob/main/reports/Dlink/formDiskFormat/formDiskFormat.md",
+        "https://vuldb.com/cve/CVE-2026-82592",
+        "https://vuldb.com/submit/892514",
+        "https://vuldb.com/vuln/397087",
+        "https://vuldb.com/vuln/397087/cti"
       ],
       "source": "nvd"
     },
@@ -1658,9 +1269,10 @@
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "published": "2026-06-30T13:19:33.450",
-      "lastModified": "2026-07-01T15:52:28.390",
+      "lastModified": "2026-08-27T04:18:00.787",
       "references": [
-        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX696604"
+        "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX696604",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-8452"
       ],
       "source": "nvd"
     },
@@ -2458,408 +2070,197 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62457",
-      "description": "Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Common Events).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Infrastructure Technology. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-16286",
+      "description": "Unrestricted upload of file with dangerous type vulnerability in TRtek Technological Products Computer Software Hardware Industry and Trade Limited Company Software Repository Management allows Upload a Web Shell to a Web Server.\n\nThis issue affects Software Repository Management: before 2fb4acee.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:02.207",
-      "lastModified": "2026-08-20T13:07:44.887",
+      "published": "2026-08-25T15:16:30.180",
+      "lastModified": "2026-08-26T16:51:19.490",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-0899"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62539",
-      "description": "Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Infrastructure Technology. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-79787",
+      "description": "Alluxio's S3 REST proxy fails to verify AWS Signature Version 4 signatures in its default configuration, allowing unauthenticated attackers to spoof user identity. Attackers can extract usernames from unsigned Authorization headers and impersonate any user, including service accounts, to read, write, and delete arbitrary data.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:06.490",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-25T19:16:54.907",
+      "lastModified": "2026-08-25T19:16:54.907",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/Alluxio/alluxio",
+        "https://github.com/Alluxio/alluxio/blob/v2.9.5/core/server/proxy/src/main/java/alluxio/proxy/s3/S3RestUtils.java",
+        "https://github.com/Alluxio/alluxio/issues/18755",
+        "https://www.vulncheck.com/advisories/alluxio-through-2.9.5-s3-rest-proxy-authentication-bypass-via-unverified-request-signature",
+        "https://github.com/Alluxio/alluxio/issues/18755"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62541",
-      "description": "Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Infrastructure Technology. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-81702",
+      "description": "openssl_encrypt before 1.4.9 fails to re-derive and validate fingerprints when loading identities from identity.json, allowing attackers to substitute public keys in identity stores. Attackers can replace legitimate public keys with their own while maintaining the claimed fingerprint, enabling silent key substitution where encryption uses attacker keys and signature verification appears valid.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:06.720",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-27T17:21:00.680",
+      "lastModified": "2026-08-27T17:21:00.680",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-q8p3-7h6h-ghfr",
+        "https://www.vulncheck.com/advisories/openssl-encrypt-before-1.4.9-key-substitution-via-identity-load"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62543",
-      "description": "Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Infrastructure Technology. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-81707",
+      "description": "openssl_encrypt before 1.4.9 fails to sanitize the email field of imported identity documents, allowing attackers to inject ANSI escape sequences that forge the fingerprint verification line displayed to users. Attackers can deliver a crafted identity bundle through normal contact-exchange flows or keyserver responses to manipulate terminal output and display a fraudulent fingerprint, bypassing the out-of-band verification mechanism that protects against key substitution attacks.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:06.837",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-27T17:21:01.440",
+      "lastModified": "2026-08-27T17:21:01.440",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-qjr2-x6mr-8xgf",
+        "https://www.vulncheck.com/advisories/openssl-encrypt-before-1.4.9-ansi-escape-injection-via-identity-email"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62544",
-      "description": "Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Installation and Configuration).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Infrastructure Technology. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-82266",
+      "description": "Redpanda through 26.2.2 binds the Admin API to 0.0.0.0:9644 with admin_api_require_auth defaulting to false, treating unauthenticated requests as superusers. Attackers can reach port 9644 without credentials to create and delete broker accounts, modify cluster configuration, and disrupt partition replication.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:06.947",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-28T20:20:17.213",
+      "lastModified": "2026-08-28T20:20:17.213",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/redpanda-data/redpanda",
+        "https://github.com/redpanda-data/redpanda/blob/3cfce474a872090e7c74d14181885f5838c54cf2/conf/redpanda.yaml",
+        "https://github.com/redpanda-data/redpanda/blob/3cfce474a872090e7c74d14181885f5838c54cf2/src/v/security/request_auth.cc",
+        "https://github.com/redpanda-data/redpanda/issues/30989",
+        "https://www.vulncheck.com/advisories/redpanda-admin-api-unauthenticated-superuser-access-via-default-configuration"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62609",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-82277",
+      "description": "Argo Rollouts dashboard through 1.10.0 binds to all interfaces and exposes mutating Rollout operations without authentication, authorization, or CSRF protection. Attackers on the same network can invoke PromoteRollout, AbortRollout, RestartRollout, SetRolloutImage, UndoRollout, and RetryRollout operations across all namespaces accessible to the operator's kubeconfig.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:13.440",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-28T20:20:18.760",
+      "lastModified": "2026-08-28T20:20:18.760",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/argoproj/argo-rollouts",
+        "https://github.com/argoproj/argo-rollouts/blob/4e6a2798688e22868340d9871a3c8d78371f1568/server/server.go",
+        "https://github.com/argoproj/argo-rollouts/issues/4747",
+        "https://www.vulncheck.com/advisories/argo-rollouts-dashboard-unauthenticated-mutating-operations"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62611",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via IIOP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-19286",
+      "description": "IBM Langflow OSS 1.0.0 through 1.11.1 could allow a remote attacker to execute arbitrary code due to improper enforcement of security restrictions on the A2A public endpoint.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:13.670",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-28T22:16:47.357",
+      "lastModified": "2026-08-28T22:16:47.357",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://www.ibm.com/support/pages/node/7284733"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62614",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-14494",
+      "description": "The Sigma Forms Pro plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.4.5 via the handle_form_submission function. This is due to the plugin dynamically granting the unfiltered_upload capability to all users during form submissions and bypassing MIME type validation when allowed_file_types is not configured. This makes it possible for unauthenticated attackers to execute code on the server. Several default pre-built templates including Job Application, Support Ticket, and Wholesale Application have file upload fields with no file type restrictions configured by design, making this vulnerability immediately exploitable upon installation.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:14.017",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-29T12:16:41.163",
+      "lastModified": "2026-08-29T12:16:41.163",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://feedback.bdthemes.com/announcements",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/44d63454-87f0-49e3-ac04-2fa83882500d?source=cve"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62617",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via UDP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-82448",
+      "description": "Shinobi before commit 5a76c74f contains a hardcoded connection key in the child node service that allows unauthenticated attackers to execute arbitrary database queries. Attackers reaching the child node port can present the hardcoded key during WebSocket handshake, then dispatch SQL queries through the onWebSocketDataFromChildNode handler to read and modify user records and camera configuration.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:14.370",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-29T13:16:38.877",
+      "lastModified": "2026-08-29T13:16:38.877",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://gitlab.com/Shinobi-Systems/Shinobi",
+        "https://gitlab.com/Shinobi-Systems/Shinobi/-/blob/f04e685b8bd4c6190fcd62993131b86a76c2b806/libs/childNode/utils.js",
+        "https://gitlab.com/Shinobi-Systems/Shinobi/-/commit/5a76c74f3977661ff3f9fd55a260db352c0b19c0",
+        "https://gitlab.com/Shinobi-Systems/Shinobi/-/merge_requests/554",
+        "https://www.vulncheck.com/advisories/shinobi-before-commit-5a76c74f-arbitrary-database-query-execution-via-hardcoded-child-node-key"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62621",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-82452",
+      "description": "rust-iot-platform through commit 5df942ab contains an authentication bypass vulnerability where most REST API routes lack authentication guards in their handler signatures. Unauthenticated attackers can create, update, list, retrieve, and delete user accounts by directly accessing unprotected endpoints without providing valid credentials.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:15.807",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-29T14:16:38.210",
+      "lastModified": "2026-08-29T14:16:38.210",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/iot-ecology/rust-iot-platform",
+        "https://github.com/iot-ecology/rust-iot-platform/blob/5df942ab6bc46a3bf83dbee8c7970554f92c972d/api/src/controller/user_router.rs",
+        "https://www.vulncheck.com/advisories/rust-iot-platform-authentication-bypass-via-missing-request-guards"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62622",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via IIOP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-82460",
+      "description": "Cloud Commander before 19.20.2 contains a directory traversal vulnerability in REST file-operation and markdown endpoints that fails to properly validate path normalization. Attackers can use path traversal sequences to read, write, move, or copy files outside the configured root directory.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:15.913",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-29T17:17:58.060",
+      "lastModified": "2026-08-29T17:17:58.060",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/coderaiser/cloudcmd",
+        "https://github.com/coderaiser/cloudcmd/blob/v19.20.1/server/root.js",
+        "https://github.com/coderaiser/cloudcmd/commit/b9bdc9ed528350eeb2f9ef974c18998096fae919",
+        "https://github.com/coderaiser/cloudcmd/issues/474",
+        "https://github.com/coderaiser/cloudcmd/releases/tag/v19.20.2"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62624",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via IIOP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-15369",
+      "description": "The Custom User Registration Fields for WooCommerce plugin for WordPress is vulnerable to Privilege Escalation in versions up to, and including, 2.2.3. This is due to the plugin accepting an attacker-controlled afreg_select_user_role value from the unauthenticated WooCommerce Store API /wc/store/v1/checkout request in the af_reg_checkout_data_to_order_meta_data_block() function, persisting it in order meta, and then passing it directly to WP_User::add_role() in the af_reg_custom_order_processing_function() function (hooked to woocommerce_thankyou) without validating against the plugin's admin-configured allowed role list. This makes it possible for unauthenticated attackers to elevate their privileges to Administrator by creating an account during checkout with a modified JSON body specifying administrator (or any other role slug) as the desired role. Note: The exploit requires the \"User Role Selection\" setting to be enabled.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:16.143",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-29T20:16:31.840",
+      "lastModified": "2026-08-29T20:16:31.840",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://woocommerce.com/products/custom-user-registration-fields-for-woocommerce/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/715723e7-5820-4a64-848f-f89b5b73a681?source=cve"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62626",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+      "id": "CVE-2026-15980",
+      "description": "The MyHome Core plugin for WordPress is vulnerable to Authentication Bypass in all versions up to, and including, 4.4.5. This is due to missing authorization in the send_link() AJAX handler and improper token validation in the activate() function. This makes it possible for unauthenticated attackers to generate an activation token for an unconfirmed user account and obtain a valid authentication cookie for that account, including administrators. Successful exploitation requires the MyHome theme to be configured in legacy/WPBakery mode with frontend registration and confirmation email enabled, and the target account must not already have the myhome_agent_confirmed user meta set.",
       "severity": "CRITICAL",
       "cvss": 9.8,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:16.370",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-30T05:16:58.407",
+      "lastModified": "2026-08-30T05:16:58.407",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62630",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:16.823",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62632",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:17.043",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62633",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:17.153",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62634",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via CORBA to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:17.270",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62635",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:17.387",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62639",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via CORBA to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:17.850",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62640",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via IIOP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:17.963",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70669",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:18.543",
-      "lastModified": "2026-08-20T13:06:42.867",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70689",
-      "description": "Vulnerability in Oracle Essbase (component: Infrastructure).   The supported version that is affected is 21.8.1.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Essbase.  Successful attacks of this vulnerability can result in takeover of Oracle Essbase. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:20.887",
-      "lastModified": "2026-08-20T13:06:42.867",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70739",
-      "description": "Vulnerability in the Oracle Hyperion Financial Reporting product of Oracle Hyperion (component: Server).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Financial Reporting.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Financial Reporting. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:26.667",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70740",
-      "description": "Vulnerability in the Oracle Hyperion Financial Reporting product of Oracle Hyperion (component: Server).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Financial Reporting.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Financial Reporting. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:26.780",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70745",
-      "description": "Vulnerability in the Oracle Hyperion Financial Reporting product of Oracle Hyperion (component: Server).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Financial Reporting.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Financial Reporting. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:27.337",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70817",
-      "description": "Vulnerability in the Oracle Hyperion Financial Management product of Oracle Hyperion (component: Security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Financial Management.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Financial Management. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:36.490",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70871",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Hyperion Data Relationship Management.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Data Relationship Management. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:43.360",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70873",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Hyperion Data Relationship Management.  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Data Relationship Management. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:43.607",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-44985",
-      "description": "Dozzle is a realtime log viewer for docker containers. Prior to 10.5.2, he WebSocket upgrader for the /exec and /attach endpoints uses CheckOrigin: func(r *http.Request) bool { return true }, accepting upgrade requests from any origin. Combined with the JWT cookie using SameSite: Lax, this enables Cross-Site WebSocket Hijacking (CSWSH). An attacker hosting a page on a same-site origin (e.g., a sibling subdomain, or another service on localhost) can initiate a WebSocket connection to the exec endpoint that carries the victim's valid JWT cookie, gaining interactive shell access in any container the victim is authorized to access. This vulnerability is fixed in 10.5.2.",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "published": "2026-05-26T22:16:43.587",
-      "lastModified": "2026-07-24T12:10:00.210",
-      "references": [
-        "https://github.com/amir20/dozzle/releases/tag/v10.5.2",
-        "https://github.com/amir20/dozzle/security/advisories/GHSA-j643-x8pv-8m67",
-        "https://github.com/amir20/dozzle/security/advisories/GHSA-j643-x8pv-8m67"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-45570",
-      "description": "go-git is an extensible git implementation library written in pure Go. Prior to 5.19.1 and 6.0.0-alpha.4, go-git's SSH transport constructs the remote exec command by wrapping the repository path in single quotes without escaping single quotes embedded inside the path. A repository path containing a single quote can therefore break out of the quoted region in the exec command and be appended as additional shell tokens. This vulnerability is fixed in 5.19.1 and 6.0.0-alpha.4.",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "published": "2026-05-27T15:16:30.240",
-      "lastModified": "2026-06-17T10:52:13.177",
-      "references": [
-        "https://github.com/go-git/go-git/security/advisories/GHSA-m7cr-m3pv-hgrp"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-9874",
-      "description": "Use after free in Dawn in Google Chrome prior to 148.0.7778.216 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-      "published": "2026-05-28T23:16:45.343",
-      "lastModified": "2026-07-21T11:10:00.100",
-      "references": [
-        "https://chromereleases.googleblog.com/2026/05/stable-channel-update-for-desktop_0877304591.html",
-        "https://issues.chromium.org/issues/500609038"
+        "https://themeforest.net/item/myhome-real-estate-wordpress-theme/19508653",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/c458e018-5901-4917-9847-35f07646e068?source=cve"
       ],
       "source": "nvd"
     },
@@ -2870,7 +2271,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
       "published": "2026-06-03T14:16:46.337",
-      "lastModified": "2026-08-19T12:18:33.660",
+      "lastModified": "2026-08-28T16:18:18.957",
       "references": [
         "https://github.com/huggingface/transformers/commit/676559d5022b74aaa0cee1cee0842b7f27c5320e",
         "https://huntr.com/bounties/ceb3ce1a-4c45-497a-b25e-cb9a7685e619",
@@ -3072,7 +2473,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-06-09T21:17:22.700",
-      "lastModified": "2026-08-05T17:32:50.597",
+      "lastModified": "2026-08-28T00:17:31.250",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-64.html"
       ],
@@ -3222,7 +2623,7 @@
       "cvss": 9.6,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-14T21:16:58.043",
-      "lastModified": "2026-08-05T17:32:17.360",
+      "lastModified": "2026-08-28T00:17:43.730",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
       ],
@@ -3274,58 +2675,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62463",
-      "description": "Vulnerability in the Oracle Hyperion Infrastructure Technology product of Oracle Hyperion (component: Lifecycle Management).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.  While the vulnerability is in Oracle Hyperion Infrastructure Technology, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Infrastructure Technology accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Infrastructure Technology accessible data. CVSS 3.1 Base Score 9.6 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:02.930",
-      "lastModified": "2026-08-20T13:07:44.887",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62582",
-      "description": "Vulnerability in the Oracle Hyperion Calculation Manager product of Oracle Hyperion (component: Security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Hyperion Calculation Manager.  While the vulnerability is in Oracle Hyperion Calculation Manager, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Calculation Manager accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Calculation Manager accessible data. CVSS 3.1 Base Score 9.6 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:10.303",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70670",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with access to the physical communication segment attached to the hardware where the Oracle Reports Developer executes to compromise Oracle Reports Developer.  While the vulnerability is in Oracle Reports Developer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Reports Developer. CVSS 3.1 Base Score 9.6 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:18.680",
-      "lastModified": "2026-08-20T13:06:42.867",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70846",
-      "description": "Vulnerability in the Oracle Demand Planning product of Oracle Supply Chain (component: Internal Operations).  Supported versions that are affected are 12.1 and  12.2. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Demand Planning.  While the vulnerability is in Oracle Demand Planning, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Demand Planning accessible data as well as  unauthorized access to critical data or complete access to all Oracle Demand Planning accessible data. CVSS 3.1 Base Score 9.6 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.6,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:40.430",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-50208",
       "description": "High-risk\u00a0TrustAllCerts\u00a0routines disable standard TLS certificate validation. Combined with hard-coded DES symmetric encryption keys, a Man-in-the-Middle (MITM) actor could decrypt network traffic.",
       "severity": "CRITICAL",
@@ -3366,26 +2715,13 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62629",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Reports Developer accessible data as well as  unauthorized read access to a subset of Oracle Reports Developer accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Reports Developer. CVSS 3.1 Base Score 9.4 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.4,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H",
-      "published": "2026-08-18T21:17:16.707",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-34691",
       "description": "Adobe Experience Manager Forms JEE versions LTS SP1, 6.5.24.0 and earlier are affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by an attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field, potentially gaining elevated access or control over the victim's account or session. Scope is changed.",
       "severity": "CRITICAL",
       "cvss": 9.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
       "published": "2026-06-09T18:16:38.387",
-      "lastModified": "2026-07-29T19:17:31.993",
+      "lastModified": "2026-08-28T00:17:24.017",
       "references": [
         "https://helpx.adobe.com/security/products/aem-forms/apsb26-57.html"
       ],
@@ -3425,7 +2761,7 @@
       "cvss": 9.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
       "published": "2026-07-14T20:17:08.437",
-      "lastModified": "2026-07-29T19:17:00.407",
+      "lastModified": "2026-08-28T00:17:52.187",
       "references": [
         "https://helpx.adobe.com/security/products/magento/apsb26-73.html"
       ],
@@ -3438,7 +2774,7 @@
       "cvss": 9.3,
       "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
       "published": "2026-07-14T21:16:58.813",
-      "lastModified": "2026-08-05T17:32:10.490",
+      "lastModified": "2026-08-28T00:17:48.053",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
       ],
@@ -3451,7 +2787,7 @@
       "cvss": 9.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
       "published": "2026-07-14T22:17:01.717",
-      "lastModified": "2026-07-29T19:16:57.390",
+      "lastModified": "2026-08-28T00:17:49.580",
       "references": [
         "https://helpx.adobe.com/security/products/illustrator/apsb26-79.html"
       ],
@@ -3486,139 +2822,15 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62613",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with access to the physical communication segment attached to the hardware where the Oracle Reports Developer executes to compromise Oracle Reports Developer.  While the vulnerability is in Oracle Reports Developer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Reports Developer accessible data as well as  unauthorized access to critical data or complete access to all Oracle Reports Developer accessible data. CVSS 3.1 Base Score 9.3 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.3,
-      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:13.900",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62618",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  While the vulnerability is in Oracle Reports Developer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Reports Developer accessible data as well as  unauthorized update, insert or delete access to some of Oracle Reports Developer accessible data. CVSS 3.1 Base Score 9.3 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N",
-      "published": "2026-08-18T21:17:14.560",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-62637",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with access to the physical communication segment attached to the hardware where the Oracle Reports Developer executes to compromise Oracle Reports Developer.  While the vulnerability is in Oracle Reports Developer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Reports Developer accessible data as well as  unauthorized access to critical data or complete access to all Oracle Reports Developer accessible data. CVSS 3.1 Base Score 9.3 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.3,
-      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:17.620",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70673",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  While the vulnerability is in Oracle Reports Developer, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Reports Developer accessible data as well as  unauthorized update, insert or delete access to some of Oracle Reports Developer accessible data. CVSS 3.1 Base Score 9.3 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N",
-      "published": "2026-08-18T21:17:19.040",
-      "lastModified": "2026-08-20T13:06:42.867",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70855",
-      "description": "Vulnerability in the Siebel Apps - Self Service product of Oracle Siebel CRM (component: Helpdesk/Training).  Supported versions that are affected are 17.0-26.6. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel Apps - Self Service.  Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Siebel Apps - Self Service, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Siebel Apps - Self Service accessible data as well as  unauthorized access to critical data or complete access to all Siebel Apps - Self Service accessible data. CVSS 3.1 Base Score 9.3 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N).",
+      "id": "CVE-2026-62834",
+      "description": "Improper verification of cryptographic signature in Azure Data Factory allows an unauthorized attacker to elevate privileges over a network.",
       "severity": "CRITICAL",
       "cvss": 9.3,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:41.600",
-      "lastModified": "2026-08-20T13:07:28.683",
+      "published": "2026-08-20T22:17:43.070",
+      "lastModified": "2026-08-24T17:44:30.080",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-42496",
-      "description": "Archive::Tar versions before 3.08 for Perl extract symlinks with attacker controlled targets outside the extraction directory.\n\n_make_special_file() passes the tar header's linkname to symlink() without validating it against absolute paths or .. segments. The secure-extract mode check that guards regular file extraction does not cover the symlink target.\n\nA subsequent open through the extracted name reads or writes the attacker chosen path.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-05-26T02:16:40.130",
-      "lastModified": "2026-07-24T10:10:00.197",
-      "references": [
-        "https://github.com/jib/archive-tar-new/commit/17c873492a05eddc0de18c1485e0b2cccd5a9158.patch",
-        "https://metacpan.org/release/BINGOS/Archive-Tar-3.08/changes",
-        "https://www.cve.org/CVERecord?id=CVE-2026-42497",
-        "https://access.redhat.com/errata/RHSA-2026:30851",
-        "https://access.redhat.com/errata/RHSA-2026:30852"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-7876",
-      "description": "IBM Aspera HSTS for CP4I 1.5.1 through 1.5.19\u00a0is affected by an authentication bypass vulnerability. A transfer client may be able to take advantage of this vulnerability to access files in the server's local storage that they should not have access to, when specific restriction settings are not in place.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-05-27T14:17:35.727",
-      "lastModified": "2026-06-17T11:03:03.947",
-      "references": [
-        "https://www.ibm.com/support/pages/node/7274127"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-45787",
-      "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. Prior to 3.9.5, deterministic AES-192-CBC with a fixed zero IV, constant KDF salt, and no MAC leads to confidentiality and integrity failures for synced bookmark/profile data. Attackers can crack common passwords across installs and perform undetected ciphertext bit-flips to alter config/bookmarks. This vulnerability is fixed in 3.9.5.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-05-28T18:16:35.977",
-      "lastModified": "2026-06-17T10:52:33.477",
-      "references": [
-        "https://github.com/electerm/electerm/commit/9dd8295e37d53396b980cd45dfc5ed11ad79b937",
-        "https://github.com/electerm/electerm/security/advisories/GHSA-g29v-q6h7-76wh"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-41268",
-      "description": "Nozomi Networks Labs identified a CWE-23: Relative Path Traversal in the Administration WebUI in Waterfall WF-500 TX and RX Hosts in version 7.9.1.0 R2502171040 that allows remote unauthenticated attackers to delete arbitrary files on the Host machines.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-      "published": "2026-05-29T12:16:23.067",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2025-41268"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-22872",
-      "description": "Capsule is a multi-tenancy and policy-based framework for Kubernetes. The Capsule Controller runs with cluster-admin privileges. Although the TenantResource RawItems processing logic forcibly sets the namespace, this is ineffective for cluster-scoped resources. Prior to version 0.13.0, tenant administrators can leverage the Controller's elevated privileges to create cluster-scoped resources (such as ClusterRole and ValidatingWebhookConfiguration) that they cannot create directly, achieving cross-tenant privilege escalation and cluster-level attacks. The attack vector has a few limiting factors. This attack requires Tenant Owner privileges and requires Capsule Controller running with cluster-admin privileges (default configuration). Additionally, some clusters may have additional admission controllers blocking malicious resources. Version 0.13.0 patches this issue.",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-06-01T19:16:21.943",
-      "lastModified": "2026-07-22T07:10:00.107",
-      "references": [
-        "https://github.com/projectcapsule/capsule/releases/tag/v0.13.0",
-        "https://github.com/projectcapsule/capsule/security/advisories/GHSA-qjjm-7j9w-pw72",
-        "https://github.com/projectcapsule/capsule/security/advisories/GHSA-qjjm-7j9w-pw72"
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62834"
       ],
       "source": "nvd"
     },
@@ -4182,7 +3394,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-14T20:17:08.653",
-      "lastModified": "2026-07-29T19:16:54.330",
+      "lastModified": "2026-08-28T00:17:52.443",
       "references": [
         "https://helpx.adobe.com/security/products/magento/apsb26-73.html"
       ],
@@ -4195,7 +3407,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-14T21:16:58.600",
-      "lastModified": "2026-07-29T19:16:47.933",
+      "lastModified": "2026-08-28T00:17:47.810",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
       ],
@@ -4208,7 +3420,7 @@
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
       "published": "2026-07-14T21:16:59.023",
-      "lastModified": "2026-07-29T19:16:50.803",
+      "lastModified": "2026-08-28T00:17:48.420",
       "references": [
         "https://helpx.adobe.com/security/products/coldfusion/apsb26-82.html"
       ],
@@ -4449,162 +3661,48 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62610",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 12.2.1.19.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Reports Developer accessible data as well as  unauthorized access to critical data or complete access to all Oracle Reports Developer accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+      "id": "CVE-2026-3627",
+      "description": "IBM Concert 1.0.0 through 2.3.1 is vulnerable to SQL injection. A remote attacker could send specially crafted SQL statements, which could allow the attacker to view, add, modify, or delete information in the back-end database.",
       "severity": "CRITICAL",
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:13.560",
-      "lastModified": "2026-08-20T13:07:58.783",
+      "published": "2026-08-28T22:16:49.063",
+      "lastModified": "2026-08-28T22:16:49.063",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://www.ibm.com/support/pages/node/7285337"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-62638",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Reports Developer accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Reports Developer. CVSS 3.1 Base Score 9.1 (Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-      "published": "2026-08-18T21:17:17.740",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70668",
-      "description": "Vulnerability in the Oracle Reports Developer product of Oracle Fusion Middleware (component: Security and Authentication).   The supported version that is affected is 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Oracle Reports Developer.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Reports Developer accessible data as well as  unauthorized access to critical data or complete access to all Oracle Reports Developer accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+      "id": "CVE-2026-82454",
+      "description": "The Omnivore API (packages/api) before the fix in commit abf53d6 contains an authentication bypass in Apple sign-in token verification. The decodeAppleToken function extracted the 'alg' field from the attacker-supplied JWT header and passed it as the sole allowed algorithm to jwt.verify(). Using jsonwebtoken v8 (which does not validate key/algorithm compatibility), an attacker can set alg=HS256 and sign a forged token using Apple's publicly available RSA public key as the HMAC secret, bypassing signature verification and impersonating any Apple-linked account.",
       "severity": "CRITICAL",
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:18.427",
-      "lastModified": "2026-08-20T13:06:42.867",
+      "published": "2026-08-29T14:16:38.480",
+      "lastModified": "2026-08-29T14:16:38.480",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+        "https://github.com/omnivore-app/omnivore",
+        "https://github.com/omnivore-app/omnivore/commit/abf53d6508755d3d22a994e28e370a9193ea977a",
+        "https://github.com/omnivore-app/omnivore/pull/4652",
+        "https://www.vulncheck.com/advisories/omnivore-before-android-0.227.0-authentication-bypass-via-apple-sign-in"
       ],
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-70730",
-      "description": "Vulnerability in the Oracle Hyperion Profitability and Cost Management product of Oracle Hyperion (component: Deployment).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Profitability and Cost Management.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Profitability and Cost Management accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Profitability and Cost Management accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:25.610",
-      "lastModified": "2026-08-20T13:07:11.743",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70741",
-      "description": "Vulnerability in the Oracle Hyperion Financial Reporting product of Oracle Hyperion (component: Server).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via RMI to compromise Oracle Hyperion Financial Reporting.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Financial Reporting accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Financial Reporting accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:26.893",
-      "lastModified": "2026-08-20T13:07:58.783",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70854",
-      "description": "Vulnerability in the Oracle Hyperion Financial Management product of Oracle Hyperion (component: Security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Financial Management.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Financial Management accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Hyperion Financial Management. CVSS 3.1 Base Score 9.1 (Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-      "published": "2026-08-18T21:17:41.480",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70862",
-      "description": "Vulnerability in Oracle Application Testing Suite.   The supported version that is affected is 13.3.0.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Application Testing Suite.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Application Testing Suite accessible data as well as  unauthorized access to critical data or complete access to all Oracle Application Testing Suite accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:42.370",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70872",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Data Relationship Management.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Data Relationship Management accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Data Relationship Management accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:43.487",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70876",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows high privileged attacker with network access via HTTPS to compromise Oracle Hyperion Data Relationship Management.  While the vulnerability is in Oracle Hyperion Data Relationship Management, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Hyperion Data Relationship Management. CVSS 3.1 Base Score 9.1 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).",
+      "id": "CVE-2026-82539",
+      "description": "A vulnerability was determined in TOTOLINK A720R 4.1.5cu.630_B20250509. This impacts the function setMacFilterRules of the file cstecgi.cgi of the component MAC Filtering. Executing a manipulation of the argument desc can lead to memory corruption. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
       "severity": "CRITICAL",
       "cvss": 9.1,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-08-18T21:17:43.993",
-      "lastModified": "2026-08-20T13:07:28.683",
+      "published": "2026-08-30T11:17:35.067",
+      "lastModified": "2026-08-30T11:17:35.067",
       "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70883",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Data Relationship Management.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Data Relationship Management accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Data Relationship Management accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:44.850",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-70884",
-      "description": "Vulnerability in the Oracle Hyperion Data Relationship Management product of Oracle Hyperion (component: Access and security).   The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Oracle Hyperion Data Relationship Management.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Data Relationship Management accessible data as well as  unauthorized access to critical data or complete access to all Oracle Hyperion Data Relationship Management accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
-      "severity": "CRITICAL",
-      "cvss": 9.1,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-08-18T21:17:44.963",
-      "lastModified": "2026-08-20T13:07:28.683",
-      "references": [
-        "https://www.oracle.com/security-alerts/cspuaug2026.html"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-4408",
-      "description": "A flaw was found in Samba. A remote attacker can exploit a misconfiguration in Samba file servers and classic domain controllers that use the \"check password script\" feature. If this script is configured with the %u substitution character, the client-controlled username is passed without proper escaping of shell meta-characters. This vulnerability allows an attacker to achieve remote command execution on the affected system. This issue primarily affects non-standard configurations where the \"check password script\" is used with %u and the samba-dcerpcd service is started as a system service.",
-      "severity": "CRITICAL",
-      "cvss": 9.0,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
-      "published": "2026-05-28T09:16:47.643",
-      "lastModified": "2026-08-21T13:18:09.633",
-      "references": [
-        "https://access.redhat.com/errata/RHSA-2026:22644",
-        "https://access.redhat.com/errata/RHSA-2026:22963",
-        "https://access.redhat.com/errata/RHSA-2026:25049",
-        "https://access.redhat.com/errata/RHSA-2026:25979",
-        "https://access.redhat.com/errata/RHSA-2026:28053"
+        "https://github.com/Xernary/CVE-2026-82539",
+        "https://vuldb.com/cve/CVE-2026-82539",
+        "https://vuldb.com/submit/888696",
+        "https://vuldb.com/vuln/397055",
+        "https://vuldb.com/vuln/397055/cti"
       ],
       "source": "nvd"
     },
@@ -4693,20 +3791,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-10090",
-      "description": "A flaw was found in the Application Subscription controller (multicluster-operators-subscription) of Red Hat Advanced Cluster Management for Kubernetes (ACM). A user with namespace-scoped \"edit\" privileges in an ACM hub namespace can create a Channel resource pointing to a Helm repository they control and a Subscription resource referencing it. The app-subscription controller fetches and applies the Helm chart contents with its own elevated authority, without verifying whether the subscription creator holds the \"open-cluster-management:subscription-admin\" role and without restricting applied resources to the subscription namespace. This allows the attacker to include cluster-scoped resources in the Helm chart, such as a ClusterRoleBinding granting the attacker's ServiceAccount the \"cluster-admin\" ClusterRole. Successful exploitation results in full cluster-admin privilege escalation. This contradicts the ACM documentation which states that non-subscription-admin users should have resources deployed into the subscription namespace only.",
-      "severity": "CRITICAL",
-      "cvss": 9.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:L",
-      "published": "2026-08-05T09:18:14.667",
-      "lastModified": "2026-08-12T22:17:13.773",
-      "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-10090",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2483292"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-18193",
       "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote attacker to bypass security restrictions due to improper validation of user-controlled addresses.",
       "severity": "HIGH",
@@ -4716,38 +3800,6 @@
       "lastModified": "2026-08-19T16:37:03.060",
       "references": [
         "https://www.ibm.com/support/pages/node/7283283"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-10062",
-      "description": "A vulnerability was determined in TRENDnet TEW-432BRP 3.10B20. Affected by this vulnerability is the function formSetRoute of the file /goform/formSetRoute. This manipulation of the argument ip/mask/gateway causes stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vulnerability only affects products that are no longer supported by the maintainer.",
-      "severity": "HIGH",
-      "cvss": 8.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T15:16:22.073",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_3/3.md",
-        "https://vuldb.com/submit/814758",
-        "https://vuldb.com/vuln/367148",
-        "https://vuldb.com/vuln/367148/cti"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-10063",
-      "description": "A vulnerability was identified in TRENDnet TEW-432BRP 3.10B20. Affected by this issue is the function formWPS of the file /goform/formWPS. Such manipulation of the argument peerPin leads to stack-based buffer overflow. The attack may be performed from remote. The exploit is publicly available and might be used. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vulnerability only affects products that are no longer supported by the maintainer.",
-      "severity": "HIGH",
-      "cvss": 8.8,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-29T15:16:22.240",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_4/4.md",
-        "https://vuldb.com/submit/814759",
-        "https://vuldb.com/vuln/367149",
-        "https://vuldb.com/vuln/367149/cti"
       ],
       "source": "nvd"
     },
@@ -4900,6 +3952,32 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-17436",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to a heap-based buffer overflow.",
+      "severity": "HIGH",
+      "cvss": 8.8,
+      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-20T22:17:16.263",
+      "lastModified": "2026-08-25T13:47:21.000",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-18832",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to a heap-based buffer overflow.",
+      "severity": "HIGH",
+      "cvss": 8.8,
+      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-20T22:17:17.267",
+      "lastModified": "2026-08-25T13:49:57.107",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-45674",
       "description": "Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, Netty's DnsResolveContext fails to validate the origin (bailiwick) of CNAME records in DNS responses. Versions 4.1.135.Final and 4.2.15.Final patch the issue.",
       "severity": "HIGH",
@@ -5016,6 +4094,23 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-58192",
+      "description": "Appium is a cross-platform automation framework for all kinds of apps, built on top of the W3C WebDriver protocol. Prior to 1.1.6, the Appium storage plugin exposes POST /storage/delete, whose handler passes the user-supplied name value directly into path.join(storageRoot, name) and fs.rimraf() without path sanitization, allowing an unauthenticated remote client to escape the storage root with ../ sequences and recursively delete arbitrary writable files or directories. This issue is fixed in version 1.1.6.",
+      "severity": "HIGH",
+      "cvss": 8.6,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+      "published": "2026-07-08T21:16:52.150",
+      "lastModified": "2026-08-26T16:34:38.200",
+      "references": [
+        "https://github.com/appium/appium/commit/5fee01752f2782e96fbe64fd13520b433d4a7535",
+        "https://github.com/appium/appium/pull/22362",
+        "https://github.com/appium/appium/releases/tag/%40appium/storage-plugin%401.1.6",
+        "https://github.com/appium/appium/security/advisories/GHSA-jwgx-mp9m-jwcr",
+        "https://github.com/appium/appium/security/advisories/GHSA-jwgx-mp9m-jwcr"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-16815",
       "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote attacker to cause a denial of service and potentially obtain sensitive information due to a stack-based buffer overflow.",
       "severity": "HIGH",
@@ -5126,19 +4221,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-44966",
-      "description": "Velocity.js is a JavaScript implementation of the Apache Velocity template engine. In 2.1.5 and earlier, a prototype pollution vulnerability was discovered in velocityjs. This issue occurs during the processing of #set directives in Velocity templates. If an application renders a template controlled by an attacker, it is possible to modify Object.prototype, potentially leading to Denial of Service (DoS) or Remote Code Execution (RCE) depending on the server environment.",
-      "severity": "HIGH",
-      "cvss": 8.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L",
-      "published": "2026-05-26T22:16:43.293",
-      "lastModified": "2026-07-24T12:10:00.210",
-      "references": [
-        "https://github.com/shepherdwind/velocity.js/security/advisories/GHSA-j658-c2gf-x6pq"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-50023",
       "description": "yt-dlp is a command-line audio/video downloader. Prior to 2026.06.09, a vulnerability exists in yt-dlp that allows a remote attacker to write arbitrary OS-shortcut files (such as .desktop, .url, .webloc) to the user's filesystem, bypassing the remediation for CVE-2024-38519. The allowlist explicitly included the unsafe extensions .desktop, .url, and .webloc so that the functionality of the --write-link option (and its variants) could be preserved. These allowlist inclusions can be exploited by an attacker to write malicious OS-shortcut files in the context of a media or subtitles download. This vulnerability is fixed in 2026.06.09.",
       "severity": "HIGH",
@@ -5218,6 +4300,19 @@
       "lastModified": "2026-08-19T16:41:36.250",
       "references": [
         "https://www.ibm.com/support/pages/node/7283292"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17006",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to a heap buffer overflow.",
+      "severity": "HIGH",
+      "cvss": 8.3,
+      "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "published": "2026-08-20T22:17:11.147",
+      "lastModified": "2026-08-27T17:17:19.473",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
       ],
       "source": "nvd"
     },
@@ -5335,59 +4430,15 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-8855",
-      "description": "IBM HTTP Server 8.5, and 9.0 is vulnerable to remote code execution and denial of service in configurations with TLS mutual authentication (client authentication).",
+      "id": "CVE-2026-18670",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to cause a denial of service and potentially disclose sensitive information due to an integer underflow.",
       "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T18:16:57.170",
-      "lastModified": "2026-07-23T11:10:00.120",
+      "cvss": 8.2,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+      "published": "2026-08-20T22:17:16.430",
+      "lastModified": "2026-08-25T13:47:48.727",
       "references": [
-        "https://www.ibm.com/support/pages/node/7274065"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-13392",
-      "description": "Improper check for unusual or exceptional conditions vulnerability in SSO in Synology DiskStation Manager (DSM) before 7.2.2-72806-5 and 7.3.1-86003-1 (7.2.1-69057 is not affected) allows remote attackers to bypass authentication with prior knowledge of the distinguished name (DN).",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-27T09:16:26.607",
-      "lastModified": "2026-06-17T08:34:02.527",
-      "references": [
-        "https://www.synology.com/en-global/security/advisory/Synology_SA_25_14"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-44825",
-      "description": "Hardcoded credentials in the Basic Authentication setup tool (bin/solr auth enable) in Apache Solr versions 9.4.0 through 9.10.1 and 10.0.0 allows a remote attacker to gain full administrative access to the cluster via publicly known default credentials installed silently alongside the user-specified account. \n\nAs an immediate workaround without upgrading, delete the template users (superadmin, admin, search, index) from security.json\u00a0or change their passwords.\nThe future, not yet released, versions 9.11.0 and 10.1.0 will not be vulnerable, and it will be enough to upgrade to solve the issue.\n\nNot affected:\n  *  Clusters where bin/solr auth enable was not used to bootstrap BasicAuth\n  *  Clusters where template users have been assigned strong passwords after bootstrap",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-06-01T09:16:19.267",
-      "lastModified": "2026-07-22T07:10:00.107",
-      "references": [
-        "https://lists.apache.org/thread/5xg6xr99glocp3zsg9ht2zlbwlrst7ch",
-        "http://www.openwall.com/lists/oss-security/2026/05/29/6"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-49121",
-      "description": "AI Tensor Engine for ROCm (AITER) through 0.1.14 contains an unauthenticated remote code execution vulnerability in the MessageQueue.recv() function within shm_broadcast.py that allows unauthenticated remote attackers to execute arbitrary code by sending a malicious pickle payload to a ZMQ SUB socket with no authentication, HMAC, or format validation. Attackers who can reach the writer XPUB endpoint on the cluster network or supply a forged Handle with an attacker-controlled remote_subscribe_addr can deliver a crafted pickle payload that executes arbitrary code simultaneously as the inference worker process on every remote reader worker.",
-      "severity": "HIGH",
-      "cvss": 8.1,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-06-01T19:16:54.180",
-      "lastModified": "2026-07-22T08:10:00.117",
-      "references": [
-        "https://github.com/ROCm/aiter/issues/3076",
-        "https://github.com/ROCm/aiter/pull/3170",
-        "https://www.vulncheck.com/advisories/ai-tensor-engine-for-rocm-aiter-unauthenticated-rce-via-messagequeue-recv-pickle-deserialization",
-        "https://access.redhat.com/security/cve/CVE-2026-49121",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2483882"
+        "https://www.ibm.com/support/pages/node/7283858"
       ],
       "source": "nvd"
     },
@@ -5764,6 +4815,73 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-76886",
+      "description": "C12.22 protocol dissector crash in 4.6.0 to 4.6.7 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-19T23:16:19.553",
+      "lastModified": "2026-08-28T20:43:03.730",
+      "references": [
+        "https://gitlab.com/wireshark/wireshark/-/work_items/21439",
+        "https://www.wireshark.org/security/wnpa-sec-2026-75.html",
+        "https://gitlab.com/wireshark/wireshark/-/work_items/21446"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17000",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to improper authentication.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-20T22:17:10.813",
+      "lastModified": "2026-08-25T13:58:45.030",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17060",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to obtain sensitive information and cause a denial of service due to a kernel heap over-read.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "published": "2026-08-20T22:17:12.023",
+      "lastModified": "2026-08-25T16:16:49.203",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17138",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to a stack-based buffer overflow.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-20T22:17:13.187",
+      "lastModified": "2026-08-25T13:51:00.070",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-19437",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to a buffer overflow.",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "published": "2026-08-20T22:17:17.940",
+      "lastModified": "2026-08-27T17:17:36.763",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-35482",
       "description": "alf.io is an open source ticket reservation system for conferences, trade shows, workshops, and meetups. Prior to version 2.0-M5-2606, a sandbox escape vulnerability in the alf.io extension script engine allows an authenticated administrator to execute arbitrary operating system commands on the server. The extension system is intended to execute restricted JavaScript in a sandboxed Rhino environment; however, a combination of an unguarded injected Java object (`returnClass`) and an incomplete AST blocklist allows the sandbox to be fully escaped using Java reflection without triggering any validation errors. Version 2.0-M5-2606 patches the issue.",
       "severity": "HIGH",
@@ -5792,6 +4910,19 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-18716",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote authenticated attacker to obtain sensitive information or cause a denial of service due to an out-of-bounds read.",
+      "severity": "HIGH",
+      "cvss": 7.9,
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:H",
+      "published": "2026-08-20T22:17:16.600",
+      "lastModified": "2026-08-25T13:48:02.830",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-58459",
       "description": "gpsd through release-3.27.5, fixed at commit 4c06658, contains a command injection vulnerability in gpsprof that allows attackers who control the GPS device subtype value to execute arbitrary shell commands by embedding backtick payloads in the gnuplot plot title without proper escaping. The subtype field sourced from a DEVICES JSON log entry or NMEA PGRMT sentence is written into a generated gnuplot program via a set title statement with only double-quote characters escaped, enabling arbitrary shell command execution as the user running gnuplot when the victim renders the generated plot through the gpsprof and gnuplot workflow.",
       "severity": "HIGH",
@@ -5805,19 +4936,6 @@
         "https://github.com/ntpsec/gpsd/commit/5581ba196d826a984fbfaf792b7d58535f9911ce",
         "https://gitlab.com/gpsd/gpsd/-/work_items/404#note_3534119267",
         "https://www.vulncheck.com/advisories/gpsd-gpsprof-command-injection-via-gnuplot-plot-title-subtype-field"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-8856",
-      "description": "IBM HTTP Server 8.5, and 9.0 is vulnerable to denial of service in configurations where an attacker has write access to parts of the server configuration.",
-      "severity": "HIGH",
-      "cvss": 7.7,
-      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-      "published": "2026-05-26T18:16:57.300",
-      "lastModified": "2026-07-23T11:10:00.120",
-      "references": [
-        "https://www.ibm.com/support/pages/node/7274065"
       ],
       "source": "nvd"
     },
@@ -5950,6 +5068,45 @@
       "source": "nvd"
     },
     {
+      "id": "CVE-2026-17003",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to compromise the confidentiality and integrity of the system due to an out-of-bounds write.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L",
+      "published": "2026-08-20T22:17:10.983",
+      "lastModified": "2026-08-25T13:58:13.843",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17024",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to execute arbitrary code due to improper certificate validation.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:H",
+      "published": "2026-08-20T22:17:11.677",
+      "lastModified": "2026-08-25T13:53:27.423",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
+      "id": "CVE-2026-17423",
+      "description": "IBM AIX 7.2, and 7.3 and IBM PowerVM VIOS 4.1 could allow a remote attacker to obtain sensitive information and cause a denial of service due to an out-of-bounds read.",
+      "severity": "HIGH",
+      "cvss": 7.7,
+      "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "published": "2026-08-20T22:17:15.767",
+      "lastModified": "2026-08-25T13:46:51.917",
+      "references": [
+        "https://www.ibm.com/support/pages/node/7283858"
+      ],
+      "source": "nvd"
+    },
+    {
       "id": "CVE-2026-13449",
       "description": "IBM Business Automation Manager Open Editions 9.0.0 through 9.4.2 is vulnerable to an XML external entity injection (XXE) attack when processing XML data. A remote attacker could exploit this vulnerability to expose sensitive information or consume memory resources.",
       "severity": "HIGH",
@@ -5989,21 +5146,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-24212",
-      "description": "NVIDIA Isaac Launchable for Linux contains a vulnerability where sensitive information is transmitted in clear text. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, information disclosure, and data tampering.",
-      "severity": "HIGH",
-      "cvss": 7.5,
-      "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "published": "2026-05-26T17:16:30.050",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-24212",
-        "https://nvidia.custhelp.com/app/answers/detail/a_id/5830",
-        "https://www.cve.org/CVERecord?id=CVE-2026-24212"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-46749",
       "description": "A vulnerability has been identified in SINEC INS (All versions < V1.0 SP2 Update 6). The affected application uses a password hashing implementation with a static, hardcoded salt shared across all users and installations, and is configured with an insufficient number of iterations. This could allow an attacker to efficiently recover user passwords using brute-force or precomputed attacks, potentially resulting in unauthorized access.",
       "severity": "HIGH",
@@ -6037,7 +5179,7 @@
       "cvss": 7.5,
       "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "published": "2026-06-30T13:19:17.840",
-      "lastModified": "2026-08-11T10:17:12.873",
+      "lastModified": "2026-08-25T10:18:12.017",
       "references": [
         "https://access.redhat.com/errata/RHSA-2026:42063",
         "https://access.redhat.com/errata/RHSA-2026:42089",
@@ -6189,19 +5331,6 @@
       "lastModified": "2026-08-03T19:34:28.113",
       "references": [
         "https://lists.apache.org/thread/5prl9glcm9g2swnq9hqxvnokylm1gr6d"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-48501",
-      "description": "GitHub CLI (gh) is GitHub\u2019s official command line tool. Prior to 2.93.0, GitHub CLI incorrectly includes authorization header in API requests to TUF repository mirrors via gh attestation, gh release verify, and gh release verify-asset commands. The CLI uses a shared HTTP client with an authentication layer that automatically attaches tokens to outgoing requests. This layer lacks accurate host detection and can incorrectly attribute the target host, providing it with a token it should never receive. Specifically, the host normalization logic collapses any *.github.com subdomain to github.com, so a request to tuf-repo.github.com (a GitHub Pages site, not a GitHub API endpoint) is treated as a request to github.com and receives the user's github.com token. For hosts that don't match github.com or a known GHES instance at all, the resolver falls back to GH_ENTERPRISE_TOKEN if set. The gh attestation, gh release verify and gh release verify-asset commands fetch data from several external hosts as part of their normal operation (TUF metadata from tuf-repo.github.com and tuf-repo-cdn.sigstore.dev, artifact bundles from Azure Blob Storage). Because these requests go through the same authenticated HTTP client, the token is sent to all of them. This vulnerability is fixed in 2.93.0.",
-      "severity": "HIGH",
-      "cvss": 7.4,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
-      "published": "2026-05-29T16:16:31.497",
-      "lastModified": "2026-07-21T15:10:00.103",
-      "references": [
-        "https://github.com/cli/cli/security/advisories/GHSA-8xvp-7hj6-mcj9"
       ],
       "source": "nvd"
     },
@@ -6690,55 +5819,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-10060",
-      "description": "A vulnerability has been found in TRENDnet TEW-432BRP 3.10B20. This impacts the function formSetRoute of the file /goform/formSetRoute. The manipulation of the argument ip/mask/gateway leads to command injection. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vulnerability only affects products that are no longer supported by the maintainer.",
-      "severity": "MEDIUM",
-      "cvss": 6.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-05-29T14:16:25.340",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_1/1.md",
-        "https://vuldb.com/submit/814756",
-        "https://vuldb.com/vuln/367146",
-        "https://vuldb.com/vuln/367146/cti",
-        "https://vuldb.com/submit/814756"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-10061",
-      "description": "A vulnerability was found in TRENDnet TEW-432BRP 3.10B20. Affected is the function formWPS of the file /goform/formWPS. The manipulation of the argument peerPin results in command injection. The attack can be executed remotely. The exploit has been made public and could be used. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vulnerability only affects products that are no longer supported by the maintainer.",
-      "severity": "MEDIUM",
-      "cvss": 6.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-05-29T14:16:25.563",
-      "lastModified": "2026-07-21T12:10:00.090",
-      "references": [
-        "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_2/2.md",
-        "https://vuldb.com/submit/814757",
-        "https://vuldb.com/vuln/367147",
-        "https://vuldb.com/vuln/367147/cti"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2026-10064",
-      "description": "A security flaw has been discovered in TRENDnet TEW-432BRP 3.10B20. This affects the function formSetPortTr of the file /goform/formSetPortTr. Performing a manipulation of the argument special_name results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vulnerability only affects products that are no longer supported by the maintainer.",
-      "severity": "MEDIUM",
-      "cvss": 6.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
-      "published": "2026-05-29T16:16:23.020",
-      "lastModified": "2026-07-21T15:10:00.103",
-      "references": [
-        "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_5/5.md",
-        "https://vuldb.com/submit/814760",
-        "https://vuldb.com/vuln/367150",
-        "https://vuldb.com/vuln/367150/cti"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-9260",
       "description": "Use of hard-coded cryptographic keys in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
       "severity": "MEDIUM",
@@ -6764,19 +5844,6 @@
       "lastModified": "2026-07-02T18:26:29.023",
       "references": [
         "https://www.ibm.com/support/pages/node/7278594"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2024-40684",
-      "description": "IBM Operations Analytics - Log Analysis 1.3.5.0, 1.3.5.1, 1.3.5.2, 1.3.5.3, 1.3.6.0, 1.3.6.1, 1.3.7.0, 1.3.7.1, 1.3.7.2, and 1.3.8.0, 1.3.8.1, 1.3.8.2, 1.3.8.3, 1.3.8.4 IBM SmartCloud Analytics - Log Analysis does not require that users should have strong passwords by default, which makes it easier for attackers to compromise user accounts.",
-      "severity": "MEDIUM",
-      "cvss": 5.9,
-      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-      "published": "2026-05-27T14:16:40.757",
-      "lastModified": "2026-06-17T07:46:21.280",
-      "references": [
-        "https://www.ibm.com/support/pages/node/7268536"
       ],
       "source": "nvd"
     },
@@ -6851,21 +5918,6 @@
       "source": "nvd"
     },
     {
-      "id": "CVE-2026-44723",
-      "description": "Vowpal Wabbit is a machine learning system. The workflow .github/workflows/python_checks.yml embeds ${{ github.event.pull_request.title }} directly inside double-quoted bash strings in four separate steps across four jobs, each passing it as a CLI argument to the Python test script run_tests_model_gen_and_load.py. The shell interprets the expanded string before invoking Python, allowing an attacker to break out of the quotes and execute arbitrary commands on the runner. The pull_request trigger fires on PRs targeting any branch (branches: ['*']), with no additional access gate. This vulnerability is fixed by the 998e390e80a7e8192d7849b7784bc113dbd190ad commit.",
-      "severity": "MEDIUM",
-      "cvss": 5.0,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N",
-      "published": "2026-05-26T17:16:46.680",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://github.com/VowpalWabbit/vowpal_wabbit/commit/998e390e80a7e8192d7849b7784bc113dbd190ad",
-        "https://github.com/VowpalWabbit/vowpal_wabbit/security/advisories/GHSA-cg2g-xgg7-3xxq",
-        "https://github.com/VowpalWabbit/vowpal_wabbit/security/advisories/GHSA-cg2g-xgg7-3xxq"
-      ],
-      "source": "nvd"
-    },
-    {
       "id": "CVE-2026-26145",
       "description": "Improper access control in Azure Synapse allows an authorized attacker to elevate privileges over a network.",
       "severity": "MEDIUM",
@@ -6875,19 +5927,6 @@
       "lastModified": "2026-07-07T14:27:00.440",
       "references": [
         "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26145"
-      ],
-      "source": "nvd"
-    },
-    {
-      "id": "CVE-2025-36220",
-      "description": "IBM Cloud Pak for Data System - Cyclops 11.3.0.2 through  Interim Fix 002 IBM Cloud Pak for Data System is vulnerable to SQL injection. A remote attacker could send specially crafted SQL statements, which could allow the attacker to view, add, modify, or delete information in the back-end database.",
-      "severity": "MEDIUM",
-      "cvss": 4.3,
-      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
-      "published": "2026-05-26T17:16:29.143",
-      "lastModified": "2026-07-24T11:10:00.170",
-      "references": [
-        "https://www.ibm.com/support/pages/node/7273923"
       ],
       "source": "nvd"
     },

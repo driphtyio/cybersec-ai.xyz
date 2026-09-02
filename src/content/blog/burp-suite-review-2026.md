@@ -80,3 +80,12 @@ For professional penetration testers and frequent security assessors, yes. The f
 
 ### What Is Burp Suite DAST?
 Burp Suite DAST is a separate enterprise product for automated web application scanning. It offers unlimited users, flexible deployment options (self-hosted or cloud), and is designed for integrating security into DevOps pipelines, unlike the single-user, manual-test focus of Professional [Source](https://portswigger.net/burp/dast).
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

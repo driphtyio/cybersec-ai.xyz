@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-08-27",
+  "last_updated": "2026-09-02",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1856,6 +1856,60 @@
       },
       "notes": "Deep-research arena: AI-generated phishing + AiTM/device-code MFA bypass 2026 threat landscape. Research subagent ran on deepseek-v4-flash (delegation config pin; gpt-5.6-luna not routable in cron) \u2014 14 searches, 10 primary sources extracted, all 12 source URLs curl-verified 200, brief saved to research/2026-08-27-ai-phishing-aitm-research-brief.md. Plan by REAL mimo-v2.5-pro via arena-direct-runner importlib wrapper (timeout 540s; direct xiaomi API call \u2014 5,822 tokens out). Builders via arena-direct-runner (direct provider APIs): deepseek 8.42 / mimo 8.55 / poolside 8.37, all PASS, no re-do loop needed. Judge qwen3.7-flash multipass 3x with verified-fact preamble (stripped from published post); no 429 fallbacks needed this run. QA delegate ran on deepseek-v4-flash (delegation pin; glm-5.3-flash not routable in cron) \u2014 trimmed 7 over-length H2 answers to 40-60 words, fixed desc length 166->157 chars, quoted pubDate, removed code-fence wrapper, added FAQ intro; all 11 external URLs re-curl-verified HTTP 200 by parent (2026-08-27). 5 internal links (/frameworks/, /cves/, /scan/, securing-the-ai-stack, mcp-security). Hero image: gen-image-verified.sh Lumenfall OK (R2 webp, HTTP 200, 298KB). No cross-posting; original content for cybersec-ai.xyz.",
       "retries": 0
+    },
+    {
+      "match_id": "arena-burp-suite-review-2026",
+      "date": "2026-09-02",
+      "slug": "burp-suite-review-2026",
+      "topic": "Burp Suite Review 2026: Pro vs Community Edition (A/B/C/D tool review, Wed 10am slot)",
+      "category": "tool-review",
+      "type": "standard",
+      "results": [
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "family": "deepseek",
+          "score": 8.13,
+          "rank": 4
+        },
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "family": "mimo",
+          "score": 8.98,
+          "rank": 1
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "family": "poolside",
+          "score": 8.95,
+          "rank": 2
+        },
+        {
+          "model": "glm-5.3-flash",
+          "provider": "zai",
+          "family": "glm",
+          "score": 8.57,
+          "rank": 3
+        }
+      ],
+      "winner": "mimo-v2.5",
+      "winner_score": 8.98,
+      "threshold_met": true,
+      "plan_model": "mimo-v2.5-pro",
+      "judge_scores": {
+        "qwen3.7-flash": {
+          "deepseek-v4-flash": 8.13,
+          "mimo-v2.5": 8.98,
+          "poolside/laguna-s-2.1": 8.95,
+          "glm-5.3-flash": 8.57,
+          "passes": 3,
+          "note": "multipass mean of 3 passes (qwen3.7-flash via OpenRouter); ALL 4 PASS >= 8.0, no re-do loop. Verified-fact preamble prepended to judge copies (2026 PortSwigger facts: $499 Pro price, Burp AT public beta, DAST rename); stripped from published post."
+        }
+      },
+      "notes": "Tool review: Burp Suite (PortSwigger) 2026, Pro vs Community comparison. Research inline by parent deepseek-v4-flash (delegation pin: gpt-5.6-luna not routable in cron) with LIVE page fetches of official PortSwigger pages. Plan by REAL mimo-v2.5-pro via arena-direct-runner importlib wrapper (direct xiaomi API, 2,613 tokens out, timeout 540s). Builders via arena-direct-runner (direct provider APIs): deepseek 8.13 / mimo 8.98 WIN / poolside 8.95 / glm-5.3-flash 8.57, all PASS. Judge qwen3.7-flash multipass 3x with verified-fact preamble; no 429 fallbacks. QA inline (parent deepseek; glm not routable in cron): desc 133->157 chars, removed slop (unlock x2), extended 4 under-length H2 answers to 40-60 words, added 3 internal links (CVE hub, Nessus + Nuclei sibling reviews); all 8 external URLs curl-verified 200; STALE-URL TRAP avoided (/burp/community 404s; live page = /burp/communitydownload). Hero image: gen-image-verified.sh Lumenfall OK (R2 webp, HTTP 200, 1.1MB). No cross-posting; original content for cybersec-ai.xyz.",
+      "retries": 0
     }
   ],
   "leaderboard": [
@@ -1863,8 +1917,8 @@
       "model": "mimo-v2.5",
       "provider": "xiaomi",
       "family": "mimo",
-      "matches": 28,
-      "wins": 16,
+      "matches": 29,
+      "wins": 17,
       "losses": 12,
       "avgScore": 8.5,
       "bestScore": 9.7,
@@ -1874,9 +1928,9 @@
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
       "family": "deepseek",
-      "matches": 30,
+      "matches": 31,
       "wins": 9,
-      "losses": 21,
+      "losses": 22,
       "avgScore": 8.2,
       "bestScore": 9.3,
       "rank": 2
@@ -1885,9 +1939,9 @@
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "family": "poolside",
-      "matches": 20,
+      "matches": 21,
       "wins": 4,
-      "losses": 16,
+      "losses": 17,
       "avgScore": 7.8,
       "bestScore": 9.1,
       "rank": 3
@@ -1902,6 +1956,17 @@
       "avgScore": 7.6,
       "bestScore": 8.3,
       "rank": 4
+    },
+    {
+      "model": "glm-5.3-flash",
+      "provider": "zai",
+      "family": "glm",
+      "matches": 1,
+      "wins": 0,
+      "losses": 1,
+      "avgScore": 8.6,
+      "bestScore": 8.6,
+      "rank": 5
     }
   ],
   "model_pool": [
@@ -1951,27 +2016,34 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-08-27",
+    "last_updated": "2026-09-02",
     "model_stats": {
       "deepseek-v4-flash": {
-        "total_calls": 3,
-        "successes": 3,
+        "total_calls": 4,
+        "successes": 4,
         "availability": 100.0,
-        "last_match": "2026-08-27",
+        "last_match": "2026-09-02",
         "last_result": "loss"
       },
       "mimo-v2.5": {
-        "total_calls": 3,
-        "successes": 3,
+        "total_calls": 4,
+        "successes": 4,
         "availability": 100.0,
-        "last_match": "2026-08-27",
+        "last_match": "2026-09-02",
         "last_result": "win"
       },
       "poolside/laguna-s-2.1": {
-        "total_calls": 3,
-        "successes": 3,
+        "total_calls": 4,
+        "successes": 4,
         "availability": 100.0,
-        "last_match": "2026-08-27",
+        "last_match": "2026-09-02",
+        "last_result": "loss"
+      },
+      "glm-5.3-flash": {
+        "total_calls": 1,
+        "successes": 1,
+        "availability": 100.0,
+        "last_match": "2026-09-02",
         "last_result": "loss"
       }
     }

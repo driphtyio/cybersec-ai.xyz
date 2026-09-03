@@ -178,16 +178,16 @@ const metrics = parseVector(cve.vector);
   <body>
     <Header />
     <main class="cv-detail">
-      <div class="cv-hero" style="border-top-color: {sevColor(cve.severity)}">
+      <div class="cv-hero" style={{ 'border-top-color': sevColor(cve.severity) }}>
         <div class="cv-hero-gauge">
-          <div class="cv-hero-score" style="color: {sevColor(cve.severity)}">{emoji(cve.severity)} {cve.cvss?.toFixed(1)}</div>
-          <div class="cv-hero-sev" style="color: {sevColor(cve.severity)}">{cve.severity || 'Unknown'}</div>
+          <div class="cv-hero-score" style={{ color: sevColor(cve.severity) }}>{emoji(cve.severity)} {cve.cvss?.toFixed(1)}</div>
+          <div class="cv-hero-sev" style={{ color: sevColor(cve.severity) }}>{cve.severity || 'Unknown'}</div>
         </div>
         <div class="cv-hero-meta">
           <div class="cv-hero-id">{cve.id}</div>
           <h1 class="cv-hero-title">{cve.id}</h1>
           <div class="cv-hero-row">
-            <span class="badge badge-sev" style="background: {sevColor(cve.severity)}">{cve.severity}</span>
+            <span class="badge badge-sev" style={{ background: sevColor(cve.severity) }}>{cve.severity}</span>
             <span class="badge badge-source">NVD</span>
             <span><strong>Published:</strong> {date}</span>
             {modDate && <span><strong>Modified:</strong> {modDate}</span>}
@@ -211,7 +211,7 @@ const metrics = parseVector(cve.vector);
             <tbody>
               {metrics.map((m: any) => <tr>
                 <td class="metric">{m.name}</td>
-                <td class="value" style={`color: ${m.colorClass === 'val-high' ? '#ef4444' : m.colorClass === 'val-medium' ? '#eab308' : '#22c55e'}`}>{m.value}</td>
+                <td class="value" style={{ color: m.colorClass === 'val-high' ? '#ef4444' : m.colorClass === 'val-medium' ? '#eab308' : '#22c55e' }}>{m.value}</td>
                 <td class="meaning">{m.meaning}</td>
               </tr>)}
             </tbody>

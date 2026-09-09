@@ -68,3 +68,14 @@ ZAP publishes official Docker images with weekly release tags (latest: `w2026-09
 ### Can ZAP scan APIs and MCP servers, not just web pages?
 
 Yes. ZAP imports OpenAPI, GraphQL, and SOAP definitions for API scanning. The MCP add-on (launched May 2026) performs the full Model Context Protocol handshake, enumerates every tool, resource, and prompt, then runs passive scanning, active scanning, and fuzzing against the JSON-RPC traffic. The LLM Support add-on can also drive OpenAPI import via an LLM.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[Hermes Tutorials](https://hermes-tutorials.dev/)** — Hermes Agent setup, configuration, and advanced workflows
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

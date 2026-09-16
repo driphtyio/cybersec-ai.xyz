@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-09-09",
+  "last_updated": "2026-09-16",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -1964,6 +1964,96 @@
       },
       "notes": "Tool review: OWASP ZAP (ZAP by Checkmarx) free DAST scanner, 2026 state. Research inline by parent deepseek-v4-flash (delegation pin: gpt-5.6-luna not routable in cron) with LIVE fetches of 10+ official zaproxy.org pages + GitHub releases atom + ownership/docs/download pages (Sept 9 2026). Plan by REAL mimo-v2.5-pro via arena-direct-runner importlib wrapper (direct xiaomi API, 4,182 tokens out, timeout 540s). Builders via arena-direct-runner (direct provider APIs): deepseek 8.12 / mimo 8.58 / poolside 7.92 / glm-5.3-flash 8.62 WIN; winner >= 8.0, no re-do loop needed. Judge qwen3.7-flash multipass 3x with verified-fact preamble; no 429 fallbacks needed. QA inline (parent deepseek; glm-5.3-flash not routable as QA in cron): all 15 external URLs curl-verified HTTP 200 (404 trap avoided: /docs/desktop/addons/mcp/ dead \u2014 only live mcp-integration/llm-support pages cited), desc 164->156 chars, meta/title char-count asserts passed, no slop words, [N] refs absent, 5 internal links (/blog/2026-08-20-mcp-security/, /scan/, /blog/burp-suite-review-2026/, /frameworks/, /blog/nessus-review-2026/), How We Tested + FAQ + H2 answers 40-60 words verified. Hero image: gen-image-verified.sh Lumenfall OK (R2 webp, HTTP 200). No cross-posting; original content for cybersec-ai.xyz.",
       "retries": 0
+    },
+    {
+      "match_id": "arena-falco-review-2026",
+      "date": "2026-09-16",
+      "slug": "falco-review-2026",
+      "topic": "Falco Review 2026: Best Kubernetes Runtime Security? (A/B/C/D tool review, Wed 10am slot). Angle: Falco is the CNCF runtime security project - Apache-2.0, 9,384 GitHub stars, created and open sourced by Sysdig in 2016, CNCF Sandbox 2018, Incubator April 2020, GRADUATED 2024-02-29; maintainers from Amazon, Apple, IBM, Red Hat. Latest stable 0.44.1 (2026-06-11); 0.45.0-rc3 (2026-09-15) in flight; falco-rules 5.2.0 (2026-09-07) ships 25 stable + 31 incubating + 39 sandbox rules; falcosidekick 2.35.0; falco-operator v0.4.1 (the Operator is now the recommended Kubernetes deployment, Helm chart still supported and deploys a DaemonSet); modern eBPF probe is the default driver (embedded, CO-RE, ~5.8+ kernels, needs BPF ring buffer + BTF) and the kernel module the full-privilege alternative; modern eBPF least privilege is CAP_SYS_RESOURCE + CAP_SYS_PTRACE + CAP_SYS_ADMIN, or CAP_SYS_BPF + CAP_SYS_PERFMON on 5.8+. Long-tail keyword: 'best Kubernetes runtime security tool'. Honest E-E-A-T: desk research only, no hands-on testing - all 17 unique external URLs re-verified HTTP 200 at QA (2026-09-16). Slug falco-review-2026; title 52 chars; meta description 150 chars with no digits.",
+      "category": "tool-review",
+      "type": "standard",
+      "winner": "deepseek-v4-flash",
+      "results": [
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "family": "deepseek",
+          "score": 9.62,
+          "rank": 1,
+          "judge_passes": [
+            9.3,
+            9.55,
+            10.0
+          ],
+          "judge_mean": 9.62,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "family": "mimo",
+          "score": 8.77,
+          "rank": 2,
+          "judge_passes": [],
+          "judge_mean": 8.77,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "family": "poolside",
+          "score": 6.95,
+          "rank": 3,
+          "judge_passes": [
+            6.2,
+            7.3,
+            7.35
+          ],
+          "judge_mean": 6.95,
+          "threshold_met": false,
+          "status": "success",
+          "note": "gate fail: sourcing 2-4/10 (too few inline source links in the draft)"
+        },
+        {
+          "model": "glm-5.3-flash",
+          "provider": "zai",
+          "family": "glm",
+          "score": null,
+          "rank": null,
+          "status": "failed",
+          "threshold_met": false,
+          "error": "Z.AI stall: zero output after ~6 min on the 16K-char builder brief (documented glm-5.3-flash large-context hang); killed manually, no draft produced"
+        }
+      ],
+      "judge": {
+        "model": "qwen3.7-flash",
+        "provider": "openrouter",
+        "passes": 3,
+        "multipass": true,
+        "preamble": "verified-fact context block (2026 versions/graduation) prepended to judge copies and stripped before publish",
+        "scores": {
+          "deepseek-v4-flash": [
+            9.3,
+            9.55,
+            10.0
+          ],
+          "mimo-v2.5": "mean 8.77 (3 passes)",
+          "poolside/laguna-s-2.1": [
+            6.2,
+            7.3,
+            7.35
+          ]
+        }
+      },
+      "plan_model": "mimo-v2.5-pro",
+      "research_model": "primary-source research by pipeline orchestrator (falco.org docs, GitHub releases API, cncf.io); no runner research used",
+      "qa_model": "mechanical QA by pipeline orchestrator (banned-word/Bearer ***/[N]/FAQ/E-E-A-T/desc-length/word-count greps + 17/17 external URLs fetched HTTP 200); zai glm-5.2 QA call not attempted after the same-day documented Z.AI stall",
+      "winner_judge_mean": 9.62,
+      "threshold_met": true,
+      "published": true,
+      "notes": "3 of 4 builders produced drafts (glm DNF, documented stall class). Winner deviated from brief on body length (1,723 words vs the 1,050-1,400 target) - accepted, above the floor and judge-scored 9.62. Meta description trimmed by QA from 162 to 150 chars."
     }
   ],
   "leaderboard": [
@@ -1971,9 +2061,9 @@
       "model": "mimo-v2.5",
       "provider": "xiaomi",
       "family": "mimo",
-      "matches": 30,
+      "matches": 31,
       "wins": 17,
-      "losses": 13,
+      "losses": 14,
       "avgScore": 8.5,
       "bestScore": 9.7,
       "rank": 1
@@ -1982,21 +2072,21 @@
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
       "family": "deepseek",
-      "matches": 32,
-      "wins": 9,
+      "matches": 33,
+      "wins": 10,
       "losses": 23,
       "avgScore": 8.2,
-      "bestScore": 9.3,
+      "bestScore": 9.6,
       "rank": 2
     },
     {
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "family": "poolside",
-      "matches": 22,
+      "matches": 23,
       "wins": 4,
-      "losses": 18,
-      "avgScore": 7.9,
+      "losses": 19,
+      "avgScore": 7.8,
       "bestScore": 9.1,
       "rank": 3
     },
@@ -2059,35 +2149,35 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-09-02",
+    "last_updated": "2026-09-16",
     "model_stats": {
       "deepseek-v4-flash": {
-        "total_calls": 4,
-        "successes": 4,
+        "total_calls": 5,
+        "successes": 5,
         "availability": 100.0,
-        "last_match": "2026-09-02",
-        "last_result": "loss"
-      },
-      "mimo-v2.5": {
-        "total_calls": 4,
-        "successes": 4,
-        "availability": 100.0,
-        "last_match": "2026-09-02",
+        "last_match": "2026-09-16",
         "last_result": "win"
       },
-      "poolside/laguna-s-2.1": {
-        "total_calls": 4,
-        "successes": 4,
+      "mimo-v2.5": {
+        "total_calls": 5,
+        "successes": 5,
         "availability": 100.0,
-        "last_match": "2026-09-02",
+        "last_match": "2026-09-16",
+        "last_result": "loss"
+      },
+      "poolside/laguna-s-2.1": {
+        "total_calls": 5,
+        "successes": 5,
+        "availability": 100.0,
+        "last_match": "2026-09-16",
         "last_result": "loss"
       },
       "glm-5.3-flash": {
-        "total_calls": 1,
+        "total_calls": 2,
         "successes": 1,
-        "availability": 100.0,
-        "last_match": "2026-09-02",
-        "last_result": "loss"
+        "availability": 50.0,
+        "last_match": "2026-09-16",
+        "last_result": "failed"
       }
     }
   },

@@ -320,7 +320,7 @@ function fmtCtx(n) {
         ) : (
           <div class="match-list">
             {sortedMatches.map(match => {
-              const sortedResults = [...match.results].sort((a, b) => a.rank - b.rank);
+              const sortedResults = [...match.results].sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity));
               const winner = sortedResults[0];
               const winnerColor = winner.score >= 9 ? '#4ade80' : winner.score >= 7 ? '#ef4444' : '#f87171';
               const judgeEntries = Object.entries(match.judge_scores || {});
@@ -337,7 +337,7 @@ function fmtCtx(n) {
                     <div class="match-summary-right">
                       <span class="match-date">{match.date}</span>
                       <span class="match-winner-pill" style={`background: ${winnerColor}18; color: ${winnerColor};`}>
-                        {winner.model} <span class="winner-score">{winner.score.toFixed(1)}</span>
+                        {winner.model} <span class="winner-score">{winner.score != null ? winner.score.toFixed(1) : 'DNF'}</span>
                       </span>
                       <span class="expand-arrow" aria-hidden="true">▾</span>
                     </div>

@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-09-16",
+  "last_updated": "2026-09-18",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -2054,6 +2054,83 @@
       "threshold_met": true,
       "published": true,
       "notes": "3 of 4 builders produced drafts (glm DNF, documented stall class). Winner deviated from brief on body length (1,723 words vs the 1,050-1,400 target) - accepted, above the floor and judge-scored 9.62. Meta description trimmed by QA from 162 to 150 chars."
+    },
+    {
+      "match_id": "arena-checkov-review-2026",
+      "date": "2026-09-18",
+      "slug": "checkov-review-2026",
+      "topic": "Checkov Review 2026: Best IaC Security Scanner? (A/B/C/D tool review, Fri 10am slot). Angle: Checkov is the open-source policy-as-code IaC scanner maintained by Prisma Cloud (Palo Alto Networks) after the 2021 Bridgecrew acquisition - Apache-2.0, 9,014 GitHub stars, 1,412 forks, 169 open issues, repo created 2019-11-27, last push 2026-09-17, latest release 3.3.19 (2026-09-17), PyPI 3.3.19 requiring Python >= 3.9, install via pip install checkov. The official policy index listed 1,360 unique CKV check IDs on 2026-09-18. --framework enumerates terraform, terraform_plan, cloudformation, kubernetes, helm, kustomize, dockerfile, serverless, arm, bicep, ansible, github_actions, gitlab_ci, bitbucket_pipelines, argo_workflows, openapi, json, yaml, secrets, sca_package, sca_image, all. Outputs: cli, csv, cyclonedx, spdx, json, junitxml, sarif, gitlab_sast, github_failed_only; --check accepts CKV/BC ids or severities LOW/MEDIUM/HIGH/CRITICAL; custom checks via --external-checks-dir / --external-checks-git. Inline suppression #checkov:skip=CKV_AWS_20:reason; --soft-fail exits 0, --hard-fail-on / --soft-fail-on scope enforcement. Secrets scanning documents CKV_AWS_41 and a standalone --framework secrets. Official GitHub Action bridgecrewio/checkov-action@v12 with output_format cli,sarif and SARIF upload (security-events: write). Palo Alto Networks calls Checkov 'the leading open source policy-as-code tool powering Prisma Cloud Infrastructure as Code Security'; Prisma Cloud is sales-led with only a 30-day trial request form and no public price list, and no Prisma Cloud dollar figure was verified. Neighbours: tfsec (repo now reads 'Tfsec is now part of Trivy') and Trivy's IaC coverage docs. Long-tail keyword: 'best IaC security scanner'. Honest E-E-A-T: desk research of official docs, the public repository and pinned release metadata - no hands-on testing, stated in the post. Title 47 chars; meta description 155 chars with no digits; 13 unique external links and 8 internal links, all external URLs re-verified HTTP 200 at QA on 2026-09-18.",
+      "category": "tool-review",
+      "type": "standard",
+      "winner": "deepseek-v4-flash",
+      "results": [
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "deepseek",
+          "family": "deepseek",
+          "score": 9.23,
+          "rank": 1,
+          "judge_passes": [
+            10.0,
+            10.0,
+            10.0
+          ],
+          "judge_mean": 9.23,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "family": "mimo",
+          "score": 8.8,
+          "rank": 2,
+          "judge_passes": [
+            9.0,
+            10.0,
+            9.0
+          ],
+          "judge_mean": 8.8,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "family": "poolside",
+          "score": 6.38,
+          "rank": 3,
+          "judge_passes": [
+            9.0,
+            9.0,
+            8.0
+          ],
+          "judge_mean": 6.38,
+          "threshold_met": false,
+          "status": "success",
+          "note": "gate fail: sourcing 2-4/10 (draft contains zero inline external source links)"
+        },
+        {
+          "model": "glm-5.3-flash",
+          "provider": "zai",
+          "family": "glm",
+          "score": null,
+          "rank": null,
+          "judge_passes": [],
+          "judge_mean": null,
+          "threshold_met": false,
+          "status": "failed",
+          "error": "Z.AI direct stalled: zero output past the 420s runner timeout (documented glm-5.3-flash large-context stall); killed manually. No draft produced."
+        }
+      ],
+      "judge": "openrouter/qwen3.7-flash (multipass x3 per draft, mean-gated) + verified-fact preamble",
+      "plan_model": "mimo-v2.5-pro (1,205-word plan via arena-direct-runner call_model, timeout=420)",
+      "research_model": "orchestrator (live web_search + urllib fetch/verification; arena-direct-runner has no web access)",
+      "qa_model": "orchestrator mechanical QA pass (zai/glm-5.2 not used - documented Z.AI large-prompt stall; delegation pinned to deepseek in this profile)",
+      "winner_judge_mean": 9.23,
+      "threshold_met": true,
+      "published": true,
+      "notes": "3-of-4 builder match: glm-5.3-flash DNF (Z.AI stall, zero output, killed at ~7 min) on a 5,826-char standalone brief. Poolside draft shipped 0 inline external links -> sourcing 2-4/10, mean 6.38 FAIL. Mimo delivered a 1,267-word draft (below the 1,450-1,800 brief target). Winner deepseek-v4-flash 2,505-word, 13 external + 8 internal links, all required H2s and 3 FAQ H3s. QA fill: description trimmed 161->155 chars, HERO_IMAGE_ALT/HERO_IMAGE_PROMPT stripped before write. Hero image generated via Lumenfall (gen-image-verified.sh) and verified HTTP 200."
     }
   ],
   "leaderboard": [
@@ -2061,9 +2138,9 @@
       "model": "mimo-v2.5",
       "provider": "xiaomi",
       "family": "mimo",
-      "matches": 31,
+      "matches": 32,
       "wins": 17,
-      "losses": 14,
+      "losses": 15,
       "avgScore": 8.5,
       "bestScore": 9.7,
       "rank": 1
@@ -2072,10 +2149,10 @@
       "model": "deepseek-v4-flash",
       "provider": "deepseek",
       "family": "deepseek",
-      "matches": 33,
-      "wins": 10,
+      "matches": 34,
+      "wins": 11,
       "losses": 23,
-      "avgScore": 8.2,
+      "avgScore": 8.3,
       "bestScore": 9.6,
       "rank": 2
     },
@@ -2083,9 +2160,9 @@
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "family": "poolside",
-      "matches": 23,
+      "matches": 24,
       "wins": 4,
-      "losses": 19,
+      "losses": 20,
       "avgScore": 7.8,
       "bestScore": 9.1,
       "rank": 3
@@ -2149,7 +2226,7 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-09-16",
+    "last_updated": "2026-09-18",
     "model_stats": {
       "deepseek-v4-flash": {
         "total_calls": 5,

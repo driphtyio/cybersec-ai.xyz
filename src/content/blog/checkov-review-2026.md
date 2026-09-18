@@ -149,3 +149,12 @@ Skip it if: your estate is Terraform-only and you already run Trivy for IaC and 
 - [SAST with Semgrep](/blog/semgrep-review-2026/)
 - [Kubernetes runtime security with Falco](/blog/falco-review-2026/)
 - [Docker security hardening](/blog/docker-security-hardening/)
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

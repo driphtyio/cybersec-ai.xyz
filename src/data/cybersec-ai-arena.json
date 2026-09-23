@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-09-22",
+  "last_updated": "2026-09-23",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -2255,6 +2255,130 @@
       "threshold_met": true,
       "published": true,
       "notes": "7-of-7 builder match on an 18.4K-char de-tooled brief via scripts/parallel-builders.py (thread pool, one attempt per lane, 420s per-lane timeout). All seven lanes returned a draft and ALL SEVEN passed the 8.0 multipass mean. Winner glm-5.3-flash at 9.17 (opencode-go route - the endpoint that makes glm reliable at this brief length; Z.AI direct remains the documented stall). Runner-up muse-spark-1.3-contributor 9.15 and mimo-v2.5 9.13 were inside 0.05 of the winner, so the pick is decided on per-criterion dominance, not the mean alone: glm held sourcing 10/10/10 AND quality 8/8/7 (no pass below 7), while muse swung quality 4/8/8 and mimo 6/8/9 - glm had no weak pass. Winner verified mechanically: 14/14 external links HTTP 200, zero [N] refs, zero References section, no Bearer redaction artifact, no implied hands-on-testing language (explicit desk-research disclosure present), 11 H2s each opening with a self-contained 38-63 word answer, 3 question-shaped FAQ H3s, 2,443 words. HERO_IMAGE_PROMPT stripped before write; description trimmed to 165 chars with no raw stats. Hero image via Lumenfall (gen-image-verified.sh) and verified HTTP 200. Judge preamble was load-bearing again: no draft was judged without the verified-fact block (NIST SP 800-63B Rev.4 syncable-authenticator AAL2 ceiling, Entra passkey profiles GA, Entra ID P1 for authentication strengths, Okta's phishing-resistance constraint) - the cheapest guard against the judge scoring real 2026 release metadata as fabrication."
+    },
+    {
+      "match_id": "arena-gitleaks-betterleaks-secret-scanning-2026",
+      "date": "2026-09-23",
+      "slug": "gitleaks-betterleaks-secret-scanning-2026",
+      "topic": "Gitleaks to Betterleaks: how to choose and deploy a secret scanner in 2026 \u2014 Betterleaks' Expr rule engine and live validation vs TruffleHog's 700+ verifying detectors, GitHub native secret scanning, and detect-secrets, with CI wiring and false-positive strategy (A/B/C/D+ tool review, Wed slot).",
+      "category": "tool-review",
+      "type": "standard",
+      "winner": "glm-5.3-flash",
+      "results": [
+        {
+          "model": "glm-5.3-flash",
+          "provider": "opencode-go",
+          "family": "glm",
+          "score": 9.12,
+          "rank": 1,
+          "judge_passes": [
+            9.25,
+            8.6,
+            9.5
+          ],
+          "judge_mean": 9.12,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "longcat-2.0",
+          "provider": "opencode-go",
+          "family": "longcat",
+          "score": 8.68,
+          "rank": 2,
+          "judge_passes": [
+            8.65,
+            8.75,
+            8.65
+          ],
+          "judge_mean": 8.68,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "commandcode",
+          "family": "deepseek",
+          "score": 8.42,
+          "rank": 3,
+          "judge_passes": [
+            9.25,
+            7.8,
+            8.2
+          ],
+          "judge_mean": 8.42,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "mimo-v2.5",
+          "provider": "xiaomi",
+          "family": "mimo",
+          "score": 8.13,
+          "rank": 4,
+          "judge_passes": [
+            7.9,
+            8.6,
+            7.9
+          ],
+          "judge_mean": 8.13,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "hy3",
+          "provider": "opencode-go",
+          "family": "tencent",
+          "score": 8.05,
+          "rank": 5,
+          "judge_passes": [
+            8.1,
+            8.2,
+            7.85
+          ],
+          "judge_mean": 8.05,
+          "threshold_met": true,
+          "status": "success"
+        },
+        {
+          "model": "muse-spark-1.3-contributor",
+          "provider": "opencode-go",
+          "family": "muse",
+          "score": 7.98,
+          "rank": 6,
+          "judge_passes": [
+            7.95,
+            7.25,
+            8.75
+          ],
+          "judge_mean": 7.98,
+          "threshold_met": false,
+          "status": "success"
+        },
+        {
+          "model": "poolside/laguna-s-2.1",
+          "provider": "openrouter",
+          "family": "poolside",
+          "score": 6.97,
+          "rank": 7,
+          "judge_passes": [
+            7.8,
+            6.65,
+            6.45
+          ],
+          "judge_mean": 6.97,
+          "threshold_met": false,
+          "status": "success"
+        }
+      ],
+      "judge": "openrouter/qwen3.7-flash (multipass x3 per draft, mean-gated) + verified-fact preamble; 429 passes offloaded to Qwen/Qwen3.7-Flash via the Command Code shim (same model, no identity change)",
+      "plan_model": "deepseek-v4-pro (commandcode, 8.7K-char plan + rubric, ~2 min)",
+      "research_model": "orchestrator (live web_search + urllib fetch/verification on 2026-09-23; arena-direct-runner and the parallel builder path have no web access)",
+      "qa_model": "orchestrator mechanical QA pass (zai/glm-5.2 not used - documented Z.AI large-prompt stall: zero output past 17 min; delegation pinned to deepseek in this profile)",
+      "winner_judge_mean": 9.12,
+      "threshold_met": true,
+      "published": true,
+      "notes": "7-of-7 builder match on a 13.3K-char de-tooled brief via scripts/parallel-builders.py (thread pool, per-lane retry ladder, 420s per-lane timeout); wall 608s, dominated by longcat-2.0 (607.8s). Winner glm-5.3-flash at 9.12 mean on the opencode-go route \u2014 the endpoint that makes glm reliable at this brief length (Z.AI direct remains the documented stall) and its cleanest pass profile of the field (9.25/8.60/9.50, no pass below 8.6). Longcat-2.0 runner-up 8.68 on an unusually flat profile (8.65/8.75/8.65). Two lanes DID NOT clear the gate and are recorded threshold_met:false, not hidden: muse-spark-1.3-contributor 7.98 (failed on pass 2 at 7.25) and poolside/laguna-s-2.1 6.97 (sourcing collapsed across passes: 7/5/4 \u2014 the judge flagged thin citation coverage). No re-do iteration was needed because the winner cleared 8.0 on the first gate, so the best draft shipped per policy. Judge preamble was load-bearing again: every draft was judged with a [VERIFIED FACT CONTEXT FOR JUDGING] block carrying repo metadata (gitleaks ~29.4k stars / v8.30.1 2026-03-21 / feature-complete README warning; betterleaks ~2.0k stars / created 2026-02-03 / Aikido-backed; trufflehog AGPL-3.0 / v3.97.7 2026-09-23 / 700+ verifying detectors) so the judge did not score real 2026 release metadata as fabrication. Winner verified mechanically: 14/14 external links HTTP 200 (gitleaks repo, betterleaks repo, betterleaks.com, trufflehog repo, trufflesecurity.com/pricing, detect-secrets, docs.github.com secret-scanning, gitleaks.io, BleepingComputer), zero [N] refs, zero References section, no '***' redaction artifact, no implied hands-on-testing language (explicit desk-research disclosure sentence present verbatim), 9 H2s each opening with a self-contained answer, 3 question-shaped FAQ H3s, 1,389 body words. HERO_IMAGE_PROMPT stripped before write; description rewritten to 159 chars with no raw stats. Hero via Lumenfall (gen-image-verified.sh) verified HTTP 200 (273KB). Losers were written only to /tmp/arena-outputs/, so no repo loser files existed to delete."
     }
   ],
   "leaderboard": [
@@ -2262,9 +2386,9 @@
       "model": "mimo-v2.5",
       "provider": "xiaomi",
       "family": "mimo",
-      "matches": 33,
+      "matches": 34,
       "wins": 17,
-      "losses": 16,
+      "losses": 17,
       "avgScore": 8.5,
       "bestScore": 9.7,
       "rank": 1
@@ -2273,9 +2397,9 @@
       "model": "deepseek-v4-flash",
       "provider": "commandcode",
       "family": "deepseek",
-      "matches": 35,
+      "matches": 36,
       "wins": 11,
-      "losses": 24,
+      "losses": 25,
       "avgScore": 8.3,
       "bestScore": 9.6,
       "rank": 2
@@ -2284,9 +2408,9 @@
       "model": "poolside/laguna-s-2.1",
       "provider": "openrouter",
       "family": "poolside",
-      "matches": 25,
+      "matches": 26,
       "wins": 4,
-      "losses": 21,
+      "losses": 22,
       "avgScore": 7.8,
       "bestScore": 9.1,
       "rank": 3
@@ -2295,43 +2419,43 @@
       "model": "glm-5.3-flash",
       "provider": "opencode-go",
       "family": "glm",
-      "matches": 3,
-      "wins": 2,
+      "matches": 4,
+      "wins": 3,
       "losses": 1,
-      "avgScore": 8.8,
+      "avgScore": 8.9,
       "bestScore": 9.2,
       "rank": 4
-    },
-    {
-      "model": "muse-spark-1.3-contributor",
-      "provider": "opencode-go",
-      "family": "muse",
-      "matches": 1,
-      "wins": 0,
-      "losses": 1,
-      "avgScore": 9.2,
-      "bestScore": 9.2,
-      "rank": 5
     },
     {
       "model": "longcat-2.0",
       "provider": "opencode-go",
       "family": "longcat",
-      "matches": 1,
+      "matches": 2,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "avgScore": 8.7,
       "bestScore": 8.7,
+      "rank": 5
+    },
+    {
+      "model": "muse-spark-1.3-contributor",
+      "provider": "opencode-go",
+      "family": "muse",
+      "matches": 2,
+      "wins": 0,
+      "losses": 2,
+      "avgScore": 8.6,
+      "bestScore": 9.2,
       "rank": 6
     },
     {
       "model": "hy3",
       "provider": "opencode-go",
       "family": "tencent",
-      "matches": 1,
+      "matches": 2,
       "wins": 0,
-      "losses": 1,
-      "avgScore": 8.5,
+      "losses": 2,
+      "avgScore": 8.3,
       "bestScore": 8.5,
       "rank": 7
     }
@@ -2401,34 +2525,34 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-09-22",
+    "last_updated": "2026-09-23",
     "model_stats": {
       "deepseek-v4-flash": {
-        "total_calls": 6,
-        "successes": 6,
+        "total_calls": 7,
+        "successes": 7,
         "availability": 100.0,
-        "last_match": "2026-09-22",
+        "last_match": "2026-09-23",
         "last_result": "loss"
       },
       "mimo-v2.5": {
-        "total_calls": 6,
-        "successes": 6,
+        "total_calls": 7,
+        "successes": 7,
         "availability": 100.0,
-        "last_match": "2026-09-22",
+        "last_match": "2026-09-23",
         "last_result": "loss"
       },
       "poolside/laguna-s-2.1": {
-        "total_calls": 6,
-        "successes": 6,
+        "total_calls": 7,
+        "successes": 7,
         "availability": 100.0,
-        "last_match": "2026-09-22",
+        "last_match": "2026-09-23",
         "last_result": "loss"
       },
       "glm-5.3-flash": {
-        "total_calls": 3,
-        "successes": 2,
-        "availability": 66.7,
-        "last_match": "2026-09-22",
+        "total_calls": 4,
+        "successes": 3,
+        "availability": 75.0,
+        "last_match": "2026-09-23",
         "last_result": "win"
       },
       "qwen3.7-flash": {
@@ -2453,23 +2577,23 @@
       },
       "muse-spark-1.3-contributor": {
         "availability": 100.0,
-        "total_calls": 2,
-        "successes": 2,
-        "last_match": "2026-09-22",
+        "total_calls": 3,
+        "successes": 3,
+        "last_match": "2026-09-23",
         "last_result": "loss"
       },
       "longcat-2.0": {
         "availability": 100.0,
-        "total_calls": 2,
-        "successes": 2,
-        "last_match": "2026-09-22",
+        "total_calls": 3,
+        "successes": 3,
+        "last_match": "2026-09-23",
         "last_result": "loss"
       },
       "hy3": {
         "availability": 100.0,
-        "total_calls": 2,
-        "successes": 2,
-        "last_match": "2026-09-22",
+        "total_calls": 3,
+        "successes": 3,
+        "last_match": "2026-09-23",
         "last_result": "loss"
       }
     }

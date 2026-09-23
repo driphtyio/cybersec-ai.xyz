@@ -86,3 +86,11 @@ Not as a claimed drop-in: the official README makes no drop-in compatibility sta
 ### Is Betterleaks really from the original Gitleaks author?
 
 Yes — the repository describes it as "maintained by the folks who made Gitleaks, including the original author," with development supported by Aikido Security. Press coverage, including [BleepingComputer](https://www.bleepingcomputer.com/news/security/betterleaks-a-new-open-source-secrets-scanner-to-replace-gitleaks/), reported the replacement framing in March 2026. The MIT license carries over, and the project is under active development.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

@@ -2521,14 +2521,9 @@
     },
     {
       "model": "openai/gpt-6-luna",
-      "role": "idle",
+      "role": "research",
       "provider": "openrouter",
       "context_length": 1050000
-    },
-    {
-      "model": "mimo-v2.6-pro",
-      "provider": "commandcode",
-      "role": "research"
     }
   ],
   "stability": {

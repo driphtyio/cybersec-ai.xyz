@@ -2467,11 +2467,6 @@
       "provider": "deepseek"
     },
     {
-      "model": "mimo-v2.5",
-      "role": "builder",
-      "provider": "xiaomi"
-    },
-    {
       "model": "qwen3.7-flash",
       "provider": "openrouter",
       "role": "judge",
@@ -2487,11 +2482,6 @@
       "model": "mimo-v2.5-pro",
       "role": "planner",
       "provider": "xiaomi"
-    },
-    {
-      "model": "openai/gpt-5.6-luna",
-      "role": "research",
-      "provider": "openrouter"
     },
     {
       "model": "glm-5.2",
@@ -2617,6 +2607,14 @@
       "reason": "not an active builder (judge/planner/experiment role or retired one-off)",
       "last_matches": 4,
       "retired_date": "2026-09-03"
+    },
+    {
+      "model": "mimo-v2.5",
+      "reason": "superseded by mimo-v2.6-flash 2026-09-23"
+    },
+    {
+      "model": "openai/gpt-5.6-luna",
+      "reason": "superseded by gpt-6-luna 2026-09-23"
     }
   ]
 }

@@ -18,6 +18,12 @@ const providerByModel = {};
 for (const m of model_pool) {
   if (!providerByModel[m.model]) providerByModel[m.model] = m.provider;
 }
+/* retired models keep their career-stats rows on the leaderboard; fall back
+   to their historical provider so the provider cell never renders blank. */
+const providerFallback = { 'mimo-v2.5': 'xiaomi', 'openai/gpt-5.6-luna': 'openrouter' };
+for (const [slug, prov] of Object.entries(providerFallback)) {
+  if (!providerByModel[slug]) providerByModel[slug] = prov;
+}
 
 const modelsByProvider = {};
 for (const m of model_pool) {

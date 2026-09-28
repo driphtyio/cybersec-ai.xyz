@@ -1,6 +1,6 @@
 ---
 title: "CrowdSec Review 2026: Open-Source IPS, WAF, and Bot Detection"
-description: "CrowdSec's free engine is a genuinely capable open-source IPS and WAF in 2026, but the blocklists, CTI API and Live Exploit Tracker are paid products."
+description: "CrowdSec’s MIT Security Engine—v1.8.1 fixing Brave Shields, 15.0k stars—is a capable free IPS/WAF, but its free core, including Console-tier third-party…"
 heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/crowdsec-review-2026-1790630654.webp"
 pubDate: "2026-09-28"
 tags: ["crowdsec", "ips", "waf", "bot detection", "fail2ban", "open source"]
@@ -110,3 +110,12 @@ Choose Fail2ban when log-regex jail banning meets the requirement and you want a
 ### Can CrowdSec replace Cloudflare or ModSecurity?
 
 Not as a general assumption. CrowdSec offers bouncers for supported enforcement points and AppSec support for virtual patching and ModSecurity rules, but those do not automatically replace a CDN, DDoS service or a complete WAF deployment. Map required controls to the actual integration and test its coverage before removing an existing layer.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

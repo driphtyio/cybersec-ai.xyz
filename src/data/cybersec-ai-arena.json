@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "last_updated": "2026-09-28",
+  "last_updated": "2026-09-30",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -2585,6 +2585,199 @@
       "brief_contract": true,
       "hero_prompt_missing": "space-bunny-free",
       "notes": "Monday tool-review slot (CS - Tool Review Mon 2pm, job b525d8f3b081). Topic chosen by the orchestrator after a dedup scan of the 80 existing posts (no CrowdSec coverage; garak/promptfoo/giskard/lakera already reviewed).\n\nRoster compliance: ALL 11 canonical lanes dispatched 1:1 from the live cron --models array via scripts/parallel-builders.py (thread pool, per-lane timeout 400s, wall ~180s). 10 of 11 returned real drafts; pixel-canary failed as expected (plan-gated on this account, documented 403 class). No DNFs among the returned lanes.\n\nPlan: deepseek-v4-pro via commandcode produced a 10.0K-char plan with rubric plus explicit MUST include / MUST NOT include lists, which were copied verbatim into every builder brief (brief_contract: true). Research: orchestrator live measurement \u2014 the runner has no web access, so the fact sheet (repo star/fork/commit counts for crowdsecurity/crowdsec, crowdsecurity/hub and fail2ban/fail2ban; v1.8.1 release date; the full paid-tier price list; the alpha status and 4-bouncer compatibility limit of bot detection) was fetched with web_extract on 2026-09-28 and quoted verbatim in the brief. This is the same pattern recorded for arena-gitleaks-betterleaks-secret-scanning-2026.\n\nJudge: qwen3.7-flash multipass x3 per draft, mean-gated, every draft judged with a [VERIFIED FACT CONTEXT FOR JUDGING] preamble (measured facts + an explicit note that desk research means the absence of hands-on language is CORRECT and must not be penalised). Means: gpt-6-luna 9.90 (9.9/9.9/9.9), mimo-v2.6-flash 9.77, deepseek-v4-flash 9.73, longcat-2.0 9.50, minimax-m3 9.30 (spread 1.6, noisy), muse-spark-1.3-contributor 9.23, hy3 8.88, ling-3.0-flash-fin-free 8.20, glm-5.3-flash 8.07, space-bunny-free unparseable (judge returned no parseable pass x3 on the 2,249-word draft). 9 of 10 judged drafts cleared the 8.0 gate; the winner shipped on its first gate, so no re-do iteration was burned.\n\nHero-prompt pre-judge gate: `grep -L HERO_IMAGE_PROMPT` flagged space-bunny-free as hero_prompt_missing. It was re-run ONCE into a sibling match id (arena-crowdsec-review-2026-sb) with the explicit finish-with instruction and still omitted the line, so it is recorded hero_prompt_missing and was ineligible to win. The winner's line was present and was stripped before the post was written; the image itself came from Lumenfall (gen-image-verified.sh, HTTP 200, 422KB).\n\nQA: the mandated glm-5.3 QA delegation was attempted TWICE. The opencode-go route stalled with zero output past 6 minutes on the ~9.6K-char QA payload (the documented Z.AI/og large-prompt stall class); the commandcode fallback (zai-org/GLM-5.3) was dispatched as the retry and also returned no output file (the documented CC long-generation failure), so no second-opinion QA defects were received and the orchestrator mechanical pass stands as the QA record for this match. Because the QA pass is gap-filling and the orchestrator had already measured every checklist item mechanically, the defects the orchestrator found and FIXED in the shipped file are: (1) DEAD LINK \u2014 the draft's bot-detection URL docs.crowdsec.net/docs/bot-detection/intro/ returned HTTP 404, replaced with the live docs.crowdsec.net/docs/next/appsec/bot_detection/intro/; (2) description was 162 chars, rewritten to 150 (no raw stats); (3) body was 1,743 words against the plan's 1,200-1,600 band, trimmed to 1,584 by deleting three redundant restatement paragraphs without touching any H2 lead. All 9 remaining external URLs were curl-verified HTTP 200 (docs intro/appsec/bouncers/Linux install, crowdsec.net/pricing, github.com/crowdsecurity/{crowdsec,hub}, github.com/fail2ban/fail2ban). Zero [N] references, zero References section, zero banned words, zero implied hands-on testing (the disclosure sentence is present verbatim after the opening H2), 9 H2 leads measuring 44-53 words, exact table columns, 3 question-shaped FAQ H3s.\n\nPost-publish verification: the shipped file was re-judged over 3 passes with the same preamble AFTER the QA edits and the heroImage frontmatter addition \u2014 9.82 mean (9.90 / 9.90 / 9.65), PASS. The match record keeps the match-window judge mean (9.90) for the winner as dispatched; this note carries the shipped-file figure. Caveats stated openly: vendor marketing numbers (7-60 days ahead, 95% of mass exploitation, 36% exclusive data, 5% daily rotation) are quoted as CrowdSec claims and attributed, never as independent measurements; bot detection is flagged ALPHA with its four-bouncer compatibility limit; fail2ban's larger star count (18.7k vs 15.0k) is stated plainly rather than omitted."
+    },
+    {
+      "id": "arena-suricata-8-review-2026",
+      "match_id": "arena-suricata-8-review-2026",
+      "date": "2026-09-30",
+      "slug": "suricata-8-review-2026",
+      "topic": "Suricata 8 Review 2026 \u2014 is the free open-source IDS/IPS/NSM engine still worth the upgrade? Angle: the 2026 decision is the Suricata 7 EOL migration deadline, not a feature comparison. Measured live by the orchestrator on 2026-09-30: latest stable 8.0.7 (2026-09-15), 8.0.0 first stable July 2025, 7.0.17 (2026-07-09) the final 7-series release (EOL); 8.0.6 security release fixed CVE-2026-57227 (HIGH, 8.0.x & 7.0.x), CVE-2026-57229, CVE-2026-57224, CVE-2026-57222, CVE-2026-57228 (HIGH, 7.0.x), and OISF attributes the above-normal volume to AI(-assisted) analysis with credits to Trail of Bits in collaboration with Anthropic; Suricata-as-firewall mode is EXPERIMENTAL; repo 6.7k stars/1.8k forks/180 watchers/19,610 commits, GPL-2.0, OISF non-profit; ET Open emerging-all.rules measured at 46,701,916 bytes / 141,590 lines / 51,283 enabled alert rules / 51,283 unique SIDs; Rust MSRV 1.75.0 from 1.63.0; comparison vs Zeek 9.0 LTS (2026-09-17, BSD) and Snort 3 (Cisco/Talos paid Subscriber vs free Community). Long-tail keyword: 'suricata 8 review' / 'is suricata still worth it 2026'. Honest E-E-A-T: desk research on official docs, release notes, repo metadata and published CVEs measured 2026-09-30 \u2014 no hands-on deployment or load testing. 12-lane dispatch; 9 drafts scored, 3 lanes failed (ling-3.0-flash-fin-free and pixel-canary plan-gated/empty; longcat-2.5-preview-free timeout).",
+      "category": "tool-review",
+      "type": "standard",
+      "winner": "longcat-2.0",
+      "results": [
+        {
+          "model": "longcat-2.0",
+          "provider": "opencode-go",
+          "family": "longcat",
+          "score": 9.87,
+          "judge_passes": [
+            9.9,
+            9.8,
+            9.9
+          ],
+          "judge_mean": 9.87,
+          "threshold_met": true,
+          "status": "success",
+          "rank": 1
+        },
+        {
+          "model": "muse-spark-1.3-contributor",
+          "provider": "opencode-go",
+          "family": "muse",
+          "score": 9.3,
+          "judge_passes": [
+            8.7,
+            9.6,
+            9.6
+          ],
+          "judge_mean": 9.3,
+          "threshold_met": true,
+          "status": "success",
+          "rank": 2
+        },
+        {
+          "model": "deepseek-v4-flash",
+          "provider": "commandcode",
+          "family": "deepseek",
+          "score": 9.03,
+          "judge_passes": [
+            8.75,
+            8.55,
+            9.8
+          ],
+          "judge_mean": 9.03,
+          "threshold_met": true,
+          "status": "success",
+          "rank": 3
+        },
+        {
+          "model": "mimo-v2.6-flash",
+          "provider": "opencode-go",
+          "family": "mimo",
+          "score": 8.67,
+          "judge_passes": [
+            8.95,
+            8.5,
+            8.55
+          ],
+          "judge_mean": 8.67,
+          "threshold_met": true,
+          "status": "success",
+          "rank": 4
+        },
+        {
+          "model": "glm-5.3-flash",
+          "provider": "opencode-go",
+          "family": "glm",
+          "score": 8.05,
+          "judge_passes": [
+            8.15,
+            8.15,
+            7.85
+          ],
+          "judge_mean": 8.05,
+          "threshold_met": true,
+          "status": "success",
+          "rank": 5
+        },
+        {
+          "model": "gpt-6-luna",
+          "provider": "commandcode",
+          "family": "gpt",
+          "score": 7.98,
+          "judge_passes": [
+            7.65,
+            8.45,
+            7.85
+          ],
+          "judge_mean": 7.98,
+          "threshold_met": false,
+          "status": "success",
+          "rank": 6
+        },
+        {
+          "model": "hy3",
+          "provider": "opencode-go",
+          "family": "tencent",
+          "score": 7.93,
+          "judge_passes": [
+            7.95,
+            7.85,
+            8.0
+          ],
+          "judge_mean": 7.93,
+          "threshold_met": false,
+          "status": "success",
+          "rank": 7
+        },
+        {
+          "model": "space-bunny-free",
+          "provider": "opencode-go",
+          "family": "space",
+          "score": 7.78,
+          "judge_passes": [
+            7.8,
+            8.0,
+            7.55
+          ],
+          "judge_mean": 7.78,
+          "threshold_met": false,
+          "status": "success",
+          "rank": 8
+        },
+        {
+          "model": "minimax-m3",
+          "provider": "opencode-go",
+          "family": "minimax",
+          "score": 7.7,
+          "judge_passes": [
+            7.75,
+            8.0,
+            7.35
+          ],
+          "judge_mean": 7.7,
+          "threshold_met": false,
+          "status": "success",
+          "rank": 9
+        },
+        {
+          "model": "ling-3.0-flash-fin-free",
+          "provider": "commandcode",
+          "family": "ling",
+          "score": 0.0,
+          "judge_passes": [],
+          "judge_mean": 0.0,
+          "threshold_met": false,
+          "status": "failed",
+          "note": "no draft (lane unavailable/timeout)",
+          "rank": 10
+        },
+        {
+          "model": "pixel-canary",
+          "provider": "commandcode",
+          "family": "pixel",
+          "score": 0.0,
+          "judge_passes": [],
+          "judge_mean": 0.0,
+          "threshold_met": false,
+          "status": "failed",
+          "note": "no draft (lane unavailable/timeout)",
+          "rank": 11
+        },
+        {
+          "model": "longcat-2.5-preview-free",
+          "provider": "opencode-go",
+          "family": "longcat25",
+          "score": 0.0,
+          "judge_passes": [],
+          "judge_mean": 0.0,
+          "threshold_met": false,
+          "status": "failed",
+          "note": "no draft (lane unavailable/timeout)",
+          "rank": 12
+        }
+      ],
+      "judge": "openrouter/qwen3.7-flash multipass x3 per draft, mean-gated; verified-fact + measured-H2-lead preamble per draft",
+      "plan_model": "deepseek-v4-pro",
+      "research_model": "mimo-v2.6-pro",
+      "qa_model": "glm-5.3",
+      "winner_judge_mean": 9.87,
+      "threshold_met": true,
+      "published": true,
+      "brief_contract": true,
+      "hero_prompt_missing": "deepseek-v4-flash",
+      "notes": "9/12 lanes returned a draft. Judge means: longcat-2.0 9.87 (WINNER), muse-spark-1.3-contributor 9.30, deepseek-v4-flash 9.03 (INELIGIBLE \u2014 missing HERO_IMAGE_PROMPT), mimo-v2.6-flash 8.67, glm-5.3-flash 8.05, gpt-6-luna 7.98, hy3 7.93, space-bunny-free 7.78, minimax-m3 7.70. Failed lanes: ling-3.0-flash-fin-free (empty CC stream), pixel-canary (plan-gated CC 403), longcat-2.5-preview-free (og timeout). QA (glm-5.3) made no changes \u2014 draft already compliant. Facts measured live by the orchestrator (research model has no web tools)."
     }
   ],
   "leaderboard": [
@@ -2603,10 +2796,10 @@
       "model": "deepseek-v4-flash",
       "provider": "commandcode",
       "family": "deepseek",
-      "matches": 38,
+      "matches": 39,
       "wins": 12,
-      "losses": 26,
-      "avgScore": 8.31,
+      "losses": 27,
+      "avgScore": 8.33,
       "bestScore": 9.73,
       "rank": 2
     },
@@ -2626,76 +2819,76 @@
       "model": "glm-5.3-flash",
       "provider": "opencode-go",
       "family": "z-ai",
-      "matches": 5,
+      "matches": 6,
       "wins": 3,
-      "losses": 2,
-      "avgScore": 8.71,
+      "losses": 3,
+      "avgScore": 8.6,
       "bestScore": 9.17,
       "rank": 4
-    },
-    {
-      "model": "gpt-6-luna",
-      "provider": "commandcode",
-      "family": "openai",
-      "matches": 1,
-      "wins": 1,
-      "losses": 0,
-      "avgScore": 9.9,
-      "bestScore": 9.9,
-      "rank": 5
-    },
-    {
-      "model": "mimo-v2.6-flash",
-      "provider": "opencode-go",
-      "family": "xiaomi",
-      "matches": 1,
-      "wins": 0,
-      "losses": 1,
-      "avgScore": 9.77,
-      "bestScore": 9.77,
-      "rank": 6
-    },
-    {
-      "model": "minimax-m3",
-      "provider": "opencode-go",
-      "family": "minimax",
-      "matches": 1,
-      "wins": 0,
-      "losses": 1,
-      "avgScore": 9.3,
-      "bestScore": 9.3,
-      "rank": 7
     },
     {
       "model": "longcat-2.0",
       "provider": "opencode-go",
       "family": "longcat",
-      "matches": 3,
-      "wins": 0,
+      "matches": 4,
+      "wins": 1,
       "losses": 3,
+      "avgScore": 9.18,
+      "bestScore": 9.87,
+      "rank": 5
+    },
+    {
+      "model": "gpt-6-luna",
+      "provider": "commandcode",
+      "family": "openai",
+      "matches": 2,
+      "wins": 1,
+      "losses": 1,
       "avgScore": 8.94,
-      "bestScore": 9.5,
-      "rank": 8
+      "bestScore": 9.9,
+      "rank": 6
+    },
+    {
+      "model": "mimo-v2.6-flash",
+      "provider": "opencode-go",
+      "family": "xiaomi",
+      "matches": 2,
+      "wins": 0,
+      "losses": 2,
+      "avgScore": 9.22,
+      "bestScore": 9.77,
+      "rank": 7
     },
     {
       "model": "muse-spark-1.3-contributor",
       "provider": "opencode-go",
       "family": "meta",
-      "matches": 3,
+      "matches": 4,
       "wins": 0,
-      "losses": 3,
-      "avgScore": 8.79,
-      "bestScore": 9.23,
+      "losses": 4,
+      "avgScore": 8.92,
+      "bestScore": 9.3,
+      "rank": 8
+    },
+    {
+      "model": "minimax-m3",
+      "provider": "opencode-go",
+      "family": "minimax",
+      "matches": 2,
+      "wins": 0,
+      "losses": 2,
+      "avgScore": 8.5,
+      "bestScore": 9.3,
       "rank": 9
     },
     {
       "model": "hy3",
       "provider": "opencode-go",
       "family": "tencent",
-      "matches": 3,
+      "matches": 4,
       "wins": 0,
-      "losses": 3,
-      "avgScore": 8.48,
+      "losses": 4,
+      "avgScore": 8.34,
       "bestScore": 8.88,
       "rank": 10
     },
@@ -2709,6 +2902,17 @@
       "avgScore": 8.2,
       "bestScore": 8.2,
       "rank": 11
+    },
+    {
+      "model": "space-bunny-free",
+      "provider": "opencode-go",
+      "family": "stealth",
+      "matches": 1,
+      "wins": 0,
+      "losses": 1,
+      "avgScore": 7.78,
+      "bestScore": 7.78,
+      "rank": 12
     }
   ],
   "model_pool": [
@@ -2830,13 +3034,13 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-09-28",
+    "last_updated": "2026-09-30",
     "model_stats": {
       "deepseek-v4-flash": {
-        "total_calls": 8,
-        "successes": 8,
+        "total_calls": 9,
+        "successes": 9,
         "availability": 100.0,
-        "last_match": "2026-09-28",
+        "last_match": "2026-09-30",
         "last_result": "loss"
       },
       "mimo-v2.5": {
@@ -2854,16 +3058,16 @@
         "last_result": "loss"
       },
       "glm-5.3-flash": {
-        "total_calls": 5,
-        "successes": 4,
-        "availability": 80.0,
-        "last_match": "2026-09-28",
+        "total_calls": 6,
+        "successes": 5,
+        "availability": 83.3,
+        "last_match": "2026-09-30",
         "last_result": "loss"
       },
       "qwen3.7-flash": {
-        "availability": 100,
-        "total_calls": 1,
-        "successes": 1
+        "availability": 100.0,
+        "total_calls": 2,
+        "successes": 2
       },
       "mimo-v2.5-pro": {
         "availability": 100,
@@ -2882,52 +3086,83 @@
       },
       "muse-spark-1.3-contributor": {
         "availability": 100.0,
-        "total_calls": 4,
-        "successes": 4,
-        "last_match": "2026-09-28",
+        "total_calls": 5,
+        "successes": 5,
+        "last_match": "2026-09-30",
         "last_result": "loss"
       },
       "longcat-2.0": {
         "availability": 100.0,
-        "total_calls": 4,
-        "successes": 4,
-        "last_match": "2026-09-28",
-        "last_result": "loss"
+        "total_calls": 5,
+        "successes": 5,
+        "last_match": "2026-09-30",
+        "last_result": "win"
       },
       "hy3": {
         "availability": 100.0,
-        "total_calls": 4,
-        "successes": 4,
-        "last_match": "2026-09-28",
+        "total_calls": 5,
+        "successes": 5,
+        "last_match": "2026-09-30",
         "last_result": "loss"
       },
       "gpt-6-luna": {
-        "total_calls": 1,
-        "successes": 1,
+        "total_calls": 2,
+        "successes": 2,
         "availability": 100.0,
-        "last_match": "2026-09-28",
-        "last_result": "win"
+        "last_match": "2026-09-30",
+        "last_result": "loss"
       },
       "mimo-v2.6-flash": {
-        "total_calls": 1,
-        "successes": 1,
+        "total_calls": 2,
+        "successes": 2,
         "availability": 100.0,
-        "last_match": "2026-09-28",
+        "last_match": "2026-09-30",
         "last_result": "loss"
       },
       "minimax-m3": {
-        "total_calls": 1,
-        "successes": 1,
+        "total_calls": 2,
+        "successes": 2,
         "availability": 100.0,
-        "last_match": "2026-09-28",
+        "last_match": "2026-09-30",
         "last_result": "loss"
       },
       "ling-3.0-flash-fin-free": {
+        "total_calls": 2,
+        "successes": 1,
+        "availability": 50.0,
+        "last_match": "2026-09-30",
+        "last_result": "dnf"
+      },
+      "space-bunny-free": {
         "total_calls": 1,
         "successes": 1,
         "availability": 100.0,
-        "last_match": "2026-09-28",
+        "last_match": "2026-09-30",
         "last_result": "loss"
+      },
+      "pixel-canary": {
+        "total_calls": 1,
+        "successes": 0,
+        "availability": 0.0,
+        "last_match": "2026-09-30",
+        "last_result": "dnf"
+      },
+      "longcat-2.5-preview-free": {
+        "total_calls": 1,
+        "successes": 0,
+        "availability": 0.0,
+        "last_match": "2026-09-30",
+        "last_result": "dnf"
+      },
+      "deepseek-v4-pro": {
+        "availability": 100.0,
+        "total_calls": 1,
+        "successes": 1
+      },
+      "mimo-v2.6-pro": {
+        "availability": 100.0,
+        "total_calls": 1,
+        "successes": 1
       }
     }
   },

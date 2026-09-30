@@ -123,3 +123,12 @@ Stay on 8.0.x and move to 8.0.7 if you have not already. Wait on the firewall mo
 This guide was built as desk research on official documentation, release notes, the public repository and its metadata, and published CVE entries, measured on 2026-09-30, with no hands-on deployment, load testing, lab traffic, or rule-tuning session performed at any point.
 
 Performance changes are reported as directional claims from the project's own announcements, not verified measurements. Rule counts and file sizes for ET Open were measured directly from the published ruleset on 2026-09-30. CVE severities are stated per the OISF's own severity policy and release notes. Community vitality note: [SuriCon 2026](https://suricon.net/) is scheduled for Lisbon in November 2026, a reasonable signal of the project's ongoing momentum.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+
+*Cross-links automatically generated from None.*

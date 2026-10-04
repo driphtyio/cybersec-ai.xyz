@@ -3031,6 +3031,13 @@
       "role": "builder",
       "status": "active",
       "fallback": "commandcode minimaxai/minimax-m3 (plan-gated on this account)"
+    },
+    {
+      "model": "ling-3.0-flash-sante",
+      "provider": "commandcode",
+      "family": "ling",
+      "role": "builder",
+      "status": "active"
     }
   ],
   "stability": {

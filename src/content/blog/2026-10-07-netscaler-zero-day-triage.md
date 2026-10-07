@@ -4,6 +4,7 @@ description: "Citrix NetScaler zero-days CVE-2026-88771/72 hit CISA KEV in weeks
 pubDate: "2026-10-07"
 lastVerified: "2026-10-07"
 tags: [cve-analysis, citrix, exploitation, cve-2026-88771]
+heroImage: "https://pub-0066f5275194430aa9f985cb23278abe.r2.dev/netscaler-zero-day-triage-1791401674.webp"
 ---
 
 # Citrix NetScaler Zero-Days Exploited: A Triage Guide for Analysts (2026)

@@ -121,3 +121,12 @@ No. The 27 September builds — 14.1-73.37, 13.1-64.23 and FIPS equivalents — 
 ### Is CVE-2026-88771 the same bug as CitrixBleed?
 
 No. CitrixBleed (CVE-2023-4966) was sensitive-information disclosure that leaked session tokens; 88771 is unauthenticated command injection that runs as root via poisoned logs. Different bug class, different forensic artifacts, different playbook: token revocation helped in 2023, but in 2026 you must assume root-level persistence.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+- **[NiteAgent](https://niteagent.com/)** — AI agent development, frameworks, and production patterns
+
+*Cross-links automatically generated from None.*

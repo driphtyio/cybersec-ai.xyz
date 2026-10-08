@@ -154,3 +154,12 @@ Yes — but under different licenses. MISP is AGPL-3.0 ([MISP LICENSE](https://g
 ## How This Guide Was Built
 
 This is desk research, not a lab test: official project and vendor documentation fetched on 2026-10-08, listed in the links above. No hands-on deployment, load testing, or benchmark measurement was performed. Where a figure appears — MISP 2.5.47, the 7,000+ practitioner claim, the 6K+ Slack community — it is attributed to the source that published it, and vendor claims are labelled as such. Footprint comparisons are qualitative only.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

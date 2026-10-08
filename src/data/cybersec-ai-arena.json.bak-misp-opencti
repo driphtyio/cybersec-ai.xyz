@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "last_updated": "2026-10-08",
+  "last_updated": "2026-10-07",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -3036,138 +3036,6 @@
       ],
       "qa": "orchestrator (surgical: 1 phrase fix, hero prompt artifacts cleaned)",
       "notes": "space-bunny-free dropped from builders 2026-10-07 (upstream stealth preview ended); ling CC-only lane failed curl exit 92. Winner passed mean>=8.0 in 3/3 passes (9.10/8.30/8.90)."
-    },
-    {
-      "id": "arena-cybersec-threat_research_deep_dive",
-      "date": "2026-10-08",
-      "timestamp": "2026-10-08T12:40:00-07:00",
-      "type": "comparison-guide",
-      "topic": "MISP vs OpenCTI in 2026: Which Open-Source Threat Intelligence Platform Fits Your SOC?",
-      "slug": "misp-vs-opencti-2026",
-      "total_models": 12,
-      "successful": 10,
-      "builder_dnf": [
-        "ling-3.0-flash-sante",
-        "qwen3.8-max"
-      ],
-      "winner": "deepseek-v4.1-flash",
-      "winner_provider": "commandcode",
-      "winner_family": "deepseek",
-      "winner_score": 8.67,
-      "threshold_met": true,
-      "plan_model": "cline-pass/glm-5.3",
-      "research_model": "orchestrator-firecrawl-desk-audit",
-      "brief_contract": true,
-      "judge": "qwen3.7-flash multipass (3 passes, mean-gated)",
-      "judge_model": "openrouter/qwen3.7-flash",
-      "judge_scores": {
-        "deepseek-v4.1-flash": 8.67,
-        "claude-haiku-5-5": 8.63,
-        "longcat-2.5-preview-free": 8.5,
-        "muse-spark-1.3-contributor": 8.5,
-        "hy3": 8.47,
-        "gpt-6-luna": 8.43,
-        "mimo-v2.6-flash": 8.4,
-        "glm-5.3-flash": 8.17,
-        "poolside/laguna-s-2.1-free": 7.27,
-        "minimax-m3": 8.48
-      },
-      "judge_runs": 3,
-      "winner_decision_rule": "highest mean weighted score across 3 qwen3.7-flash passes (post-QA re-judge of patched draft)",
-      "qa": {
-        "provider": "claude-cli",
-        "model": "claude-sonnet-5-5",
-        "verdict_before_patch": "FAIL",
-        "fixes_applied": [
-          "Removed wrong \"Python-based\" claims: MISP core is PHP/CakePHP (79.3% PHP per repo language breakdown); OpenCTI backend is TypeScript (77.7%)",
-          "Corrected OpenCTI license: Community Edition is Apache 2.0 (not AGPL) + OpenCTI Enterprise Edition License \u2014 verified against repo LICENSE file",
-          "Cited the concrete OpenCTI MISP Feed connector (external-import/misp-feed, Filigran-verified) instead of generic docs link",
-          "Named MISP REST API + PyMISP in comparison table; fixed weak API/Commercial rows",
-          "Marked KEV ingestion workflows as illustrative; added connector-development doc link",
-          "Removed snark/filler lines and repeated enterprise-edition disclaimers"
-        ],
-        "verdict_after_patch": "re-judged 8.67 PASS"
-      },
-      "notes": "All 16 draft links verified HTTP 200 post-patch. Fabrication gate satisfied: desk-research disclosure kept. Winner field scored on the patched draft; runner-up haiku 8.63 within noise \u2014 spread 0.5 pts across passing lanes (brief-contract signature). ling-3.0-flash-sante free tier retired upstream 2026-10-08; lane needs the paid slug or removal from arrays. ClinePass lanes dispatched separately: minimax-m3 8.48 PASS; qwen3.8-max empty response DNF. ClinePass lanes dispatched separately: minimax-m3 8.48 PASS; qwen3.8-max empty response DNF.",
-      "results": [
-        {
-          "model": "deepseek-v4.1-flash",
-          "provider": "commandcode",
-          "score": 8.67,
-          "status": "success",
-          "winner": true
-        },
-        {
-          "model": "claude-haiku-5-5",
-          "provider": "claude-cli",
-          "score": 8.63,
-          "status": "success"
-        },
-        {
-          "model": "longcat-2.5-preview-free",
-          "provider": "opencode-go",
-          "score": 8.5,
-          "status": "success"
-        },
-        {
-          "model": "muse-spark-1.3-contributor",
-          "provider": "opencode-go",
-          "score": 8.5,
-          "status": "success"
-        },
-        {
-          "model": "hy3",
-          "provider": "opencode-go",
-          "score": 8.47,
-          "status": "success"
-        },
-        {
-          "model": "gpt-6-luna",
-          "provider": "commandcode",
-          "score": 8.43,
-          "status": "success"
-        },
-        {
-          "model": "mimo-v2.6-flash",
-          "provider": "opencode-go",
-          "score": 8.4,
-          "status": "success"
-        },
-        {
-          "model": "glm-5.3-flash",
-          "provider": "zai",
-          "score": 8.17,
-          "status": "success"
-        },
-        {
-          "model": "poolside/laguna-s-2.1-free",
-          "provider": "commandcode",
-          "score": 7.27,
-          "status": "fail",
-          "note": "judge mean 7.27 < 8.0 (sourcing 3-5 per pass)"
-        },
-        {
-          "model": "ling-3.0-flash-sante",
-          "provider": "commandcode",
-          "score": 0.0,
-          "status": "dnf",
-          "note": "CC gateway 404: free slug retired \u2014 \"use inclusionai/ling-3.0-flash-sante\"; free deal ended"
-        },
-        {
-          "model": "minimax-m3",
-          "provider": "cline-pass",
-          "score": 8.48,
-          "status": "success",
-          "note": "judge mean 8.48 PASS (3 passes); dispatched as supplementary lane \u2014 did not beat winner"
-        },
-        {
-          "model": "qwen3.8-max",
-          "provider": "cline-pass",
-          "score": 0.0,
-          "status": "dnf",
-          "note": "empty response content (known small-max_tokens empty-body quirk)"
-        }
-      ]
     }
   ],
   "leaderboard": [
@@ -3177,7 +3045,7 @@
       "wins": 17,
       "losses": 18,
       "bestScore": 9.7,
-      "avgScore": 8.44,
+      "avgScore": 8.4,
       "rank": 1
     },
     {
@@ -3191,18 +3059,18 @@
     },
     {
       "model": "glm-5.3-flash",
-      "matches": 9,
+      "matches": 8,
       "wins": 4,
-      "losses": 5,
+      "losses": 4,
       "bestScore": 9.17,
       "avgScore": 8.6,
       "rank": 3
     },
     {
       "model": "poolside/laguna-s-2.1",
-      "matches": 30,
+      "matches": 27,
       "wins": 4,
-      "losses": 26,
+      "losses": 23,
       "bestScore": 9.07,
       "avgScore": 7.6,
       "rank": 4
@@ -3217,19 +3085,19 @@
       "rank": 5
     },
     {
+      "model": "gpt-6-luna",
+      "matches": 4,
+      "wins": 1,
+      "losses": 3,
+      "bestScore": 9.9,
+      "avgScore": 8.8,
+      "rank": 6
+    },
+    {
       "model": "space-bunny-free",
       "matches": 2,
       "wins": 1,
       "losses": 1,
-      "bestScore": 9.9,
-      "avgScore": 8.84,
-      "rank": 6
-    },
-    {
-      "model": "gpt-6-luna",
-      "matches": 5,
-      "wins": 1,
-      "losses": 4,
       "bestScore": 9.9,
       "avgScore": 8.8,
       "rank": 7
@@ -3245,41 +3113,30 @@
     },
     {
       "model": "mimo-v2.6-flash",
-      "matches": 5,
+      "matches": 4,
       "wins": 0,
-      "losses": 5,
+      "losses": 4,
       "bestScore": 9.77,
       "avgScore": 8.8,
       "rank": 9
     },
     {
       "model": "muse-spark-1.3-contributor",
-      "matches": 7,
+      "matches": 6,
       "wins": 0,
-      "losses": 7,
+      "losses": 6,
       "bestScore": 9.3,
       "avgScore": 8.8,
       "rank": 10
     },
     {
-      "model": "claude-haiku-5-5",
-      "provider": "claude-cli",
-      "family": "claude",
-      "matches": 1,
-      "wins": 0,
-      "losses": 1,
-      "avgScore": 8.63,
-      "bestScore": 8.63,
-      "rank": 11
-    },
-    {
       "model": "minimax-m3",
-      "matches": 3,
+      "matches": 2,
       "wins": 0,
-      "losses": 3,
+      "losses": 2,
       "bestScore": 9.3,
       "avgScore": 8.5,
-      "rank": 12
+      "rank": 11
     },
     {
       "model": "ling-3.0-flash-sante",
@@ -3288,7 +3145,7 @@
       "losses": 1,
       "bestScore": 8.27,
       "avgScore": 8.3,
-      "rank": 13
+      "rank": 12
     },
     {
       "model": "ling-3.0-flash-fin-free",
@@ -3297,25 +3154,25 @@
       "losses": 1,
       "bestScore": 8.2,
       "avgScore": 8.2,
+      "rank": 13
+    },
+    {
+      "model": "hy3",
+      "matches": 6,
+      "wins": 0,
+      "losses": 6,
+      "bestScore": 8.88,
+      "avgScore": 7.6,
       "rank": 14
     },
     {
       "model": "longcat-2.5-preview-free",
-      "matches": 2,
+      "matches": 1,
       "wins": 0,
-      "losses": 2,
-      "bestScore": 8.5,
-      "avgScore": 7.92,
+      "losses": 1,
+      "bestScore": 7.35,
+      "avgScore": 7.3,
       "rank": 15
-    },
-    {
-      "model": "hy3",
-      "matches": 7,
-      "wins": 0,
-      "losses": 7,
-      "bestScore": 8.88,
-      "avgScore": 7.76,
-      "rank": 16
     },
     {
       "model": "poolside/laguna-s-2.1-free",
@@ -3324,7 +3181,7 @@
       "losses": 2,
       "bestScore": 8.05,
       "avgScore": 6.7,
-      "rank": 17
+      "rank": 16
     }
   ],
   "model_pool": [
@@ -3436,11 +3293,11 @@
     },
     {
       "model": "minimax-m3",
-      "provider": "cline-pass",
+      "provider": "opencode-go",
       "family": "minimax",
       "role": "builder",
       "status": "active",
-      "fallback": "opencode-go bare minimax-m3 (probe-OK)"
+      "fallback": "commandcode minimaxai/minimax-m3 (plan-gated on this account)"
     },
     {
       "model": "ling-3.0-flash-sante",
@@ -3449,22 +3306,10 @@
       "role": "builder",
       "status": "active"
     },
-    {
-      "model": "longcat-2.5-preview-free",
-      "provider": "opencode-go",
-      "role": "builder",
-      "status": "active"
-    },
-    {
-      "model": "claude-haiku-5-5",
-      "provider": "claude-cli",
-      "family": "claude",
-      "role": "builder",
-      "status": "active"
-    }
+    "longcat-2.5-preview-free"
   ],
   "stability": {
-    "last_updated": "2026-10-08",
+    "last_updated": "2026-10-07",
     "model_stats": {
       "deepseek-v4-flash": {
         "total_calls": 9,
@@ -3488,12 +3333,11 @@
         "last_result": "loss"
       },
       "glm-5.3-flash": {
-        "total_calls": 8,
-        "successes": 7,
+        "total_calls": 7,
+        "successes": 6,
         "availability": 85.7,
         "last_match": "2026-10-05",
-        "last_result": "loss",
-        "status": "active"
+        "last_result": "loss"
       },
       "qwen3.7-flash": {
         "availability": 100.0,
@@ -3516,12 +3360,11 @@
         "successes": 1
       },
       "muse-spark-1.3-contributor": {
-        "availability": 100,
-        "total_calls": 7,
-        "successes": 7,
+        "availability": 100.0,
+        "total_calls": 6,
+        "successes": 6,
         "last_match": "2026-10-05",
-        "last_result": "loss",
-        "status": "active"
+        "last_result": "loss"
       },
       "longcat-2.0": {
         "availability": 100.0,
@@ -3531,35 +3374,32 @@
         "last_result": "win"
       },
       "hy3": {
-        "availability": 100,
-        "total_calls": 7,
-        "successes": 7,
+        "availability": 100.0,
+        "total_calls": 6,
+        "successes": 6,
         "last_match": "2026-10-05",
-        "last_result": "loss",
-        "status": "active"
+        "last_result": "loss"
       },
       "gpt-6-luna": {
-        "total_calls": 4,
-        "successes": 4,
-        "availability": 100,
+        "total_calls": 3,
+        "successes": 3,
+        "availability": 100.0,
         "last_match": "2026-10-05",
-        "last_result": "loss",
-        "status": "active"
+        "last_result": "loss"
       },
       "mimo-v2.6-flash": {
-        "total_calls": 4,
-        "successes": 4,
-        "availability": 100,
+        "total_calls": 3,
+        "successes": 3,
+        "availability": 100.0,
         "last_match": "2026-10-05",
-        "last_result": "loss",
-        "status": "active"
+        "last_result": "loss"
       },
       "minimax-m3": {
         "total_calls": 2,
         "successes": 2,
-        "availability": 100,
-        "reliability": 1.0,
-        "status": "active"
+        "availability": 100.0,
+        "last_match": "2026-09-30",
+        "last_result": "loss"
       },
       "ling-3.0-flash-fin-free": {
         "total_calls": 2,
@@ -3583,12 +3423,11 @@
         "last_result": "dnf"
       },
       "longcat-2.5-preview-free": {
-        "total_calls": 3,
-        "successes": 1,
+        "total_calls": 2,
+        "successes": 0,
         "availability": 0.0,
         "last_match": "2026-10-05",
-        "last_result": "dnf",
-        "status": "active"
+        "last_result": "dnf"
       },
       "deepseek-v4-pro": {
         "availability": 100.0,
@@ -3601,13 +3440,12 @@
         "successes": 1
       },
       "deepseek-v4.1-flash": {
-        "total_calls": 2,
-        "successes": 2,
-        "availability": 100,
+        "total_calls": 1,
+        "successes": 1,
+        "availability": 100.0,
         "last_match": "2026-10-05",
         "last_result": "loss",
-        "note": "pre-existing pool entry without stats; backfilled 2026-10-05",
-        "status": "active"
+        "note": "pre-existing pool entry without stats; backfilled 2026-10-05"
       },
       "qwen3.8-flash": {
         "total_calls": 0,
@@ -3626,27 +3464,11 @@
         "note": "pre-existing pool entry without stats; backfilled 2026-10-05"
       },
       "poolside/laguna-s-2.1-free": {
-        "total_calls": 2,
-        "successes": 2,
-        "availability": 100,
+        "total_calls": 1,
+        "successes": 1,
+        "availability": 100.0,
         "last_match": "2026-10-05",
-        "last_result": "loss",
-        "status": "active"
-      },
-      "claude-haiku-5-5": {
-        "total_calls": 10,
-        "successes": 10,
-        "availability": 100,
-        "last_match": "2026-09-30",
-        "last_result": "loss",
-        "status": "active"
-      },
-      "qwen3.8-max": {
-        "total_calls": 2,
-        "successes": 0,
-        "availability": 100,
-        "reliability": 1.0,
-        "status": "active"
+        "last_result": "loss"
       }
     }
   },

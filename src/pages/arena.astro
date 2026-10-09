@@ -7,7 +7,7 @@ import { SITE_TITLE } from '../consts';
 
 const { matches, leaderboard, model_pool, stability } = arenaData;
 
-const builderModels = model_pool.filter(m => m.role === 'builder');
+const builderModels = model_pool.filter(m => m.role === 'builder' && m.status === 'active');
 const judgeModels = model_pool.filter(m => m.role === 'judge');
 const researchModels = model_pool.filter(m => m.role === 'research');
 const plannerModels = model_pool.filter(m => m.role === 'planner');

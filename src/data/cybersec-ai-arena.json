@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "last_updated": "2026-10-08",
+  "last_updated": "2026-10-09",
   "description": "CyberSec AI A/B Arena",
   "matches": [
     {
@@ -3168,6 +3168,158 @@
           "note": "empty response content (known small-max_tokens empty-body quirk)"
         }
       ]
+    },
+    {
+      "id": "arena-cybersec-consumer_alert",
+      "date": "2026-10-09",
+      "timestamp": "2026-10-09T13:30:00-07:00",
+      "type": "consumer-alert",
+      "topic": "ShinyHunters pay-or-leak breaches (Aug 2026): Carhartt, Chess.com, McKesson, Manchester Airports Group, Neogen, Questel",
+      "slug": "2026-10-09-consumer-alert",
+      "total_models": 11,
+      "successful": 11,
+      "builder_dnf": [],
+      "winner": "longcat-2.5-preview-free",
+      "winner_provider": "opencode-go",
+      "winner_family": "longcat25",
+      "winner_score": 8.33,
+      "threshold_met": true,
+      "plan_model": "cline-pass/glm-5.3",
+      "research_model": "orchestrator-verified-dossier",
+      "brief_contract": true,
+      "judge": "qwen3.7-flash multipass (3 passes, mean-gated)",
+      "judge_model": "openrouter/qwen3.7-flash",
+      "judge_scores": {
+        "longcat-2.5-preview-free": 8.58,
+        "mimo-v2.6-flash": 8.2,
+        "deepseek-v4.1-flash": 7.87,
+        "glm-5.3-flash": 7.63,
+        "claude-haiku-5-5": 7.47,
+        "step-5-preview-free": 7.25,
+        "minimax-m3": 7.12,
+        "gpt-6-luna": 6.52,
+        "poolside/laguna-s-2.1-free": 6.38,
+        "muse-spark-1.3-contributor": 5.72,
+        "hy3": 4.92
+      },
+      "judge_runs": 3,
+      "winner_decision_rule": "highest mean weighted score across 3 qwen3.7-flash passes; mean >= 8.0 PASS",
+      "qa": {
+        "provider": "claude-cli",
+        "model": "claude-sonnet-5-5",
+        "verdict_before_patch": "FAIL",
+        "fixes_applied": [
+          "Date span narrowed to August 2026 (no October-dated incident)",
+          "Sensitivity column filled from HIBP IsSensitive flags for all six rows",
+          "Chess.com scrape attribution changed to match HIBP record wording",
+          "Overgeneralized 'phone and address in all six' claim replaced with per-breach accuracy",
+          "Claims tied to verified links only; action list ends at verified sources (MFA/credit-freeze not added)",
+          "Frontmatter added (meta description, lastVerified)"
+        ],
+        "verdict_after_patch": "re-judged 8.33 PASS (3 passes: 8.70 / 8.00 / 8.30)"
+      },
+      "notes": "11 of 11 builder lanes returned drafts (poolside fell back to OpenRouter after CC capacity error). Pre-judge gate: all drafts HERO line present, 0 [N] refs, 0 banned URLs, implied-testing hits were the honest 'not hands-on testing' disclaimer only. Link verification: 21 dossier URLs HTTP 200 (urllib); 5 dead FTC/McKesson/CISA links dropped; 1 hero verified 200 image/jpeg. Judge mean for winner 8.58 (3 passes 8.80/7.90/9.05). Judge note: 3 of 11 drafts failed on pass spread; longcat pass 2 quality 4.0 flagged as judge noise. winner_score = 8.33 = re-judge of the shipped (QA-patched) post; 8.58 is the pre-patch draft score kept in judge_scores.",
+      "results": [
+        {
+          "rank": 1,
+          "model": "longcat-2.5-preview-free",
+          "provider": "opencode-go",
+          "family": "longcat25",
+          "score": 8.58,
+          "threshold_met": true,
+          "judge_runs": 3
+        },
+        {
+          "rank": 2,
+          "model": "mimo-v2.6-flash",
+          "provider": "opencode-go",
+          "family": "mimo",
+          "score": 8.2,
+          "threshold_met": true,
+          "judge_runs": 3
+        },
+        {
+          "rank": 3,
+          "model": "deepseek-v4.1-flash",
+          "provider": "commandcode",
+          "family": "deepseek",
+          "score": 7.87,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 4,
+          "model": "glm-5.3-flash",
+          "provider": "opencode-go",
+          "family": "glm",
+          "score": 7.63,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 5,
+          "model": "claude-haiku-5-5",
+          "provider": "claude-cli",
+          "family": "claude",
+          "score": 7.47,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 6,
+          "model": "step-5-preview-free",
+          "provider": "opencode-go",
+          "family": "step",
+          "score": 7.25,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 7,
+          "model": "minimax-m3",
+          "provider": "cline-pass",
+          "family": "minimax",
+          "score": 7.12,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 8,
+          "model": "gpt-6-luna",
+          "provider": "commandcode",
+          "family": "gpt",
+          "score": 6.52,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 9,
+          "model": "poolside/laguna-s-2.1-free",
+          "provider": "commandcode",
+          "family": "poolside",
+          "score": 6.38,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 10,
+          "model": "muse-spark-1.3-contributor",
+          "provider": "opencode-go",
+          "family": "muse",
+          "score": 5.72,
+          "threshold_met": false,
+          "judge_runs": 3
+        },
+        {
+          "rank": 11,
+          "model": "hy3",
+          "provider": "opencode-go",
+          "family": "hy3",
+          "score": 4.92,
+          "threshold_met": false,
+          "judge_runs": 3
+        }
+      ]
     }
   ],
   "leaderboard": [
@@ -3182,29 +3334,29 @@
     },
     {
       "model": "deepseek-v4.1-flash",
-      "matches": 42,
+      "matches": 43,
       "wins": 12,
-      "losses": 30,
+      "losses": 31,
       "bestScore": 9.73,
-      "avgScore": 8.1,
+      "avgScore": 8.09,
       "rank": 2
     },
     {
       "model": "glm-5.3-flash",
-      "matches": 9,
+      "matches": 10,
       "wins": 4,
-      "losses": 5,
+      "losses": 6,
       "bestScore": 9.17,
-      "avgScore": 8.6,
+      "avgScore": 8.5,
       "rank": 3
     },
     {
       "model": "poolside/laguna-s-2.1-free",
-      "matches": 32,
+      "matches": 33,
       "wins": 4,
-      "losses": 26,
+      "losses": 27,
       "bestScore": 9.07,
-      "avgScore": 7.54,
+      "avgScore": 7.5,
       "rank": 4,
       "provider": "commandcode",
       "family": "poolside"
@@ -3229,12 +3381,21 @@
     },
     {
       "model": "gpt-6-luna",
-      "matches": 5,
+      "matches": 6,
       "wins": 1,
-      "losses": 4,
+      "losses": 5,
       "bestScore": 9.9,
-      "avgScore": 8.8,
+      "avgScore": 8.42,
       "rank": 7
+    },
+    {
+      "model": "longcat-2.5-preview-free",
+      "matches": 3,
+      "wins": 1,
+      "losses": 2,
+      "bestScore": 8.58,
+      "avgScore": 8.14,
+      "rank": 8
     },
     {
       "model": "qwen3.7-flash",
@@ -3243,45 +3404,25 @@
       "losses": 3,
       "bestScore": 8.3,
       "avgScore": 7.6,
-      "rank": 8
-    },
-    {
-      "model": "mimo-v2.6-flash",
-      "matches": 5,
-      "wins": 0,
-      "losses": 5,
-      "bestScore": 9.77,
-      "avgScore": 8.8,
       "rank": 9
     },
     {
-      "model": "muse-spark-1.3-contributor",
-      "matches": 7,
+      "model": "mimo-v2.6-flash",
+      "matches": 6,
       "wins": 0,
-      "losses": 7,
-      "bestScore": 9.3,
-      "avgScore": 8.8,
+      "losses": 6,
+      "bestScore": 9.77,
+      "avgScore": 8.7,
       "rank": 10
     },
     {
-      "model": "claude-haiku-5-5",
-      "provider": "claude-cli",
-      "family": "claude",
-      "matches": 1,
+      "model": "muse-spark-1.3-contributor",
+      "matches": 8,
       "wins": 0,
-      "losses": 1,
-      "avgScore": 8.63,
-      "bestScore": 8.63,
-      "rank": 11
-    },
-    {
-      "model": "minimax-m3",
-      "matches": 3,
-      "wins": 0,
-      "losses": 3,
+      "losses": 8,
       "bestScore": 9.3,
-      "avgScore": 8.5,
-      "rank": 12
+      "avgScore": 8.42,
+      "rank": 11
     },
     {
       "model": "ling-3.0-flash-sante",
@@ -3290,7 +3431,7 @@
       "losses": 1,
       "bestScore": 8.27,
       "avgScore": 8.3,
-      "rank": 13
+      "rank": 12
     },
     {
       "model": "ling-3.0-flash-fin-free",
@@ -3299,25 +3440,47 @@
       "losses": 1,
       "bestScore": 8.2,
       "avgScore": 8.2,
+      "rank": 13
+    },
+    {
+      "model": "minimax-m3",
+      "matches": 4,
+      "wins": 0,
+      "losses": 4,
+      "bestScore": 9.3,
+      "avgScore": 8.15,
       "rank": 14
     },
     {
-      "model": "longcat-2.5-preview-free",
+      "model": "claude-haiku-5-5",
+      "provider": "claude-cli",
+      "family": "claude",
       "matches": 2,
       "wins": 0,
       "losses": 2,
-      "bestScore": 8.5,
-      "avgScore": 7.92,
+      "avgScore": 8.05,
+      "bestScore": 8.63,
       "rank": 15
     },
     {
       "model": "hy3",
-      "matches": 7,
+      "matches": 8,
       "wins": 0,
-      "losses": 7,
+      "losses": 8,
       "bestScore": 8.88,
-      "avgScore": 7.76,
+      "avgScore": 7.41,
       "rank": 16
+    },
+    {
+      "model": "step-5-preview-free",
+      "matches": 1,
+      "wins": 0,
+      "losses": 1,
+      "bestScore": 7.25,
+      "avgScore": 7.25,
+      "provider": "opencode-go",
+      "family": "step",
+      "rank": 17
     }
   ],
   "model_pool": [
@@ -3488,7 +3651,7 @@
     }
   ],
   "stability": {
-    "last_updated": "2026-10-08",
+    "last_updated": "2026-10-09",
     "model_stats": {
       "deepseek-v4-flash": {
         "total_calls": 9,

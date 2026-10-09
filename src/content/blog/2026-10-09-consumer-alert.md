@@ -131,3 +131,11 @@ B2B contact lists get published alongside consumer data. [Questel's leak](https:
 **Q: What's the single most urgent step if I was in the McKesson breach?**
 
 Treat any unsolicited communication referencing your health, employer, or personal details with extreme suspicion. The [McKesson breach](https://www.bleepingcomputer.com/news/security/mckesson-discloses-breach-after-shinyhunters-claims-patient-data-theft/) exposed [personal health data](https://haveibeenpwned.com/Breach/McKesson) alongside dates of birth and employer information — a combination that enables highly targeted scams. Follow the [action list](#what-to-do-right-now-consumer-action-list) above, starting with checking [HIBP](https://haveibeenpwned.com/Breach/McKesson) and reviewing your credit reports at [annualcreditreport.com](https://www.annualcreditreport.com).
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*

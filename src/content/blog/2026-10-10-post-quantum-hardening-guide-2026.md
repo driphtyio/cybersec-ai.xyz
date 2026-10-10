@@ -114,3 +114,12 @@ Inventory first, enable hybrid second, sequence by exposure third. [FIPS 203](ht
 ## How This Guide Was Built
 
 This guide is based on NIST, CISA, IETF and vendor documentation; we did not run these configurations hands-on. Facts come from the official sources linked inline, and the operational sequencing is the author's recommendation: [NIST FIPS 203](https://csrc.nist.gov/pubs/fips/203/final), the [CISA PQC Initiative page](https://www.cisa.gov/quantum), [NIST IR 8547 (initial public draft)](https://csrc.nist.gov/pubs/ir/8547/ipd), [IETF RFC 10024](https://datatracker.ietf.org/doc/draft-ietf-tls-ecdhe-mlkem/), and the [OpenSSH 10.0 release notes](https://www.openssh.com/txt/release-10.0). No statistics or vendor numbers are quoted, and no benchmarks were run.
+
+<!-- crosslinks -->
+
+## 📖 Related Reads
+
+- **[CodeIntel Log](https://codeintel.xyz/)** — code quality, debugging, and software engineering benchmarks
+- **[ToolBrain](https://toolbrain.net/)** — tool reviews, LLM comparisons, and AI workflow guides
+
+*Cross-links automatically generated from None.*
